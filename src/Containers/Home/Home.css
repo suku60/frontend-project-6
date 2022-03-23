@@ -9,6 +9,8 @@
     background-color: var(--color-purple-2);
 }
 
+/* CONTAINERS (VIEWS / TOTAL SCREEN) */
+
 .container_box {
 
     height: 100vh;
@@ -23,6 +25,25 @@
 
 }
 
+/* COMPONENTS (ANY KIND) */
+
+.component_box {
+    
+    height: 52em;
+    width: 38em;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+    background-color: var(--color-light-1);
+    
+    
+}
+
+/* BUTTONS */
+
 .login_register_button {
 
     height: 3em;
@@ -35,22 +56,8 @@
     cursor: pointer;
 }
 
-.component_box {
-    
-    height: 52em;
-    width: 38em;
-
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-
-    background-color: var(--color-light-1);
-
-
-}
-
 .login_message {
+    
     margin-bottom: 1em;
     
     height: 10em;
@@ -64,6 +71,7 @@
     background-color: var(--color-dark-3);
 
 }
+
 .login_inputs {
     margin-bottom: 1em;
 
@@ -79,6 +87,7 @@
     background-color: var(--color-dark-3);
 
 }
+
 .login_button {
     
     height: 5em;
@@ -92,6 +101,7 @@
     background-color: var(--color-dark-3);
 
 }
+
 .register_inputs {
 
     margin-bottom: 1em;
@@ -107,6 +117,7 @@
     background-color: var(--color-dark-2);
 
 }
+
 .register_button {
     
     height: 5em;

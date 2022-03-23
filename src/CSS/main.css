@@ -30,3 +30,14 @@
     
 
 };
+
+/* animations */
+
+.animationContainerFromTop {
+    animation: movement .1s steps(60) .5s normal,
+               fading .2s steps(6) .4 normal; 
+}
+
+@keyframes movement {
+    from{}
+}
