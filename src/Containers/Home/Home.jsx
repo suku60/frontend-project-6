@@ -5,9 +5,13 @@ import './Home.css';
 const Home = () => {
 
 return (
-<div classname="container_box">
-    <Login/>
-</div>
-)
+    <div className="container_box" id="home_box">
+
+        .container_box
+
+        <Login/>
+
+    </div>
+    )
 }
 export default Home;
