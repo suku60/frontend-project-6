@@ -1,5 +1,20 @@
 @import url('../../CSS/main.css');
 
+#animationContainerFromTop {
+    animation: movement .1s steps(60) .5s normal,
+               fading .2s steps(6) .4 normal; 
+}
+
+@keyframes movement {
+    from{margin-top: -76em;}
+    to{margin-top: 0em;}
+}
+
+@keyframes fading {
+    from{opacity: 0%;}
+    to{opacity: 100%;}
+}
+
 #home_box {
     
     flex-direction: row;
@@ -28,6 +43,8 @@
 /* COMPONENTS (ANY KIND) */
 
 .component_box {
+    /* needed margin for dissapering in normal screen */
+    /* margin-top: -76em; */
     
     height: 52em;
     width: 38em;
@@ -38,6 +55,8 @@
     align-items: center;
     
     background-color: var(--color-light-1);
+
+    transition: 1s;
     
     
 }
@@ -57,7 +76,7 @@
 }
 
 .login_message {
-    
+
     margin-bottom: 1em;
     
     height: 10em;
