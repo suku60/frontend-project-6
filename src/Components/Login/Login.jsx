@@ -4,11 +4,19 @@ import './Login.css';
 const Login = () => {
     return (
        <div className='component_box'>
-           Lorem ipsum dolor sit amet consectetur,  <br/>
-           adipisicing elit. Magni suscipit itaque asperiores,  <br/>
-           molestiae accusantium error provident aperiam,  <br/>
-           voluptates non beatae consequatur eveniet et similique culpa.  <br/>
-           Distinctio accusantium dicta minima placeat. <br/>
+
+           <div className="login_message">
+               Lorem ipsum dolor sit amet consectetur adipisicing elit. <br/>
+               Tenetur iure dolorum, <br/>
+               deleniti odit error ad aspernatur. <br/>
+               Consectetur minima, <br/>
+               architecto quod excepturi, <br/>
+               eaque esse quidem ratione odio laboriosam enim ipsum facilis?<br/>
+           </div>
+
+           <div className="login_inputs"></div>
+           
+           <div className="login_button"></div>
 
        </div>
     )

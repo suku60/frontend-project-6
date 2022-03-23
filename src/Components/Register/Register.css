@@ -1,1 +1,79 @@
 @import url('../../CSS/main.css');
+
+/* IDs */
+
+#register_box{
+
+    background-color: var(--color-purple-2);
+}
+
+.component_box {    
+
+    height: 70vh;
+    width: 30vw;
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    background-color: var(--color-light-3);
+
+}
+
+.register_message {
+
+    height: 10em;
+    width: 30em;
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    background-color: var(--color-light-3);
+
+}
+.register_inputs {
+    
+    margin-top: 1em;
+    
+    height: 20em;
+    width: 30em;
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    background-color: var(--color-light-3);
+
+
+}
+.register_button {
+
+    margin-top: 1em;
+    
+    height: 5em;
+    width: 10em;
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    background-color: var(--color-light-3);
+
+    transition: var(--transition-1);
+
+    cursor: pointer;    
+
+}
+
+.register_button:hover {
+
+    background-color: var(--color-light-2);
+
+    transition: var(--transition-1);
+}
+

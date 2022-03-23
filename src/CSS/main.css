@@ -5,8 +5,8 @@
     --color-dark-3: hsl(0, 0%, 20%);
     
     --color-light-1: hsl(0, 0%, 100%);
-    --color-light-2: hsl(0, 0%, 90%);
-    --color-light-3: hsl(0, 0%, 80%);
+    --color-light-2: hsl(0, 0%, 80%);
+    --color-light-3: hsl(0, 0%, 60%);
 
     --color-purple-1: hsl(300, 100%, 45%);
     --color-purple-2: hsl(300, 100%, 25%);
@@ -15,22 +15,18 @@
     --color-yellow-1: hsl(60, 100%, 55%);
     --color-yellow-2: hsl(60, 100%, 40%);
     --color-yellow-3: hsl(60, 100%, 20%);
+
+    --border-radius-1: .2em;
+    --border-radius-2: .4em;
+    --border-radius-3: .6em;
+    --border-radius-4: 1em;
+    --border-radius-5: 1.4em;
+
+    --transition-1: .4s;
+    --transition-2: .6s;
+    --transition-3: .8s;
+    --transition-4: 1s;
+    --transition-5: 1.2s;
     
 
 };
- 
-/* COMPONENT BOXES */
-
-.component_box {    
-
-    height: 30em;
-    width: 15em;
-    
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-
-    background-color: aqua;
-
-}
