@@ -1,13 +1,11 @@
 import React, {useEffect, useState} from 'react';
+import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import TemporaryButton from '../../Components/TemporaryButton/TemporaryButton';
 
 import './Home.css';
 
 const Home = () => {
-
-    let desiredView = useNavigate();
-
     // HOOKS
     
     // animations
@@ -17,32 +15,54 @@ const Home = () => {
     // displays
     const [displayLoginForm, setDisplayLoginForm] = useState("flex");
     const [displayRegisterForm, setDisplayRegisterForm] = useState("none");
+    
+    // memes
+    const [memes, setMemes] = useState([]);
+
+    // USEEFFECTS
+    useEffect(()=> {
+        bringMemes();
+
+        console.log("meme?", memes)
+    },[])
 
     // FUNCTIONS
 
-    // Function that swaps register/login components
+    // Handlers
 
-    const swapButton = () => {
+    // Local functions
+    // Axios call to map images
 
+    const bringMemes = async () => {
 
+        try {
 
-        if(displayLoginForm === "flex"){
+            let memeResponse = await axios.get('https://api.imgflip.com/get_memes');
+
+            // console.log("memeresponsee here", memeResponse)
             
-            setAnimComponent("animationContainerFromTop")
-            setAnimButton("animationButtonSwitch")
-            setDisplayLoginForm("none")
-            setDisplayRegisterForm("flex")
+            // console.log("memeresponsee 2 here", memeResponse.data.data)
 
-        }else{
 
-            setAnimButton("animationButtonSwitch")
-            setAnimComponent("animationContainerFromTop")
-            setDisplayRegisterForm("none")
-            setDisplayLoginForm("flex")
+            let lessMemes = memeResponse.data.data.memes.slice(0, 10)
+
+            // console.log("less?", lessMemes)
+
+
+            setMemes(lessMemes)
+
+            // console.log("memes¿", memes)
+
+            // setMemes(memeResponse.data.results)
+
+
+        }catch(error){
+            console.log(error)
         }
+
     }
 
-
+    console.log("mememess?", memes)
 return (
     <div className="container_box" id="home_box">
 
@@ -55,27 +75,15 @@ return (
 
         <div className="component_home">
             <div className='component_box' id="animationContainerFromTop">
-            <div>
-                home here <br/>
-                <br/>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. <br/>
-                Tenetur iure dolorum, <br/>
-                deleniti odit error ad aspernatur. <br/>
-                Consectetur minima, <br/>
-                architecto quod excepturi, <br/>
-                eaque esse quidem ratione odio laboriosam enim ipsum facilis?<br/>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. <br/>
-                Tenetur iure dolorum, <br/>
-                deleniti odit error ad aspernatur. <br/>
-                Consectetur minima, <br/>
-                architecto quod excepturi, <br/>
-                eaque esse quidem ratione odio laboriosam enim ipsum facilis?<br/>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. <br/>
-                Tenetur iure dolorum, <br/>
-                deleniti odit error ad aspernatur. <br/>
-                Consectetur minima, <br/>
-                architecto quod excepturi, <br/>
-                eaque esse quidem ratione odio laboriosam enim ipsum facilis?<br/>
+            <div className='memes_box'>
+                {memes?.map(images => {
+                    return ( 
+                     <div className='meme_card' key={images.id}>
+                         <img className='meme_photo' src={images.url} alt={images.name}/>
+                         <div className="meme_name">{images.name}</div>
+                     </div>
+                )
+                })}
             </div>
             </div>
         </div>           

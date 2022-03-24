@@ -5,8 +5,6 @@ import TemporaryButton from '../../Components/TemporaryButton/TemporaryButton';
 import './Login.css';
 
 const Login = () => {
-    
-    let desiredView = useNavigate();
 
     // HOOKS
 
@@ -225,8 +223,8 @@ return (
 
 
         <div className="box_login_register_button" id="animationContainerFromTop">
-            <div className="login_register_button" id={animButton} style={{display : displayLoginForm}} onClick={()=>swapButton()}>login</div>
-            <div className="login_register_button" id={animButton} style={{display : displayRegisterForm}} onClick={()=>swapButton()}>register</div>
+            <div className="login_register_button" id={animButton} style={{display : displayRegisterForm}} onClick={()=>swapButton()}>Already an user?<br/>Log here</div>
+            <div className="login_register_button" id={animButton} style={{display : displayLoginForm}} onClick={()=>swapButton()}>Need an account?<br/>Click here</div>
         </div>
         <div className="component_login" style={{display : displayLoginForm}} id="animationContainerFromTop">
             <div className='component_box' id={animComponent}>
@@ -239,7 +237,20 @@ return (
                 eaque esse quidem ratione odio laboriosam enim ipsum facilis?<br/>
             </div>
 
-            <div className="login_inputs">
+            <div className="login_inputs">  
+            <input type="name" name="nickname" title="nick" 
+                autoComplete="off"/>
+                <input type="password" name="password" title="pass" 
+                autoComplete="off"/>          
+            </div>
+
+            <div className="login_button"></div>
+            </div>
+        </div>     
+        
+        <div className="component_register" style={{display : displayRegisterForm}} id="animationContainerFromTop">
+            <div className='component_box register_box' id={animComponent}>
+            <div className="register_inputs">
                 <input type="name" name="nickname" title="nick" 
                 autoComplete="off"/>
                 <input type="password" name="password" title="pass" 
@@ -251,16 +262,7 @@ return (
                 by clicking here I'm comfirming I am 18 years old or more. 
                 <input type="checkbox" name="avatar" title="avatar" 
                 autoComplete="off"/>
-            
             </div>
-
-            <div className="login_button"></div>
-            </div>
-        </div>     
-        
-        <div className="component_register" style={{display : displayRegisterForm}} id="animationContainerFromTop">
-            <div className='component_box register_box' id={animComponent}>
-            <div className="register_inputs"></div>
            
             <div className="register_button"></div>
  

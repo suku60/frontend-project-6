@@ -5,15 +5,6 @@ import TemporaryButton from '../../Components/TemporaryButton/TemporaryButton';
 import './Profile.css';
 
 const Profile = () => {
-
-    // temporary for now
-
-    let desiredView = useNavigate();
-
-    const PathfinderHome = () => {
-        desiredView("/home")
-    }
-
     // HOOKS
 
     // animations
