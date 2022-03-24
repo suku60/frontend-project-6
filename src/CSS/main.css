@@ -30,3 +30,43 @@
     
 
 };
+
+/* ANIMATIONS */
+
+/* Animation: container falling from top */
+#animationContainerFromTop {
+    animation: movement steps(60) .4s normal,
+              fading steps(60) .5s normal; 
+}
+
+@keyframes movement {
+    from{margin-top: -76em;}
+    to{margin-top: 0em;}
+}
+
+@keyframes fading {
+    from{opacity: 0%;}
+    to{opacity: 100%;}
+}
+
+#animationButtonSwitch {
+    animation: switch steps(60) .4s normal,
+              opacity steps(60) .4s normal; 
+}
+
+/* @keyframes switch {
+    from{width: var(--button-width-1);}
+    to{width: 0em;}
+} */
+
+@keyframes switch {
+    from{transform: rotateX(0deg);}
+    to{transform: rotateX(360deg);}
+}
+
+
+@keyframes fading {
+    from{opacity: 0%;}
+    to{opacity: 100%;}
+}
+

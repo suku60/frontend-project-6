@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
-import './Home.css';
+import './Profile.css';
 
-const Home = () => {
+const Profile = () => {
 
     // HOOKS
 
@@ -39,14 +39,14 @@ const Home = () => {
 
 
 return (
-    <div className="container_box" id="home_box">
+    <div className="container_box" id="profile_box">
 
 {/* THIS WILL BE A CAROUSEL OF IMAGES */}
 
-        <div className="component_home">
-            <div className='component_box' id="animationContainerFromTop">
+        <div className="component_profile">
+            <div className='component_box'>
             <div>
-                home here <br/>
+                profile here<br/>
                 <br/>
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. <br/>
                 Tenetur iure dolorum, <br/>
@@ -72,4 +72,4 @@ return (
     </div>
     )
 }
-export default Home;
+export default Profile;
