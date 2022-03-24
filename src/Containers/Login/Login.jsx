@@ -41,7 +41,7 @@ const Login = () => {
 
 
 return (
-    <div className="container_box" id="home_box">
+    <div className="container_box" id="login_box">
 
 {/* THIS WILL BE A CAROUSEL OF IMAGES */}
 
