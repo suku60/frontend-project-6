@@ -88,6 +88,11 @@
 }
 /* BUTTONS */
 
+.box_login_register_button {
+    height: 3em;
+    width: 3em;
+}
+
 .login_register_button {
 
     height: 3em;

@@ -62,9 +62,10 @@ return (
 {/* HERE WE HAVE THE BUTTON THAT SWITCHES LOGIN/REGISTER FORMS AND THE FORMS */}
 
 
-        <div className="login_register_button" id={animButton} style={{display : displayLoginForm}} onClick={()=>swapButton()}>login</div>
-        <div className="login_register_button" id={animButton} style={{display : displayRegisterForm}} onClick={()=>swapButton()}>register</div>
-
+        <div className="box_login_register_button">
+            <div className="login_register_button" id={animButton} style={{display : displayLoginForm}} onClick={()=>swapButton()}>login</div>
+            <div className="login_register_button" id={animButton} style={{display : displayRegisterForm}} onClick={()=>swapButton()}>register</div>
+        </div>
         <div className="component_login" style={{display : displayLoginForm}}>
             <div className='component_box' id={animComponent}>
             <div className="login_message">
