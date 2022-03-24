@@ -20,13 +20,19 @@
 
 #animationButtonSwitch {
     animation: switch steps(60) .4s normal,
-              opacity steps(60) .5s normal; 
+              opacity steps(60) .4s normal; 
 }
 
-@keyframes switch {
+/* @keyframes switch {
     from{width: var(--button-width-1);}
     to{width: 0em;}
+} */
+
+@keyframes switch {
+    from{transform: rotateX(0deg);}
+    to{transform: rotateX(360deg);}
 }
+
 
 @keyframes fading {
     from{opacity: 0%;}
@@ -89,8 +95,20 @@
 /* BUTTONS */
 
 .box_login_register_button {
-    height: 3em;
-    width: 3em;
+    
+    margin: 1em;
+    height: 4em;
+    width: 5em;
+
+    background-color: transparent;
+
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+
 }
 
 .login_register_button {

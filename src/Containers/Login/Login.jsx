@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
-import './Home.css';
+import './Login.css';
 
-const Home = () => {
+const Login = () => {
 
     // HOOKS
 
@@ -104,7 +104,11 @@ return (
  
        </div></div>
 
+      
+
+       
+
     </div>
     )
 }
-export default Home;
+export default Login;
