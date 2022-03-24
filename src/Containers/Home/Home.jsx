@@ -1,10 +1,15 @@
 import React, {useEffect, useState} from 'react';
+import { useNavigate } from 'react-router-dom';
+import TemporaryButton from '../../Components/TemporaryButton/TemporaryButton';
+
 import './Home.css';
 
 const Home = () => {
 
-    // HOOKS
+    let desiredView = useNavigate();
 
+    // HOOKS
+    
     // animations
     const [animComponent, setAnimComponent] = useState("");
     const [animButton, setAnimButton] = useState("");
@@ -40,6 +45,11 @@ const Home = () => {
 
 return (
     <div className="container_box" id="home_box">
+
+        {/* TEMPORARY SCREEN SWITCH BUTTONS */}
+
+        <TemporaryButton viewNameDisplay={"profile"} pathUrl={"/profile"}/>
+        <TemporaryButton viewNameDisplay={"login"} pathUrl={"/"}/>
 
 {/* THIS WILL BE A CAROUSEL OF IMAGES */}
 

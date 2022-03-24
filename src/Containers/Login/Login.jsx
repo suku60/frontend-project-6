@@ -1,7 +1,12 @@
 import React, {useEffect, useState} from 'react';
+import { useNavigate } from 'react-router-dom';
+import TemporaryButton from '../../Components/TemporaryButton/TemporaryButton';
+
 import './Login.css';
 
 const Login = () => {
+    
+    let desiredView = useNavigate();
 
     // HOOKS
 
@@ -194,11 +199,16 @@ const Login = () => {
 
 return (
     <div className="container_box" id="login_box">
+        
+        {/* TEMPORARY SCREEN SWITCH BUTTONS */}
+
+        <TemporaryButton viewNameDisplay={"home"} pathUrl={"/home"}/>
+        <TemporaryButton viewNameDisplay={"profile"} pathUrl={"/profile"}/>
 
 {/* THIS WILL BE A CAROUSEL OF IMAGES */}
 
         <div className="component_login">
-            <div className='component_box'>
+            <div className='component_box' id="animationContainerFromTop">
             <div>
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. <br/>
                 Tenetur iure dolorum, <br/>
@@ -214,11 +224,11 @@ return (
 {/* HERE WE HAVE THE BUTTON THAT SWITCHES LOGIN/REGISTER FORMS AND THE FORMS */}
 
 
-        <div className="box_login_register_button">
+        <div className="box_login_register_button" id="animationContainerFromTop">
             <div className="login_register_button" id={animButton} style={{display : displayLoginForm}} onClick={()=>swapButton()}>login</div>
             <div className="login_register_button" id={animButton} style={{display : displayRegisterForm}} onClick={()=>swapButton()}>register</div>
         </div>
-        <div className="component_login" style={{display : displayLoginForm}}>
+        <div className="component_login" style={{display : displayLoginForm}} id="animationContainerFromTop">
             <div className='component_box' id={animComponent}>
             <div className="login_message">
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. <br/>
@@ -248,7 +258,7 @@ return (
             </div>
         </div>     
         
-        <div className="component_register" style={{display : displayRegisterForm}}>
+        <div className="component_register" style={{display : displayRegisterForm}} id="animationContainerFromTop">
             <div className='component_box register_box' id={animComponent}>
             <div className="register_inputs"></div>
            

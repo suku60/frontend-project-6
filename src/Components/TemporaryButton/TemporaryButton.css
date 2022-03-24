@@ -1,0 +1,13 @@
+@import url('../../CSS/main.css');
+
+
+/* temporary button */
+.temporary_button {
+
+    height: 4em;
+    width: 4em;
+
+    background-color: red;
+
+    cursor: pointer;
+}
