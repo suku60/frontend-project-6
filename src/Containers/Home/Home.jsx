@@ -37,9 +37,6 @@ const Home = () => {
         }
     }
 
-    
-
-
 
 return (
     <div className="container_box" id="home_box">
