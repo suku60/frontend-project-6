@@ -45,6 +45,13 @@
     flex-direction: row;
 }
 
+.memes_component {
+    background-color: transparent !important;
+
+    height: 90vh !important;
+    width: 90vw !important;
+}
+
 .memes_box {
 
     
@@ -54,9 +61,11 @@
     align-items: center;
 
     height: 50em;
-    width: 41em;
+    width: 40vw;
 
     border-radius: var(--border-radius-3);
 
     overflow-y: scroll;
+
+    background-color: transparent;
 }

@@ -74,13 +74,16 @@ return (
 {/* THIS WILL BE A CAROUSEL OF IMAGES */}
 
         <div className="component_home">
-            <div className='component_box' id="animationContainerFromTop">
+            <div className='component_box memes_component' id="animationContainerFromTop">
             <div className='memes_box'>
                 {memes?.map(images => {
                     return ( 
                      <div className='meme_card' key={images.id}>
                          <img className='meme_photo' src={images.url} alt={images.name}/>
                          <div className="meme_name">{images.name}</div>
+                         <div className="meme_rating_acton">rate me!</div>
+                         <div className="meme_rating">rating: {images.box_count}</div>
+                         <div className="meme_creator">meme done by: {images.id}</div>
                      </div>
                 )
                 })}
