@@ -55,10 +55,16 @@ const Home = () => {
 return (
     <div className="container_box" id="home_box">
         
+
+{/* FIXED HOME TRANSPARENCY  */}
+        <div className="container_home_transparency">
+            home here
+        </div>
+        
 {/* THIS WILL BE A CAROUSEL OF IMAGES */}
 
-        <div className="component_home">
-            <div className='component_box memes_component' id="animationContainerFromTop">
+        <div className="component_home" id="animationContainerFromTop">
+            <div className='component_box memes_component'>
             <div className='memes_box'>
                 {memes?.map(images => {
                     return (

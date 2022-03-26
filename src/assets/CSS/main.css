@@ -107,7 +107,7 @@ img {
   }
    
   ::-webkit-scrollbar-thumb {
-    background: linear-gradient(to left, var(--color-dark-2), var(--color-dark-2));
+    background: linear-gradient(to left, var(--color-light-1), var(--color-dark-2));
   transition: var(--transition-5);
   border-radius: var(--box-form-border-radius-2);
   
