@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useState, Component} from 'react';
 import { useNavigate, Navigate } from 'react-router-dom';
 import TemporaryButton from '../../Components/TemporaryButton/TemporaryButton';
 
@@ -7,37 +7,7 @@ import './Profile.css';
 const Profile = () => {
     // HOOKS
 
-    // animations
-    const [animComponent, setAnimComponent] = useState("");
-    const [animButton, setAnimButton] = useState("");
- 
-    // displays
-    const [displayLoginForm, setDisplayLoginForm] = useState("flex");
-    const [displayRegisterForm, setDisplayRegisterForm] = useState("none");
-
     // FUNCTIONS
-
-    // Function that swaps register/login components
-
-    const swapButton = () => {
-
-
-
-        if(displayLoginForm === "flex"){
-            
-            setAnimComponent("animationContainerFromTop")
-            setAnimButton("animationButtonSwitch")
-            setDisplayLoginForm("none")
-            setDisplayRegisterForm("flex")
-
-        }else{
-
-            setAnimButton("animationButtonSwitch")
-            setAnimComponent("animationContainerFromTop")
-            setDisplayRegisterForm("none")
-            setDisplayLoginForm("flex")
-        }
-    }
 
 
 return (

@@ -1,21 +1,12 @@
 import React, {useEffect, useState} from 'react';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+
 import TemporaryButton from '../../Components/TemporaryButton/TemporaryButton';
 
 import './Home.css';
 
 const Home = () => {
     // HOOKS
-    
-    // animations
-    const [animComponent, setAnimComponent] = useState("");
-    const [animButton, setAnimButton] = useState("");
- 
-    // displays
-    const [displayLoginForm, setDisplayLoginForm] = useState("flex");
-    const [displayRegisterForm, setDisplayRegisterForm] = useState("none");
-    
     // memes
     const [memes, setMemes] = useState([]);
 
@@ -23,16 +14,13 @@ const Home = () => {
     useEffect(()=> {
         bringMemes();
 
-        console.log("meme?", memes)
+        // console.log("meme?", memes)
     },[])
 
     // FUNCTIONS
-
     // Handlers
-
     // Local functions
     // Axios call to map images
-
     const bringMemes = async () => {
 
         try {
@@ -62,7 +50,8 @@ const Home = () => {
 
     }
 
-    console.log("mememess?", memes)
+    // console.log("mememess?", memes)
+
 return (
     <div className="container_box" id="home_box">
 
@@ -73,11 +62,12 @@ return (
 
 {/* THIS WILL BE A CAROUSEL OF IMAGES */}
 
-        <div className="component_home">
+        {/* <div className="component_home">
             <div className='component_box memes_component' id="animationContainerFromTop">
             <div className='memes_box'>
                 {memes?.map(images => {
-                    return ( 
+                    return (
+                         
                      <div className='meme_card' key={images.id}>
                          <img className='meme_photo' src={images.url} alt={images.name}/>
                          <div className="meme_name">{images.name}</div>
@@ -89,7 +79,7 @@ return (
                 })}
             </div>
             </div>
-        </div>           
+        </div>            */}
     </div>
     )
 }

@@ -8,13 +8,35 @@
     --color-light-2: hsl(0, 0%, 80%);
     --color-light-3: hsl(0, 0%, 60%);
 
-    --color-purple-1: hsl(300, 100%, 45%);
-    --color-purple-2: hsl(300, 100%, 25%);
-    --color-purple-3: hsl(300, 100%, 15%);
+    
+     --color-vapor-1:hsl(330, 100%, 84%);
+     --color-vapor-1-1:hsl(330, 60%, 84%);
+     --color-vapor-1-2:hsl(330, 100%, 84%);;
+     --color-vapor-1-3:hsl(330, 100%, 70%);;
 
-    --color-yellow-1: hsl(60, 100%, 55%);
-    --color-yellow-2: hsl(60, 100%, 40%);
-    --color-yellow-3: hsl(60, 100%, 20%);
+     
+     --color-vapor-2: hsl(180, 100%, 45%);
+     --color-vapor-2-1:hsl(180, 60%, 70%);
+     --color-vapor-2-2:hsl(180, 90%, 45%);
+     --color-vapor-2-3:hsl(180, 100%, 30%);
+
+     
+     --color-vapor-3:hsl(0, 0%, 93%);
+     --color-vapor-3-1:hsl(0, 0%, 93%);
+     --color-vapor-3-2:hsl(0, 20%, 84%);
+     --color-vapor-3-3:hsl(0, 40%, 70%);
+
+     
+     --color-vapor-4:hsl(180, 60%, 40%);
+     --color-vapor-4-1:hsl(180, 60%, 40%);
+     --color-vapor-4-2:hsl(180, 60%, 40%);
+     --color-vapor-4-3:hsl(180, 60%, 20%);
+     
+     
+     --color-vapor-5:hsl(160, 100%, 70%);
+     --color-vapor-5-1:hsl(160, 60%, 84%);
+     --color-vapor-5-2:hsl(160, 90%, 70%);
+     --color-vapor-5-3:hsl(160, 100%, 45%);
 
     --border-radius-1: .2em;
     --border-radius-2: .4em;

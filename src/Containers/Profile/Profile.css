@@ -1,4 +1,4 @@
-@import url('../../CSS/main.css');
+@import url('../../assets/CSS/main.css');
 
 /* ANIMATIONS */
 
@@ -21,4 +21,5 @@
 #profile_box {
     
     flex-direction: row;
+    justify-content: center !important;
 }

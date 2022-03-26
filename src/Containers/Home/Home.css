@@ -1,4 +1,4 @@
-@import url('../../CSS/main.css');
+@import url('../../assets/CSS/main.css');
 
 /* ANIMATIONS */
 
@@ -43,16 +43,19 @@
 #home_box {
     
     flex-direction: row;
+    justify-content: center !important;
 }
 
-.memes_component {
-    background-color: transparent !important;
+/* .memes_component {
+    background-color: gray !important;
 
     height: 90vh !important;
-    width: 90vw !important;
-}
+    width: 50vw !important;
+} */
 
 .memes_box {
+/* 
+    transform: skew(25deg 25deg 0deg 0deg); */
 
     
     display: flex;
