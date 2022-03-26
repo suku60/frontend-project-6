@@ -4,6 +4,23 @@
     height: 100vh;
     width: 30vw;
 
-    background-color: gray;
+    background-color: var(--color-light-3);
+
+
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.nav_container {
+    height: 99vh;
+    width: 29.5vw;
+
+    background-color: var(--color-dark-1);
+
+    padding: .2em;
 
 }
