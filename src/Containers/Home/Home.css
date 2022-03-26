@@ -147,10 +147,12 @@
 }
 
 .meme_rating_star{
-    width: 2em;
-    height: 2em;
+    width: 2.2em;
+    height: 2.2em;
 
     margin-inline: -20%;
+
+    border-radius: 41%;
 
     background-color: rgb(160, 97, 97);
 
@@ -161,6 +163,8 @@
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
+
+    cursor: pointer;
 }
 
 .meme_rating_star:hover {

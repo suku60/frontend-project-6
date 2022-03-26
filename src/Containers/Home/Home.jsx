@@ -136,20 +136,20 @@ return (
                          <div className="meme_name">{images.name}</div>
                          <div className="meme_rating_action" onMouseOver={()=>OffBackgroundStar()}>
                              <div className="meme_rating_star" style={{backgroundColor : star1}} onMouseOver={()=>OnBackgroundStar()}>
-                                 <StarSvg/>
+                                 <StarSvg  style={{backgroundColor : star1}} onMouseOver={()=>OnBackgroundStar()}/>
                                  {/* <div className="star_white"></div> */}
                              </div>
                              <div className="meme_rating_star" style={{backgroundColor : star2}} onMouseOver={()=>OnBackgroundStar2()}>
-                                     <StarSvg/>
+                                     <StarSvg  style={{backgroundColor : star2}} onMouseOver={()=>OnBackgroundStar2()}/>
                              </div>
                              <div className="meme_rating_star" style={{backgroundColor : star3}} onMouseOver={()=>OnBackgroundStar3()}>
-                                     <StarSvg/>
+                                     <StarSvg  style={{backgroundColor : star3}} onMouseOver={()=>OnBackgroundStar3()}/>
                              </div>                             
                              <div className="meme_rating_star" style={{backgroundColor : star4}} onMouseOver={()=>OnBackgroundStar4()}>
-                                     <StarSvg/>
+                                     <StarSvg  style={{backgroundColor : star4}} onMouseOver={()=>OnBackgroundStar4()}/>
                              </div>
                              <div className="meme_rating_star" style={{backgroundColor : star5}} onMouseOver={()=>OnBackgroundStar5()}>
-                                     <StarSvg/>
+                                     <StarSvg  style={{backgroundColor : star5}} onMouseOver={()=>OnBackgroundStar5()}/>
                              </div>
                          </div>
                          <div className="meme_rating">rating: {images.box_count}</div>
