@@ -24,14 +24,14 @@ const Login = () => {
 
         if(displayLoginForm === "flex"){
             
-            setAnimComponent("animationContainerFromTop")
+            setAnimComponent("animationButtonSwitch")
             setAnimButton("animationButtonSwitch")
             setDisplayLoginForm("none")
             setDisplayRegisterForm("flex")
         }else{
 
             setAnimButton("animationButtonSwitch")
-            setAnimComponent("animationContainerFromTop")
+            setAnimComponent("animationButtonSwitch")
             setDisplayRegisterForm("none")
             setDisplayLoginForm("flex")
         }
@@ -204,11 +204,11 @@ return (
 {/* HERE WE HAVE THE BUTTON THAT SWITCHES LOGIN/REGISTER FORMS AND THE FORMS */}
 
         <div className="container_login_forms">
-            <div className="box_login_register_button" id="animationContainerFromTop">
+            <div className="box_login_register_button" id="animationButtonSwitch">
                   <div className="login_register_button" id={animButton} style={{display : displayRegisterForm}} onClick={()=>swapButton()}>Already an user?<br/>Log here</div>
                   <div className="login_register_button" id={animButton} style={{display : displayLoginForm}} onClick={()=>swapButton()}>Need an account?<br/>Click here</div>
               </div>
-              <div className="component_login" style={{display : displayLoginForm}} id="animationContainerFromTop">
+              <div className="component_login" style={{display : displayLoginForm}} id="animationButtonSwitch">
                   <div className='component_box' id={animComponent}>
                   <div className="login_message">
                       Lorem ipsum dolor sit amet consectetur adipisicing elit. <br/>
@@ -230,7 +230,7 @@ return (
                   </div>
           </div>     
           
-          <div className="component_register" style={{display : displayRegisterForm}} id="animationContainerFromTop">
+          <div className="component_register" style={{display : displayRegisterForm}} id="animationButtonSwitch">
               <div className='component_box register_box' id={animComponent}>
               <div className="register_inputs">
                   <input type="name" name="nickname" title="nick" 
