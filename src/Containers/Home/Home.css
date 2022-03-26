@@ -44,6 +44,8 @@
 
     
     height: 100vh !important;
+
+    background-color: black;
     
     /* flex-direction: row;
     justify-content: center !important; */
@@ -69,10 +71,12 @@
 .component_home {
     height: 100vh !important;
 
+    background-color: transparent !important;
+
 }
 
 .memes_component {
-    background-color: transparent;
+    background-color: transparent !important;
 
     height: 100vh !important;
 }
@@ -99,20 +103,25 @@
 
 .meme_card {
 
+    margin-top: .8em;
     
-    width: 40vw;
+    width: 39vw;
     height: 100vh !important; 
+
+    background-color: black;
 }
 
 .meme_photo {
+    border-radius: var(--border-radius-3) var(--border-radius-3) 0em 0em;
     
-    width: 40vw;
+    
+    width: 39vw;
 
 }
 
 .meme_name {
     
-    width: 40vw;
+    width: 39vw;
     height: 3em;
 
     background-color: white;
@@ -121,7 +130,7 @@
 
 .meme_rating_action {
     
-    width: 40vw;
+    width: 39vw;
     height: 3em;
 
     background-color: white;
@@ -130,7 +139,7 @@
 
 .meme_rating {
     
-    width: 40vw;
+    width: 39vw;
     height: 3em;
 
     background-color: white;
@@ -139,7 +148,7 @@
 
 .meme_creator {
     
-    width: 40vw;
+    width: 39vw;
     height: 3em;
 
     background-color: white;
