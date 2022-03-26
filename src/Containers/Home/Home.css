@@ -141,6 +141,7 @@
     justify-content: space-evenly;
     align-items: center;
 
+    
 }
 
 .meme_rating_star{
@@ -154,9 +155,9 @@
     transform:rotateZ(45deg);
 }
 
-.meme_rating_star:hover {
+/* .meme_rating_star:hover {
     background-color: red;
-}
+} */
 
 .meme_rating {
     
