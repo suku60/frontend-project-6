@@ -197,7 +197,9 @@ const Login = () => {
 
 return (
     <div className="container_box" id="login_box">
-        <div className="container_welcome_images" id="animationContainerFromTop"></div>
+        <div className="container_welcome_images" id="animationContainerFromTop">
+            hello I'll have some memes and the Logo 1/2 centered.
+        </div>
 
 {/* THIS WILL BE A CAROUSEL OF IMAGES */}
 

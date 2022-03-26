@@ -13,6 +13,12 @@ const Profile = () => {
 return (
     <div className="container_box" id="profile_box">
 
+        {/* PROFILE PIC AND DATA */}
+
+        <div className="container_profile_data" id="animationContainerFromTop">
+                    hello I'll have profile pic and data.
+                </div>
+
 
 {/* THIS WILL BE A CAROUSEL OF IMAGES */}
 

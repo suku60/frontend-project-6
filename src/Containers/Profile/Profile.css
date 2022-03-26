@@ -22,4 +22,27 @@
     
     /* flex-direction: row;
     justify-content: center !important; */
+    
+}
+
+/* CONTAINERS (VIEWS / TOTAL SCREEN / SECTIONS) */
+
+.container_profile_data {
+
+    /* position:fixed;
+    z-index: 10; */
+
+    height: 40vh;
+    width: 40vw;
+
+    background-color: aquamarine;
+
+    transition: var(--transition-2);
+}
+
+/* COMPONENTS */
+
+.component_profile {
+    padding-top: 1em;
+    justify-content: center;
 }
