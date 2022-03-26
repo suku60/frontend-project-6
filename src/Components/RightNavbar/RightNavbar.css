@@ -4,7 +4,7 @@
     height: 100vh;
     width: 30vw;
 
-    background-color: var(--color-light-3);
+    background-color: var(--color-light-2);
 
 
     
@@ -16,8 +16,8 @@
 }
 
 .nav_container {
-    height: 99vh;
-    width: 29.5vw;
+    height: 99.2vh;
+    width: 29.6vw;
 
     background-color: var(--color-dark-1);
 

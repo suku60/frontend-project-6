@@ -58,9 +58,9 @@
     z-index: 10;
 
     background: 
-	linear-gradient(0deg, rgba(0, 0, 0, 0), var(--color-vapor-2-2));
+	linear-gradient(0deg, rgba(0, 0, 0, 0), var(--color-vapor-1-1));
 
-    height: 5vh;
+    height: 7vh;
     width: 40vw;
 
     transition: var(--transition-2);
@@ -94,7 +94,7 @@
     align-items: center;
 
     height: 100vh !important;
-    width: 40vw;
+    width: 39vw;
 
     border-radius: var(--border-radius-3);
 
@@ -121,12 +121,40 @@
 
 }
 
+.meme_card_data {
+    background-color: var(--color-dark-2);
+
+    
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    height: 12em;
+    
+    transition: var(--transition-2);
+
+    
+}
+
+.meme_card_data:hover {
+    background-color: var(--color-dark-2);
+    
+    transition: var(--transition-2);
+    
+    border-radius: 0em 0em var(--border-radius-3) var(--border-radius-3);
+
+}
+
 .meme_name {
     
     width: 39vw;
     height: 3em;
 
-    background-color: white;
+    background-color: var(--color-dark-1);
+    /* background-color: transparent; */
+    color: var(--color-light-2);
 
 }
 
@@ -135,7 +163,9 @@
     width: 39vw;
     height: 3em;
 
-    background-color: white;
+    background-color: var(--color-dark-1);
+    /* background-color: transparent; */
+    color: var(--color-light-2);
 
     
     display: flex;
@@ -178,7 +208,9 @@
     width: 39vw;
     height: 3em;
 
-    background-color: white;
+    background-color: var(--color-dark-1);
+    /* background-color: transparent; */
+    color: var(--color-light-2);
 
 }
 
@@ -187,6 +219,16 @@
     width: 39vw;
     height: 3em;
 
-    background-color: white;
+    background-color: var(--color-dark-1);
+    /* background-color: transparent; */
+    color: var(--color-light-2);
 
+}
+
+.meme_card_footer {
+    height: 1em;
+    background-color: var(--color-dark-1);
+    /* background-color: transparent; */
+    color: var(--color-light-2);
+    border-radius: 0em 0em var(--border-radius-3) var(--border-radius-3);
 }

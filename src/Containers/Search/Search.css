@@ -69,7 +69,7 @@
     height: 100vh !important;
 }
 .memes_component {
-    background-color: gray !important;
+    background-color: gray;
 
     height: 100vh !important;
 }
