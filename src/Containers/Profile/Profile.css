@@ -1,5 +1,6 @@
 @import url('../../assets/CSS/main.css');
 
+
 /* ANIMATIONS */
 
 /* Animation: container falling from top */
@@ -23,26 +24,69 @@
     /* flex-direction: row;
     justify-content: center !important; */
     
+
+    height: 100vh;
+    overflow-y: scroll !important;
+    
+    
 }
 
 /* CONTAINERS (VIEWS / TOTAL SCREEN / SECTIONS) */
 
 .container_profile_data {
 
-    /* position:fixed;
-    z-index: 10; */
+    position: absolute;
+    z-index: 10;
 
-    height: 40vh;
-    width: 40vw;
+    height: 15vh !important;
+    width: 39vw !important;
 
     background-color: aquamarine;
 
-    transition: var(--transition-2);
+    transition: var(--transition-1) !important;
+
+    overflow: hidden;
+}
+
+.container_profile_data:hover {
+    
+    height: 40vh !important;
+    
+    transition: var(--transition-1) !important;
+
 }
 
 /* COMPONENTS */
 
 .component_profile {
-    padding-top: 1em;
-    justify-content: center;
+    padding-top: 15vh;
+    justify-content: flex-start;
+    align-items: flex-start;
+
+    height: 80em;
+    width: 39vw !important;
+
+    background-color: whitesmoke;
+
+    /* overflow-y: scroll; */
+
+
+}
+.trial_1_1 {
+    
+}
+.trial_1_1 {
+    
+}
+.trial_1_1 {
+    
+}
+.trial_1_1 {
+    
+}
+.trial_1_1 {
+    
+}
+.trial_1_1 {
+    
 }
