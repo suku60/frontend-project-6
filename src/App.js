@@ -5,6 +5,7 @@ import Home from './Containers/Home/Home';
 import Profile from './Containers/Profile/Profile';
 import LeftNavbar from './Components/LeftNavbar/LeftNavbar';
 import RightNavbar from './Components/RightNavbar/RightNavbar';
+import  Search from './Containers/Search/Search';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
           <Route path="/" element={<Login/>}/>
           <Route path="/home" element={<Home/>}/>
           <Route path="/profile" element={<Profile/>}/>
+          <Route path="/search" element={<Search/>}/>
       </Routes>
 
       <RightNavbar/>

@@ -1,0 +1,140 @@
+@import url('../../assets/CSS/main.css');
+
+/* ANIMATIONS */
+
+/* Animation: container falling from top */
+#animationContainerFromTop {
+    animation: movement steps(60) .4s normal,
+              fading steps(60) .5s normal; 
+}
+
+@keyframes movement {
+    from{margin-top: -76em;}
+    to{margin-top: 0em;}
+}
+
+@keyframes fading {
+    from{opacity: 0%;}
+    to{opacity: 100%;}
+}
+
+#animationButtonSwitch {
+    animation: switch steps(60) .4s normal,
+              opacity steps(60) .4s normal; 
+}
+
+/* @keyframes switch {
+    from{width: var(--button-width-1);}
+    to{width: 0em;}
+} */
+
+@keyframes switch {
+    from{transform: rotateX(0deg);}
+    to{transform: rotateX(360deg);}
+}
+
+
+@keyframes fading {
+    from{opacity: 0%;}
+    to{opacity: 100%;}
+}
+
+
+#search_box {
+
+    height: 100vh !important;
+    
+    /* flex-direction: row;
+    justify-content: center !important; */
+}
+/* CONTAINERS (VIEWS / TOTAL SCREEN / SECTIONS) */
+
+.container_search_transparency {
+
+    position:fixed;
+    z-index: 10;
+
+    background: 
+	linear-gradient(0deg, rgba(0, 0, 0, 0), var(--color-vapor-2-2));
+
+    height: 5vh;
+    width: 40vw;
+
+    transition: var(--transition-2);
+}
+
+/* COMPONENTS */
+
+.component_search {
+    height: 50em !important;
+    /* height: 100vh !important; */
+
+}
+.memes_component {
+    background-color: gray !important;
+
+    height: 100vh !important;
+}
+
+.memes_box {
+/* 
+    transform: skew(25deg 25deg 0deg 0deg); */
+
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    height: 100vh !important;
+    width: 40vw;
+
+    border-radius: var(--border-radius-3);
+
+    overflow-y: scroll;
+
+    background-color: transparent;
+}
+
+.meme_card {
+    height: 100vh !important; 
+}
+
+
+
+
+
+
+
+
+
+
+/* SEARCH CONTAINER STYLES */
+.searchBttn {
+    border: solid 2px;
+    /* background-color: red; */
+    padding: 0.5%;
+    margin-left: 0.5%;
+
+    background-color: var(--color-dark-3);
+}
+
+.searchBttn:hover{
+    cursor: pointer;
+}
+
+.login_inputs {
+    margin-bottom: 1em;
+
+    
+    height: 20em;
+    width: 33em;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+    background-color: var(--color-dark-3);
+
+}
