@@ -153,11 +153,29 @@
     background-color: rgb(160, 97, 97);
 
     transform:rotateZ(45deg);
+
+    
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
 }
 
-/* .meme_rating_star:hover {
-    background-color: red;
-} */
+.star_white {
+    height: 2em;
+    width: .2em;
+
+    background-color: white;
+
+    
+    transform:rotateZ(55deg);
+}
+
+.meme_rating_star:hover {
+    transform: scale(110%) rotateZ(50deg);;
+    
+    /* transform:rotateZ(50deg); */
+}
 
 .meme_rating {
     
