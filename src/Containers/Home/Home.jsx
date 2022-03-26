@@ -1,11 +1,14 @@
 import React, {useEffect, useState} from 'react';
 import axios from 'axios';
+import { Navigate, useNavigate } from 'react-router-dom';
 
-import TemporaryButton from '../../Components/TemporaryButton/TemporaryButton';
+import {ReactComponent as StarSvg} from '../../assets/svg/star.svg'
 
 import './Home.css';
 
 const Home = () => {
+    let desiredView = useNavigate();
+
     // HOOKS
     // memes
     const [memes, setMemes] = useState([]);
@@ -26,7 +29,12 @@ const Home = () => {
 
     // FUNCTIONS
     // Handlers
-
+    // home refresh handler
+    const RefreshHome = () => {
+        desiredView("/profile")
+        // desiredView("/home")
+    }
+    // stars handlers
     const OnBackgroundStar = () =>{
         // document.getElementById("s1").style.backgroundColor = "red !important";
         setStar1("red")
@@ -111,7 +119,7 @@ return (
         
 
 {/* FIXED HOME TRANSPARENCY  */}
-        <div className="container_home_transparency">
+        <div className="container_home_transparency" onClick={()=>RefreshHome()}>
             home here
         </div>
         
@@ -128,18 +136,20 @@ return (
                          <div className="meme_name">{images.name}</div>
                          <div className="meme_rating_action" onMouseOver={()=>OffBackgroundStar()}>
                              <div className="meme_rating_star" style={{backgroundColor : star1}} onMouseOver={()=>OnBackgroundStar()}>
-                                 <div className="star_white"></div>
+                                 <StarSvg  style={{backgroundColor : star1}} onMouseOver={()=>OnBackgroundStar()}/>
+                                 {/* <div className="star_white"></div> */}
                              </div>
                              <div className="meme_rating_star" style={{backgroundColor : star2}} onMouseOver={()=>OnBackgroundStar2()}>
-                                 <div className="star_white"></div>
+                                     <StarSvg  style={{backgroundColor : star2}} onMouseOver={()=>OnBackgroundStar2()}/>
                              </div>
                              <div className="meme_rating_star" style={{backgroundColor : star3}} onMouseOver={()=>OnBackgroundStar3()}>
-                                 <div className="star_white"></div></div>                             
+                                     <StarSvg  style={{backgroundColor : star3}} onMouseOver={()=>OnBackgroundStar3()}/>
+                             </div>                             
                              <div className="meme_rating_star" style={{backgroundColor : star4}} onMouseOver={()=>OnBackgroundStar4()}>
-                                 <div className="star_white"></div>
+                                     <StarSvg  style={{backgroundColor : star4}} onMouseOver={()=>OnBackgroundStar4()}/>
                              </div>
                              <div className="meme_rating_star" style={{backgroundColor : star5}} onMouseOver={()=>OnBackgroundStar5()}>
-                                 <div className="star_white"></div>
+                                     <StarSvg  style={{backgroundColor : star5}} onMouseOver={()=>OnBackgroundStar5()}/>
                              </div>
                          </div>
                          <div className="meme_rating">rating: {images.box_count}</div>

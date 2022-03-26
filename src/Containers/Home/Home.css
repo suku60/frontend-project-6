@@ -64,6 +64,8 @@
     width: 40vw;
 
     transition: var(--transition-2);
+
+    cursor: pointer;
 }
 
 /* COMPONENTS */
@@ -145,10 +147,12 @@
 }
 
 .meme_rating_star{
-    width: 2em;
-    height: 2em;
+    width: 2.2em;
+    height: 2.2em;
 
     margin-inline: -20%;
+
+    border-radius: 41%;
 
     background-color: rgb(160, 97, 97);
 
@@ -159,20 +163,12 @@
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
-}
 
-.star_white {
-    height: 2em;
-    width: .2em;
-
-    background-color: white;
-
-    
-    transform:rotateZ(55deg);
+    cursor: pointer;
 }
 
 .meme_rating_star:hover {
-    transform: scale(110%) rotateZ(50deg);;
+    transform: scale(110%) rotateZ(10deg);;
     
     /* transform:rotateZ(50deg); */
 }
