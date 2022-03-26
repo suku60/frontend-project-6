@@ -14,70 +14,63 @@ const Home = () => {
     const [memes, setMemes] = useState([]);
 
     // stars
-    const [star1, setStar1] = useState("gray");
-    const [star2, setStar2] = useState("gray");
-    const [star3, setStar3] = useState("gray");
-    const [star4, setStar4] = useState("gray");
-    const [star5, setStar5] = useState("gray");
+    const [star1, setStar1] = useState("var(--color-vapor-3-1)");
+    const [star2, setStar2] = useState("var(--color-vapor-3-1)");
+    const [star3, setStar3] = useState("var(--color-vapor-3-1)");
+    const [star4, setStar4] = useState("var(--color-vapor-3-1)");
+    const [star5, setStar5] = useState("var(--color-vapor-3-1)");
 
     // USEEFFECTS
     useEffect(()=> {
         bringMemes();
 
-        // console.log("meme?", memes)
     },[])
 
     // FUNCTIONS
     // Handlers
     // home refresh handler
     const RefreshHome = () => {
-        desiredView("/profile")
-        // desiredView("/home")
+        window.location.reload(false)
     }
     // stars handlers
     const OnBackgroundStar = () =>{
-        // document.getElementById("s1").style.backgroundColor = "red !important";
-        setStar1("red")
+        setStar1("var(--color-vapor-1-3)")
     }
 
     const OnBackgroundStar2 = () =>{
-        // document.getElementById("s1").style.backgroundColor = "red !important";
-        setStar1("red");
-        setStar2("red")
+        setStar1("var(--color-vapor-1-3)");
+        setStar2("var(--color-vapor-1-3)")
     }
     
     const OnBackgroundStar3 = () =>{
-        // document.getElementById("s1").style.backgroundColor = "red !important";
-        setStar1("red");
-        setStar2("red");
-        setStar3("red");
+        setStar1("var(--color-vapor-1-3)");
+        setStar2("var(--color-vapor-1-3)");
+        setStar3("var(--color-vapor-1-3)");
     }
 
     const OnBackgroundStar4 = () =>{
-        // document.getElementById("s1").style.backgroundColor = "red !important";
-        setStar1("red");
-        setStar2("red");
-        setStar3("red");
-        setStar4("red");
+        setStar1("var(--color-vapor-1-3)");
+        setStar2("var(--color-vapor-1-3)");
+        setStar3("var(--color-vapor-1-3)");
+        setStar4("var(--color-vapor-1-3)");
     }
 
     const OnBackgroundStar5 = () =>{
-        // document.getElementById("s1").style.backgroundColor = "red !important";
-        setStar1("red");
-        setStar2("red");
-        setStar3("red");
-        setStar4("red");
-        setStar5("red");
+        setStar1("var(--color-vapor-1-3)");
+        setStar2("var(--color-vapor-1-3)");
+        setStar3("var(--color-vapor-1-3)");
+        setStar4("var(--color-vapor-1-3)");
+        setStar5("var(--color-vapor-1-3)");
     }
 
 
     const OffBackgroundStar = () =>{
-        if(star1 === "red"){
-            setStar1("gray")
-            setStar2("gray")
-            setStar3("gray")
-            setStar4("gray")
-            setStar5("gray")
+        if(star1 === "var(--color-vapor-1-3)"){
+            setStar1("var(--color-vapor-3-1)")
+            setStar2("var(--color-vapor-3-1)")
+            setStar3("var(--color-vapor-3-1)")
+            setStar4("var(--color-vapor-3-1)")
+            setStar5("var(--color-vapor-3-1)")
         }
     }
 
@@ -120,7 +113,7 @@ return (
 
 {/* FIXED HOME TRANSPARENCY  */}
         <div className="container_home_transparency" onClick={()=>RefreshHome()}>
-            home here
+            home
         </div>
         
 {/* THIS WILL BE A CAROUSEL OF IMAGES */}
