@@ -10,6 +10,13 @@ const Home = () => {
     // memes
     const [memes, setMemes] = useState([]);
 
+    // stars
+    const [star1, setStar1] = useState("gray");
+    const [star2, setStar2] = useState("gray");
+    const [star3, setStar3] = useState("gray");
+    const [star4, setStar4] = useState("gray");
+    const [star5, setStar5] = useState("gray");
+
     // USEEFFECTS
     useEffect(()=> {
         bringMemes();
@@ -19,6 +26,53 @@ const Home = () => {
 
     // FUNCTIONS
     // Handlers
+
+    const OnBackgroundStar = () =>{
+        // document.getElementById("s1").style.backgroundColor = "red !important";
+        setStar1("red")
+    }
+
+    const OnBackgroundStar2 = () =>{
+        // document.getElementById("s1").style.backgroundColor = "red !important";
+        setStar1("red");
+        setStar2("red")
+    }
+    
+    const OnBackgroundStar3 = () =>{
+        // document.getElementById("s1").style.backgroundColor = "red !important";
+        setStar1("red");
+        setStar2("red");
+        setStar3("red");
+    }
+
+    const OnBackgroundStar4 = () =>{
+        // document.getElementById("s1").style.backgroundColor = "red !important";
+        setStar1("red");
+        setStar2("red");
+        setStar3("red");
+        setStar4("red");
+    }
+
+    const OnBackgroundStar5 = () =>{
+        // document.getElementById("s1").style.backgroundColor = "red !important";
+        setStar1("red");
+        setStar2("red");
+        setStar3("red");
+        setStar4("red");
+        setStar5("red");
+    }
+
+
+    const OffBackgroundStar = () =>{
+        if(star1 === "red"){
+            setStar1("gray")
+            setStar2("gray")
+            setStar3("gray")
+            setStar4("gray")
+            setStar5("gray")
+        }
+    }
+
     // Local functions
     // Axios call to map images
     const bringMemes = async () => {
@@ -72,7 +126,22 @@ return (
                      <div className='meme_card' key={images.id}>
                          <img className='meme_photo' src={images.url} alt={images.name}/>
                          <div className="meme_name">{images.name}</div>
-                         <div className="meme_rating_action">rate me!</div>
+                         <div className="meme_rating_action" onMouseOver={()=>OffBackgroundStar()}>
+                             <div className="meme_rating_star" style={{backgroundColor : star1}} onMouseOver={()=>OnBackgroundStar()}>
+                                 <div className="star_white"></div>
+                             </div>
+                             <div className="meme_rating_star" style={{backgroundColor : star2}} onMouseOver={()=>OnBackgroundStar2()}>
+                                 <div className="star_white"></div>
+                             </div>
+                             <div className="meme_rating_star" style={{backgroundColor : star3}} onMouseOver={()=>OnBackgroundStar3()}>
+                                 <div className="star_white"></div></div>                             
+                             <div className="meme_rating_star" style={{backgroundColor : star4}} onMouseOver={()=>OnBackgroundStar4()}>
+                                 <div className="star_white"></div>
+                             </div>
+                             <div className="meme_rating_star" style={{backgroundColor : star5}} onMouseOver={()=>OnBackgroundStar5()}>
+                                 <div className="star_white"></div>
+                             </div>
+                         </div>
                          <div className="meme_rating">rating: {images.box_count}</div>
                          <div className="meme_creator">meme done by: {images.id}</div>
                      </div>
