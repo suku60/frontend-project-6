@@ -66,9 +66,7 @@
 /* COMPONENTS */
 
 .component_search {
-    height: 50em !important;
-    /* height: 100vh !important; */
-
+    height: 100vh !important;
 }
 .memes_component {
     background-color: gray !important;
