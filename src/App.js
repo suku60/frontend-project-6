@@ -19,7 +19,8 @@ function App() {
           <Route path="/" element={<Login/>}/>
           <Route path="/home" element={<Home/>}/>
           <Route path="/profile" element={<Profile/>}/>
-          <Route path="/search" element={<Search/>}/>
+
+          <Route path="/settings" element={<Search/>}/>
       </Routes>
 
       <RightNavbar/>
