@@ -62,12 +62,10 @@
 
     color: var(--color-light-2);
 
-    height: 7vh;
+    height: 10vh;
     width: 40vw;
 
     transition: var(--transition-2);
-
-    cursor: pointer;
 
     padding-left: .4em;
     padding-top: .4em;
@@ -76,6 +74,15 @@
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-start;
+}
+
+.home_transparency_text {
+    cursor: pointer;
+
+    height: 8vh;
+    width: 3vw;
+
+    background-color: rebeccapurple;
 }
 
 /* COMPONENTS */

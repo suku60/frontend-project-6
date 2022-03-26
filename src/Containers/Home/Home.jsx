@@ -113,7 +113,10 @@ return (
 
 {/* FIXED HOME TRANSPARENCY  */}
         <div className="container_home_transparency" onClick={()=>RefreshHome()}>
-            home
+            <div className="home_transparency_text">
+                home
+            </div>
+            
         </div>
         
 {/* THIS WILL BE A CAROUSEL OF IMAGES */}
