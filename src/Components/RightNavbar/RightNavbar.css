@@ -1,0 +1,8 @@
+@import url('../../assets/CSS/main.css');
+
+.nav_box {
+    height: 100vh;
+    width: 30vw;
+
+    background-color: gray;
+}

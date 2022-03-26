@@ -3,11 +3,14 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Login from './Containers/Login/Login';
 import Home from './Containers/Home/Home';
 import Profile from './Containers/Profile/Profile';
+import LeftNavbar from './Components/LeftNavbar/LeftNavbar';
+import RightNavbar from './Components/RightNavbar/RightNavbar';
 
 function App() {
   return (
     <div className="App">
       <BrowserRouter>
+      <LeftNavbar/>
       
       <Routes>
           {/* not logged users: will be allowed to see home only. Othewise, pop up the login or register component */}
@@ -16,6 +19,8 @@ function App() {
           <Route path="/home" element={<Home/>}/>
           <Route path="/profile" element={<Profile/>}/>
       </Routes>
+
+      <RightNavbar/>
 
       </BrowserRouter>
       
