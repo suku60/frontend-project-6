@@ -72,7 +72,13 @@ return (
                      <div className='meme_card' key={images.id}>
                          <img className='meme_photo' src={images.url} alt={images.name}/>
                          <div className="meme_name">{images.name}</div>
-                         <div className="meme_rating_action">rate me!</div>
+                         <div className="meme_rating_action">
+                             <div className="meme_rating_star"></div>
+                             <div className="meme_rating_star" onMouseOver={()=>HoverSiblings2()} onMouseLeave={()=>offHoverSiblings2()}></div>
+                             <div className="meme_rating_star" onMouseOver={()=>HoverSiblings3()} onMouseLeave={()=>offHoverSiblings3()}></div>                             
+                             <div className="meme_rating_star" onMouseOver={()=>HoverSiblings4()} onMouseLeave={()=>offHoverSiblings4()}></div>
+                             <div className="meme_rating_star" onMouseOver={()=>HoverSiblings5()} onMouseLeave={()=>offHoverSiblings5()}></div>
+                         </div>
                          <div className="meme_rating">rating: {images.box_count}</div>
                          <div className="meme_creator">meme done by: {images.id}</div>
                      </div>
