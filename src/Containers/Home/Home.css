@@ -45,6 +45,20 @@
     /* flex-direction: row;
     justify-content: center !important; */
 }
+/* CONTAINERS (VIEWS / TOTAL SCREEN / SECTIONS) */
+
+.container_home_data {
+
+    /* position:fixed;
+    z-index: 10; */
+
+    height: 40vh;
+    width: 40vw;
+
+    background-color: aquamarine;
+
+    transition: var(--transition-2);
+}
 
 /* .memes_component {
     background-color: gray !important;
