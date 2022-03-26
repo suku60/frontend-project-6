@@ -54,15 +54,10 @@ const Home = () => {
 
 return (
     <div className="container_box" id="home_box">
-
-        {/* TEMPORARY SCREEN SWITCH BUTTONS */}
-
-        <TemporaryButton viewNameDisplay={"profile"} pathUrl={"/profile"}/>
-        <TemporaryButton viewNameDisplay={"login"} pathUrl={"/"}/>
-
+        
 {/* THIS WILL BE A CAROUSEL OF IMAGES */}
 
-        {/* <div className="component_home">
+        <div className="component_home">
             <div className='component_box memes_component' id="animationContainerFromTop">
             <div className='memes_box'>
                 {memes?.map(images => {
@@ -79,7 +74,7 @@ return (
                 })}
             </div>
             </div>
-        </div>            */}
+        </div>           
     </div>
     )
 }

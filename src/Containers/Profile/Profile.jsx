@@ -12,11 +12,6 @@ const Profile = () => {
 
 return (
     <div className="container_box" id="profile_box">
-        
-        {/* TEMPORARY SCREEN SWITCH BUTTONS */}
-
-        <TemporaryButton viewNameDisplay={"home"} pathUrl={"/home"}/>
-        <TemporaryButton viewNameDisplay={"login"} pathUrl={"/"}/>
 
 
 {/* THIS WILL BE A CAROUSEL OF IMAGES */}

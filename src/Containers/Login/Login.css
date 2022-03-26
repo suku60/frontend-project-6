@@ -64,7 +64,6 @@
 /* CONTAINERS (VIEWS / TOTAL SCREEN) */
 
 .container_box {
-    padding-left: 2em;
 
     height: 100vh;
     width: 40vw;
@@ -72,13 +71,35 @@
     display: flex;
     flex-direction: column !important;
     justify-content: flex-start !important;
-    align-items: center;
+    align-items: center !important;
 
     background-color: var(--color-dark-1);
 
-    overflow-x: scroll;
+    overflow: hidden !important;
 
 }
+
+.container_welcome_images {
+
+    /* position:fixed;
+    z-index: 10; */
+
+    height: 30vh;
+    width: 40vw;
+
+    background-color: aquamarine;
+
+    transition: var(--transition-2);
+}
+
+.container_login_forms {
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
 
 /* COMPONENTS (ANY KIND) */
 
@@ -88,8 +109,8 @@
 
     margin-inline: 1em;
     
-    height: 52em;
-    width: 43em;
+    height: 45em;
+    width: 40em;
 
     display: flex;
     flex-direction: column;
@@ -114,6 +135,7 @@
 /* BUTTONS */
 
 .box_login_register_button {
+    
     
     margin: 1em;
     height: 4em;

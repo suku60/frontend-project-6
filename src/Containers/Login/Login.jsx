@@ -197,15 +197,11 @@ const Login = () => {
 
 return (
     <div className="container_box" id="login_box">
-        
-        {/* TEMPORARY SCREEN SWITCH BUTTONS */}
-
-        <TemporaryButton viewNameDisplay={"home"} pathUrl={"/home"}/>
-        <TemporaryButton viewNameDisplay={"profile"} pathUrl={"/profile"}/>
+        <div className="container_welcome_images" id="animationContainerFromTop"></div>
 
 {/* THIS WILL BE A CAROUSEL OF IMAGES */}
 
-        <div className="component_login">
+        {/* <div className="component_login">
             <div className='component_box' id="animationContainerFromTop">
             <div>
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. <br/>
@@ -217,12 +213,12 @@ return (
             </div>
 
             </div>
-        </div>    
+        </div>     */}
 
 {/* HERE WE HAVE THE BUTTON THAT SWITCHES LOGIN/REGISTER FORMS AND THE FORMS */}
 
 
-        <div className="box_login_register_button" id="animationContainerFromTop">
+        {/* <div className="box_login_register_button" id="animationContainerFromTop">
             <div className="login_register_button" id={animButton} style={{display : displayRegisterForm}} onClick={()=>swapButton()}>Already an user?<br/>Log here</div>
             <div className="login_register_button" id={animButton} style={{display : displayLoginForm}} onClick={()=>swapButton()}>Need an account?<br/>Click here</div>
         </div>
@@ -266,9 +262,57 @@ return (
            
             <div className="register_button"></div>
  
-       </div></div>
+        </div>
+        </div> */}
 
-      
+        <div className="container_login_forms">
+            <div className="box_login_register_button" id="animationContainerFromTop">
+                  <div className="login_register_button" id={animButton} style={{display : displayRegisterForm}} onClick={()=>swapButton()}>Already an user?<br/>Log here</div>
+                  <div className="login_register_button" id={animButton} style={{display : displayLoginForm}} onClick={()=>swapButton()}>Need an account?<br/>Click here</div>
+              </div>
+              <div className="component_login" style={{display : displayLoginForm}} id="animationContainerFromTop">
+                  <div className='component_box' id={animComponent}>
+                  <div className="login_message">
+                      Lorem ipsum dolor sit amet consectetur adipisicing elit. <br/>
+                      Tenetur iure dolorum, <br/>
+                      deleniti odit error ad aspernatur. <br/>
+                      Consectetur minima, <br/>
+                      architecto quod excepturi, <br/>
+                      eaque esse quidem ratione odio laboriosam enim ipsum facilis?<br/>
+                  </div>
+    
+                  <div className="login_inputs">  
+                  <input type="name" name="nickname" title="nick" 
+                      autoComplete="off"/>
+                      <input type="password" name="password" title="pass" 
+                      autoComplete="off"/>          
+                  </div>
+    
+                  <div className="login_button"></div>
+                  </div>
+          </div>     
+          
+          <div className="component_register" style={{display : displayRegisterForm}} id="animationContainerFromTop">
+              <div className='component_box register_box' id={animComponent}>
+              <div className="register_inputs">
+                  <input type="name" name="nickname" title="nick" 
+                  autoComplete="off"/>
+                  <input type="password" name="password" title="pass" 
+                  autoComplete="off"/>
+                  <input type="email" name="email" title="email" 
+                  autoComplete="off"/>
+                  <input type="file" name="avatar" title="avatar" 
+                  autoComplete="off" id="input_file"/>
+                  by clicking here I'm comfirming I am 18 years old or more. 
+                  <input type="checkbox" name="avatar" title="avatar" 
+                  autoComplete="off"/>
+              </div>
+             
+              <div className="register_button"></div>
+
+          </div>
+          </div>
+        </div>
 
        
 

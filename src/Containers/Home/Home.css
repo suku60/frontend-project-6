@@ -42,8 +42,8 @@
 
 #home_box {
     
-    flex-direction: row;
-    justify-content: center !important;
+    /* flex-direction: row;
+    justify-content: center !important; */
 }
 
 /* .memes_component {
@@ -68,7 +68,7 @@
 
     border-radius: var(--border-radius-3);
 
-    overflow-y: scroll;
+    overflow-y: hidden;
 
     background-color: transparent;
 }
