@@ -70,8 +70,9 @@
     height: 100vh !important;
 
 }
+
 .memes_component {
-    background-color: gray !important;
+    background-color: transparent;
 
     height: 100vh !important;
 }
@@ -99,4 +100,48 @@
 .meme_card {
 
     
-    height: 100vh !important; }
+    width: 40vw;
+    height: 100vh !important; 
+}
+
+.meme_photo {
+    
+    width: 40vw;
+
+}
+
+.meme_name {
+    
+    width: 40vw;
+    height: 3em;
+
+    background-color: white;
+
+}
+
+.meme_rating_action {
+    
+    width: 40vw;
+    height: 3em;
+
+    background-color: white;
+
+}
+
+.meme_rating {
+    
+    width: 40vw;
+    height: 3em;
+
+    background-color: white;
+
+}
+
+.meme_creator {
+    
+    width: 40vw;
+    height: 3em;
+
+    background-color: white;
+
+}
