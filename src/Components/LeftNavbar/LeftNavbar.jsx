@@ -9,11 +9,16 @@ const LeftNavbar = () => {
         <div className='nav_box'>
             <div className="nav_container">
                 <div className="nav_items">
-                    <div className="navbar_logo">logo will be placed here</div>
+                    <div className="navbar_logo">logo here</div>
                     <NavigationButton viewNameDisplay={"home"} pathUrl={"/home"}/>
-                    <NavigationButton viewNameDisplay={"profile"} pathUrl={"/profile"}/>
                     <NavigationButton viewNameDisplay={"search"} pathUrl={"/search"}/>   
                     <NavigationButton viewNameDisplay={"login"} pathUrl={"/"}/>
+                    <NavigationButton viewNameDisplay={"admin"} pathUrl={"/admin"}/>
+                    <div className="navbar_logo">logout here</div>                
+                </div>
+                
+                <div className="nav_item_profile">
+                    <NavigationButton viewNameDisplay={"profile"} pathUrl={"/profile"}/>
                 </div>
             </div>
         </div>
