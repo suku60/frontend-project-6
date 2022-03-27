@@ -2,9 +2,10 @@ import React from 'react';
 import NavigationButton from '../NavigationButton/NavigationButton';
 
 import {ReactComponent as HomeSvg} from '../../assets/svg/home.svg'
-
 import {ReactComponent as SearchSvg} from '../../assets/svg/search.svg'
 import {ReactComponent as ProfileSvg} from '../../assets/svg/profile.svg'
+
+import {ReactComponent as LogoSvg} from '../../assets/svg/logo.svg'
 
 import './LeftNavbar.css';
 
@@ -14,7 +15,9 @@ const LeftNavbar = () => {
         <div className='nav_box'>
             <div className="nav_container">
                 <div className="nav_items">
-                    <div className="navbar_logo">logo here</div>
+                    <div className="navbar_logo">
+                        <LogoSvg/>
+                    </div>
                     <NavigationButton viewNameDisplay={"home"} pathUrl={"/home"} buttonIcon={<HomeSvg/>}/>
                     <NavigationButton viewNameDisplay={"search"} pathUrl={"/search"} buttonIcon={<SearchSvg/>}/>   
                     <NavigationButton viewNameDisplay={"login"} pathUrl={"/"}/>
