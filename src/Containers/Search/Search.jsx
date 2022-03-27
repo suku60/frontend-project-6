@@ -5,7 +5,7 @@ import TemporaryButton from '../../Components/TemporaryButton/TemporaryButton';
 
 import './Search.css';
 
-import { ScrollArea } from '@mantine/core';
+import { ScrollArea, Accordion } from '@mantine/core';
 
 const Search = () => {
     // HOOKS
@@ -189,46 +189,66 @@ const Search = () => {
             </div>
         )
     } else {
-        if (memes.postsResults.length !== 0) {
-            console.log(memes.postsResults);
-            return (
-                <div className="component_search" id="animationContainerFromTop">
-                    <ScrollArea className='scrollArea'>
-                        {memes.postsResults.map(elmnt => {
-                            return (
 
-                                <div className='meme_card' key={elmnt._id}>
-                                    <div className='imgDiv'>
-                                        <img className='meme_photo' src={elmnt.img} alt={elmnt.title} />
-                                    </div>
-                                    <div className="meme_name">{elmnt.title}</div>
-                                    <div className="meme_rating_action" onMouseOver={() => OffBackgroundStar()}>
-                                        <div className="meme_rating_star" style={{ backgroundColor: star1 }} onMouseOver={() => OnBackgroundStar()}>
-                                            <div className="star_white"></div>
+        return (
+            <div className="component_search" id="animationContainerFromTop">
+                <ScrollArea className='scrollArea'>
+                    <Accordion iconPosition="right" iconSize={0} offsetIcon={false}>
+                        <Accordion.Item label={`Users results ... +`}>
+                            <div className='accordion'>
+                                {memes.usersResults.map(elmnt => {
+                                    return (
+                                        <div className="userResult">{elmnt.nickname}</div>
+                                    )
+                                })}
+                            </div>
+                        </Accordion.Item>
+                    </Accordion>
+
+                    <Accordion iconPosition="right" iconSize={0} offsetIcon={false}>
+                        <Accordion.Item label={`Posts results ... +`}>
+                            <div className='accordion'>
+                                {memes.postsResults.map(elmnt => {
+                                    return (
+
+                                        <div className='meme_card' key={elmnt._id}>
+                                            <div className='imgDiv'>
+                                                <img className='meme_photo' src={elmnt.img} alt={elmnt.title} />
+                                            </div>
+                                            <div className="meme_name">{elmnt.title}</div>
+                                            <div className="meme_rating_action" onMouseOver={() => OffBackgroundStar()}>
+                                                <div className="meme_rating_star" style={{ backgroundColor: star1 }} onMouseOver={() => OnBackgroundStar()}>
+                                                    <div className="star_white"></div>
+                                                </div>
+                                                <div className="meme_rating_star" style={{ backgroundColor: star2 }} onMouseOver={() => OnBackgroundStar2()}>
+                                                    <div className="star_white"></div>
+                                                </div>
+                                                <div className="meme_rating_star" style={{ backgroundColor: star3 }} onMouseOver={() => OnBackgroundStar3()}>
+                                                    <div className="star_white"></div></div>
+                                                <div className="meme_rating_star" style={{ backgroundColor: star4 }} onMouseOver={() => OnBackgroundStar4()}>
+                                                    <div className="star_white"></div>
+                                                </div>
+                                                <div className="meme_rating_star" style={{ backgroundColor: star5 }} onMouseOver={() => OnBackgroundStar5()}>
+                                                    <div className="star_white"></div>
+                                                </div>
+                                            </div>
+                                            <div className="meme_rating">rating: {elmnt.ratingAverage}</div>
+                                            <div className="meme_creator">meme done by: {elmnt.ownerNickname}</div>
                                         </div>
-                                        <div className="meme_rating_star" style={{ backgroundColor: star2 }} onMouseOver={() => OnBackgroundStar2()}>
-                                            <div className="star_white"></div>
-                                        </div>
-                                        <div className="meme_rating_star" style={{ backgroundColor: star3 }} onMouseOver={() => OnBackgroundStar3()}>
-                                            <div className="star_white"></div></div>
-                                        <div className="meme_rating_star" style={{ backgroundColor: star4 }} onMouseOver={() => OnBackgroundStar4()}>
-                                            <div className="star_white"></div>
-                                        </div>
-                                        <div className="meme_rating_star" style={{ backgroundColor: star5 }} onMouseOver={() => OnBackgroundStar5()}>
-                                            <div className="star_white"></div>
-                                        </div>
-                                    </div>
-                                    <div className="meme_rating">rating: {elmnt.ratingAverage}</div>
-                                    <div className="meme_creator">meme done by: {elmnt.ownerNickname}</div>
-                                </div>
-                            )
-                        })}
-                    </ScrollArea>
-                </div>
+                                    )
+                                })}
+                            </div>
+
+                        </Accordion.Item>
+                    </Accordion>
 
 
-            )
-        }
+                </ScrollArea>
+            </div>
+
+
+        )
+
     }
 }
 export default Search;

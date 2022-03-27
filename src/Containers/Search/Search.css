@@ -119,8 +119,30 @@
 
 .scrollArea {
     height: 100vh;
+    width: 50vw;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
+.accordion {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.users_card {
+    height: 100vh !important; 
+    width: 50vw;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
 .meme_card {
     height: 100vh !important; 
 
@@ -129,7 +151,16 @@
     justify-content: center;
     align-items: center;
 }
+.userResult {
+    height: 5%;
+    width: 100%;
 
+    background-color: white;
+}
+.userResult:hover{
+    cursor: pointer;
+    color: red;
+}
 .imgDiv {
     /* height: 40%; */
     width: 80%;
@@ -203,6 +234,8 @@
 
 .meme_rating_star:hover {
     transform: scale(110%) rotateZ(50deg);;
+
+    cursor: pointer;
     
     /* transform:rotateZ(50deg); */
 }
