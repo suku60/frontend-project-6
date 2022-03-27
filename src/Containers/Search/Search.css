@@ -40,38 +40,45 @@
 }
 
 
-#search_box {
 
-    height: 100vh !important;
+/* SEARCH SECTION*/
+.searchBttn {
+    border: solid 2px;
+    /* background-color: red; */
+    padding: 0.5%;
+    margin-left: 0.5%;
+
+    background-color: var(--color-dark-3);
+}
+
+.searchBttn:hover{
+    cursor: pointer;
+}
+
+.login_inputs {
+    margin-bottom: 1em;
+
     
-    /* flex-direction: row;
-    justify-content: center !important; */
-}
-/* CONTAINERS (VIEWS / TOTAL SCREEN / SECTIONS) */
+    height: 20vh;
+    width: 33em;
 
-.container_search_transparency {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
 
-    position:fixed;
-    z-index: 10;
+    background-color: var(--color-dark-3);
 
-    background: 
-	linear-gradient(0deg, rgba(0, 0, 0, 0), var(--color-vapor-2-2));
-
-    height: 5vh;
-    width: 40vw;
-
-    transition: var(--transition-2);
 }
 
-/* COMPONENTS */
 
+
+/* POST RESULTS */
 .component_search {
     height: 100vh !important;
-}
-.memes_component {
-    background-color: gray !important;
 
-    height: 100vh !important;
+    background-color: transparent !important;
+
 }
 
 .memes_box {
@@ -98,41 +105,91 @@
     height: 100vh !important; 
 }
 
+.meme_photo {
+    border-radius: var(--border-radius-3) var(--border-radius-3) 0em 0em;
+    
+    
+    width: 39vw;
 
-
-
-
-
-
-
-
-
-/* SEARCH CONTAINER STYLES */
-.searchBttn {
-    border: solid 2px;
-    /* background-color: red; */
-    padding: 0.5%;
-    margin-left: 0.5%;
-
-    background-color: var(--color-dark-3);
 }
 
-.searchBttn:hover{
-    cursor: pointer;
+
+.meme_name {
+    
+    width: 39vw;
+    height: 3em;
+
+    background-color: white;
+
 }
 
-.login_inputs {
-    margin-bottom: 1em;
+.meme_rating_action {
+    
+    width: 39vw;
+    height: 3em;
+
+    background-color: white;
 
     
-    height: 20em;
-    width: 33em;
-
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: space-evenly;
     align-items: center;
 
-    background-color: var(--color-dark-3);
+    
+}
+
+.meme_rating_star{
+    width: 2em;
+    height: 2em;
+
+    margin-inline: -20%;
+
+    background-color: rgb(160, 97, 97);
+
+    transform:rotateZ(45deg);
+
+    
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.star_white {
+    height: 2em;
+    width: .2em;
+
+    background-color: white;
+
+    
+    transform:rotateZ(55deg);
+}
+
+.meme_rating_star:hover {
+    transform: scale(110%) rotateZ(50deg);;
+    
+    /* transform:rotateZ(50deg); */
+}
+
+.meme_rating {
+    
+    width: 39vw;
+    height: 3em;
+
+    background-color: white;
 
 }
+
+.meme_creator {
+    
+    width: 39vw;
+    height: 3em;
+
+    background-color: white;
+
+}
+
+
+
+
