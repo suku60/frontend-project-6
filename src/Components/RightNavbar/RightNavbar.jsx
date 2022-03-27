@@ -1,5 +1,5 @@
 import React from 'react';
-import TemporaryButton from '../TemporaryButton/TemporaryButton';
+import NavigationButton from '../NavigationButton/NavigationButton';
 
 
 import './RightNavbar.css';
@@ -9,10 +9,10 @@ const RightNavbar = () => {
     return (
         <div className='nav_box'>
             <div className="nav_container">
-            <TemporaryButton viewNameDisplay={"home"} pathUrl={"/home"}/>
-            <TemporaryButton viewNameDisplay={"profile"} pathUrl={"/profile"}/>
-            <TemporaryButton viewNameDisplay={"search"} pathUrl={"/search"}/>   
-            <TemporaryButton viewNameDisplay={"login"} pathUrl={"/"}/>
+            {/* <NavigationButton viewNameDisplay={"home"} pathUrl={"/home"}/>
+            <NavigationButton viewNameDisplay={"profile"} pathUrl={"/profile"}/>
+            <NavigationButton viewNameDisplay={"search"} pathUrl={"/search"}/>   
+            <NavigationButton viewNameDisplay={"login"} pathUrl={"/"}/> */}
             </div>
         </div>
     )

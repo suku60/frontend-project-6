@@ -1,6 +1,6 @@
 import React, {useEffect, useState, Component} from 'react';
 import { useNavigate, Navigate } from 'react-router-dom';
-import TemporaryButton from '../../Components/TemporaryButton/TemporaryButton';
+import NavigationButton from '../../Components/NavigationButton/NavigationButton';
 
 import './Profile.css';
 

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
-import TemporaryButton from '../../Components/TemporaryButton/TemporaryButton';
+import NavigationButton from '../../Components/NavigationButton/NavigationButton';
 
 import './Search.css';
 

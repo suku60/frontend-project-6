@@ -1,9 +1,9 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import './TemporaryButton.css';
+import './NavigationButton.css';
 
-const TemporaryButton = (props) => {
+const NavigationButton = (props) => {
 
     let desiredView = useNavigate();
 
@@ -18,4 +18,4 @@ const TemporaryButton = (props) => {
     )
 };
 
-export default TemporaryButton;
+export default NavigationButton;
