@@ -5,9 +5,35 @@
 .temporary_button {
 
     height: 4em;
-    width: 4em;
+    width: fit-content;
 
     background-color: red;
 
     cursor: pointer;
+
+    margin-block: .5em;
+
+    
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.navigation_button_icon {
+    height: 4em;
+    width: 4em;
+    background-color: blue;
+}
+
+.navigation_button_text {
+    height: 4em;
+    width: fit-content;
+
+    /* z-index: 20;
+    position: absolute; */
+
+
+
+    color: black;
 }
