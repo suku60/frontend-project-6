@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 
 import './Login.css';
-
+import RegisterForm from '../../Components/RegisterForm/RegisterForm'
+import { ScrollArea } from '@mantine/core';
 const Login = () => {
 
     // HOOKS
@@ -231,22 +232,12 @@ const Login = () => {
                 </div>
 
                 <div className="component_register" style={{ display: displayRegisterForm }} id="animationButtonSwitch">
-                    <div className='component_box register_box' id={animComponent}>
-                        <div className="register_inputs">
-                            <input type="name" name="nickname" title="nick"
-                                autoComplete="off" />
-                            <input type="password" name="password" title="pass"
-                                autoComplete="off" />
-                            <input type="email" name="email" title="email"
-                                autoComplete="off" />
-                            <input type="file" name="avatar" title="avatar"
-                                autoComplete="off" id="input_file" />
-                            by clicking here I'm comfirming I am 18 years old or more.
-                            <input type="checkbox" name="avatar" title="avatar"
-                                autoComplete="off" />
+                    <div className='component_box' id={animComponent}>
+                        <div className='scrollDiv'>
+                            <ScrollArea className='scrollArea'>
+                                <RegisterForm className="registerForm"></RegisterForm>
+                            </ScrollArea>
                         </div>
-
-                        <div className="register_button"></div>
 
                     </div>
                 </div>
