@@ -27,6 +27,8 @@
 
     height: 100vh;
     overflow-y: scroll !important;
+
+    background-color: transparent !important;
     
     
 }
@@ -37,15 +39,16 @@
 
     position: absolute;
     z-index: 10;
+    margin-right: .2vh;
 
     height: 15vh !important;
-    width: 39vw !important;
+    width: 39.1vw !important;
 
-    background-color: aquamarine;
+    background-color: var(--color-dark-1);
 
     transition: var(--transition-1) !important;
 
-    overflow: hidden;
+    overflow:visible;
 }
 
 .container_profile_data:hover {
@@ -53,9 +56,22 @@
     height: 40vh !important;
     
     transition: var(--transition-1) !important;
+    
+    /* background-color: var(--color-dark-2); */
 
 }
 
+.container_profile_photo {
+    
+    position: absolute;
+    z-index: 20;
+
+    height: 9em;
+    width: 9em;
+
+    background-color: red;
+
+}
 /* COMPONENTS */
 
 .component_profile {

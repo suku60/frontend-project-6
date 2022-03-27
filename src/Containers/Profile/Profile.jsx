@@ -19,6 +19,7 @@ return (
 {/* PROFILE PIC AND DATA */}
         <div className="container_profile_data" id="animationContainerFromTop" onScroll={()=>easeProfileDataOut()}>
                     hello I'll have profile pic and data.
+                    <div className="container_profile_photo"></div>
                 </div>
 
 {/* THIS WILL BE A CAROUSEL OF IMAGES */}
