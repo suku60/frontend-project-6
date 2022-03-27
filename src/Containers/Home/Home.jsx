@@ -1,75 +1,76 @@
 import React, {useEffect, useState} from 'react';
 import axios from 'axios';
+import { Navigate, useNavigate } from 'react-router-dom';
 
-import TemporaryButton from '../../Components/TemporaryButton/TemporaryButton';
+import {ReactComponent as StarSvg} from '../../assets/svg/star.svg'
 
 import './Home.css';
 
 const Home = () => {
+    let desiredView = useNavigate();
+
     // HOOKS
     // memes
     const [memes, setMemes] = useState([]);
 
     // stars
-    const [star1, setStar1] = useState("gray");
-    const [star2, setStar2] = useState("gray");
-    const [star3, setStar3] = useState("gray");
-    const [star4, setStar4] = useState("gray");
-    const [star5, setStar5] = useState("gray");
+    const [star1, setStar1] = useState("var(--color-vapor-3-1)");
+    const [star2, setStar2] = useState("var(--color-vapor-3-1)");
+    const [star3, setStar3] = useState("var(--color-vapor-3-1)");
+    const [star4, setStar4] = useState("var(--color-vapor-3-1)");
+    const [star5, setStar5] = useState("var(--color-vapor-3-1)");
 
     // USEEFFECTS
     useEffect(()=> {
         bringMemes();
 
-        // console.log("meme?", memes)
     },[])
 
     // FUNCTIONS
     // Handlers
-
+    // home refresh handler
+    const RefreshHome = () => {
+        window.location.reload(false)
+    }
+    // stars handlers
     const OnBackgroundStar = () =>{
-        // document.getElementById("s1").style.backgroundColor = "red !important";
-        setStar1("red")
+        setStar1("var(--color-vapor-1-3)")
     }
 
     const OnBackgroundStar2 = () =>{
-        // document.getElementById("s1").style.backgroundColor = "red !important";
-        setStar1("red");
-        setStar2("red")
+        setStar1("var(--color-vapor-1-3)");
+        setStar2("var(--color-vapor-1-3)")
     }
     
     const OnBackgroundStar3 = () =>{
-        // document.getElementById("s1").style.backgroundColor = "red !important";
-        setStar1("red");
-        setStar2("red");
-        setStar3("red");
+        setStar1("var(--color-vapor-1-3)");
+        setStar2("var(--color-vapor-1-3)");
+        setStar3("var(--color-vapor-1-3)");
     }
 
     const OnBackgroundStar4 = () =>{
-        // document.getElementById("s1").style.backgroundColor = "red !important";
-        setStar1("red");
-        setStar2("red");
-        setStar3("red");
-        setStar4("red");
+        setStar1("var(--color-vapor-1-3)");
+        setStar2("var(--color-vapor-1-3)");
+        setStar3("var(--color-vapor-1-3)");
+        setStar4("var(--color-vapor-1-3)");
     }
 
     const OnBackgroundStar5 = () =>{
-        // document.getElementById("s1").style.backgroundColor = "red !important";
-        setStar1("red");
-        setStar2("red");
-        setStar3("red");
-        setStar4("red");
-        setStar5("red");
+        setStar1("var(--color-vapor-1-3)");
+        setStar2("var(--color-vapor-1-3)");
+        setStar3("var(--color-vapor-1-3)");
+        setStar4("var(--color-vapor-1-3)");
+        setStar5("var(--color-vapor-1-3)");
     }
 
 
     const OffBackgroundStar = () =>{
-        if(star1 === "red"){
-            setStar1("gray")
-            setStar2("gray")
-            setStar3("gray")
-            setStar4("gray")
-            setStar5("gray")
+        if(star1 === "var(--color-vapor-1-3)"){
+            setStar1("var(--color-vapor-3-1)")
+            setStar2("var(--color-vapor-3-1)")
+            setStar3("var(--color-vapor-3-1)")
+            setStar4("var(--color-vapor-3-1)")
+            setStar5("var(--color-vapor-3-1)")
         }
     }
 
@@ -111,8 +112,11 @@ return (
         
 
 {/* FIXED HOME TRANSPARENCY  */}
-        <div className="container_home_transparency">
-            home here
+        <div className="container_home_transparency" onClick={()=>RefreshHome()}>
+            <div className="home_transparency_text">
+                home
+            </div>
+            
         </div>
         
 {/* THIS WILL BE A CAROUSEL OF IMAGES */}
@@ -123,28 +127,38 @@ return (
                 {memes?.map(images => {
                     return (
                          
-                     <div className='meme_card' key={images.id}>
-                         <img className='meme_photo' src={images.url} alt={images.name}/>
-                         <div className="meme_name">{images.name}</div>
-                         <div className="meme_rating_action" onMouseOver={()=>OffBackgroundStar()}>
-                             <div className="meme_rating_star" style={{backgroundColor : star1}} onMouseOver={()=>OnBackgroundStar()}>
-                                 <div className="star_white"></div>
-                             </div>
-                             <div className="meme_rating_star" style={{backgroundColor : star2}} onMouseOver={()=>OnBackgroundStar2()}>
-                                 <div className="star_white"></div>
-                             </div>
-                             <div className="meme_rating_star" style={{backgroundColor : star3}} onMouseOver={()=>OnBackgroundStar3()}>
-                                 <div className="star_white"></div></div>                             
-                             <div className="meme_rating_star" style={{backgroundColor : star4}} onMouseOver={()=>OnBackgroundStar4()}>
-                                 <div className="star_white"></div>
-                             </div>
-                             <div className="meme_rating_star" style={{backgroundColor : star5}} onMouseOver={()=>OnBackgroundStar5()}>
-                                 <div className="star_white"></div>
-                             </div>
-                         </div>
-                         <div className="meme_rating">rating: {images.box_count}</div>
-                         <div className="meme_creator">meme done by: {images.id}</div>
-                     </div>
+                    <div className='meme_card' key={images.id}>
+                        <img className='meme_photo' src={images.url} alt={images.name}/>
+                        <div className="meme_card_data">
+                                
+                        <div className="meme_name">{images.name}
+                        </div>
+                        <div className="meme_rating_action" onMouseOver={()=>OffBackgroundStar()}>
+                            <div className="meme_rating_star" style={{backgroundColor : star1}} onMouseOver={()=>OnBackgroundStar()}>
+                                <StarSvg  style={{backgroundColor : star1}} onMouseOver={()=>OnBackgroundStar()}/>
+                                {/* <div className="star_white"></div> */}
+                            </div>
+                            <div className="meme_rating_star" style={{backgroundColor : star2}} onMouseOver={()=>OnBackgroundStar2()}>
+                                    <StarSvg  style={{backgroundColor : star2}} onMouseOver={()=>OnBackgroundStar2()}/>
+                            </div>
+                            <div className="meme_rating_star" style={{backgroundColor : star3}} onMouseOver={()=>OnBackgroundStar3()}>
+                                    <StarSvg  style={{backgroundColor : star3}} onMouseOver={()=>OnBackgroundStar3()}/>
+                            </div>                             
+                            <div className="meme_rating_star" style={{backgroundColor : star4}} onMouseOver={()=>OnBackgroundStar4()}>
+                                <StarSvg  style={{backgroundColor : star4}} onMouseOver={()=>OnBackgroundStar4()}/>
+                            </div>
+                            <div className="meme_rating_star" style={{backgroundColor : star5}} onMouseOver={()=>OnBackgroundStar5()}>
+                                    <StarSvg  style={{backgroundColor : star5}} onMouseOver={()=>OnBackgroundStar5()}/>
+                            </div>
+                        </div>
+                        <div className="meme_rating">rating: {images.box_count}
+                        </div>
+                        <div className="meme_creator">meme done by: {images.id}
+                        </div>
+                        <div className="meme_card_footer"></div>
+                        </div> 
+
+                    </div>
                 )
                 })}
             </div>
