@@ -86,16 +86,17 @@ export const RegisterForm = (props) => {
     //Inputs regex validation
     for (let element of fieldsArr) {
       error = checkError(element[0], element[1]);
+      console.log(error)
       if (error !== "ok") {
         seterrorMsg(error)
         regexError = true;
         return
+      } else if (error == "ok") {
+        seterrorMsg("")
+        regexError = false;
       }
     }
-    if (error == "ok") {
-      seterrorMsg("")
-      regexError = false;
-    }
+  
 
 
     //Password mismatch validation
@@ -230,7 +231,7 @@ export const RegisterForm = (props) => {
 
       <Checkbox
         mt="md"
-        label="Confirm that I am 18 or older"
+        label="Confirm that I am 18 or older *"
         required
         name="confirm"
         checked={checked}

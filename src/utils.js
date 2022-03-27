@@ -10,47 +10,86 @@ export const checkError = (type, value) => {
 
     switch (type) {
 
+        case 'nickname':
+        case 'email':
+        case 'password':
+        case 'password2':
+
+            if (value == "") {
+                return `${type} field can not be empty`
+            } else {
+                return "ok"
+            }
+
         case 'email':
 
-            if (! /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/.test(value)) {
+            if (value !== "") {
+                if (! /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/.test(value)) {
 
-                return "Introduce a valid email";
+                    return "Introduce a valid email";
+                } else {
+                    return "ok";
+                };
             } else {
-                return "ok";
-            };
+                return "Email field can not be empty"
+            }
 
 
         case 'name':
 
-            if (! /[A-Za-zÀ-ÖØ-öø-ÿ ]/gi.test(value)) {
-                return "Introduce a valid name (without numbers)";
+            if (value !== "") {
+                if (! /[A-Za-zÀ-ÖØ-öø-ÿ ]/gi.test(value)) {
+                    return "Introduce a valid name (without numbers)";
+                } else {
+                    return "ok";
+                };
             } else {
-                return "ok";
-            };
+                return "Name field can not be empty"
+            }
+
+
 
         case 'surname':
 
-            if (! /[A-Za-zÀ-ÖØ-öø-ÿ ]/gi.test(value)) {
-                return "Introduce a valid surname (without numbers)";
+            if (value !== "") {
+                if (! /[A-Za-zÀ-ÖØ-öø-ÿ ]/gi.test(value)) {
+                    return "Introduce a valid surname (without numbers)";
+                } else {
+                    return "ok";
+                };
             } else {
-                return "ok";
-            };
+                return "Surname field can not be empty"
+            }
+
+
 
         case 'age':
 
-            if (! /^[0-9]*$/gi.test(value)) {
-                return "Introduce a valid age (only numbers";
+            if (value !== "") {
+                if (! /^[0-9]*$/gi.test(value)) {
+                    return "Introduce a valid age (only numbers";
+                } else {
+                    return "ok";
+                };
             } else {
-                return "ok";
-            };
+                return "Age field can not be empty"
+            }
+
+
 
         case 'phone':
 
-            if (! /[\d()+-]/g.test(value)) {
-                return "Introduce a valid phone";
+            if (value !== "") {
+                if (! /[\d()+-]/g.test(value)) {
+                    return "Introduce a valid phone";
+                } else {
+                    return "ok";
+                };
             } else {
-                return "ok";
-            };
+                return ("Phone field can not be empty")
+            }
+
+
 
 
         default:
