@@ -58,7 +58,7 @@
 
 .navigation_button_icon:hover {
 
-    fill: var(--color-vapor-4-2) !important;
+    fill: var(--color-vapor-2-2) !important;
 
     transition: var(--transition-1);
 

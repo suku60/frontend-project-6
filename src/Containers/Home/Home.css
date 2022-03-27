@@ -254,7 +254,7 @@ height: 1em;
 
     margin-inline: -20%;
 
-    border-radius: 41%;
+    border-radius: 41.2%;
 
     background-color: rgb(160, 97, 97);
 
@@ -292,7 +292,7 @@ height: 1em;
 }
 
 .meme_rating:hover {
-    background-color: var(--color-vapor-3-4);
+    background-color: var(--color-vapor-3-2);
     transition: var(--transition-9);
 
     color: var(--color-light-1);

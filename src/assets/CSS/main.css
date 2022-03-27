@@ -32,11 +32,11 @@
      --color-vapor-3-4:hsl(0, 20%, 10%);
 
      
-     --color-vapor-4:hsl(180, 60%, 40%);
-     --color-vapor-4-1:#29a3a3;
-     --color-vapor-4-2:hsl(180, 60%, 40%);
-     --color-vapor-4-3:#145252;
-     --color-vapor-4-4:hsl(180, 20%, 10%);
+     --color-vapor-4:hsl(60, 60%, 40%);
+     --color-vapor-4-1:hsl(60, 60%, 40%);
+     --color-vapor-4-2:hsl(60, 60%, 40%);
+     --color-vapor-4-3:hsl(60, 61%, 20%);
+     --color-vapor-4-4:hsl(60, 20%, 10%);
      
      
      --color-vapor-5:hsl(160, 100%, 70%);
