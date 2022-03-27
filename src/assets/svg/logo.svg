@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="iso-8859-1"?>
 <!-- Generator: Adobe Illustrator 18.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 viewBox="0 0 650.056 650.056" style="enable-background:new 0 0 650.056 650.056;" xml:space="preserve">
  <g>
-  <path stroke="url(#svg_2)" transform="translate(-8.99997 0)" stroke-dasharray="5,5" id="svg_2" d="m57.5,320.00002l0,0c0,-148.24485 118.31323,-268.42104 264.26002,-268.42104l0,0c70.08608,0 137.30164,28.27999 186.86002,78.6187c49.55836,50.33871 77.39993,118.61266 77.39993,189.80234l0,0c0,148.24481 -118.31321,268.421 -264.25995,268.421l0,0c-145.94679,0 -264.26002,-120.17621 -264.26002,-268.421zm264.26002,-268.42104l0,536.84204m-264.26002,-268.421l528.51997,0" fill="#000"/>
-  <path transform="rotate(-21.049 207.065 184.277)" stroke="url(#svg_2)" id="svg_5" d="m148.06499,175.54281l45.07232,0l13.92769,-28.26556l13.9277,28.26556l45.07231,0l-36.46421,17.46888l13.92841,28.26556l-36.46422,-17.46935l-36.46421,17.46935l13.92842,-28.26556l-36.46422,-17.46888z" stroke-dasharray="5,5" fill="#ffffff"/>
-  <ellipse ry="252" rx="249" id="svg_12" cy="336" cx="290" stroke-dasharray="5,5" stroke="url(#svg_2)" fill="#000"/>
-  <ellipse ry="175" rx="237.5" id="svg_14" cy="257" cx="290.5" stroke-dasharray="5,5" stroke="url(#svg_2)" fill="#000000"/>
-  <path transform="rotate(-35.0677 179.45 211.723)" stroke="url(#svg_2)" id="svg_15" d="m109.44998,203.34241l53.47563,0l16.52438,-27.11966l16.52439,27.11966l53.47562,0l-43.26261,16.76068l16.52524,27.11966l-43.26263,-16.76114l-43.26262,16.76114l16.52524,-27.11966l-43.26263,-16.76068z" stroke-dasharray="5,5" fill="#ffffff"/>
+  <path stroke="url(#svg_2)" transform="translate(-8.99997 0)" stroke-dasharray="5,5" id="svg_2" d="m57.5,320.00002l0,0c0,-148.24485 118.31323,-268.42104 264.26002,-268.42104l0,0c70.08608,0 137.30164,28.27999 186.86002,78.6187c49.55836,50.33871 77.39993,118.61266 77.39993,189.80234l0,0c0,148.24481 -118.31321,268.421 -264.25995,268.421l0,0c-145.94679,0 -264.26002,-120.17621 -264.26002,-268.421zm264.26002,-268.42104l0,536.84204m-264.26002,-268.421l528.51997,0" fill="#ff66b3"/>
+  <path transform="rotate(-21.049 207.065 184.277)" stroke="url(#svg_2)" id="svg_5" d="m148.06499,175.54281l45.07232,0l13.92769,-28.26556l13.9277,28.26556l45.07231,0l-36.46421,17.46888l13.92841,28.26556l-36.46422,-17.46935l-36.46421,17.46935l13.92842,-28.26556l-36.46422,-17.46888z" stroke-dasharray="5,5" fill="#145252"/>
+  <ellipse ry="252" rx="249" id="svg_12" cy="336" cx="290" stroke-dasharray="5,5" stroke="url(#svg_2)" fill="#ff66b3"/>
+  <ellipse ry="175" rx="237.5" id="svg_14" cy="257" cx="290.5" stroke-dasharray="5,5" stroke="url(#svg_2)" fill="#ff66b3"/>
+  <path transform="rotate(-35.0677 179.45 211.723)" stroke="url(#svg_2)" id="svg_15" d="m109.44998,203.34241l53.47563,0l16.52438,-27.11966l16.52439,27.11966l53.47562,0l-43.26261,16.76068l16.52524,27.11966l-43.26263,-16.76114l-43.26262,16.76114l16.52524,-27.11966l-43.26263,-16.76068z" stroke-dasharray="5,5" fill="#145252"/>
  </g>
 </svg>

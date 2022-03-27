@@ -15,8 +15,14 @@ const LeftNavbar = () => {
         <div className='nav_box'>
             <div className="nav_container">
                 <div className="nav_items">
-                    <div className="navbar_logo">
-                        <LogoSvg/>
+                    <div className="navbar_logo_container">
+                        <div className="navbar_logo">
+                            <LogoSvg/>
+                        </div>
+                        <div className="navbar_logo_text">
+                            tomeme
+                        </div>
+                        
                     </div>
                     <NavigationButton viewNameDisplay={"home"} pathUrl={"/home"} buttonIcon={<HomeSvg/>}/>
                     <NavigationButton viewNameDisplay={"search"} pathUrl={"/search"} buttonIcon={<SearchSvg/>}/>   
