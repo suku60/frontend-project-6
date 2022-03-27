@@ -1,7 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300&display=swap');
+
 :root {
 
     --color-dark-1: hsl(0, 0%, 0%);
-    --color-dark-2: hsl(0, 0%, 10%);
+    --color-dark-2: hsl(0, 0%, 8%);
     --color-dark-3: hsl(0, 0%, 20%);
     
     --color-light-1: hsl(0, 0%, 100%);

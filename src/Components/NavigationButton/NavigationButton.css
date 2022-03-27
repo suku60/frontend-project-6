@@ -5,9 +5,69 @@
 .temporary_button {
 
     height: 4em;
-    width: 4em;
+    width: fit-content;
 
-    background-color: red;
+    background-color: transparent;
 
     cursor: pointer;
+
+    margin-block: .5em;
+
+    
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.navigation_button_icon {
+    height: 4em;
+    width: 4em;
+    background-color: wheat;
+
+    border-radius: var(--border-radius-4) 0% 0% var(--border-radius-4);
+
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.navigation_button_text {
+    height: 4em;
+    width: fit-content;
+
+    font-weight: 600;
+
+
+    /* z-index: 20;
+    position: absolute; */
+
+    background-color: var(--color-dark-1);
+    color: var(--color-vapor-1-2) !important;
+
+    transition: var(--transition-1);
+
+    padding-inline: .5em;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    border-radius: 0% var(--border-radius-4) var(--border-radius-4) 0%;
+
+    letter-spacing: .2em;
+
+
+    color: black;
+}
+
+.navigation_button_text:hover {
+    
+    background-color: var(--color-dark-2);
+    color: var(--color-vapor-1-2) !important;
+
+    transition: var(--transition-1);
 }
