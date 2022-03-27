@@ -43,3 +43,14 @@
     justify-content: flex-start;
     align-items: flex-start;
 }
+
+.navbar_logo {
+    height: 4em;
+    width: 10em;
+
+    margin-block: .5em;
+
+    background-color: green;
+
+    border-radius: var(--border-radius-4);
+}

@@ -7,7 +7,7 @@
     height: 4em;
     width: fit-content;
 
-    background-color: red;
+    background-color: transparent;
 
     cursor: pointer;
 
@@ -24,15 +24,30 @@
     height: 4em;
     width: 4em;
     background-color: blue;
+
+    border-radius: var(--border-radius-4) 0% 0% var(--border-radius-4);
 }
 
 .navigation_button_text {
     height: 4em;
     width: fit-content;
 
+
     /* z-index: 20;
     position: absolute; */
 
+    background-color: red;
+
+    padding-inline: .5em;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    border-radius: 0% var(--border-radius-4) var(--border-radius-4) 0%;
+
+    letter-spacing: .2em;
 
 
     color: black;

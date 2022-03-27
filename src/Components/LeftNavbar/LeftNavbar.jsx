@@ -9,7 +9,8 @@ const LeftNavbar = () => {
         <div className='nav_box'>
             <div className="nav_container">
                 <div className="nav_items">
-                    <NavigationButton viewNameDisplay={"homeeeeeeee"} pathUrl={"/home"}/>
+                    <div className="navbar_logo">logo will be placed here</div>
+                    <NavigationButton viewNameDisplay={"home"} pathUrl={"/home"}/>
                     <NavigationButton viewNameDisplay={"profile"} pathUrl={"/profile"}/>
                     <NavigationButton viewNameDisplay={"search"} pathUrl={"/search"}/>   
                     <NavigationButton viewNameDisplay={"login"} pathUrl={"/"}/>
