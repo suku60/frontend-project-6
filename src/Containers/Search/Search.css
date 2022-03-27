@@ -82,7 +82,7 @@
 
 }
 
-.memes_component {
+.search_memes_component {
     background-color: transparent !important;
 
     height:100vh !important;
@@ -96,7 +96,7 @@
 }
 
 
-.memes_box {
+.search_memes_box {
 /* 
     transform: skew(25deg 25deg 0deg 0deg); */
 
@@ -149,7 +149,7 @@
     justify-content: center;
     align-items: center;
 }
-.meme_card {
+.search_meme_card {
     height: 100vh !important; 
 
     display: flex;
@@ -179,14 +179,14 @@
 
 }
 
-.meme_photo {
+.search_meme_photo {
     border-radius: var(--border-radius-3) var(--border-radius-3) 0em 0em;
     
 
 }
 
 
-.meme_name {
+.search_meme_name {
     
     width: 39vw;
     height: 3em;
@@ -195,7 +195,7 @@
 
 }
 
-.meme_rating_action {
+.search_meme_rating_action {
     
     width: 100%;
     height: 3em;
@@ -211,7 +211,7 @@
     
 }
 
-.meme_rating_star{
+.search_meme_rating_star{
     width: 2em;
     height: 2em;
 
@@ -228,7 +228,7 @@
     align-items: center;
 }
 
-.star_white {
+.search_star_white {
     height: 2em;
     width: .2em;
 
@@ -238,7 +238,7 @@
     transform:rotateZ(55deg);
 }
 
-.meme_rating_star:hover {
+.search_meme_rating_star:hover {
     transform: scale(110%) rotateZ(50deg);;
 
     cursor: pointer;
@@ -246,7 +246,7 @@
     /* transform:rotateZ(50deg); */
 }
 
-.meme_rating {
+.search_meme_rating {
     
     width: 39vw;
     height: 3em;
@@ -255,7 +255,7 @@
 
 }
 
-.meme_creator {
+.search_meme_creator {
     
     width: 39vw;
     height: 3em;

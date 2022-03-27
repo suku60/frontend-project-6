@@ -111,7 +111,7 @@
     align-items: center;
 
     height: 100vh !important;
-    width: 39vw;
+    width: 39.8vw;
 
     border-radius: var(--border-radius-3);
 
@@ -139,7 +139,7 @@
 }
 
 .meme_card_data {
-    background-color: var(--color-dark-2);
+    background-color: var(--color-dark-2) !important;
 
     
     
