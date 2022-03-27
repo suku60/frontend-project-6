@@ -63,10 +63,11 @@
     color: var(--color-light-2);
 
     height: 10vh;
-    width: 40vw;
+    width: 39.4vw;
 
     transition: var(--transition-2);
 
+    margin-left: 1vw;
     padding-left: .4em;
     padding-top: .4em;
 
@@ -79,55 +80,80 @@
 .home_transparency_text {
     cursor: pointer;
 
-    height: 8vh;
+    height: 3vh;
     width: 3vw;
 
-    background-color: rebeccapurple;
-}
+    font-weight: 600;
 
-/* COMPONENTS */
+    background-color: rgba(0, 0, 0, 0.2);
 
-.component_home {
-    height: 100vh !important;
-
-    background-color: transparent !important;
-
-}
-
-.memes_component {
-    background-color: transparent !important;
-
-    height: 100vh !important;
-}
-
-.memes_box {
-/* 
-    transform: skew(25deg 25deg 0deg 0deg); */
-
+    opacity: 80%;
+    
     
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 
+    border-radius: var(--border-radius-2);
+}
+
+/* COMPONENTS */
+
+.component_home {
     height: 100vh !important;
-    width: 39vw;
+    
+    background-color: transparent !important;
+    
+}
 
+.memes_component {
+    background-color: transparent !important;
+    
+    height: 100vh !important;
+}
+
+.memes_box {
+    /* 
+    transform: skew(25deg 25deg 0deg 0deg); */
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    
+    height: 99vh !important;
+    width: 39.8vw;
+    
     border-radius: var(--border-radius-3);
-
+    
     overflow-y: scroll;
 
+    overflow-x: hidden;
+    
     background-color: transparent;
+    
+    border-radius: var(--border-radius-3);
+}
+
+.home_topline {
+height: 1em;
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .meme_card {
 
     margin-top: .8em;
     
-    width: 39vw;
-    height: 100vh !important; 
+    width: 38.8vw;
+    height: fit-content; 
 
     background-color: black;
+
 }
 
 .meme_photo {
@@ -136,10 +162,12 @@
     
     width: 39vw;
 
+    
+
 }
 
 .meme_card_data {
-    background-color: var(--color-dark-2);
+    background-color: var(--color-dark-2) !important;
 
     
     
