@@ -30,7 +30,8 @@ const Home = () => {
     // Handlers
     // home refresh handler
     const RefreshHome = () => {
-        window.location.reload(false)
+        Element.scrollIntoView.alignToTop(true)
+        console.log("scrolling back?")
     }
     // stars handlers
     const OnBackgroundStar = () =>{
@@ -112,18 +113,20 @@ return (
         
 
 {/* FIXED HOME TRANSPARENCY  */}
-        <div className="container_home_transparency" onClick={()=>RefreshHome()}>
-            <div className="home_transparency_text">
-                home
-            </div>
-            
-        </div>
-        
 {/* THIS WILL BE A CAROUSEL OF IMAGES */}
 
         <div className="component_home" id="animationContainerFromTop">
             <div className='component_box memes_component'>
             <div className='memes_box'>
+            <div className="home_topline"></div>
+                <div className="container_home_transparency" onClick={()=>RefreshHome()}>
+                    <div className="home_transparency_text">
+                        home
+                    </div>
+                    
+                </div>
+                
+                
                 {memes?.map(images => {
                     return (
                          

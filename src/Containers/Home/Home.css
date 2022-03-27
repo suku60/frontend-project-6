@@ -63,10 +63,11 @@
     color: var(--color-light-2);
 
     height: 10vh;
-    width: 39.5vw;
+    width: 39.4vw;
 
     transition: var(--transition-2);
 
+    margin-left: 1vw;
     padding-left: .4em;
     padding-top: .4em;
 
@@ -79,13 +80,30 @@
 .home_transparency_text {
     cursor: pointer;
 
-    height: 8vh;
+    height: 3vh;
     width: 3vw;
 
-    background-color: rebeccapurple;
+    font-weight: 600;
+
+    background-color: rgba(0, 0, 0, 0.2);
+
+    opacity: 80%;
+    
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    border-radius: var(--border-radius-2);
 }
 
 /* COMPONENTS */
+.home_topline {
+    height: 1em !important;
+
+    background-color: red !important;
+}
 
 .component_home {
     height: 100vh !important;
@@ -104,13 +122,12 @@
 /* 
     transform: skew(25deg 25deg 0deg 0deg); */
 
-    
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
 
-    height: 100vh !important;
+    height: 99vh !important;
     width: 39.8vw;
 
     border-radius: var(--border-radius-3);
@@ -118,16 +135,19 @@
     overflow-y: scroll;
 
     background-color: transparent;
+
+    border-radius: var(--border-radius-3);
 }
 
 .meme_card {
 
     margin-top: .8em;
     
-    width: 39vw;
-    height: 100vh !important; 
+    width: 38.8vw;
+    height: fit-content; 
 
     background-color: black;
+
 }
 
 .meme_photo {
@@ -135,6 +155,8 @@
     
     
     width: 39vw;
+
+    
 
 }
 
