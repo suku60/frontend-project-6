@@ -124,6 +124,24 @@
     border-radius: var(--border-radius-2);
 }
 
+.scrollDiv{
+    height: 100%;
+    width: 50%;
+
+    margin-top: 5%;
+}
+
+.scrollArea {
+    height: 80vh;
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
 /* INPUTS */
 
 #input_file {
