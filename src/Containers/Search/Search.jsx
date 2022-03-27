@@ -85,15 +85,12 @@ const Search = () => {
 
     const search = async () => {
         let results;
-        let body = {
-            term: searchData.term
-        };
+
 
 
 
         try {
-
-            results = await axios.get(' https://socialmeme.herokuapp.com/posts/actions/find')
+            results = await axios.get(`https://socialmeme.herokuapp.com/posts/actions/find?term=${searchData.term}`)
 
         } catch (error) {
 
@@ -111,6 +108,7 @@ const Search = () => {
 
     const memesRender = () => {
         if (memes.length !== 0) {
+            console.log(memes);
             return (
                 <ScrollArea className='scrollArea'>
                     <Accordion className='accordion' iconPosition="right" iconSize={0} offsetIcon={false}>
@@ -154,6 +152,11 @@ const Search = () => {
                                             </div>
                                             <div className="meme_rating">rating: {elmnt.ratingAverage}</div>
                                             <div className="meme_creator">meme done by: {elmnt.ownerNickname}</div>
+                                            <div className="meme_creator">keywords: {elmnt.keywords.map(keyword =>{
+                                                return(
+                                                    <span>{keyword} </span>
+                                                )
+                                            })}</div>
                                         </div>
                                     )
                                 })}
