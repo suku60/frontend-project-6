@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import axios from 'axios';
 import { Navigate, useNavigate } from 'react-router-dom';
 
@@ -19,6 +19,9 @@ const Home = () => {
     const [star3, setStar3] = useState("var(--color-vapor-3-1)");
     const [star4, setStar4] = useState("var(--color-vapor-3-1)");
     const [star5, setStar5] = useState("var(--color-vapor-3-1)");
+
+    // topline from memebox
+    const topline = useRef(null);
 
     // USEEFFECTS
     useEffect(()=> {
@@ -75,6 +78,11 @@ const Home = () => {
         }
     }
 
+    // bring me back top into memes box
+    const scrollToTop = () => {
+        topline.current.scrollIntoView()
+    }
+
     // Local functions
     // Axios call to map images
     const bringMemes = async () => {
@@ -117,54 +125,51 @@ return (
 
         <div className="component_home" id="animationContainerFromTop">
             <div className='component_box memes_component'>
-            <div className='memes_box'>
-            <div className="home_topline"></div>
-                <div className="container_home_transparency" onClick={()=>RefreshHome()}>
-                    <div className="home_transparency_text">
-                        home
+                <div className='memes_box' style={{transition : ".3s"}}>
+                    <div ref={topline} className="home_topline">
                     </div>
-                    
+                    <div className="container_home_transparency" onClick={scrollToTop}>
+                        <div className="home_transparency_text">
+                            t o p
+                        </div>
+                    </div>
+                    {memes?.map(images => {
+                        return (
+                             
+                        <div className='meme_card' key={images.id}>
+                            <img className='meme_photo' src={images.url} alt={images.name}/>
+                            <div className="meme_card_data">
+                                    
+                                <div className="meme_name">{images.name}
+                                </div>
+                                <div className="meme_rating_action" onMouseOver={()=>OffBackgroundStar()}>
+                                    <div className="meme_rating_star" style={{backgroundColor : star1}} onMouseOver={()=>OnBackgroundStar()}>
+                                        <StarSvg  style={{backgroundColor : star1}} onMouseOver={()=>OnBackgroundStar()}/>
+                                        {/* <div className="star_white"></div> */}
+                                    </div>
+                                    <div className="meme_rating_star" style={{backgroundColor : star2}} onMouseOver={()=>OnBackgroundStar2()}>
+                                            <StarSvg  style={{backgroundColor : star2}} onMouseOver={()=>OnBackgroundStar2()}/>
+                                    </div>
+                                    <div className="meme_rating_star" style={{backgroundColor : star3}} onMouseOver={()=>OnBackgroundStar3()}>
+                                            <StarSvg  style={{backgroundColor : star3}} onMouseOver={()=>OnBackgroundStar3()}/>
+                                    </div>                             
+                                    <div className="meme_rating_star" style={{backgroundColor : star4}} onMouseOver={()=>OnBackgroundStar4()}>
+                                        <StarSvg  style={{backgroundColor : star4}} onMouseOver={()=>OnBackgroundStar4()}/>
+                                    </div>
+                                    <div className="meme_rating_star" style={{backgroundColor : star5}} onMouseOver={()=>OnBackgroundStar5()}>
+                                            <StarSvg  style={{backgroundColor : star5}} onMouseOver={()=>OnBackgroundStar5()}/>
+                                    </div>
+                                </div>
+                                <div className="meme_rating">rating: {images.box_count}
+                                </div>
+                            <div className="meme_creator">meme done by: {images.id}
+                            </div>
+                            <div className="meme_card_footer"></div>
+                            </div> 
+                        </div>
+                    )
+                    })}
                 </div>
-                
-                
-                {memes?.map(images => {
-                    return (
-                         
-                    <div className='meme_card' key={images.id}>
-                        <img className='meme_photo' src={images.url} alt={images.name}/>
-                        <div className="meme_card_data">
-                                
-                        <div className="meme_name">{images.name}
-                        </div>
-                        <div className="meme_rating_action" onMouseOver={()=>OffBackgroundStar()}>
-                            <div className="meme_rating_star" style={{backgroundColor : star1}} onMouseOver={()=>OnBackgroundStar()}>
-                                <StarSvg  style={{backgroundColor : star1}} onMouseOver={()=>OnBackgroundStar()}/>
-                                {/* <div className="star_white"></div> */}
-                            </div>
-                            <div className="meme_rating_star" style={{backgroundColor : star2}} onMouseOver={()=>OnBackgroundStar2()}>
-                                    <StarSvg  style={{backgroundColor : star2}} onMouseOver={()=>OnBackgroundStar2()}/>
-                            </div>
-                            <div className="meme_rating_star" style={{backgroundColor : star3}} onMouseOver={()=>OnBackgroundStar3()}>
-                                    <StarSvg  style={{backgroundColor : star3}} onMouseOver={()=>OnBackgroundStar3()}/>
-                            </div>                             
-                            <div className="meme_rating_star" style={{backgroundColor : star4}} onMouseOver={()=>OnBackgroundStar4()}>
-                                <StarSvg  style={{backgroundColor : star4}} onMouseOver={()=>OnBackgroundStar4()}/>
-                            </div>
-                            <div className="meme_rating_star" style={{backgroundColor : star5}} onMouseOver={()=>OnBackgroundStar5()}>
-                                    <StarSvg  style={{backgroundColor : star5}} onMouseOver={()=>OnBackgroundStar5()}/>
-                            </div>
-                        </div>
-                        <div className="meme_rating">rating: {images.box_count}
-                        </div>
-                        <div className="meme_creator">meme done by: {images.id}
-                        </div>
-                        <div className="meme_card_footer"></div>
-                        </div> 
-
-                    </div>
-                )
-                })}
-            </div>
             </div>
         </div>           
     </div>
