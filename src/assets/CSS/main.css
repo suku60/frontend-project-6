@@ -51,6 +51,8 @@
     --border-radius-4: 1em;
     --border-radius-5: 1.4em;
 
+    
+    --transition-0: .2s;
     --transition-1: .4s;
     --transition-2: .6s;
     --transition-3: .8s;
