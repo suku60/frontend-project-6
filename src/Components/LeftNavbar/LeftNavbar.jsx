@@ -1,6 +1,8 @@
 import React from 'react';
 import NavigationButton from '../NavigationButton/NavigationButton';
 
+import {ReactComponent as HomeSvg} from '../../assets/svg/home.svg'
+
 import './LeftNavbar.css';
 
 const LeftNavbar = () => {
@@ -10,7 +12,7 @@ const LeftNavbar = () => {
             <div className="nav_container">
                 <div className="nav_items">
                     <div className="navbar_logo">logo here</div>
-                    <NavigationButton viewNameDisplay={"home"} pathUrl={"/home"}/>
+                    <NavigationButton viewNameDisplay={"home"} pathUrl={"/home"} buttonIcon={<HomeSvg/>}/>
                     <NavigationButton viewNameDisplay={"search"} pathUrl={"/search"}/>   
                     <NavigationButton viewNameDisplay={"login"} pathUrl={"/"}/>
                     <NavigationButton viewNameDisplay={"admin"} pathUrl={"/admin"}/>

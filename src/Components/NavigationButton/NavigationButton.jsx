@@ -13,7 +13,7 @@ const NavigationButton = (props) => {
 
     return (
         <div className="temporary_button" onClick={()=>pathFinder()}>
-            <div className="navigation_button_icon"></div>
+            <div className="navigation_button_icon">{props.buttonIcon}</div>
             <div className="navigation_button_text">{props.viewNameDisplay}</div>
             {/* {props.viewNameDisplay} */}
         </div>
