@@ -5,6 +5,8 @@ import TemporaryButton from '../../Components/TemporaryButton/TemporaryButton';
 
 import './Search.css';
 
+import { ScrollArea } from '@mantine/core';
+
 const Search = () => {
     // HOOKS
     // memes
@@ -191,36 +193,37 @@ const Search = () => {
             console.log(memes.postsResults);
             return (
                 <div className="component_search" id="animationContainerFromTop">
-                    <div className='component_box memes_component'>
-                        <div className='memes_box'>
-                            {memes.postsResults.map(elmnt => {
-                                return (
-                                    <div className='meme_card' key={elmnt._id}>
+                    <ScrollArea className='scrollArea'>
+                        {memes.postsResults.map(elmnt => {
+                            return (
+
+                                <div className='meme_card' key={elmnt._id}>
+                                    <div className='imgDiv'>
                                         <img className='meme_photo' src={elmnt.img} alt={elmnt.title} />
-                                        <div className="meme_name">{elmnt.title}</div>
-                                        <div className="meme_rating_action" onMouseOver={() => OffBackgroundStar()}>
-                                            <div className="meme_rating_star" style={{ backgroundColor: star1 }} onMouseOver={() => OnBackgroundStar()}>
-                                                <div className="star_white"></div>
-                                            </div>
-                                            <div className="meme_rating_star" style={{ backgroundColor: star2 }} onMouseOver={() => OnBackgroundStar2()}>
-                                                <div className="star_white"></div>
-                                            </div>
-                                            <div className="meme_rating_star" style={{ backgroundColor: star3 }} onMouseOver={() => OnBackgroundStar3()}>
-                                                <div className="star_white"></div></div>
-                                            <div className="meme_rating_star" style={{ backgroundColor: star4 }} onMouseOver={() => OnBackgroundStar4()}>
-                                                <div className="star_white"></div>
-                                            </div>
-                                            <div className="meme_rating_star" style={{ backgroundColor: star5 }} onMouseOver={() => OnBackgroundStar5()}>
-                                                <div className="star_white"></div>
-                                            </div>
-                                        </div>
-                                        <div className="meme_rating">rating: {elmnt.ratingAverage}</div>
-                                        <div className="meme_creator">meme done by: {elmnt.ownerNickname}</div>
                                     </div>
-                                )
-                            })}
-                        </div>
-                    </div>
+                                    <div className="meme_name">{elmnt.title}</div>
+                                    <div className="meme_rating_action" onMouseOver={() => OffBackgroundStar()}>
+                                        <div className="meme_rating_star" style={{ backgroundColor: star1 }} onMouseOver={() => OnBackgroundStar()}>
+                                            <div className="star_white"></div>
+                                        </div>
+                                        <div className="meme_rating_star" style={{ backgroundColor: star2 }} onMouseOver={() => OnBackgroundStar2()}>
+                                            <div className="star_white"></div>
+                                        </div>
+                                        <div className="meme_rating_star" style={{ backgroundColor: star3 }} onMouseOver={() => OnBackgroundStar3()}>
+                                            <div className="star_white"></div></div>
+                                        <div className="meme_rating_star" style={{ backgroundColor: star4 }} onMouseOver={() => OnBackgroundStar4()}>
+                                            <div className="star_white"></div>
+                                        </div>
+                                        <div className="meme_rating_star" style={{ backgroundColor: star5 }} onMouseOver={() => OnBackgroundStar5()}>
+                                            <div className="star_white"></div>
+                                        </div>
+                                    </div>
+                                    <div className="meme_rating">rating: {elmnt.ratingAverage}</div>
+                                    <div className="meme_creator">meme done by: {elmnt.ownerNickname}</div>
+                                </div>
+                            )
+                        })}
+                    </ScrollArea>
                 </div>
 
 

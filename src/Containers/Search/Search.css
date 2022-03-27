@@ -77,9 +77,24 @@
 .component_search {
     height: 100vh !important;
 
+
     background-color: transparent !important;
 
 }
+
+.memes_component {
+    background-color: transparent !important;
+
+    height:100vh !important;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    overflow-y: scroll;
+}
+
 
 .memes_box {
 /* 
@@ -91,7 +106,8 @@
     justify-content: center;
     align-items: center;
 
-    height: 100vh !important;
+    height: auto !important;
+    /* height: 100vh !important; */
     width: 40vw;
 
     border-radius: var(--border-radius-3);
@@ -101,15 +117,34 @@
     background-color: transparent;
 }
 
+.scrollArea {
+    height: 100vh;
+}
+
 .meme_card {
     height: 100vh !important; 
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.imgDiv {
+    /* height: 40%; */
+    width: 80%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+
 }
 
 .meme_photo {
     border-radius: var(--border-radius-3) var(--border-radius-3) 0em 0em;
     
-    
-    width: 39vw;
 
 }
 
@@ -125,7 +160,7 @@
 
 .meme_rating_action {
     
-    width: 39vw;
+    width: 100%;
     height: 3em;
 
     background-color: white;
