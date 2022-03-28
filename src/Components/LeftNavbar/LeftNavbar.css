@@ -19,6 +19,8 @@
     height: 99.2vh;
     width: 28.6vw;
 
+    min-width: 15vw;
+
     background-color: var(--color-dark-1);
 
     padding: .2em;
