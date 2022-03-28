@@ -81,7 +81,7 @@ const Login = () => {
                     <div className='register_box' id={animComponent}>
                         <div className='scroll_div_login'>
                             <ScrollArea className='scroll_area_login'>
-                                <RegisterForm className="registerForm"></RegisterForm>
+                                <RegisterForm className="register_form"></RegisterForm>
                             </ScrollArea>
                         </div>
 
