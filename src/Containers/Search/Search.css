@@ -227,7 +227,6 @@
 
 .img_container:hover{
     background-color: var(--color-vapor-1-1);
-    cursor: pointer;
     color: var(--color-vapor-1-4);
     
     box-shadow: .1em .5em .9em var(--color-vapor-3-3) !important;
