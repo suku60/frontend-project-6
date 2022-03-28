@@ -114,7 +114,7 @@ const Search = () => {
             return (
                 <ScrollArea className='scrollArea'>
                     <Accordion className='accordion' iconPosition="right" iconSize={0} offsetIcon={false}>
-                        <Accordion.Item label={`Users results ... +`}>
+                        <Accordion.Item label={`users results`}>
                             <div className='accordionContent'>
                                 {memesSearch.usersResults?.map(elmnt => {
                                     return (
@@ -126,13 +126,13 @@ const Search = () => {
                     </Accordion>
 
                     <Accordion className='accordion' iconPosition="right" iconSize={0} offsetIcon={false}>
-                        <Accordion.Item label={`Posts results ... +`}>
+                        <Accordion.Item label={`posts results`}>
                             <div className='accordionContent'>
                                 {memesSearch.postsResults?.map(elmnt => {
                                     return (
 
                                         <div className='search_meme_card' key={elmnt._id}>
-                                            <div className='imgDiv'>
+                                            <div className='img_container'>
                                                 <img className='search_meme_photo' src={elmnt.img} alt={elmnt.title} />
                                             </div>
                                             <div className="search_meme_name">{elmnt.title}</div>
