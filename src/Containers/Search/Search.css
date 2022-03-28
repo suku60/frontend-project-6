@@ -41,6 +41,7 @@
     justify-content: center;
     align-items: center;
 
+    letter-spacing: .3em;
 
     background-color: var(--color-dark-3);
 
@@ -54,6 +55,8 @@
     border-color: var(--color-vapor-2-1);
 
     cursor:pointer;
+
+    transition: var(--transition-2);
 }
 
 .search_button:hover{
@@ -80,7 +83,7 @@
 
     cursor:pointer;
 
-    text-indent: 2.4em;
+    text-indent: 2.8em;
 
     background-image: url('../../assets/svg/logo.svg');
     background-repeat: no-repeat;
@@ -89,68 +92,53 @@
 }
 
 /* RESULTS */
+/* USERS */
 .component_search {
     height: 100vh !important;
 
     background-color: transparent !important;
 }
 
-.search_memes_component {
-    background-color: transparent !important;
-
-    height:100vh !important;
-
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-
-    overflow-y: scroll;
-}
-
-
-.search_memes_box {
-/* 
-    transform: skew(25deg 25deg 0deg 0deg); */
-
-    
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-
-    height: auto !important;
-    /* height: 100vh !important; */
-    width: 40vw;
-
-    border-radius: var(--border-radius-3);
-
-    overflow-y: scroll;
-
-    background-color: transparent;
-}
-
 .scrollArea {
     height: 80vh;
-    width: 100%;
+    width: 39.2vw;
 
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    
+    overflow-x: hidden;
 }
 
 .accordion {
-    background-color: white;
+    /* THIS IS THE RESULTS CONTAINER LEVEL 1*/
+    background: linear-gradient(to left top, var(--color-vapor-2-1), var(--color-vapor-1-1));
+    color: var(--color-light-2) !important;
+
+    border-radius: var(--border-radius-3);
+
+    width: 39.2vw;
+    height: fit-content;
+
+    margin-bottom: .5em;
+
+    
+    overflow-x: hidden;
 }
 
 .accordionContent {
+
+    /* THIS IS THE REULTS CONTAINER LEVEL 2: WE HAVE CARDS
+    INSTEAD. */
+    padding: 1%;
+
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 
-    background-color: white;
+    background-color: transparent;
 }
 
 .users_card {
@@ -162,58 +150,117 @@
     justify-content: center;
     align-items: center;
 }
-.search_meme_card {
-    height: 100vh !important; 
 
+.user_results {
+    height: 3vh;
+    width: 90%;
+
+    padding-right: .5em;
+
+    background-color: var(--color-vapor-2-1);
+    border-radius: var(--border-radius-2);
+
+    letter-spacing: .1em;
+
+    font-weight: 500;
+    
+    transition: var(--transition-1);
+
+    
     display: flex;
-    flex-direction: column;
-    justify-content: center;
+    flex-direction: row;
+    justify-content: flex-end;
     align-items: center;
 }
-.userResult {
-    height: 5%;
-    width: 100%;
 
-    background-color: white;
-}
-.userResult:hover{
+.user_results:hover{
+    background-color: var(--color-vapor-1-1);
     cursor: pointer;
-    color: red;
+    color: var(--color-vapor-1-4);
+    
+    box-shadow: .1em .5em .9em var(--color-vapor-3-3) !important;
+ 
+    transition: var(--transition-1);
 }
-.imgDiv {
-    height: 100%;
-    width: 70%;
+
+.user_results_icon {
+    height: .5em !important;
+}
+
+/* POSTS */
+
+.search_meme_card {
+    padding-bottom: 2%;
+    padding-top: 2%;
+
+    height: fit-content;
+
+    overflow-x: hidden;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+    background-color: var(--color-vapor-2-1);
+    border-radius: var(--border-radius-3);
+}
+
+.img_container {
+    height: fit-content;
+    width: fit-content;
+
+    margin-top: .2em;
+    margin-bottom: 2em;
 
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 
+    border-radius: var(--border-radius-3);
+    
+    transition: var(--transition-1);
 
+
+}
+
+.img_container:hover{
+    background-color: var(--color-vapor-1-1);
+    cursor: pointer;
+    color: var(--color-vapor-1-4);
+    
+    box-shadow: .1em .5em .9em var(--color-vapor-3-3) !important;
+ 
+    transition: var(--transition-1);
 }
 
 .search_meme_photo {
-    border-radius: var(--border-radius-3) var(--border-radius-3) 0em 0em;
-    
-
+    border-radius: var(--border-radius-3);
+    padding: 0%;
+    margin: 0%;
+    width: 33vw;
 }
 
+.search_meme_name {  
+    padding: .2em;
+    margin: .1em;
 
-.search_meme_name {
-    
     width: 39vw;
     height: 3em;
 
-    background-color: white;
-
+    background-color: transparent;
 }
 
 .search_meme_rating_action {
+    padding: .2em;
+    margin: .1em;
+
     
     width: 100%;
     height: 3em;
 
-    background-color: white;
+    background-color: transparent;
 
     
     display: flex;
@@ -224,56 +271,27 @@
     
 }
 
-.search_meme_rating_star{
-    width: 2em;
-    height: 2em;
-
-    margin-inline: -20%;
-
-    background-color: rgb(160, 97, 97);
-
-    transform:rotateZ(45deg);
-
-    
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    align-items: center;
-}
-
-.search_star_white {
-    height: 2em;
-    width: .2em;
-
-    background-color: white;
-
-    
-    transform:rotateZ(55deg);
-}
-
-.search_meme_rating_star:hover {
-    transform: scale(110%) rotateZ(50deg);;
-
-    cursor: pointer;
-    
-    /* transform:rotateZ(50deg); */
-}
-
 .search_meme_rating {
+    padding: .2em;
+    margin: .1em;
+
     
     width: 39vw;
     height: 3em;
 
-    background-color: white;
+    background-color: transparent;
 
 }
 
 .search_meme_creator {
+    padding: .2em;
+    margin: .1em;
+
     
     width: 39vw;
     height: 3em;
 
-    background-color: white;
+    background-color: transparent;
 
 }
 
