@@ -145,7 +145,7 @@ export const RegisterForm = (props) => {
 
         result = await axios.post("https://socialmeme.herokuapp.com/users/register", body)
 
-        if (result.data != "The user with that email/nickname already figures in the database") {
+        if (result.data != "This user already exists in the database") {
           setTimeout(() => {
             setMsgLength(result.data)
 
