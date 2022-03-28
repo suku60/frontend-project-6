@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
 
+import {ReactComponent as UserResultSvg} from '../../assets/svg/userresult.svg'
+
 import {ReactComponent as StarSvg} from '../../assets/svg/star.svg'
 import './Search.css';
 
@@ -116,7 +118,7 @@ const Search = () => {
                             <div className='accordionContent'>
                                 {memesSearch.usersResults?.map(elmnt => {
                                     return (
-                                        <div className="userResult">{elmnt.nickname}</div>
+                                        <div className="user_results"><UserResultSvg/>{elmnt.nickname}</div>
                                     )
                                 })}
                             </div>
