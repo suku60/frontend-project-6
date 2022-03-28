@@ -43,7 +43,7 @@
 
 
 /* SEARCH SECTION*/
-.searchBttn {
+.search_button {
     border: solid 2px;
     /* background-color: red; */
     padding: 0.5%;
@@ -52,23 +52,27 @@
     background-color: var(--color-dark-3);
 }
 
-.searchBttn:hover{
+.search_button:hover{
     cursor: pointer;
 }
 
-.login_inputs {
+.searchbar_container {
     margin-bottom: 1em;
 
     
     height: 10vh;
+    width: 40vw;
     /* width: 100%; */
+
+    border-radius: var(--border-radius-3);
 
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
 
-    background-color: var(--color-dark-3);
+    background: linear-gradient(to left top, var(--color-vapor-2-1), var(--color-vapor-1-1));
+    ;
 
 }
 

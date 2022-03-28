@@ -188,7 +188,7 @@ const Search = () => {
 
             <div className="component_search" id="animationContainerFromTop">
 
-                <div className="login_inputs">
+                <div className="searchbar_container">
 
                     <input
                         type="text"
@@ -199,7 +199,7 @@ const Search = () => {
                         onChange={(e) => { fillForm(e) }}
                     />
                     <div
-                        className="searchBttn"
+                        className="search_button"
                         onClick={() => search()}
 
                     >GO!
