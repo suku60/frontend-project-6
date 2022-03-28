@@ -22,6 +22,7 @@
     animation: switch steps(60) .4s normal,
               opacity steps(60) .4s normal; 
 }
+ 
 
 /* @keyframes switch {
     from{width: var(--button-width-1);}
