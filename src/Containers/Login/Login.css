@@ -62,7 +62,7 @@
     /* position:fixed;
     z-index: 10; */
 
-    height: 20vh;
+    height: 50vh;
     width: 40vw;
 
     background-color: aquamarine;
@@ -75,14 +75,14 @@
     padding-top: 1em;
     
     display: flex;
-    flex-direction: column;
-    justify-content: center;
+    flex-direction: row;
+    justify-content: space-between;
     align-items: center;
 
-    height: 80vh;
+    height: 50vh;
     width: 40vw;
 
-    background-color: var(--color-dark-1);
+    background-color: red;
 
     
     overflow-x: scroll !important;
@@ -96,43 +96,106 @@
     
     
     margin: 1em;
-    height: 4em;
-    width: 5em;
+    height: 4vh;
+    width: 5vw;
+    
+    background-color: blue;
+    
+    
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    
+    
+}
 
-    background-color: transparent;
+.login_register_button {
+    
+    height: 5.1em;
+    width: 7em;
+    
+    background-color: aqua;
+    
+    cursor: pointer;
+    
+    letter-spacing: .1em;
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
 
+/* Login Form Structure */
+.component_login {
+
+    width: fit-content;
+    height: fit-content;
+}
+
+.login_message {
+    
+    margin-bottom: 1em;
+    
+    height: 10em;
+    width: 33em;
     
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 
-
+    background-color: var(--color-dark-3);
+    
 }
 
-/* Login Form */
-.component_login {
-    width: 39vw;
-
+.login_inputs {
+    margin-bottom: 1em;
+    
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+    background-color: var(--color-dark-3);
+    
 }
 
-/* Register Form */
+.login_button {
+    
+    height: 5em;
+    width: 10em;
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+    background-color: var(--color-dark-3);
+    
+}
+
+/* Register Form Structure */
 .component_register {
-    width: 39vw;
 
+    width: fit-content;
+    height: fit-content;
+    
 }
 
 .scroll_div_login{
     height: 100%;
     width: 50%;
-
+    
     margin-top: 5%;
 }
 
 .scroll_area_login {
     height: 80vh;
     width: 100%;
-
+    
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -140,24 +203,55 @@
 }
 
 
+.register_inputs {
+    
+    margin-bottom: 1em;
+    
+    height: 40em;
+    width: 33em;
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+    background-color: var(--color-dark-2);
+    
+}
+
+.register_button {
+    
+    height: 5em;
+    width: 10em;
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+    background-color: var(--color-dark-2);
+    
+}
+
+/* FORMS */
 .login_box,
 .register_box {
     margin-inline: 1em;
     
-    height: 30em;
-    width: 39vw;
-
+    height: 40vh;
+    width: 25vw;
+    
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     
     background-color: var(--color-light-1);
-
+    
     transition: 1s;
     
     border-radius: var(--border-radius-2);
-
+    
 }
 
 /* INPUTS */
@@ -165,100 +259,8 @@
 #input_file {
     /* background-color: transparent; */
     cursor: pointer;
-
+    
     text-overflow:unset;
 }
 /* BUTTONS */
 
-.login_register_button {
-
-    height: 5.1em;
-    width: 7em;
-
-    background-color: aqua;
-
-    cursor: pointer;
-
-    letter-spacing: .1em;
-
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
-.login_message {
-
-    margin-bottom: 1em;
-    
-    height: 10em;
-    width: 33em;
-
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-
-    background-color: var(--color-dark-3);
-
-}
-
-.login_inputs {
-    margin-bottom: 1em;
-
-    
-    height: 20em;
-    width: 33em;
-
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-
-    background-color: var(--color-dark-3);
-
-}
-
-.login_button {
-    
-    height: 5em;
-    width: 10em;
-
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-
-    background-color: var(--color-dark-3);
-
-}
-
-.register_inputs {
-
-    margin-bottom: 1em;
-    
-    height: 40em;
-    width: 33em;
-
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-
-    background-color: var(--color-dark-2);
-
-}
-
-.register_button {
-    
-    height: 5em;
-    width: 10em;
-
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-
-    background-color: var(--color-dark-2);
-
-}
