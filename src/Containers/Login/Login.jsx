@@ -205,14 +205,14 @@ const Login = () => {
             {/* HERE WE HAVE THE BUTTON THAT SWITCHES LOGIN/REGISTER FORMS AND THE FORMS */}
 
             <div className="container_login_forms">
-                
+
                 <div className="box_login_register_button" id="animationButtonSwitch">
                     <div className="login_register_button" id={animButton} style={{ display: displayRegisterForm }} onClick={() => swapButton()}>Already an user?<br />Log here</div>
                     <div className="login_register_button" id={animButton} style={{ display: displayLoginForm }} onClick={() => swapButton()}>Need an account?<br />Click here</div>
                 </div>
 
                 <div className="component_login" style={{ display: displayLoginForm }} id="animationButtonSwitch">
-                    <div className='component_box' id={animComponent}>
+                    <div className='login_box' id={animComponent}>
                         <div className="login_message">
                             Lorem ipsum dolor sit amet consectetur adipisicing elit. <br />
                             Tenetur iure dolorum, <br />
@@ -234,7 +234,7 @@ const Login = () => {
                 </div>
 
                 <div className="component_register" style={{ display: displayRegisterForm }} id="animationButtonSwitch">
-                    <div className='component_box' id={animComponent}>
+                    <div className='register_box' id={animComponent}>
                         <div className='scroll_div_login'>
                             <ScrollArea className='scroll_area_login'>
                                 <RegisterForm className="registerForm"></RegisterForm>

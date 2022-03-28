@@ -61,7 +61,7 @@
 
     background-color: var(--color-dark-1);
 
-    overflow: hidden !important;
+    /* overflow: hidden !important; */
 
 }
 
@@ -70,8 +70,8 @@
     /* position:fixed;
     z-index: 10; */
 
-    height: 30vh;
-    width: 39vw;
+    height: 20vh;
+    width: 40vw;
 
     background-color: aquamarine;
 
@@ -79,13 +79,21 @@
 }
 
 .container_login_forms {
+    margin: 0%;
+    padding-top: 1em;
     
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
+    justify-content: center;
     align-items: center;
 
-    width: 39vw;
+    height: 80vh;
+    width: 40vw;
+
+    background-color: red;
+
+    overflow-x: scroll !important;
+    overflow-y: hidden;
 }
 
 
@@ -136,6 +144,26 @@
 
 .component_register {
     width: 39vw;
+
+}
+
+.login_box,
+.register_box {
+    margin-inline: 1em;
+    
+    height: 30em;
+    width: 39vw;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+    background-color: var(--color-light-1);
+
+    transition: 1s;
+    
+    border-radius: var(--border-radius-2);
 
 }
 
