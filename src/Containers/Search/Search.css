@@ -101,7 +101,7 @@
 
 .scrollArea {
     height: 80vh;
-    width: 100%;
+    width: 39.2vw;
 
     display: flex;
     flex-direction: column;
@@ -116,7 +116,7 @@
 
     border-radius: var(--border-radius-3);
 
-    width: 40vw;
+    width: 39.2vw;
     height: fit-content;
 
     margin-bottom: .5em;
@@ -126,7 +126,6 @@
 
     /* THIS IS THE REULTS CONTAINER LEVEL 2: WE HAVE CARDS
     INSTEAD. */
-
 
     display: flex;
     flex-direction: column;
@@ -173,6 +172,8 @@
     cursor: pointer;
     color: var(--color-vapor-1-4);
     
+    box-shadow: .1em .5em .9em var(--color-vapor-3-3) !important;
+ 
     transition: var(--transition-1);
 }
 
