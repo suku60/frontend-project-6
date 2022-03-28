@@ -1,21 +1,5 @@
 @import url('../../assets/CSS/main.css');
 
-/* body {
-
-    justify-content: flex-start !important;
-} */
-
-/* temporary button */
-.temporary_button {
-
-    height: 4em;
-    width: 4em;
-
-    background-color: red;
-
-    cursor: pointer;
-}
-
 /* ANIMATIONS */
 
 /* Animation: container falling from top */
@@ -87,7 +71,7 @@
     z-index: 10; */
 
     height: 30vh;
-    width: 40vw;
+    width: 39vw;
 
     background-color: aquamarine;
 
@@ -100,6 +84,8 @@
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
+
+    width: 39vw;
 }
 
 
@@ -126,14 +112,14 @@
     border-radius: var(--border-radius-2);
 }
 
-.scrollDiv{
+.scroll_div_login{
     height: 100%;
     width: 50%;
 
     margin-top: 5%;
 }
 
-.scrollArea {
+.scroll_area_login {
     height: 80vh;
     width: 100%;
 
@@ -141,6 +127,16 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+
+.component_login {
+    width: 39vw;
+
+}
+
+.component_register {
+    width: 39vw;
+
 }
 
 
