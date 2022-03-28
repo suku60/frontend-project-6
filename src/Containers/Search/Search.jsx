@@ -192,17 +192,18 @@ const Search = () => {
 
                     <input
                         type="text"
-                        placeholder='Introduce term..'
+                        placeholder='Search in Tomeme'
                         name="term"
                         title="nick"
                         autoComplete="off"
+                        id="search_input"
                         onChange={(e) => { fillForm(e) }}
                     />
                     <div
                         className="search_button"
                         onClick={() => search()}
 
-                    >GO!
+                    >Search
                     </div>
                 </div>
                 {memesRender()}
