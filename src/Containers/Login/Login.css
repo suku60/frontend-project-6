@@ -23,25 +23,17 @@
               opacity steps(60) .4s normal; 
 }
 
-/* @keyframes switch {
-    from{width: var(--button-width-1);}
-    to{width: 0em;}
-} */
-
 @keyframes switch {
     from{transform: rotateX(0deg);}
     to{transform: rotateX(360deg);}
 }
-
 
 @keyframes fading {
     from{opacity: 0%;}
     to{opacity: 100%;}
 }
 
-
-#login_box {
-    
+#login_box { 
     flex-direction: row;
 }
 
@@ -99,26 +91,35 @@
 
 
 /* COMPONENTS (ANY KIND) */
-
-.component_box {
-    /* needed margin for dissapering in normal screen */
-    /* margin-top: -76em; */
-
-    margin-inline: 1em;
+/* login / Register button */
+.box_login_register_button {
     
-    height: 45em;
-    width: 40em;
+    
+    margin: 1em;
+    height: 4em;
+    width: 5em;
 
+    background-color: transparent;
+
+    
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    
-    background-color: var(--color-light-1);
 
-    transition: 1s;
-    
-    border-radius: var(--border-radius-2);
+
+}
+
+/* Login Form */
+.component_login {
+    width: 39vw;
+
+}
+
+/* Register Form */
+.component_register {
+    width: 39vw;
+
 }
 
 .scroll_div_login{
@@ -138,15 +139,6 @@
     align-items: center;
 }
 
-.component_login {
-    width: 39vw;
-
-}
-
-.component_register {
-    width: 39vw;
-
-}
 
 .login_box,
 .register_box {
@@ -168,7 +160,6 @@
 
 }
 
-
 /* INPUTS */
 
 #input_file {
@@ -178,24 +169,6 @@
     text-overflow:unset;
 }
 /* BUTTONS */
-
-.box_login_register_button {
-    
-    
-    margin: 1em;
-    height: 4em;
-    width: 5em;
-
-    background-color: transparent;
-
-    
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-
-
-}
 
 .login_register_button {
 
