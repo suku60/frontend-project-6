@@ -132,6 +132,7 @@
 
     width: fit-content;
     height: fit-content;
+    
 }
 
 .login_message {
@@ -185,14 +186,14 @@
     
 }
 
-.scroll_div_login{
+.scroll_div_register_form{
     height: 100%;
     width: 50%;
     
     margin-top: 5%;
 }
 
-.scroll_area_login {
+.scroll_area_register_form {
     height: 80vh;
     width: 100%;
     
@@ -234,8 +235,8 @@
 }
 
 /* FORMS */
-.login_box,
-.register_box {
+.login_box_form,
+.register_box_form {
     margin-inline: 1em;
     
     height: 40vh;
@@ -257,8 +258,9 @@
     
 }
 
-.login_box {
+.login_box_form {
     background-color: transparent;
+
 }
 
 /* INPUTS */

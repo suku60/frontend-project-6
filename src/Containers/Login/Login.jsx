@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 
 import './Login.css';
 import RegisterForm from '../../Components/RegisterForm/RegisterForm'
+import LoginForm from '../../Components/LoginForm/LoginForm'
 import { ScrollArea } from '@mantine/core';
 const Login = () => {
 
@@ -56,7 +57,7 @@ const Login = () => {
                 </div>
 
                 <div className="component_login" style={{ display: displayLoginForm }} id="animationButtonSwitch">
-                    <div className='login_box' id={animComponent}>
+                    <div className='login_box_form' id={animComponent}>
                         {/* <div className="login_message">
                             Lorem ipsum dolor sit amet consectetur adipisicing elit. <br />
                             Tenetur iure dolorum, <br />
@@ -66,21 +67,26 @@ const Login = () => {
                             eaque esse quidem ratione odio laboriosam enim ipsum facilis?<br />
                         </div> */}
 
-                        <div className="login_inputs">
+                        {/* <div className="login_inputs">
                             <input type="name" name="nickname" title="nick"
                                 autoComplete="off" />
                             <input type="password" name="password" title="pass"
                                 autoComplete="off" />
                         </div>
 
-                        <div className="login_button"></div>
+                        <div className="login_button"></div> */}
+                        <div className='scroll_div_login_form'>
+                            <ScrollArea className='scroll_area_login_form'>
+                                <LoginForm className="login_form"></LoginForm>
+                            </ScrollArea>
+                        </div>
                     </div>
                 </div>
 
                 <div className="component_register" style={{ display: displayRegisterForm }} id="animationButtonSwitch">
-                    <div className='register_box' id={animComponent}>
-                        <div className='scroll_div_login'>
-                            <ScrollArea className='scroll_area_login'>
+                    <div className='register_box_form' id={animComponent}>
+                        <div className='scroll_div_register_form'>
+                            <ScrollArea className='scroll_area_register_form'>
                                 <RegisterForm className="register_form"></RegisterForm>
                             </ScrollArea>
                         </div>

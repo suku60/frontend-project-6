@@ -104,8 +104,6 @@ export const LoginForm = (props) => {
     setMsgLength("");
     setMsgMis("");
     seterrorMsg("");
-
-    setChecked(false);
   }
 
   return (
@@ -130,7 +128,7 @@ export const LoginForm = (props) => {
         className="register_form_inputs"
       />
 
-      <Button className='submitBttn' type="submit" onClick={() => register()}>Submit</Button>
+      <Button className='submitBttn' id="login_form_button" type="submit" onClick={() => register()}>Submit</Button>
       <br></br>
       <span className='errorMsg'>{errorMsg}</span>
       <br></br>

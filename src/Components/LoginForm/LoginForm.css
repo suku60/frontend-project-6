@@ -52,12 +52,18 @@ margin: .4em;
 }
 
 /* mantine button */
+#login_form_button {
+    margin-top: 1.5em;
+    margin-bottom: -1.5em;
+}
 .mantine-1d29quo {
     background-color: var(--color-vapor-3-3);
+    transition: var(--transition-1)
 }
 
 .mantine-1d29quo:hover {
     background-color: var(--color-vapor-2-3);
+    transition: var(--transition-1)
 }
 
 /* checkbox */
