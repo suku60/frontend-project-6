@@ -38,162 +38,6 @@ const Login = () => {
         }
     }
 
-    // Axios functions / Register (commented until further developement)
-
-    // const sendUserData = async () =>{
-
-    //     // setHideForm("none");
-
-    //     // setDisplayRegisterButton("none")
-
-    //     // setProcessingMessage("flex")
-
-    //     setValidationMessage("");
-
-    //     let errorDisplay = "";
-
-    //     let rawUserData = Object.entries(userData);
-
-    //     // Hola David, dejo esta parte del código comentada puesto que no quiero incluir la verificación de pass en mi registro, ya que quiero quitarle esta facilidad
-    //     // a quienes se registren, y que se aseguren bien de que están escribiendo la password correctamente. 
-
-    //     // Raw data user will be the array we will get after error check
-
-    //     // --------------------   PASSWORD ERROR CHECKER
-
-    //     // if(userData.password !== userData.password2){
-
-    //     //   return (setValidationMessage("Both password fields must match"));
-
-    //     // }else{
-    //     //   setValidationMessage("");
-    //     // }
-
-    //     // -------------------- Birthdate function: 3 different inputs with 3 fields = 2(day)/2(month)/4(year)
-    //     // all 3 combined make a whole date (find dataType that is useful for this)
-
-    //     // if(userData.birthdate !== ){
-
-    //     //   return (setValidationMessage("Both password fields must match"));
-
-    //     // }else{
-    //     //   setValidationMessage("");
-    //     // }
-
-    //     for(let field of rawUserData){
-
-    //       // error / validations
-
-    //       errorDisplay = validations(field[0],field[1]);
-
-    //       if(errorDisplay !== "valid"){
-    //         setValidationMessage(errorDisplay);
-    //         return;
-
-    //         // when the validations are not ok, we're not going to allow the register
-
-    //       };
-    //     };
-
-    //     // Build the body for the post data send.
-
-    //     let dataBody = {
-    //       name: userData.name,
-    //       birthdate: userData.birthdate,
-    //       username: userData.username,
-    //       password: userData.password,
-    //       email: userData.email
-    //     }
-
-    //     try  {
-
-    //       let dataResponse = await axios.post("http://localhost:3000/users/new", dataBody);
-
-    //     setDisplayWarmWelcome("100");
-
-
-    //     setHideForm("none");
-
-    //     setDisplayRegisterButton("none")
-
-    //     setProcessingMessage("flex")
-
-    //     setTimeout(() => {
-    //       desiredView("/login")
-    //     }, 6600);
-
-    //     }catch(errorDisplay) {
-
-    //     }
-
-    //   };
-
-    console.log("console log that breaks comments")
-
-    // Axios Functions / Login (commented until further developement)
-
-    // const userLogin = async () =>{
-
-    //     setHideForm("none");
-
-    //       setDisplayLoginButton("none")
-
-    //       setProcessingMessage("flex")
-
-
-
-    //     let dataBody = {
-    //       username: userData.username,
-    //       password: userData.password
-    //     }
-
-    //     try  {
-
-    //       let dataResponse = await axios.post("http://localhost:3000/users/login", dataBody);
-
-    //       console.log("this is dataresponse", dataResponse)
-
-    //     if(dataResponse.data?.token !== undefined){   
-
-    //       // setDisplayValidResponse("flex");
-    //       // setDisplayLoginInputs("none");
-
-    //       setTimeout(() => {
-
-    //       props.dispatch({type: LOGIN, payload: dataResponse.data})
-    //         desiredView("/profile")
-
-
-    //       }, 2600);
-
-    //     }else{
-
-    //       setTimeout(() => {
-
-    //       setDisplayErrorResponse("flex")
-    //       setDisplayLoginInputs("none");  
-
-    //       }, 1500);
-    //       // setDisplayErrorResponse("flex")
-
-    //       setTimeout(() => {
-    //       setDisplayErrorResponse("none")
-    //       setDisplayLoginInputs("flex");
-    //       setHideForm("flex");
-    //       setDisplayLoginButton("flex")
-
-    //       setProcessingMessage("none")
-
-    //       }, 3500);
-    //     }
-
-    //     }catch(error) {
-
-    //     }
-
-    //   };
-
-
     return (
         <div className="container_box" id="login_box">
 
@@ -213,14 +57,14 @@ const Login = () => {
 
                 <div className="component_login" style={{ display: displayLoginForm }} id="animationButtonSwitch">
                     <div className='login_box' id={animComponent}>
-                        <div className="login_message">
+                        {/* <div className="login_message">
                             Lorem ipsum dolor sit amet consectetur adipisicing elit. <br />
                             Tenetur iure dolorum, <br />
                             deleniti odit error ad aspernatur. <br />
                             Consectetur minima, <br />
                             architecto quod excepturi, <br />
                             eaque esse quidem ratione odio laboriosam enim ipsum facilis?<br />
-                        </div>
+                        </div> */}
 
                         <div className="login_inputs">
                             <input type="name" name="nickname" title="nick"
