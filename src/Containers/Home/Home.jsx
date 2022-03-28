@@ -14,11 +14,11 @@ const Home = () => {
     const [memes, setMemes] = useState([]);
 
     // stars
-    const [star1, setStar1] = useState("var(--color-vapor-3-1)");
-    const [star2, setStar2] = useState("var(--color-vapor-3-1)");
-    const [star3, setStar3] = useState("var(--color-vapor-3-1)");
-    const [star4, setStar4] = useState("var(--color-vapor-3-1)");
-    const [star5, setStar5] = useState("var(--color-vapor-3-1)");
+    const [star1, setStar1] = useState("var(--color-vapor-3-3");
+    const [star2, setStar2] = useState("var(--color-vapor-3-3");
+    const [star3, setStar3] = useState("var(--color-vapor-3-3");
+    const [star4, setStar4] = useState("var(--color-vapor-3-3");
+    const [star5, setStar5] = useState("var(--color-vapor-3-3");
 
     // topline from memebox
     const topline = useRef(null);
@@ -70,11 +70,11 @@ const Home = () => {
 
     const OffBackgroundStar = () =>{
         if(star1 === "var(--color-vapor-1-3)"){
-            setStar1("var(--color-vapor-3-1)")
-            setStar2("var(--color-vapor-3-1)")
-            setStar3("var(--color-vapor-3-1)")
-            setStar4("var(--color-vapor-3-1)")
-            setStar5("var(--color-vapor-3-1)")
+            setStar1("var(--color-vapor-3-3)")
+            setStar2("var(--color-vapor-3-3)")
+            setStar3("var(--color-vapor-3-3)")
+            setStar4("var(--color-vapor-3-3)")
+            setStar5("var(--color-vapor-3-3)")
         }
     }
 

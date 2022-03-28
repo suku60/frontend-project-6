@@ -240,7 +240,7 @@ height: 1em;
 }
 
 .meme_rating_action:hover {
-    background-color: var(--color-vapor-2);
+    background-color: var(--color-vapor-2-2);
     transition: var(--transition-9);
 
     height: 13em;
@@ -256,7 +256,7 @@ height: 1em;
 
     border-radius: 41.2%;
 
-    background-color: rgb(160, 97, 97);
+    background-color: unset;
 
     transform:rotateZ(45deg);
 
@@ -267,10 +267,14 @@ height: 1em;
     align-items: center;
 
     cursor: pointer;
+
+    /* box-shadow: .21em .21em .71em var(--color-vapor-5-1); */
 }
 
 .meme_rating_star:hover {
-    transform: scale(110%) rotateZ(10deg);;
+    transform: scale(110%) rotateZ(10deg);
+    
+    box-shadow: .21em .21em .71em var(--color-vapor-5-1);
     
     /* transform:rotateZ(50deg); */
 }
