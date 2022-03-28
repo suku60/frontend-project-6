@@ -1,5 +1,7 @@
 .errorMsg{
-    color: red;
+    color: var(--color-vapor-3-3);
+    background-color: blue;
+
 }
 
 .okMsg{
@@ -8,4 +10,61 @@
 
 .submitBttn {
     margin-top: 3%;
+}
+
+/* Imputs */
+.register_form_inputs {    
+    display: flex;
+    flex-direction: column;
+    justify-content:flex-end;
+    align-items: flex-end;
+}
+
+/* text over inputs */
+.mantine-1w07r5r {
+color: var(--color-dark-3);
+width: fit-content;
+letter-spacing: .05em;
+
+font-weight: 600;
+font-family: 'Roboto Condensed', sans-serif;
+
+margin: .4em;
+}
+
+/* mantine inputs */
+.mantine-us7vc8 {
+    background-color: transparent;
+    background-color: var(--color-vapor-3-1);
+
+    
+  font-family: 'Roboto Condensed', sans-serif;
+
+    width: 12.5vw;
+
+    margin-right:0em;
+
+    border-radius: var(--border-radius-4);
+}
+
+.mantine-us7vc8:focus, .mantine-us7vc8:focus-within{
+    background-color: var(--color-vapor-3-2);
+}
+
+/* mantine button */
+.mantine-1d29quo {
+    background-color: var(--color-vapor-3-3);
+}
+
+.mantine-1d29quo:hover {
+    background-color: var(--color-vapor-2-3);
+}
+
+/* checkbox */
+.mantine-1axdux3 {
+    background-color: var(--color-light-3);
+}
+
+.mantine-1axdux3:checked {
+    background-color: var(--color-vapor-2-3);
 }

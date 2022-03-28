@@ -200,6 +200,7 @@ export const RegisterForm = (props) => {
         onChange={(e) => { fillForm(e) }}
         name="nickname"
         value={userData.nickname}
+        className="register_form_inputs"
       />
       <TextInput
         required
@@ -208,6 +209,7 @@ export const RegisterForm = (props) => {
         onChange={(e) => { fillForm(e) }}
         name="email"
         value={userData.email}
+        className="register_form_inputs"
       />
       <TextInput
         required
@@ -217,6 +219,7 @@ export const RegisterForm = (props) => {
         onChange={(e) => { fillForm(e) }}
         name="password"
         value={userData.password}
+        className="register_form_inputs"
       />
 
       <TextInput
@@ -227,11 +230,12 @@ export const RegisterForm = (props) => {
         onChange={(e) => { fillForm(e) }}
         name="password2"
         value={userData.password2}
+        className="register_form_inputs" 
       />
 
       <Checkbox
         mt="md"
-        label="Confirm that I am 18 or older *"
+        label="I am +18 years old*"
         required
         name="confirm"
         checked={checked}

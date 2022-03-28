@@ -240,18 +240,25 @@
     
     height: 40vh;
     width: 25vw;
+
+    padding-right: .9em;
     
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
+    align-items: flex-end;
     
-    background-color: var(--color-light-1);
+    background: linear-gradient(to left, var(--color-vapor-2-1), var(--color-vapor-3-1), transparent);
+
+    box-shadow: .9em .9em .9em rgba(0, 0, 0, 0.267);
     
-    transition: 1s;
     
     border-radius: var(--border-radius-2);
     
+}
+
+.login_box {
+    background-color: transparent;
 }
 
 /* INPUTS */
