@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
+
+import {ReactComponent as StarSvg} from '../../assets/svg/star.svg'
 import './Search.css';
 
 import { ScrollArea, Accordion } from '@mantine/core';
@@ -133,19 +135,20 @@ const Search = () => {
                                             </div>
                                             <div className="search_meme_name">{elmnt.title}</div>
                                             <div className="search_meme_rating_action" onMouseOver={() => OffBackgroundStarSearch()}>
-                                                <div className="search_meme_rating_star" style={{ backgroundColor: starSearch1 }} onMouseOver={() => OnBackgroundStarSearch()}>
-                                                    <div className="search_star_white"></div>
+                                                <div className="meme_rating_star" style={{ backgroundColor: starSearch1 }} onMouseOver={() => OnBackgroundStarSearch()}>
+                                                    <StarSvg  style={{backgroundColor : starSearch1}} onMouseOver={()=>OnBackgroundStarSearch()}/>
                                                 </div>
-                                                <div className="search_meme_rating_star" style={{ backgroundColor: starSearch2 }} onMouseOver={() => OnBackgroundStarSearch2()}>
-                                                    <div className="search_star_white"></div>
+                                                <div className="meme_rating_star" style={{ backgroundColor: starSearch2 }} onMouseOver={() => OnBackgroundStarSearch2()}>
+                                                    <StarSvg  style={{backgroundColor : starSearch2}} onMouseOver={()=>OnBackgroundStarSearch2()}/>
                                                 </div>
-                                                <div className="search_meme_rating_star" style={{ backgroundColor: starSearch3 }} onMouseOver={() => OnBackgroundStarSearch3()}>
-                                                    <div className="search_star_white"></div></div>
-                                                <div className="search_meme_rating_star" style={{ backgroundColor: starSearch4 }} onMouseOver={() => OnBackgroundStarSearch4()}>
-                                                    <div className="search_star_white"></div>
+                                                <div className="meme_rating_star" style={{ backgroundColor: starSearch3 }} onMouseOver={() => OnBackgroundStarSearch3()}>
+                                                    <StarSvg  style={{backgroundColor : starSearch3}} onMouseOver={()=>OnBackgroundStarSearch3()}/>
+                                                    </div>
+                                                <div className="meme_rating_star" style={{ backgroundColor: starSearch4 }} onMouseOver={() => OnBackgroundStarSearch4()}>
+                                                    <StarSvg  style={{backgroundColor : starSearch4}} onMouseOver={()=>OnBackgroundStarSearch4()}/>
                                                 </div>
-                                                <div className="search_meme_rating_star" style={{ backgroundColor: starSearch5 }} onMouseOver={() => OnBackgroundStarSearch5()}>
-                                                    <div className="search_star_white"></div>
+                                                <div className="meme_rating_star" style={{ backgroundColor: starSearch5 }} onMouseOver={() => OnBackgroundStarSearch5()}>
+                                                    <StarSvg  style={{backgroundColor : starSearch5}} onMouseOver={()=>OnBackgroundStarSearch5()}/>
                                                 </div>
                                             </div>
                                             <div className="search_meme_rating">rating: {elmnt.ratingAverage}</div>

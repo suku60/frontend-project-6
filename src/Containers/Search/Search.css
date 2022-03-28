@@ -41,6 +41,7 @@
     justify-content: center;
     align-items: center;
 
+    letter-spacing: .3em;
 
     background-color: var(--color-dark-3);
 
@@ -54,6 +55,8 @@
     border-color: var(--color-vapor-2-1);
 
     cursor:pointer;
+
+    transition: var(--transition-2);
 }
 
 .search_button:hover{
@@ -80,7 +83,7 @@
 
     cursor:pointer;
 
-    text-indent: 2.4em;
+    text-indent: 2.8em;
 
     background-image: url('../../assets/svg/logo.svg');
     background-repeat: no-repeat;
@@ -93,41 +96,6 @@
     height: 100vh !important;
 
     background-color: transparent !important;
-}
-
-.search_memes_component {
-    background-color: transparent !important;
-
-    height:100vh !important;
-
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-
-    overflow-y: scroll;
-}
-
-
-.search_memes_box {
-/* 
-    transform: skew(25deg 25deg 0deg 0deg); */
-
-    
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-
-    height: auto !important;
-    /* height: 100vh !important; */
-    width: 40vw;
-
-    border-radius: var(--border-radius-3);
-
-    overflow-y: scroll;
-
-    background-color: transparent;
 }
 
 .scrollArea {
@@ -162,6 +130,20 @@
     justify-content: center;
     align-items: center;
 }
+
+
+.userResult {
+    height: 5%;
+    width: 100%;
+
+    background-color: var(--color-vapor-2-1);
+    border-radius: var(--border-radius-2);
+}
+.userResult:hover{
+    cursor: pointer;
+    color: red;
+}
+
 .search_meme_card {
     height: 100vh !important; 
 
@@ -169,16 +151,9 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-}
-.userResult {
-    height: 5%;
-    width: 100%;
-
-    background-color: white;
-}
-.userResult:hover{
-    cursor: pointer;
-    color: red;
+    
+    background-color: var(--color-vapor-2-1);
+    border-radius: var(--border-radius-3);
 }
 .imgDiv {
     height: 100%;
@@ -224,40 +199,6 @@
     
 }
 
-.search_meme_rating_star{
-    width: 2em;
-    height: 2em;
-
-    margin-inline: -20%;
-
-    background-color: rgb(160, 97, 97);
-
-    transform:rotateZ(45deg);
-
-    
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    align-items: center;
-}
-
-.search_star_white {
-    height: 2em;
-    width: .2em;
-
-    background-color: white;
-
-    
-    transform:rotateZ(55deg);
-}
-
-.search_meme_rating_star:hover {
-    transform: scale(110%) rotateZ(50deg);;
-
-    cursor: pointer;
-    
-    /* transform:rotateZ(50deg); */
-}
 
 .search_meme_rating {
     
