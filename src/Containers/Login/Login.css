@@ -1,21 +1,5 @@
 @import url('../../assets/CSS/main.css');
 
-/* body {
-
-    justify-content: flex-start !important;
-} */
-
-/* temporary button */
-.temporary_button {
-
-    height: 4em;
-    width: 4em;
-
-    background-color: red;
-
-    cursor: pointer;
-}
-
 /* ANIMATIONS */
 
 /* Animation: container falling from top */
@@ -39,25 +23,17 @@
               opacity steps(60) .4s normal; 
 }
 
-/* @keyframes switch {
-    from{width: var(--button-width-1);}
-    to{width: 0em;}
-} */
-
 @keyframes switch {
     from{transform: rotateX(0deg);}
     to{transform: rotateX(360deg);}
 }
-
 
 @keyframes fading {
     from{opacity: 0%;}
     to{opacity: 100%;}
 }
 
-
-#login_box {
-    
+#login_box { 
     flex-direction: row;
 }
 
@@ -77,7 +53,7 @@
 
     background-color: var(--color-dark-1);
 
-    overflow: hidden !important;
+    /* overflow: hidden !important; */
 
 }
 
@@ -86,7 +62,7 @@
     /* position:fixed;
     z-index: 10; */
 
-    height: 30vh;
+    height: 20vh;
     width: 40vw;
 
     background-color: aquamarine;
@@ -95,65 +71,27 @@
 }
 
 .container_login_forms {
+    margin: 0%;
+    padding-top: 1em;
     
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
+    justify-content: center;
     align-items: center;
+
+    height: 80vh;
+    width: 40vw;
+
+    background-color: var(--color-dark-1);
+
+    
+    overflow-x: scroll !important;
+    overflow-y: hidden;
 }
 
 
 /* COMPONENTS (ANY KIND) */
-
-.component_box {
-    /* needed margin for dissapering in normal screen */
-    /* margin-top: -76em; */
-
-    margin-inline: 1em;
-    
-    height: 45em;
-    width: 40em;
-
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    
-    background-color: var(--color-light-1);
-
-    transition: 1s;
-    
-    border-radius: var(--border-radius-2);
-}
-
-.scrollDiv{
-    height: 100%;
-    width: 50%;
-
-    margin-top: 5%;
-}
-
-.scrollArea {
-    height: 80vh;
-    width: 100%;
-
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
-
-/* INPUTS */
-
-#input_file {
-    /* background-color: transparent; */
-    cursor: pointer;
-
-    text-overflow:unset;
-}
-/* BUTTONS */
-
+/* login / Register button */
 .box_login_register_button {
     
     
@@ -171,6 +109,66 @@
 
 
 }
+
+/* Login Form */
+.component_login {
+    width: 39vw;
+
+}
+
+/* Register Form */
+.component_register {
+    width: 39vw;
+
+}
+
+.scroll_div_login{
+    height: 100%;
+    width: 50%;
+
+    margin-top: 5%;
+}
+
+.scroll_area_login {
+    height: 80vh;
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.login_box,
+.register_box {
+    margin-inline: 1em;
+    
+    height: 30em;
+    width: 39vw;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+    background-color: var(--color-light-1);
+
+    transition: 1s;
+    
+    border-radius: var(--border-radius-2);
+
+}
+
+/* INPUTS */
+
+#input_file {
+    /* background-color: transparent; */
+    cursor: pointer;
+
+    text-overflow:unset;
+}
+/* BUTTONS */
 
 .login_register_button {
 
