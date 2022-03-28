@@ -60,6 +60,18 @@
     width: 13em;
 
 }
+.nav_item_newPost{
+
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    
+    margin-bottom: .5em;
+    
+    width: 13em;
+
+}
 
 .navbar_logo_container {
     
@@ -72,8 +84,8 @@
 
 .navbar_logo {
 
-    height: 4em;
-    width: 4em;
+    height: 3em;
+    width: 3em;
 
     margin-block: .5em;
 

@@ -8,7 +8,10 @@ const NavigationButton = (props) => {
     let desiredView = useNavigate();
 
     const pathFinder = () => {
-        desiredView(props.pathUrl)
+        if(props.type !=="newPost"){
+            desiredView(props.pathUrl)
+
+        }
     }
 
     return (
