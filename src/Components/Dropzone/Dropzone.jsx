@@ -17,8 +17,9 @@ const Dropzone = () => {
       reader.onerror = () => console.log('file reading has failed')
       reader.onload = () => {
 
-        setFileData(reader.result)
+        setFileData(reader.result.split(',')[1])
       }
+
       reader.readAsDataURL(file);
 
     })
@@ -27,18 +28,16 @@ const Dropzone = () => {
 
   const { getRootProps, getInputProps } = useDropzone({ onDrop })
 
-
+  useEffect(() => {
+    console.log(fileData)
+  }, [fileData]);
   return (
     <>
       <div className='dropzoneContainer'>
-
-
         <div {...getRootProps()}>
           <input {...getInputProps()} />
 
           <p>Drop your meme image or gif here ...</p>
-
-
         </div>
       </div>
     </>
