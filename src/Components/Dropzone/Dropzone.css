@@ -1,0 +1,25 @@
+
+
+.dropzoneContainer {
+    height: 5em;
+    width: 80%;
+    background-color: lightgray;
+
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+    border: solid;
+
+}
+
+.dropzoneContainer:hover{
+    cursor: pointer;
+}
+
+.preview {
+    height: 10%;
+    width: 10%
+}

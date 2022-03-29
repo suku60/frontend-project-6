@@ -8,10 +8,12 @@ import { ReactComponent as NewPostSvg } from '../../assets/svg/newpost.svg'
 
 import { ReactComponent as LogoSvg } from '../../assets/svg/logo.svg'
 
-import { Burger, Modal, Group } from '@mantine/core';
+import { Modal, Group } from '@mantine/core';
+import '../PostForm/PostForm'
 
 import './LeftNavbar.css';
-import { useClickOutside } from '@mantine/hooks';
+import PostForm from '../PostForm/PostForm';
+
 
 
 const LeftNavbar = () => {
@@ -53,6 +55,7 @@ const LeftNavbar = () => {
                                 setOpened(false);
                             }}
                         >
+                            <PostForm></PostForm>
                         </Modal>
                         <Group position="center"
                             onClick={() => setOpened(true)}
