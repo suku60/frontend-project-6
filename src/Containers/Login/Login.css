@@ -18,6 +18,7 @@
     to{opacity: 100%;}
 }
 
+/* Animation: button or container fliping 360º */
 #animationButtonSwitch {
     animation: switch steps(60) .4s normal,
               opacity steps(60) .4s normal; 
@@ -31,6 +32,41 @@
 @keyframes fading {
     from{opacity: 0%;}
     to{opacity: 100%;}
+}
+
+/* Main Logo Animations */
+/* web start */
+#animationLogoStart {
+    animation: sizing 2s normal,
+               positioning 2s normal,
+               transforming 2.9s normal;
+}
+
+@keyframes sizing {
+    from{transform: scale(.1);}
+    to{transform: scale(1);    }
+
+}
+
+@keyframes transforming {
+    from{transform:rotate(20deg)}
+    to{transform: rotate(0deg)    }
+
+}
+
+@keyframes positioning {
+    from{
+
+    left: 1vw;
+    top: -40vh;
+
+    }
+    to{
+
+    left: 35vw;
+    top: 8vh;
+
+    }
 }
 
 #login_box { 
@@ -68,6 +104,12 @@
     background-color: aquamarine;
 
     transition: var(--transition-2);
+
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
 }
 
 .container_login_forms {
@@ -91,7 +133,7 @@
 
 
 /* COMPONENTS (ANY KIND) */
-/* login / Register button */
+/* login / Register button ---------------------------*/
 .box_login_register_button {
     
     
@@ -270,6 +312,29 @@
     cursor: pointer;
     
     text-overflow:unset;
-}
-/* BUTTONS */
+    }
+    /* BUTTONS */
 
+/* LOGO ------------------------------------------- */
+
+.animation_start_button_temporary {
+    height: 3em;
+    width: 10em;
+
+    background-color: blue;
+
+    cursor: pointer;
+}
+
+.main_logo {
+
+
+    height: 67vh;
+
+
+    left: 35vw;
+    top: 8vh;
+
+
+    position: absolute;
+}
