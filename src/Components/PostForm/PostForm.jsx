@@ -6,7 +6,6 @@ import { checkError } from '../../utils';
 import { TextInput, Checkbox, Button } from '@mantine/core';
 import { useForm } from '@mantine/hooks';
 import axios from 'axios';
-import Dropzone from '../Dropzone/Dropzone';
 
 export const PostForm = (props) => {
   let imgURL;
