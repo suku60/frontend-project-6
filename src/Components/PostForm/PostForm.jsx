@@ -151,13 +151,11 @@ export const PostForm = (props) => {
                     }, 5000)
                   }, 1500)
                 });
-
               } catch (error) {
                 console.log("Create post error", error)
               }
             }
           });
-
       } catch (error) {
         console.log("Upload image error: ", error);
       }
