@@ -1,24 +1,5 @@
 @import url('../../assets/CSS/main.css');
 
-
-/* ANIMATIONS */
-
-/* Animation: container falling from top */
-#animationContainerFromTop {
-    animation: movement steps(60) .4s normal,
-              fading steps(60) .5s normal; 
-}
-
-@keyframes movement {
-    from{margin-top: -76em;}
-    to{margin-top: 0em;}
-}
-
-@keyframes fading {
-    from{opacity: 0%;}
-    to{opacity: 100%;}
-}
-
 #profile_box {
     
     /* flex-direction: row;
@@ -91,22 +72,4 @@
     /* overflow-y: scroll; */
 
 
-}
-.trial_1_1 {
-    
-}
-.trial_1_1 {
-    
-}
-.trial_1_1 {
-    
-}
-.trial_1_1 {
-    
-}
-.trial_1_1 {
-    
-}
-.trial_1_1 {
-    
 }
