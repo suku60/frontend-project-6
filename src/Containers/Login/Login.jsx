@@ -4,6 +4,9 @@ import './Login.css';
 
 
 import {ReactComponent as LogoSvg} from '../../assets/svg/logo.svg'
+import {ReactComponent as SplashSvg} from '../../assets/svg/splash.svg'
+import {ReactComponent as MemeworkSvg} from '../../assets/svg/memework_text.svg'
+import {ReactComponent as JoinSvg} from '../../assets/svg/join_text.svg'
 
 import RegisterForm from '../../Components/RegisterForm/RegisterForm'
 import LoginForm from '../../Components/LoginForm/LoginForm'
@@ -51,6 +54,10 @@ const Login = () => {
                 <div className="animation_start_button_temporary"></div>
                 hello I'll have some memes and the Logo 1/2 centered.
                 <LogoSvg className="main_logo" id="animationLogoStart"/>
+                <SplashSvg className="splash_logo" id="animationSplashStart"/>
+                
+                <MemeworkSvg className='memework_text' id="animationTextStart"/>
+                <JoinSvg className='join_text' id="animationTextStart"/>
             </div>
 
             {/* HERE WE HAVE THE BUTTON THAT SWITCHES LOGIN/REGISTER FORMS AND THE FORMS */}

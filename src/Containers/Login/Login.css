@@ -69,6 +69,45 @@
     }
 }
 
+/* splash */
+#animationSplashStart {
+
+
+    animation: sizingSplash 2s normal,
+               transformingSplash 2.9s  normal,
+               
+               positioningSplash 2.9s 3s normal,
+               opacitySplash 3s  normal;
+
+}
+
+@keyframes opacitySplash {
+    from{opacity: 0%;}
+    to{opacity:0%;    }
+
+}
+
+/* text */
+#animationTextStart {
+
+
+    animation: sizingText 2s normal,
+               opacityText 4s  normal;
+
+}
+
+/* @keyframes sizingText {
+    from{width: 0em;}
+    to{width: 50em;    }
+
+} */
+
+@keyframes opacityText {
+    from{opacity: 0%;}
+    to{opacity:100%;    }
+
+}
+
 #login_box { 
     flex-direction: row;
 }
@@ -328,7 +367,6 @@
 
 .main_logo {
 
-
     height: 67vh;
 
 
@@ -337,4 +375,63 @@
 
 
     position: absolute;
+
+    z-index: 200;
+}
+
+.splash_logo {
+    
+    height: 100em;
+    width: 90em;
+
+    /* left: 35vw;
+    top: 8vh; */
+
+    opacity: 100%;
+
+}
+
+.memework_text,
+.join_text {
+
+    position: absolute;
+
+    fill:blue;
+
+    left: 40vw;
+
+    z-index: 400;
+
+    font-weight: 900;
+    /* transform: scale(3); */
+
+    transform: scale(3) skew(30deg);
+    
+    cursor:default;
+
+    opacity: unset;
+
+    
+
+}
+
+.memework_text {
+
+    left: 47.5vw;
+    top: 59vh;
+
+    letter-spacing: -1px;
+
+
+
+
+}
+.join_text {
+
+    
+    left: 57vw;
+
+    top: 63vh;
+
+    letter-spacing: -.5px;
 }
