@@ -139,6 +139,9 @@
     align-items: center;
 
     background-color: transparent;
+
+/*     
+    flex-wrap:wrap; */
 }
 
 .users_card {
@@ -153,18 +156,22 @@
 
 .user_results {
     height: 3vh;
-    width: 90%;
+    width: 10vw;
+/* 
+    flex-wrap: wrap; */
+
+    margin-block: .2em;
 
     padding-right: .5em;
-
-    background-color: var(--color-vapor-2-1);
+    background: linear-gradient(to right top, transparent, var(--color-vapor-1-1));
+    
     border-radius: var(--border-radius-2);
 
     letter-spacing: .1em;
 
     font-weight: 500;
     
-    transition: var(--transition-1);
+    transition: var(--transition-0);
 
     
     display: flex;
@@ -180,7 +187,7 @@
     
     box-shadow: .1em .5em .9em var(--color-vapor-3-3) !important;
  
-    transition: var(--transition-1);
+    transition: var(--transition-0);
 }
 
 .user_results_icon {
