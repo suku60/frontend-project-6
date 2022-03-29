@@ -144,7 +144,7 @@ const uploadImage = async () => {
       ownerId: "623a1a762be74bc5a33f6df5",
       ownerNickname: "JaviDaFacker",
       title: postData.title,
-      img: imgURL.data.link,
+      img: imgURL.data.data.link,
       text: postData.description,
       keywords: ["prueba", "prueba2"]
     }
@@ -226,7 +226,7 @@ const uploadImage = async () => {
         onChange={(e) => { fillForm(e) }}
         name="description"
         value={postData.description}
-        onClick={uploadImage}
+        // onClick={uploadImage}
       />
 
 
@@ -239,7 +239,7 @@ const uploadImage = async () => {
         onChange={(event) => setChecked(event.currentTarget.checked)}
       />
 
-      <Button className='submitBttn' type="submit" onClick={() => createPost()}>Submit</Button>
+      <Button className='submitBttn' type="submit" onClick={() => {uploadImage();createPost()}}>Submit</Button>
       <br></br>
       <span className='errorMsg'>{errorMsg}</span>
       <br></br>
