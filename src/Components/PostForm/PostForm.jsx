@@ -86,13 +86,19 @@ const uploadImage = async () => {
   
   
       if(!fileError){
-        let config = {
-          headers: { Authorization: `Bearer 272bb9d6b58b6ee89263edb23a760ce0dbf6a856`}
+        try {
+          let config = {
+            headers: { Authorization: `Bearer 272bb9d6b58b6ee89263edb23a760ce0dbf6a856`}
+          }
+          let imgbody = {
+            image: fileData
+          }
+          imgURL = await axios.post('https://api.imgur.com/3/image', imgbody, config);
+          console.log("antes",imgURL);
+        } catch (error) {
+          console.log("Upload image error: ", error);
         }
-        let imgbody = {
-          image: fileData
-        }
-        imgURL = await axios.post('https://api.imgur.com/3/image', imgbody, config);
+        
       }
     }
 
@@ -133,7 +139,7 @@ const uploadImage = async () => {
 
 
 
-
+    console.log("despues",imgURL);
     let body = {
       ownerId: "623a1a762be74bc5a33f6df5",
       ownerNickname: "JaviDaFacker",
@@ -145,7 +151,6 @@ const uploadImage = async () => {
     let result;
     if (!regexError && !passMisError && !passLengthError && !ageError) {
       try {
-
         result = await axios.post("https://socialmeme.herokuapp.com/posts/create", body)
 
         if (result.data != "This user already exists in the database") {
