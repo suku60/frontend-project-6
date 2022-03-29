@@ -1,4 +1,5 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useCallback, } from 'react';
+import { useDropzone } from 'react-dropzone'
 import { useNavigate } from 'react-router-dom';
 import './PostForm.css';
 import { checkError } from '../../utils';
@@ -8,23 +9,25 @@ import axios from 'axios';
 import Dropzone from '../Dropzone/Dropzone';
 
 export const PostForm = (props) => {
+  let imgURL;
   let navigate = useNavigate();
   let regexError;
   let passLengthError;
   let passMisError;
   let ageError;
+  let fileError;
 
   //1-Hooks
-  const [userData, setuserData] = useState({
-    nickname: "",
-    email: "",
-    password: "",
-    password2: "",
-    // avatar:,
+  const [postData, setpostData] = useState({
+    title: "",
+    description: ""
   });
   const [msgLength, setMsgLength] = useState("");
   const [msgMis, setMsgMis] = useState("");
   const [errorMsg, seterrorMsg] = useState("");
+
+  //Image dropzone hook
+  const [fileData, setFileData] = useState("")
 
 
   //Mantine hooks
@@ -46,41 +49,59 @@ export const PostForm = (props) => {
   //Shows msgs while writting
   const fillForm = (e) => {
     //Set data
-    setuserData({ ...userData, [e.target.name]: e.target.value })
-
-    //Check password min length
-    if (e.target.name == "password" && e.target.value.length < 4) {
-      return (setMsgLength("Password must be 4 characters min"))
-    } else {
-      setMsgLength("");
-    }
-
-    //Check password max length
-    if ((e.target.name == "password" && e.target.value.length > 10) || (e.target.name == "password2" && e.target.value.length > 10)) {
-      return (setMsgLength("Password must be 10 characters max"))
-    } else {
-      setMsgLength("");
-    }
-
-    //Check passwords mismatching
-
-    if (e.target.name == "password" && e.target.value !== userData.password2) {
-      return (setMsgMis("Passwords must match"))
-    } else if (e.target.name == "password2" && e.target.value !== userData.password) {
-      return (setMsgMis("Passwords must match"))
-    } else {
-      return (setMsgMis(""))
-    }
-
-
+    setpostData({ ...postData, [e.target.name]: e.target.value })
 
   }
 
 
+  //Dropzone functions
+  const onDrop = useCallback(acceptedFiles => {
 
-  const register = async () => {
+    acceptedFiles.forEach((file) => {
+      const reader = new FileReader()
+      reader.onabort = () => seterrorMsg('file reading was aborted')
+      reader.onerror = () => seterrorMsg('file reading has failed')
+      reader.onload = () => {
 
-    let fieldsArr = Object.entries(userData);
+        setFileData(reader.result.split(',')[1])
+      }
+
+      reader.readAsDataURL(file);
+
+    })
+
+  }, [])
+
+  const { getRootProps, getInputProps } = useDropzone({ onDrop })
+
+const uploadImage = async () => {
+
+      //File validation
+      if (fileData == "") {
+        seterrorMsg("Please upload an image")
+        fileError = true;
+      } else {
+        seterrorMsg("")
+        fileError = false;
+      }
+  
+  
+      if(!fileError){
+        let config = {
+          headers: { Authorization: `Bearer 272bb9d6b58b6ee89263edb23a760ce0dbf6a856`}
+        }
+        let imgbody = {
+          image: fileData
+        }
+        imgURL = await axios.post('https://api.imgur.com/3/image', imgbody, config);
+      }
+    }
+
+
+  const createPost = async () => {
+
+
+    let fieldsArr = Object.entries(postData);
     let error = "";
     seterrorMsg("");
 
@@ -100,30 +121,8 @@ export const PostForm = (props) => {
 
 
 
-    //Password mismatch validation
-    if (userData.password !== userData.password2) {
-      seterrorMsg("Passwords must match")
-      passMisError = true;
-    } else {
-      if (seterrorMsg == "") {
-        seterrorMsg("")
-        passMisError = false;
-      }
-
-    }
-
-    //Password length validation
-    if ((userData.password.length < 4) || (userData.password.length > 10)) {
-      seterrorMsg("Password must be between 4 and 10 characters")
-      passLengthError = true;
-    } else {
-      if (seterrorMsg == "") {
-        seterrorMsg("")
-        passLengthError = false;
-      }
-
-    }
-
+    
+    //Policy checkbox validation
     if (!checked) {
       seterrorMsg("Please confirm you are 18 or older to submit")
       ageError = true;
@@ -132,13 +131,17 @@ export const PostForm = (props) => {
       ageError = false;
     }
 
+
+
+
+
     let body = {
-      nickname: userData.nickname,
-      email: userData.email,
-      password: userData.password,
-      rating: [],
-      avatar: "",
-      followed: []
+      ownerId: "623a1a762be74bc5a33f6df5",
+      ownerNickname: "JaviDaFacker",
+      title: postData.title,
+      img: imgURL.data.link,
+      text: postData.description,
+      keywords: ["prueba", "prueba2"]
     }
     let result;
     if (!regexError && !passMisError && !passLengthError && !ageError) {
@@ -169,13 +172,12 @@ export const PostForm = (props) => {
   }
 
   const clearHooks = () => {
-    setuserData({
-      nickname: "",
-      email: "",
-      password: "",
-      password2: "",
-      // avatar:,
+    setpostData({
+      title: "",
+      description: ""
     })
+
+    setFileData("");
 
     setMsgLength("");
     setMsgMis("");
@@ -199,21 +201,41 @@ export const PostForm = (props) => {
         label="Title"
         placeholder=""
         onChange={(e) => { fillForm(e) }}
-        name="nickname"
-        value={userData.nickname}
+        name="title"
+        value={postData.title}
       />
-      <Dropzone></Dropzone>
+
+      <>
+        <div className='dropzoneContainer'>
+          <div {...getRootProps()}>
+            <input {...getInputProps()} />
+
+            <p>Drop your meme image or gif here ...</p>
+          </div>
+        </div>
+      </>
+
+      <TextInput
+        required
+        label="Description"
+        placeholder="Your description of the meme "
+        onChange={(e) => { fillForm(e) }}
+        name="description"
+        value={postData.description}
+        onClick={uploadImage}
+      />
+
 
       <Checkbox
         mt="md"
-        label="Confirm that I am 18 or older *"
+        label="Confirm I accept the policies"
         required
         name="confirm"
         checked={checked}
         onChange={(event) => setChecked(event.currentTarget.checked)}
       />
 
-      <Button className='submitBttn' type="submit" onClick={() => register()}>Submit</Button>
+      <Button className='submitBttn' type="submit" onClick={() => createPost()}>Submit</Button>
       <br></br>
       <span className='errorMsg'>{errorMsg}</span>
       <br></br>
