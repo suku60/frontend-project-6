@@ -146,7 +146,7 @@ const uploadImage = async () => {
     if (!regexError && !passMisError && !passLengthError && !ageError) {
       try {
 
-        result = await axios.post("https://socialmeme.herokuapp.com/users/register", body)
+        result = await axios.post("https://socialmeme.herokuapp.com/posts/create", body)
 
         if (result.data != "This user already exists in the database") {
           setTimeout(() => {
