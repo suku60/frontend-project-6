@@ -137,6 +137,7 @@
     /* position:fixed;
     z-index: 10; */
 
+
     height: 50vh;
     width: 40vw;
 
@@ -149,6 +150,10 @@
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
+
+    /* opacity will set this off */
+    /* opacity: 0%; */
+    
 }
 
 .container_login_forms {
@@ -163,11 +168,14 @@
     height: 50vh;
     width: 40vw;
 
-    background-color: red;
+    background-color: transparent;
 
     
     overflow-x: scroll !important;
     overflow-y: hidden;
+    
+
+    /* display:none will work to turn this one off */
 }
 
 
@@ -434,4 +442,52 @@
     top: 63vh;
 
     letter-spacing: -.5px;
+}
+
+.container_enter_button {
+
+    margin-top: 44em;
+
+height: fit-content;
+
+border-radius: var(--border-radius-4);
+
+position: absolute;
+
+background: linear-gradient(to left, var(--color-vapor-2-1), var(--color-vapor-3-1));
+
+
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+
+cursor: pointer; 
+
+transition: var(--transition-2)
+
+}
+.container_enter_button:hover {
+
+    background-color: var(--color-vapor-3-2); 
+    box-shadow: .1em .1em .1em black;
+    
+    transition: var(--transition-2);
+}
+
+.enter_button {
+
+    letter-spacing: .2em;
+    font-weight: 600;
+
+    
+height: 2.2em;
+width: 15em;
+
+
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+
 }

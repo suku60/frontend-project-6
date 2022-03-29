@@ -55,11 +55,13 @@ const Login = () => {
                 hello I'll have some memes and the Logo 1/2 centered.
                 <LogoSvg className="main_logo" id="animationLogoStart"/>
                 <SplashSvg className="splash_logo" id="animationSplashStart"/>
-                
                 <MemeworkSvg className='memework_text' id="animationTextStart"/>
                 <JoinSvg className='join_text' id="animationTextStart"/>
-            </div>
+                <div className="container_enter_button">
+                    <div className="enter_button">Enter</div>
+                </div>
 
+            </div>
             {/* HERE WE HAVE THE BUTTON THAT SWITCHES LOGIN/REGISTER FORMS AND THE FORMS */}
 
             <div className="container_login_forms">
@@ -107,6 +109,7 @@ const Login = () => {
                     </div>
                 </div>
             </div>
+
         </div>
     )
 }
