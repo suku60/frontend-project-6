@@ -87,14 +87,14 @@ export const PostForm = (props) => {
 
 
     //VALIDATE INPUT ERRORS
-    //File validation
-    if (fileData == "") {
-      seterrorMsg("Please upload an image")
-      fileError = true;
-    } else {
-      seterrorMsg("")
-      fileError = false;
-    }
+    // //File validation
+    // if (fileData == "") {
+    //   seterrorMsg("Please upload an image")
+    //   fileError = true;
+    // } else {
+    //   seterrorMsg("")
+    //   fileError = false;
+    // }
 
     //Inputs regex validation
     for (let element of fieldsArr) {
@@ -129,16 +129,17 @@ export const PostForm = (props) => {
       let imgbody = {
         image: fileData
       }
-      imgURL = await axios.post('https://api.imgur.com/3/image', imgbody, config)
+      // imgURL = await axios.post('https://api.imgur.com/3/image', imgbody, config)
 
 
 
-      console.log("despues", imgURL);
+
       let body = {
         ownerId: "623a1a762be74bc5a33f6df5",
         ownerNickname: "JaviDaFacker",
         title: postData.title,
-        img: imgURL.data.data.link,
+        img: "https://i.imgur.com/wl1HPGG.png",
+        // img: imgURL.data.data.link,
         text: postData.description,
         keywords: ["prueba", "prueba2"]
       }
@@ -185,53 +186,56 @@ export const PostForm = (props) => {
         {<pre>{JSON.stringify(msgMis, null, 2)}</pre>}
         {<pre>{JSON.stringify(errorMsg, null, 2)}</pre>} */}
       </>
+      <div className='createPost_box_form'>
 
-      <TextInput
-        required
-        label="Title"
-        placeholder=""
-        onChange={(e) => { fillForm(e) }}
-        name="title"
-        value={postData.title}
-      />
 
-      <>
-        <div className='dropzoneContainer'>
-          <div {...getRootProps()}>
-            <input {...getInputProps()} />
+        <TextInput
+          required
+          label="Title"
+          placeholder=""
+          onChange={(e) => { fillForm(e) }}
+          name="title"
+          value={postData.title}
+        />
 
-            <p>Drop your meme image or gif here ...</p>
+        <>
+          <div className='dropzoneContainer'>
+            <div {...getRootProps()}>
+              <input {...getInputProps()} />
+
+              <p>Drop your meme image or gif here ...</p>
+            </div>
           </div>
-        </div>
-      </>
+        </>
 
-      <TextInput
-        required
-        label="Description"
-        placeholder="Your description of the meme "
-        onChange={(e) => { fillForm(e) }}
-        name="description"
-        value={postData.description}
-      // onClick={uploadImage}
-      />
+        <TextInput
+          required
+          label="Description"
+          placeholder="Your description of the meme "
+          onChange={(e) => { fillForm(e) }}
+          name="description"
+          value={postData.description}
+        // onClick={uploadImage}
+        />
 
 
-      <Checkbox
-        mt="md"
-        label="Confirm I accept the policies"
-        required
-        name="confirm"
-        checked={checked}
-        onChange={(event) => setChecked(event.currentTarget.checked)}
-      />
+        <Checkbox
+          mt="md"
+          label="Confirm I accept the policies"
+          required
+          name="confirm"
+          checked={checked}
+          onChange={(event) => setChecked(event.currentTarget.checked)}
+        />
 
-      <Button className='submitBttn' type="submit" onClick={() => { createPost() }}>Submit</Button>
-      <br></br>
-      <span className='errorMsg'>{errorMsg}</span>
-      <br></br>
-      <span className='okMsg'>{msgLength}</span>
-      <br></br>
-      <span className='okMsg'>{msgMis}</span>
+        <Button className='submitBttn' type="submit" onClick={() => { createPost() }}>Submit</Button>
+        <br></br>
+        <span className='errorMsg'>{errorMsg}</span>
+        <br></br>
+        <span className='okMsg'>{msgLength}</span>
+        <br></br>
+        <span className='okMsg'>{msgMis}</span>
+      </div>
     </>
   )
 }

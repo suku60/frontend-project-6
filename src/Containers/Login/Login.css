@@ -363,7 +363,7 @@
 
 /* FORMS */
 .login_box_form,
-.register_box_form {
+.register_box_form{
     margin-inline: 1em;
     
     height: 40vh;
@@ -423,7 +423,7 @@
 
     position: absolute;
 
-    z-index: 200;
+    z-index: 100;
 }
 .main_logo_end {
 
@@ -464,7 +464,7 @@
 
     left: 40vw;
 
-    z-index: 400;
+    z-index: 150;
 
     font-weight: 900;
     /* transform: scale(3); */

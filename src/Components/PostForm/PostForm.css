@@ -9,3 +9,56 @@
 .submitBttn {
     margin-top: 3%;
 }
+
+/* Mantine postform modal */
+.mantine-h26qbp{
+    /* z-index: 500; */
+}
+
+
+/* Mantine postform */
+.mantine-1abbsss {
+    margin-inline: 1em;
+    
+    /* height: 100%; */
+    /* width: 100%; */
+
+    padding-right: .9em;
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+    background: linear-gradient(to left, var(--color-vapor-2-1), var(--color-vapor-3-1));
+
+    box-shadow: .9em .9em .9em rgba(0, 0, 0, 0.267);
+    
+    
+    border-radius: var(--border-radius-2);
+
+}
+
+.dropzoneContainer{
+    margin-top: 5%;
+    margin-bottom: 5%;
+
+    border:solid;
+    height: 5em;
+    width: 100%;
+    background: linear-gradient(to left top, var(--color-vapor-2-1), var(--color-vapor-1-1));
+
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.dropzoneContainer:hover{
+    background: linear-gradient(to left top, var(--color-vapor-1-1), var(--color-vapor-2-1));
+    cursor: pointer;
+}
+
+
