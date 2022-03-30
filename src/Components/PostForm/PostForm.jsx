@@ -141,7 +141,7 @@ export const PostForm = (props) => {
             let result;
             if (!regexError && !passMisError && !passLengthError && !ageError) {
               try {
-                result = await axios.post("https://socialmeme.herokuapp.com/posts/create", body)
+                result = axios.post("https://socialmeme.herokuapp.com/posts/create", body)
                 .then(()=>{
                   setTimeout(() => {
                     setMsgLength("The post has been created")
