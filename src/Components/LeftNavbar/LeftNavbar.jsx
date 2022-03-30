@@ -26,19 +26,62 @@ const LeftNavbar = (props) => {
 
 
 
+const renderAdminBttn = () => {
+    if(!props.credentials.token){
+        return (
+            <></>
+        )
+    } else if (props.credentials.token && props.credentials.role === "admin"){
+        return (
+            <NavigationButton viewNameDisplay={"admin"} pathUrl={"/admin"} />
+        )
+    }
+}
+
+    const renderNewPostBttn = () => {
+        if (!props.credentials.token) {
+            return (
+                <></>
+            )
+
+        } else {
+            return (
+                <>
+                    <Modal
+                        opened={opened}
+                        onClose={() => {
+                            setOpened(false);
+                        }}
+                    >
+                        <PostForm></PostForm>
+                    </Modal>
+                    <Group position="center"
+                        onClick={() => setOpened(true)}
+                    >
+                        <NavigationButton
+                            viewNameDisplay={"New Post"}
+                            buttonIcon={<NewPostSvg />}
+                            type="newPost"
+                        />
+                    </Group>
+                </>
+            )
+        }
+    }
+
     const renderProfileBttn = () => {
-        if(!props.credentials.token) {
-            return(
+        if (!props.credentials.token) {
+            return (
                 <NavigationButton viewNameDisplay={"profile"} pathUrl={"/profile"} buttonIcon={<ProfileSvg />} />
             )
 
         } else {
-            return(
-                <NavigationButton viewNameDisplay={props.credentials.user[0].nickname} pathUrl={"/profile"} buttonIcon={<ProfileSvg/>} />
+            return (
+                <NavigationButton viewNameDisplay={props.credentials.user[0].nickname} pathUrl={"/profile"} buttonIcon={<ProfileSvg />} />
             )
         }
     }
-    
+
 
 
     return (
@@ -57,30 +100,12 @@ const LeftNavbar = (props) => {
                     <NavigationButton viewNameDisplay={"home"} pathUrl={"/home"} buttonIcon={<HomeSvg />} />
                     <NavigationButton viewNameDisplay={"search"} pathUrl={"/search"} buttonIcon={<SearchSvg />} />
                     {/* <NavigationButton viewNameDisplay={"login"} pathUrl={"/"}/> */}
-                    <NavigationButton viewNameDisplay={"admin"} pathUrl={"/admin"} />
+                    {renderAdminBttn()}
                     <div className="navbar_logo">logout here</div>
                 </div>
 
                 <div className="nav_item_newPost" >
-                    <>
-                        <Modal
-                            opened={opened}
-                            onClose={() => {
-                                setOpened(false);
-                            }}
-                        >
-                            <PostForm></PostForm>
-                        </Modal>
-                        <Group position="center"
-                            onClick={() => setOpened(true)}
-                        >
-                            <NavigationButton
-                                viewNameDisplay={"New Post"}
-                                buttonIcon={<NewPostSvg />}
-                                type="newPost"
-                            />
-                        </Group>
-                    </>
+                    {renderNewPostBttn()}
                 </div>
                 <div className="nav_item_profile">
                     {renderProfileBttn()}
