@@ -36,6 +36,11 @@ const Login = () => {
     const [positionJoinText, SetPositionJoinText] = useState("animationTextStart");
     const [positionJoinTextClass, SetPositionJoinTextClass] = useState("join_text");
 
+    // enter button
+    const [enterButtonDisappearing, setEnterButtonDisappearing] = useState("")
+    const [enterButtonClass, setEnterButtonClass] = useState("container_enter_button")
+
+
     // FUNCTIONS
 
     // Function that swaps register/login components
@@ -68,6 +73,8 @@ const Login = () => {
         SetPositionMemeworkText("animationMemeworkTextEnd")
         SetPositionJoinText("animationJoinTextEnd")
 
+        setEnterButtonDisappearing("animationEnterButtonDisappearing")
+
         setTimeout(() => {
             SetPositionLogoClass("main_logo_end")
             SetPositionSplashClass("splash_logo_end")
@@ -77,6 +84,10 @@ const Login = () => {
             SetPositionMemeworkTextClass("memework_text_end")
             SetPositionJoinTextClass("join_text_end")
           }, 2000)
+
+          setTimeout(() => {
+            setEnterButtonClass("container_enter_button_off")
+          }, 900)
         
 
     }
@@ -95,7 +106,7 @@ const Login = () => {
                 <MemeworkSvg className={positionMemeworkTextClass} id={positionMemeworkText}/>
                 {/* <JoinSvg className='join_text' id="animationTextStart"/> */}
                 <JoinSvg className={positionJoinTextClass} id={positionJoinText}/>
-                <div className="container_enter_button">
+                <div className={enterButtonClass} id={enterButtonDisappearing}>
                     <div className="enter_button" onClick={()=>{hideLogoShowInputs()}}>Enter</div>
                 </div>
 

@@ -148,6 +148,19 @@
     to{top: 43vh}
 }
 
+/* Enter button disappearing */
+#animationEnterButtonDisappearing {
+    animation: disappear 1s normal;
+}
+
+@keyframes disappear{
+     from{margin-top: 44em;
+    opacity: 100%;
+display: unset;}
+     to{margin-top: 0em;
+    opacity: 0%;
+display: none;}
+}
 
 
 #login_box { 
@@ -521,7 +534,8 @@
     top: 43vh;
 }
 
-.container_enter_button {
+.container_enter_button,
+.container_enter_button_off {
 
     margin-top: 44em;
 
@@ -543,6 +557,10 @@ cursor: pointer;
 
 transition: var(--transition-2)
 
+}
+
+.container_enter_button_off {
+    display: none;
 }
 
 .container_enter_button:hover {
