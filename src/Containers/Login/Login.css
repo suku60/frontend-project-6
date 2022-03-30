@@ -411,7 +411,8 @@
     cursor: pointer;
 }
 
-.main_logo {
+.main_logo,
+.main_logo_end {
 
     height: 67vh;
 /* height:47vh when we click enter / default 67vh*/
@@ -424,8 +425,14 @@
 
     z-index: 200;
 }
+.main_logo_end {
 
-.splash_logo {
+    height: 47vh;
+    
+
+}
+.splash_logo,
+.splash_logo_end {
     
     height: 50em;
     width: 90em;
@@ -441,8 +448,15 @@
 
 }
 
+.splash_logo_end {
+    width: 40em;
+    left: 2vw;
+}
+
 .memework_text,
-.join_text {
+.memework_text_end,
+.join_text,
+.join_text_end {
 
     position: absolute;
 
@@ -465,7 +479,8 @@
 
 }
 
-.memework_text {
+.memework_text,
+.memework_text_end {
 
     left: 47.5vw;
     top: 59vh;
@@ -478,7 +493,12 @@
 
 }
 
-.join_text {
+.memework_text_end {
+    top: 39vh !important;
+}
+
+.join_text,
+.join_text_end {
 
     
     left: 57vw;
@@ -487,6 +507,13 @@
     /* top: 43vh when we click Enter / default: 63vh */
 
     letter-spacing: -.5px;
+}
+
+
+.join_text_end {
+
+
+    top: 43vh;
 }
 
 .container_enter_button {
