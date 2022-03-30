@@ -23,6 +23,12 @@ const Login = () => {
     const [displayLoginForm, setDisplayLoginForm] = useState("flex");
     const [displayRegisterForm, setDisplayRegisterForm] = useState("none");
 
+    // SVG logo & text hooks
+    const [positionLogo, SetPositionLogo] = useState("");
+    const [positionSplash,SetPositionSplash] = useState("");
+    const [positionWelcomeText, SetPositionWelcomeText] = useState("");
+    const [positionJoinText, SetPositionJoinText] = useState("");
+
     // FUNCTIONS
 
     // Function that swaps register/login components
@@ -46,19 +52,26 @@ const Login = () => {
         }
     }
 
+    // Function that hides the logo and visual things and shows the inputs.
+
+    const hideLogoShowInputs = () => {
+        
+
+    }
+
     return (
         <div className="container_box" id="login_box">
 
             {/* FIXED WELCOME MEMES AND LOGO  */}
             <div className="container_welcome_images" id="animationContainerFromTop">
-                <div className="animation_start_button_temporary"></div>
-                hello I'll have some memes and the Logo 1/2 centered.
+                {/* <div className="animation_start_button_temporary"></div>
+                hello I'll have some memes and the Logo 1/2 centered. */}
                 <LogoSvg className="main_logo" id="animationLogoStart"/>
                 <SplashSvg className="splash_logo" id="animationSplashStart"/>
                 <MemeworkSvg className='memework_text' id="animationTextStart"/>
                 <JoinSvg className='join_text' id="animationTextStart"/>
                 <div className="container_enter_button">
-                    <div className="enter_button">Enter</div>
+                    <div className="enter_button" onclick={()=>{hideLogoShowInputs()}}>Enter</div>
                 </div>
 
             </div>
