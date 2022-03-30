@@ -92,11 +92,17 @@
 }
 
 /* RESULTS */
-/* USERS */
+/* USERS ---------------------------------------------------------*/
 .component_search {
     height: 100vh !important;
 
     background-color: transparent !important;
+}
+
+.mantine-bgzycs:hover { 
+    background: linear-gradient(to left top, var(--color-vapor-2-2), var(--color-vapor-1-2));
+    transition: var(--transition-0);
+
 }
 
 .scrollArea {
@@ -114,6 +120,7 @@
 .accordion {
     /* THIS IS THE RESULTS CONTAINER LEVEL 1*/
     background: linear-gradient(to left top, var(--color-vapor-2-1), var(--color-vapor-1-1));
+    transition: var(--transition-0);
     color: var(--color-light-2) !important;
 
     border-radius: var(--border-radius-3);
@@ -139,6 +146,9 @@
     align-items: center;
 
     background-color: transparent;
+
+/*     
+    flex-wrap:wrap; */
 }
 
 .users_card {
@@ -153,18 +163,22 @@
 
 .user_results {
     height: 3vh;
-    width: 90%;
+    width: 10vw;
+/* 
+    flex-wrap: wrap; */
+
+    margin-block: .2em;
 
     padding-right: .5em;
-
-    background-color: var(--color-vapor-2-1);
+    background: linear-gradient(to right top, transparent, var(--color-vapor-1-1));
+    
     border-radius: var(--border-radius-2);
 
     letter-spacing: .1em;
 
     font-weight: 500;
     
-    transition: var(--transition-1);
+    transition: var(--transition-0);
 
     
     display: flex;
@@ -180,15 +194,14 @@
     
     box-shadow: .1em .5em .9em var(--color-vapor-3-3) !important;
  
-    transition: var(--transition-1);
+    transition: var(--transition-0);
 }
 
 .user_results_icon {
     height: .5em !important;
 }
 
-/* POSTS */
-
+/* POSTS ---------------------------------------------------------*/
 .search_meme_card {
     padding-bottom: 2%;
     padding-top: 2%;
