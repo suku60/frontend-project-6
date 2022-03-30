@@ -34,7 +34,7 @@
     to{opacity: 100%;}
 }
 
-/* Main Logo Animations */
+/* Main Logo Animations ----------------------*/
 /* logo start */
 #animationLogoStart {
     animation: sizing 2s normal,
@@ -81,10 +81,9 @@
 
 
 /* splash start */
-#animationSplashStart {  animation: opacitySplash 3s  normal;
-
+#animationSplashStart {  
+    animation: opacitySplash 3s  normal;
 }
-
 @keyframes opacitySplash {
     from{opacity: 0%;}
     to{opacity:0%;    }
@@ -92,10 +91,9 @@
 }
 
 /* splash end */
-#animationSplashEnd {  animation: positioningSplashEnd 3s  normal;
-
+#animationSplashEnd {  
+    animation: positioningSplashEnd 3s  normal;
 }
-
 @keyframes positioningSplashEnd {
     from{width: 90em;
     left: 1vw;}
@@ -111,13 +109,11 @@
     animation: opacityText 4s  normal;
 
 }
-
 /* @keyframes sizingText {
     from{width: 0em;}
     to{width: 50em;    }
 
 } */
-
 @keyframes opacityText {
     from{opacity: 0%;}
     to{opacity:100%;}
@@ -131,7 +127,6 @@
 
 
 }
-
 @keyframes positionMemeworkTextEnd {
     from{top: 59vh}
     to{top: 39vh}
@@ -144,7 +139,6 @@
 
 
 }
-
 @keyframes positionJoinTextEnd {
     from{top: 63vh}
     to{top: 43vh}
