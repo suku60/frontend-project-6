@@ -8,23 +8,37 @@ import { ReactComponent as NewPostSvg } from '../../assets/svg/newpost.svg'
 
 import { ReactComponent as LogoSvg } from '../../assets/svg/logo.svg'
 
-import { Modal, Group } from '@mantine/core';
+import { Modal, Group, useMantineDefaultProps } from '@mantine/core';
 import '../PostForm/PostForm'
 
 import './LeftNavbar.css';
 import PostForm from '../PostForm/PostForm';
 
+import { connect } from 'react-redux';
 
 
-const LeftNavbar = () => {
+
+const LeftNavbar = (props) => {
 
     //Mantine hooks
     const [opened, setOpened] = useState(false);
     const title = opened ? 'Close navigation' : 'Open navigation';
 
-    const clicked = () => {
-        console.log('clicked');
+
+
+    const renderProfileBttn = () => {
+        if(!props.credentials.token) {
+            return(
+                <NavigationButton viewNameDisplay={"profile"} pathUrl={"/profile"} buttonIcon={<ProfileSvg />} />
+            )
+
+        } else {
+            return(
+                <NavigationButton viewNameDisplay={props.credentials.user[0].nickname} pathUrl={"/profile"} buttonIcon={<ProfileSvg />} />
+            )
+        }
     }
+    
 
 
     return (
@@ -69,11 +83,13 @@ const LeftNavbar = () => {
                     </>
                 </div>
                 <div className="nav_item_profile">
-                    <NavigationButton viewNameDisplay={"profile"} pathUrl={"/profile"} buttonIcon={<ProfileSvg />} />
+                    {renderProfileBttn()}
                 </div>
             </div>
         </div>
     )
 };
 
-export default LeftNavbar;
+export default connect((state) => ({
+    credentials: state.credentials
+}))(LeftNavbar);
