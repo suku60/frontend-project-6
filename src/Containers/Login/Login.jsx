@@ -37,8 +37,12 @@ const Login = () => {
     const [positionJoinTextClass, SetPositionJoinTextClass] = useState("join_text");
 
     // enter button
-    const [enterButtonDisappearing, setEnterButtonDisappearing] = useState("")
-    const [enterButtonClass, setEnterButtonClass] = useState("container_enter_button")
+    const [enterButtonDisappearing, setEnterButtonDisappearing] = useState("");
+    const [enterButtonClass, setEnterButtonClass] = useState("container_enter_button");
+
+    // login forms
+    const [loginFormsAnimation, setLoginFormsAnimation] = useState("");
+    const [loginFormsClass, setLoginFormsClass] = useState("container_login_forms_off")
 
 
     // FUNCTIONS
@@ -88,6 +92,13 @@ const Login = () => {
           setTimeout(() => {
             setEnterButtonClass("container_enter_button_off")
           }, 900)
+
+        //   setTimeout that shows the forms
+
+          setTimeout(() => {
+              setLoginFormsAnimation("")
+              setLoginFormsClass("container_login_forms")
+          }, 500)
         
 
     }
@@ -113,7 +124,7 @@ const Login = () => {
             </div>
             {/* HERE WE HAVE THE BUTTON THAT SWITCHES LOGIN/REGISTER FORMS AND THE FORMS */}
 
-            <div className="container_login_forms">
+            <div className={loginFormsClass} id={loginFormsAnimation}>
 
                 <div className="box_login_register_button" id="animationButtonSwitch">
                     <div className="login_register_button" id={animButton} style={{ display: displayRegisterForm }} onClick={() => swapButton()}>Already an user?<br />Log here</div>
