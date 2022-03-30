@@ -3,11 +3,15 @@ import axios from 'axios';
 import { Navigate, useNavigate } from 'react-router-dom';
 
 import { ReactComponent as StarSvg } from '../../assets/svg/star.svg'
-import { Accordion } from '@mantine/core';
+import { Accordion, Group, Button  } from '@mantine/core';
+import { showNotification } from '@mantine/notifications';
+
+
+import { connect } from 'react-redux';
 
 import './Home.css';
 
-const Home = () => {
+const Home = (props) => {
     let desiredView = useNavigate();
 
     // HOOKS
@@ -117,7 +121,30 @@ const Home = () => {
 
     }
 
-    // console.log("mememess?", memes)
+    const ratePost = async (postId, rating) => {
+        if(props.credentials.token){
+            let body = {
+                postId: postId,
+                raterId: props.credentials.user[0].id,
+                raterNickname: props.credentials.user[0].nickname,
+                rate: rating
+            }
+    
+            let response = await axios.put(`https://socialmeme.herokuapp.com/posts/actions/addRating`, body);
+            showNotification({
+                title: `Post rated with ${rating} tomatoes!`,
+                // message: 'Hey there, your code is awesome! 🤥',
+              })
+    
+        } else {
+            showNotification({
+                title: 'You must be logged in to rate',
+                // message: 'Hey there, your code is awesome! 🤥',
+              })
+        }
+
+       
+    }
 
     return (
         <div className="container_box" id="home_box">
@@ -148,21 +175,62 @@ const Home = () => {
                                         <div className="meme_name">{images.text}
                                         </div>
                                         <div className="meme_rating_action" onMouseOver={() => OffBackgroundStar()}>
-                                            <div className="meme_rating_star" style={{ backgroundColor: star1 }} onMouseOver={() => OnBackgroundStar()}>
-                                                <StarSvg style={{ backgroundColor: star1 }} onMouseOver={() => OnBackgroundStar()} />
+                                            <div
+                                                className="meme_rating_star"
+                                                style={{ backgroundColor: star1 }}
+                                                onMouseOver={() => OnBackgroundStar()}
+                                                onClick={() => {ratePost(images._id, 1)}}
+                                            >
+                                                <StarSvg
+                                                    style={{ backgroundColor: star1 }}
+                                                    onMouseOver={() => OnBackgroundStar()}
+                                                    
+                                                />
                                                 {/* <div className="star_white"></div> */}
                                             </div>
-                                            <div className="meme_rating_star" style={{ backgroundColor: star2 }} onMouseOver={() => OnBackgroundStar2()}>
-                                                <StarSvg style={{ backgroundColor: star2 }} onMouseOver={() => OnBackgroundStar2()} />
+                                            <div
+                                                className="meme_rating_star"
+                                                style={{ backgroundColor: star2 }}
+                                                onMouseOver={() => OnBackgroundStar2()}
+                                                onClick={() => {ratePost(images._id, 2)}}
+                                            >
+                                                <StarSvg
+                                                    style={{ backgroundColor: star2 }}
+                                                    onMouseOver={() => OnBackgroundStar2()}
+                                                />
                                             </div>
-                                            <div className="meme_rating_star" style={{ backgroundColor: star3 }} onMouseOver={() => OnBackgroundStar3()}>
-                                                <StarSvg style={{ backgroundColor: star3 }} onMouseOver={() => OnBackgroundStar3()} />
+                                            <div
+                                                className="meme_rating_star"
+                                                style={{ backgroundColor: star3 }}
+                                                onMouseOver={() => OnBackgroundStar3()}
+                                                onClick={() => {ratePost(images._id, 3)}}
+                                            >
+                                                <StarSvg
+                                                    style={{ backgroundColor: star3 }}
+                                                    onMouseOver={() => OnBackgroundStar3()}
+                                                />
                                             </div>
-                                            <div className="meme_rating_star" style={{ backgroundColor: star4 }} onMouseOver={() => OnBackgroundStar4()}>
-                                                <StarSvg style={{ backgroundColor: star4 }} onMouseOver={() => OnBackgroundStar4()} />
+                                            <div
+                                                className="meme_rating_star"
+                                                style={{ backgroundColor: star4 }}
+                                                onMouseOver={() => OnBackgroundStar4()}
+                                                onClick={() => {ratePost(images._id, 4)}}
+                                            >
+                                                <StarSvg
+                                                    style={{ backgroundColor: star4 }}
+                                                    onMouseOver={() => OnBackgroundStar4()}
+                                                />
                                             </div>
-                                            <div className="meme_rating_star" style={{ backgroundColor: star5 }} onMouseOver={() => OnBackgroundStar5()}>
-                                                <StarSvg style={{ backgroundColor: star5 }} onMouseOver={() => OnBackgroundStar5()} />
+                                            <div
+                                                className="meme_rating_star"
+                                                style={{ backgroundColor: star5 }}
+                                                onMouseOver={() => OnBackgroundStar5()}
+                                                onClick={() => {ratePost(images._id, 5)}}
+                                            >
+                                                <StarSvg
+                                                    style={{ backgroundColor: star5 }}
+                                                    onMouseOver={() => OnBackgroundStar5()}
+                                                />
                                             </div>
                                         </div>
                                         <div className="meme_rating">rating: {images.ratingAverage}
@@ -210,9 +278,9 @@ const Home = () => {
                                 </div>
                             )
                         })}
-                        <div 
-                        className='memes_loadMore_bttn'
-                        onClick={() => {loadMore()}}
+                        <div
+                            className='memes_loadMore_bttn'
+                            onClick={() => { loadMore() }}
                         >Load More</div>
                     </div>
                 </div>
@@ -220,4 +288,6 @@ const Home = () => {
         </div>
     )
 }
-export default Home;
+export default connect((state) => ({
+    credentials: state.credentials
+}))(Home);
