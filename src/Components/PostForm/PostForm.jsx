@@ -21,7 +21,7 @@ export const PostForm = (props) => {
     title: "",
     description: ""
   });
-  const [postSaved, setPostSaved]= useState([]);
+  const [postSaved, setPostSaved] = useState([]);
   const [msgLength, setMsgLength] = useState("");
   const [msgMis, setMsgMis] = useState("");
   const [errorMsg, seterrorMsg] = useState("");
@@ -74,8 +74,19 @@ export const PostForm = (props) => {
 
   const { getRootProps, getInputProps } = useDropzone({ onDrop })
 
-  const createPost = async () => {
 
+
+
+
+  //UPLOAD IMAGE TO IMGUR AND CREATES NEW POST IN DB
+  const createPost = async () => {
+    let fieldsArr = Object.entries(postData);
+    let error = "";
+    seterrorMsg("");
+
+
+
+    //VALIDATE INPUT ERRORS
     //File validation
     if (fileData == "") {
       seterrorMsg("Please upload an image")
@@ -85,80 +96,66 @@ export const PostForm = (props) => {
       fileError = false;
     }
 
+    //Inputs regex validation
+    for (let element of fieldsArr) {
 
-    if (!fileError) {
-      try {
-        let config = {
-          headers: { Authorization: `Bearer 272bb9d6b58b6ee89263edb23a760ce0dbf6a856` }
-        }
-        let imgbody = {
-          image: fileData
-        }
-        imgURL = await axios.post('https://api.imgur.com/3/image', imgbody, config)
-          .then(() => {
-            let fieldsArr = Object.entries(postData);
-            let error = "";
-            seterrorMsg("");
-
-            //Inputs regex validation
-            for (let element of fieldsArr) {
-              error = checkError(element[0], element[1]);
-              console.log(error)
-              if (error !== "ok") {
-                seterrorMsg(error)
-                regexError = true;
-                return
-              } else if (error == "ok") {
-                seterrorMsg("")
-                regexError = false;
-              }
-            }
-
-
-
-
-            //Policy checkbox validation
-            if (!checked) {
-              seterrorMsg("Please confirm you are 18 or older to submit")
-              ageError = true;
-            } else {
-              seterrorMsg("")
-              ageError = false;
-            }
-
-
-
-
-            console.log("despues", imgURL);
-            let body = {
-              ownerId: "623a1a762be74bc5a33f6df5",
-              ownerNickname: "JaviDaFacker",
-              title: postData.title,
-              img: imgURL.data.data.link,
-              text: postData.description,
-              keywords: ["prueba", "prueba2"]
-            }
-            let result;
-            if (!regexError && !passMisError && !passLengthError && !ageError) {
-              try {
-                result = axios.post("https://socialmeme.herokuapp.com/posts/create", body)
-                .then(()=>{
-                  setTimeout(() => {
-                    setMsgLength("The post has been created")
-                    setPostSaved(result.data);
-                    setTimeout(() => {
-                      clearHooks();
-                    }, 5000)
-                  }, 1500)
-                });
-              } catch (error) {
-                console.log("Create post error", error)
-              }
-            }
-          });
-      } catch (error) {
-        console.log("Upload image error: ", error);
+      error = checkError(element[0], element[1]);
+      console.log(error)
+      if (error !== "ok") {
+        seterrorMsg(error)
+        regexError = true;
+        return
+      } else if (error == "ok") {
+        seterrorMsg("")
+        regexError = false;
       }
+    }
+
+    //Policy checkbox validation
+    if (!checked) {
+      seterrorMsg("Please confirm you are 18 or older to submit")
+      ageError = true;
+    } else {
+      seterrorMsg("")
+      ageError = false;
+    }
+
+
+    if (!fileError && !regexError && !passMisError && !passLengthError && !ageError) {
+
+      let config = {
+        headers: { Authorization: `Bearer 272bb9d6b58b6ee89263edb23a760ce0dbf6a856` }
+      }
+      let imgbody = {
+        image: fileData
+      }
+      imgURL = await axios.post('https://api.imgur.com/3/image', imgbody, config)
+
+
+
+      console.log("despues", imgURL);
+      let body = {
+        ownerId: "623a1a762be74bc5a33f6df5",
+        ownerNickname: "JaviDaFacker",
+        title: postData.title,
+        img: imgURL.data.data.link,
+        text: postData.description,
+        keywords: ["prueba", "prueba2"]
+      }
+      let result;
+
+
+      result = await axios.post("https://socialmeme.herokuapp.com/posts/create", body)
+        .then(() => {
+          setTimeout(() => {
+            setMsgLength("The post has been created")
+            setPostSaved(result.data);
+            setTimeout(() => {
+              clearHooks();
+            }, 5000)
+          }, 1500)
+        });
+
     }
   }
 
@@ -228,7 +225,7 @@ export const PostForm = (props) => {
         onChange={(event) => setChecked(event.currentTarget.checked)}
       />
 
-      <Button className='submitBttn' type="submit" onClick={() => {createPost()}}>Submit</Button>
+      <Button className='submitBttn' type="submit" onClick={() => { createPost() }}>Submit</Button>
       <br></br>
       <span className='errorMsg'>{errorMsg}</span>
       <br></br>
