@@ -36,6 +36,15 @@ const Login = () => {
     const [positionJoinText, SetPositionJoinText] = useState("animationTextStart");
     const [positionJoinTextClass, SetPositionJoinTextClass] = useState("join_text");
 
+    // enter button
+    const [enterButtonDisappearing, setEnterButtonDisappearing] = useState("");
+    const [enterButtonClass, setEnterButtonClass] = useState("container_enter_button");
+
+    // login forms
+    const [loginFormsAnimation, setLoginFormsAnimation] = useState("");
+    const [loginFormsClass, setLoginFormsClass] = useState("container_login_forms_off")
+
+
     // FUNCTIONS
 
     // Function that swaps register/login components
@@ -68,12 +77,28 @@ const Login = () => {
         SetPositionMemeworkText("animationMemeworkTextEnd")
         SetPositionJoinText("animationJoinTextEnd")
 
+        setEnterButtonDisappearing("animationEnterButtonDisappearing")
+
         setTimeout(() => {
             SetPositionLogoClass("main_logo_end")
             SetPositionSplashClass("splash_logo_end")
+          }, 2900)
+
+          setTimeout(() => {
             SetPositionMemeworkTextClass("memework_text_end")
             SetPositionJoinTextClass("join_text_end")
-          }, 2900)
+          }, 2000)
+
+          setTimeout(() => {
+            setEnterButtonClass("container_enter_button_off")
+          }, 900)
+
+        //   setTimeout that shows the forms
+
+          setTimeout(() => {
+              setLoginFormsAnimation("")
+              setLoginFormsClass("container_login_forms")
+          }, 500)
         
 
     }
@@ -92,14 +117,14 @@ const Login = () => {
                 <MemeworkSvg className={positionMemeworkTextClass} id={positionMemeworkText}/>
                 {/* <JoinSvg className='join_text' id="animationTextStart"/> */}
                 <JoinSvg className={positionJoinTextClass} id={positionJoinText}/>
-                <div className="container_enter_button">
+                <div className={enterButtonClass} id={enterButtonDisappearing}>
                     <div className="enter_button" onClick={()=>{hideLogoShowInputs()}}>Enter</div>
                 </div>
 
             </div>
             {/* HERE WE HAVE THE BUTTON THAT SWITCHES LOGIN/REGISTER FORMS AND THE FORMS */}
 
-            <div className="container_login_forms">
+            <div className={loginFormsClass} id={loginFormsAnimation}>
 
                 <div className="box_login_register_button" id="animationButtonSwitch">
                     <div className="login_register_button" id={animButton} style={{ display: displayRegisterForm }} onClick={() => swapButton()}>Already an user?<br />Log here</div>
