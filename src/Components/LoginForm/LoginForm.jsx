@@ -6,6 +6,10 @@ import { TextInput, Checkbox, Button } from '@mantine/core';
 import { useForm } from '@mantine/hooks';
 import axios from 'axios';
 
+//REDUX...
+import { connect } from 'react-redux';
+import { LOGIN } from '../../redux/types';
+
 export const LoginForm = (props) => {
   let navigate = useNavigate();
   let regexError;
@@ -42,7 +46,7 @@ export const LoginForm = (props) => {
 
   }
 
-  const register = async () => {
+  const login = async () => {
 
     let fieldsArr = Object.entries(userData);
     let error = "";
@@ -70,13 +74,14 @@ export const LoginForm = (props) => {
     if (!regexError && !passMisError && !passLengthError && !ageError) {
       try {
 
-        result = await axios.post("https://socialmeme.herokuapp.com/users/register", body)
+        result = await axios.post("https://socialmeme.herokuapp.com/users/login", body)
 
-        if (result.data != "This user already exists in the database") {
+        if (result.data.token) {
           setTimeout(() => {
-            setMsgLength(result.data)
+            setMsgLength(`Welcome again ${result.data.user[0].nickname}`);
 
 
+            props.dispatch({ type: LOGIN, payload: result.data });
             setTimeout(() => {
               clearHooks();
             }, 5000)
@@ -89,7 +94,7 @@ export const LoginForm = (props) => {
 
 
       } catch (error) {
-        console.log("Register error", error)
+        console.log("Login error", error)
       }
     }
   }
@@ -128,7 +133,7 @@ export const LoginForm = (props) => {
         className="register_form_inputs"
       />
 
-      <Button className='submitBttn' id="login_form_button" type="submit" onClick={() => register()}>Submit</Button>
+      <Button className='submitBttn' id="login_form_button" type="submit" onClick={() => login()}>Submit</Button>
       <br></br>
       <span className='errorMsg'>{errorMsg}</span>
       <br></br>
@@ -138,4 +143,4 @@ export const LoginForm = (props) => {
     </>
   )
 }
-export default LoginForm;
+export default connect()(LoginForm);
