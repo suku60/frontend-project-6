@@ -13,7 +13,7 @@ const Home = () => {
     // HOOKS
     // memes
     const [memes, setMemes] = useState([]);
-    const [page, setPage] = useState(0);
+    const [page, setPage] = useState(1);
 
     // stars
     const [star1, setStar1] = useState("var(--color-vapor-3-3");
@@ -27,7 +27,7 @@ const Home = () => {
 
     // USEEFFECTS
     useEffect(() => {
-        bringMemes(0);
+        bringMemes(1);
 
     }, [])
 
@@ -86,6 +86,13 @@ const Home = () => {
     }
 
     // Local functions
+
+    //Load more memes (change page)
+    const loadMore = () => {
+        bringMemes(page + 1);
+    }
+
+
     // Axios call to map images
     const bringMemes = async (page) => {
 
@@ -167,7 +174,7 @@ const Home = () => {
                                                 <div className='accordionContent'>
                                                     {images.comments.map(elmnt => {
                                                         return (
-                                                            <div className='meme_comment_box'>
+                                                            <div className='meme_comment_box' key='elmnt.commentId'>
                                                                 <div className="meme_comment_owner">{elmnt.ownerNickname}</div>
                                                                 <div className="meme_comment_created">{elmnt.created}</div>
                                                                 <div className="meme_comment_content">{elmnt.comment}</div>
@@ -203,7 +210,10 @@ const Home = () => {
                                 </div>
                             )
                         })}
-                        <div className='memes_loadMore_bttn'>Load More</div>
+                        <div 
+                        className='memes_loadMore_bttn'
+                        onClick={() => {loadMore()}}
+                        >Load More</div>
                     </div>
                 </div>
             </div>
