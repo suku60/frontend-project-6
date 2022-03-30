@@ -71,9 +71,12 @@ const Login = () => {
         setTimeout(() => {
             SetPositionLogoClass("main_logo_end")
             SetPositionSplashClass("splash_logo_end")
+          }, 2900)
+
+          setTimeout(() => {
             SetPositionMemeworkTextClass("memework_text_end")
             SetPositionJoinTextClass("join_text_end")
-          }, 2900)
+          }, 2000)
         
 
     }
