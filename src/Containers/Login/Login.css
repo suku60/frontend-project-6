@@ -525,6 +525,7 @@ height: fit-content;
 border-radius: var(--border-radius-4);
 
 position: absolute;
+bottom: 10%;
 
 background: linear-gradient(to left, var(--color-vapor-2-1), var(--color-vapor-3-1));
 
@@ -536,7 +537,9 @@ align-items: center;
 
 cursor: pointer; 
 
-transition: var(--transition-2)
+transition: var(--transition-2);
+
+z-index: 150;
 
 }
 
