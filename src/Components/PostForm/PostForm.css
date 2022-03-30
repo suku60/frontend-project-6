@@ -1,0 +1,11 @@
+.errorMsg{
+    color: red;
+}
+
+.okMsg{
+    color: green;
+}
+
+.submitBttn {
+    margin-top: 3%;
+}
