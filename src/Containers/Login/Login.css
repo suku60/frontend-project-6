@@ -35,7 +35,7 @@
 }
 
 /* Main Logo Animations */
-/* web start */
+/* logo start */
 #animationLogoStart {
     animation: sizing 2s normal,
                positioning 2s normal,
@@ -49,7 +49,7 @@
 }
 
 @keyframes transforming {
-    from{transform:rotate(20deg)}
+    from{transform:rotate(320deg)}
     to{transform: rotate(0deg)    }
 
 }
@@ -69,15 +69,21 @@
     }
 }
 
-/* splash */
-#animationSplashStart {
+/* logo after pressing Enter */
+
+#animationLogoEnd {
+    animation: positioningEnd 2.9s normal;
+}
+
+@keyframes positioningEnd {
+    from{height: 67vh;}
+    to{height: 47vh;}
+}
 
 
-    animation: sizingSplash 2s normal,
-               transformingSplash 2.9s  normal,
-               
-               positioningSplash 2.9s 3s normal,
-               opacitySplash 3s  normal;
+/* splash start */
+
+#animationSplashStart {  animation: opacitySplash 3s  normal;
 
 }
 
@@ -87,7 +93,7 @@
 
 }
 
-/* text */
+/* text start */
 #animationTextStart {
 
 
@@ -107,6 +113,8 @@
     to{opacity:100%;    }
 
 }
+
+
 
 #login_box { 
     flex-direction: row;
@@ -376,7 +384,7 @@
 .main_logo {
 
     height: 67vh;
-
+/* height:47vh when we click enter / default 67vh*/
 
     left: 35vw;
     top: 8vh;
@@ -389,11 +397,15 @@
 
 .splash_logo {
     
-    height: 100em;
+    height: 50em;
     width: 90em;
 
-    /* left: 35vw;
-    top: 8vh; */
+    position: relative;
+
+    /* width 40em & left: 0vw when we click enter  / default width: 90em & left:1vw;*/
+
+    left: 1vw;
+    top: 5vh;
 
     opacity: 100%;
 
@@ -427,6 +439,7 @@
 
     left: 47.5vw;
     top: 59vh;
+    /* top: 39vh when we click Enter / default: 59vh */
 
     letter-spacing: -1px;
 
@@ -434,12 +447,14 @@
 
 
 }
+
 .join_text {
 
     
     left: 57vw;
 
     top: 63vh;
+    /* top: 43vh when we click Enter / default: 63vh */
 
     letter-spacing: -.5px;
 }
@@ -467,6 +482,7 @@ cursor: pointer;
 transition: var(--transition-2)
 
 }
+
 .container_enter_button:hover {
 
     background-color: var(--color-vapor-3-2); 
