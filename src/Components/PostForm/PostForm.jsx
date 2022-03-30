@@ -6,6 +6,7 @@ import { checkError } from '../../utils';
 import { TextInput, Checkbox, Button } from '@mantine/core';
 import { useForm } from '@mantine/hooks';
 import axios from 'axios';
+import { connect } from 'react-redux';
 
 export const PostForm = (props) => {
   let imgURL;
@@ -19,7 +20,8 @@ export const PostForm = (props) => {
   //1-Hooks
   const [postData, setpostData] = useState({
     title: "",
-    description: ""
+    description: "",
+    keywords: ""
   });
   const [postSaved, setPostSaved] = useState([]);
   const [msgLength, setMsgLength] = useState("");
@@ -131,17 +133,17 @@ export const PostForm = (props) => {
       }
       // imgURL = await axios.post('https://api.imgur.com/3/image', imgbody, config)
 
+      let keywordsArr = postData.keywords.split(",");
 
-
-
+      console.log(props.credentials)
       let body = {
-        ownerId: "623a1a762be74bc5a33f6df5",
-        ownerNickname: "JaviDaFacker",
+        ownerId: props.credentials.user[0]._id,
+        ownerNickname: props.credentials.user[0].nickname,
         title: postData.title,
         img: "https://i.imgur.com/wl1HPGG.png",
         // img: imgURL.data.data.link,
         text: postData.description,
-        keywords: ["prueba", "prueba2"]
+        keywords: keywordsArr
       }
       let result;
 
@@ -211,11 +213,23 @@ export const PostForm = (props) => {
         <TextInput
           required
           label="Description"
-          placeholder="Your description of the meme "
+          placeholder="Description of the meme "
           onChange={(e) => { fillForm(e) }}
           name="description"
           value={postData.description}
-        // onClick={uploadImage}
+          classNames={{
+            input: 'descriptionField',
+            // label: 'descriptionField',
+        }}
+        />
+
+        <TextInput
+          required
+          label="KeyWords"
+          placeholder="separated by comma"
+          onChange={(e) => { fillForm(e) }}
+          name="keywords"
+          value={postData.keywords}
         />
 
 
@@ -239,4 +253,6 @@ export const PostForm = (props) => {
     </>
   )
 }
-export default PostForm;
+export default connect((state) => ({
+  credentials: state.credentials
+}))(PostForm);
