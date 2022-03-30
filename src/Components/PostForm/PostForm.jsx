@@ -3,7 +3,7 @@ import { useDropzone } from 'react-dropzone'
 import { useNavigate } from 'react-router-dom';
 import './PostForm.css';
 import { checkError } from '../../utils';
-import { TextInput, Checkbox, Button } from '@mantine/core';
+import { TextInput, Textarea, Checkbox, Button } from '@mantine/core';
 import { useForm } from '@mantine/hooks';
 import axios from 'axios';
 import { connect } from 'react-redux';
@@ -190,16 +190,6 @@ export const PostForm = (props) => {
       </>
       <div className='createPost_box_form'>
 
-
-        <TextInput
-          required
-          label="Title"
-          placeholder=""
-          onChange={(e) => { fillForm(e) }}
-          name="title"
-          value={postData.title}
-        />
-
         <>
           <div className='dropzoneContainer'>
             <div {...getRootProps()}>
@@ -212,15 +202,26 @@ export const PostForm = (props) => {
 
         <TextInput
           required
+          label="Title"
+          placeholder=""
+          onChange={(e) => { fillForm(e) }}
+          name="title"
+          value={postData.title}
+          classNames={{
+            input: 'titleField',
+          }}
+        />
+
+
+
+        <Textarea
+          required
           label="Description"
           placeholder="Description of the meme "
           onChange={(e) => { fillForm(e) }}
           name="description"
           value={postData.description}
-          classNames={{
-            input: 'descriptionField',
-            // label: 'descriptionField',
-        }}
+         
         />
 
         <TextInput
@@ -230,6 +231,9 @@ export const PostForm = (props) => {
           onChange={(e) => { fillForm(e) }}
           name="keywords"
           value={postData.keywords}
+          classNames={{
+            input: 'field',
+          }}
         />
 
 

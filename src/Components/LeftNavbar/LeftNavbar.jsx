@@ -26,17 +26,17 @@ const LeftNavbar = (props) => {
 
 
 
-const renderAdminBttn = () => {
-    if(!props.credentials.token){
-        return (
-            <></>
-        )
-    } else if (props.credentials.token && props.credentials.role === "admin"){
-        return (
-            <NavigationButton viewNameDisplay={"admin"} pathUrl={"/admin"} />
-        )
+    const renderAdminBttn = () => {
+        if (!props.credentials.token) {
+            return (
+                <></>
+            )
+        } else if (props.credentials.token && props.credentials.role === "admin") {
+            return (
+                <NavigationButton viewNameDisplay={"admin"} pathUrl={"/admin"} />
+            )
+        }
     }
-}
 
     const renderNewPostBttn = () => {
         if (!props.credentials.token) {
@@ -72,7 +72,7 @@ const renderAdminBttn = () => {
     const renderProfileBttn = () => {
         if (!props.credentials.token) {
             return (
-                <NavigationButton viewNameDisplay={"profile"} pathUrl={"/profile"} buttonIcon={<ProfileSvg />} />
+                <></>
             )
 
         } else {
