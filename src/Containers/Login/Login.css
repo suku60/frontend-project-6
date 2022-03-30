@@ -70,7 +70,6 @@
 }
 
 /* logo after pressing Enter */
-
 #animationLogoEnd {
     animation: positioningEnd 2.9s normal;
 }
@@ -82,7 +81,6 @@
 
 
 /* splash start */
-
 #animationSplashStart {  animation: opacitySplash 3s  normal;
 
 }
@@ -93,12 +91,24 @@
 
 }
 
+/* splash end */
+#animationSplashEnd {  animation: positioningSplashEnd 3s  normal;
+
+}
+
+@keyframes positioningSplashEnd {
+    from{width: 90em;
+    left: 1vw;}
+
+    to{width:40em; 
+    left: 2vw;}
+}
+
 /* text start */
 #animationTextStart {
 
 
-    animation: sizingText 2s normal,
-               opacityText 4s  normal;
+    animation: opacityText 4s  normal;
 
 }
 
@@ -110,8 +120,34 @@
 
 @keyframes opacityText {
     from{opacity: 0%;}
-    to{opacity:100%;    }
+    to{opacity:100%;}
 
+}
+
+#animationMemeworkTextEnd {
+
+    animation: positionMemeworkTextEnd 2s  normal;
+
+
+
+}
+
+@keyframes positionMemeworkTextEnd {
+    from{top: 59vh}
+    to{top: 39vh}
+}
+
+#animationJoinTextEnd {
+
+    animation: positionJoinTextEnd 2s  normal;
+
+
+
+}
+
+@keyframes positionJoinTextEnd {
+    from{top: 63vh}
+    to{top: 43vh}
 }
 
 
