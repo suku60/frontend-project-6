@@ -1,10 +1,11 @@
 import React, {useEffect, useState, Component} from 'react';
 import { useNavigate, Navigate } from 'react-router-dom';
 import NavigationButton from '../../Components/NavigationButton/NavigationButton';
+import {Helmet} from 'react-helmet';
 
 import './Profile.css';
 
-const Profile = () => {
+const Profile = (props) => {
     // HOOKS
 
     // FUNCTIONS
@@ -15,6 +16,11 @@ const Profile = () => {
 
 return (
     <div className="container_box" id="profile_box">
+         <div>
+                <Helmet>
+                    <title>tomeme | {props?.credentials?.user?.nickname}</title>
+                </Helmet>
+            </div>
 
 {/* PROFILE PIC AND DATA */}
         <div className="container_profile_data" id="animationContainerFromTop" onScroll={()=>easeProfileDataOut()}>

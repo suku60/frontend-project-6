@@ -10,6 +10,7 @@ import { showNotification } from '@mantine/notifications';
 import { connect } from 'react-redux';
 
 import './Home.css';
+import { Helmet } from 'react-helmet';
 
 const Home = (props) => {
     let desiredView = useNavigate();
@@ -148,6 +149,11 @@ const Home = (props) => {
 
     return (
         <div className="container_box" id="home_box">
+            <div>
+                <Helmet>
+                    <title>tomeme | Home</title>
+                </Helmet>
+            </div>
 
 
             {/* FIXED HOME TRANSPARENCY  */}

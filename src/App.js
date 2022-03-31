@@ -6,6 +6,7 @@ import Profile from './Containers/Profile/Profile';
 import LeftNavbar from './Components/LeftNavbar/LeftNavbar';
 import RightNavbar from './Components/RightNavbar/RightNavbar';
 import  Search from './Containers/Search/Search';
+import {Helmet} from 'react-helmet';
 
 import { NotificationsProvider } from '@mantine/notifications';
 import { MantineProvider } from '@mantine/core';
@@ -15,6 +16,12 @@ function App() {
     <MantineProvider>
     <NotificationsProvider>
     <div className="App">
+    <div>
+                <Helmet>
+                    <title>tomeme</title>
+                </Helmet>
+            </div>
+
       <BrowserRouter>
       <LeftNavbar/>
       
