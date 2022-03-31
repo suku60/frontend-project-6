@@ -9,6 +9,7 @@ import axios from 'axios';
 //REDUX...
 import { connect } from 'react-redux';
 import { LOGIN } from '../../redux/types';
+import { showNotification } from '@mantine/notifications';
 
 export const LoginForm = (props) => {
   let navigate = useNavigate();
@@ -78,13 +79,20 @@ export const LoginForm = (props) => {
 
         if (result.data.token) {
           setTimeout(() => {
-            setMsgLength(`Welcome again ${result.data.user[0].nickname}`);
+            // setMsgLength(`Welcome again ${result.data.user[0].nickname}`);
 
+            showNotification({
+              title: `Welcome again ${result.data.user[0].nickname}`,
+              // message: 'Hey there, your code is awesome! 🤥',
+              autoClose: 3000
+            })
+
+            navigate("/home")
 
             props.dispatch({ type: LOGIN, payload: result.data });
             setTimeout(() => {
               clearHooks();
-            }, 5000)
+            }, 4000)
           }, 1500)
         } else {
 
