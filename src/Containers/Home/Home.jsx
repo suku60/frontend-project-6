@@ -30,6 +30,10 @@ const Home = (props) => {
     // topline from memebox
     const topline = useRef(null);
 
+    // post data
+    const [postDataDisplay, setPostDataDisplay] = useState("flex");
+    
+
     // USEEFFECTS
     useEffect(() => {
         bringMemes(1);
@@ -147,6 +151,21 @@ const Home = (props) => {
        
     }
 
+    const HideShowPostData = () => {
+
+        if(postDataDisplay === "flex"){
+            
+        setPostDataDisplay("none")
+        }else if (postDataDisplay === "none")
+        {
+            
+        setPostDataDisplay("flex")
+
+        }
+
+
+    }
+
     return (
         <div className="container_box" id="home_box">
             <div>
@@ -176,11 +195,11 @@ const Home = (props) => {
                                     <img className='meme_photo' src={images.img} alt={images.title} />
                                     <div className="meme_card_data">
 
-                                        <div className="meme_name">{images.title}
+                                        <div className="meme_name" style={{display: postDataDisplay}}>{images.title}
                                         </div>
-                                        <div className="meme_name">{images.text}
+                                        <div className="meme_name" style={{display: postDataDisplay}}>{images.text}
                                         </div>
-                                        <div className="meme_rating_action" onMouseOver={() => OffBackgroundStar()}>
+                                        <div className="meme_rating_action"  style={{display: postDataDisplay}} onMouseOver={() => OffBackgroundStar()}>
                                             <div
                                                 className="meme_rating_star"
                                                 style={{ backgroundColor: star1 }}
@@ -239,11 +258,11 @@ const Home = (props) => {
                                                 />
                                             </div>
                                         </div>
-                                        <div className="meme_rating">rating: {images.ratingAverage}
+                                        <div className="meme_rating" style={{display: postDataDisplay}}>rating: {images.ratingAverage}
                                         </div>
-                                        <div className="meme_creator">meme done by: {images.ownerNickname}
+                                        <div className="meme_creator" style={{display: postDataDisplay}}>meme done by: {images.ownerNickname}
                                         </div>
-                                        <Accordion className='meme_comments_accordion' iconPosition="right" iconSize={0} offsetIcon={false}>
+                                        <Accordion className='meme_comments_accordion' iconPosition="right" iconSize={0} offsetIcon={false} onClick={()=>HideShowPostData()}>
                                             <Accordion.Item label={`Comments`}>
                                                 <div className='accordionContent'>
                                                     {images.comments.map(elmnt => {

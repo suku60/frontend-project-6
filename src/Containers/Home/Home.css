@@ -339,6 +339,8 @@ height: 1em;
     border: solid;
     border-radius: var(--border-radius-3) var(--border-radius-3) var(--border-radius-3) var(--border-radius-3);
     margin-bottom: 3%;
+
+    width: 36vw;
 }
 .meme_comment_owner {
     font-weight: 800;
