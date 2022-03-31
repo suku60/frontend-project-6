@@ -201,7 +201,7 @@ export const RegisterForm = (props) => {
 
           setTimeout(() => {
             clearHooks();
-            navigate("/")
+            navigate("/profile")
             
           }, 3000);
         } else {
