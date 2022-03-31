@@ -134,7 +134,7 @@ const Home = (props) => {
                 raterNickname: props.credentials.user[0].nickname,
                 rate: rating
             }
-
+            console.log(body);
             let response = await axios.put(`https://socialmeme.herokuapp.com/posts/actions/addRating`, body);
 
             console.log(response.data);

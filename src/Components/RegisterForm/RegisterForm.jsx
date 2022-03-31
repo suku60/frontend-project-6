@@ -10,6 +10,7 @@ import { showNotification } from '@mantine/notifications';
 export const RegisterForm = (props) => {
   let navigate = useNavigate();
   let regexError;
+  let nickLengthError;
   let passLengthError;
   let passMisError;
   let ageError;
@@ -71,7 +72,7 @@ export const RegisterForm = (props) => {
           title: "Passwords must match",
           autoClose: 1000
         })
-        )
+      )
     } else if (e.target.name == "password2" && e.target.value !== userData.password) {
       return (
         // setMsgMis("Passwords must match")
@@ -87,26 +88,26 @@ export const RegisterForm = (props) => {
 
 
   }
-  
-  
+
+
   // Resetting user data
-    const clearHooks = () => {
-      setuserData({
-        nickname: "",
-        email: "",
-        password: "",
-        password2: "",
-        // avatar:,
-      })
-  
-      setMsgLength("");
-      setMsgMis("");
-      seterrorMsg("");
-  
-      setChecked(false);
-    }
-  
-    // Register function / Axios call
+  const clearHooks = () => {
+    setuserData({
+      nickname: "",
+      email: "",
+      password: "",
+      password2: "",
+      // avatar:,
+    })
+
+    setMsgLength("");
+    setMsgMis("");
+    seterrorMsg("");
+
+    setChecked(false);
+  }
+
+  // Register function / Axios call
   const register = async () => {
 
     let fieldsArr = Object.entries(userData);
@@ -126,8 +127,23 @@ export const RegisterForm = (props) => {
         regexError = false;
       }
     }
-  
 
+    // Nickname length validation
+    if ((userData.nickname.length < 3) || (userData.nickname.length > 12)) {
+      // seterrorMsg("nickname must be between 3 and 12 characters")
+      showNotification({
+        title: "Nickname must be between 4 and 10 characters",
+        // message: 'Hey there, your code is awesome! 🤥',
+        autoClose: 3000
+      })
+      nickLengthError = true;
+    } else {
+      if (seterrorMsg == "") {
+        seterrorMsg("")
+        nickLengthError = false;
+      }
+
+    }
 
     // Password mismatch validation
     if (userData.password !== userData.password2) {
@@ -185,7 +201,7 @@ export const RegisterForm = (props) => {
       followed: []
     }
     let result;
-    if (!regexError && !passMisError && !passLengthError && !ageError) {
+    if (!regexError && !nickLengthError && !passMisError && !passLengthError && !ageError) {
       try {
 
         result = await axios.post("https://socialmeme.herokuapp.com/users/register", body)
@@ -202,7 +218,7 @@ export const RegisterForm = (props) => {
           setTimeout(() => {
             clearHooks();
             navigate("/profile")
-            
+
           }, 3000);
         } else {
 
@@ -270,7 +286,7 @@ export const RegisterForm = (props) => {
         onChange={(e) => { fillForm(e) }}
         name="password2"
         value={userData.password2}
-        className="register_form_inputs" 
+        className="register_form_inputs"
       />
 
       <Checkbox
