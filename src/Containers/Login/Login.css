@@ -201,7 +201,7 @@ display: none;}
     /* position:fixed;
     z-index: 10; */
 
-    height: 50vh;
+    height: 30vh;
     width: 40vw;
 
     background-color: aquamarine;
@@ -231,7 +231,7 @@ display: none;}
     justify-content: space-between;
     align-items: center;
 
-    height: 50vh;
+    height: 70vh;
     width: 40vw;
 
     background-color: transparent;
@@ -415,6 +415,8 @@ display: none;}
     
     
     border-radius: var(--border-radius-2);
+
+    margin-bottom: -10vh;
 
     /* transition: 3s; */
     

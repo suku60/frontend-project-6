@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
+import {Helmet} from 'react-helmet';
+
 
 import {ReactComponent as UserResultSvg} from '../../assets/svg/userresult.svg'
 
@@ -182,6 +184,12 @@ const Search = () => {
 
     return (
         <div className="container_box" id="search_box">
+             <div>
+                <Helmet>
+                    <title>tomeme | Search </title>
+                </Helmet>
+            </div>
+
 
 
             {/* FIXED SEARCH TRANSPARENCY  */}

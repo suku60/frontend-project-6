@@ -6,6 +6,7 @@ import Profile from './Containers/Profile/Profile';
 import LeftNavbar from './Components/LeftNavbar/LeftNavbar';
 import RightNavbar from './Components/RightNavbar/RightNavbar';
 import  Search from './Containers/Search/Search';
+import {Helmet} from 'react-helmet';
 
 import { NotificationsProvider } from '@mantine/notifications';
 import { MantineProvider } from '@mantine/core';
@@ -15,12 +16,20 @@ function App() {
     <MantineProvider>
     <NotificationsProvider>
     <div className="App">
+    <div>
+                <Helmet>
+                    <title>tomeme</title>
+                </Helmet>
+            </div>
+
       <BrowserRouter>
       <LeftNavbar/>
       
       <Routes>
           {/* not logged users: will be allowed to see home only. Othewise, pop up the login or register component */}
           {/* logged users: wll be able to see: dashboard(home2) / profile/:id / */}
+          
+      <Route path="/*" element={<Home/>}/>
           <Route path="/" element={<Login/>}/>
           <Route path="/home" element={<Home/>}/>
           <Route path="/profile" element={<Profile/>}/>

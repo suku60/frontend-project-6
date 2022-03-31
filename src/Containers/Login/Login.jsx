@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { Helmet } from 'react-helmet';
 
 import './Login.css';
 
@@ -118,6 +119,11 @@ const Login = (props) => {
 
     return (
         <div className="container_box" id="login_box">
+             <div>
+                <Helmet>
+                    <title>tomeme | Login</title>
+                </Helmet>
+            </div>
 
             {/* FIXED WELCOME MEMES AND LOGO  */}
             <div className="container_welcome_images" id="animationContainerFromTop">
