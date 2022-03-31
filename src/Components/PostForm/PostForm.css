@@ -9,3 +9,71 @@
 .submitBttn {
     margin-top: 3%;
 }
+
+
+
+
+/* Mantine postform */
+.mantine-1abbsss {
+    margin-inline: 1em;
+    
+
+    padding-right: .9em;
+    
+    
+    background: linear-gradient(to left, var(--color-vapor-2-1), var(--color-vapor-3-1));
+
+    box-shadow: .9em .9em .9em rgba(0, 0, 0, 0.267);
+    
+    
+    border-radius: var(--border-radius-2);
+
+}
+
+/* Image Dropzone  */
+.dropzoneContainer{
+    margin-top: 5%;
+    margin-bottom: 5%;
+
+    border:dotted;
+    height: 5em;
+    width: 100%;
+    background: linear-gradient(to left top, var(--color-vapor-2-1), var(--color-vapor-1-1));
+
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+.dropzoneContainer:hover{
+    background: linear-gradient(to left top, var(--color-vapor-1-1), var(--color-vapor-2-1));
+    cursor: pointer;
+}
+
+
+/* Mantine fields custom width */
+.field {
+    width: 100%;
+}
+
+/* Mantine description field */
+.mantine-wcnwz0{
+    background-color: transparent;
+    background-color: var(--color-vapor-3-1);
+
+    
+  font-family: 'Roboto Condensed', sans-serif;
+
+  height: 10em;
+  width: 100%;
+  /* width: 20em; */
+
+    margin-right:0em;
+
+    border-radius: var(--border-radius-4);
+}
+.mantine-wcnwz0:focus, .mantine-wcnwz0:focus-within{
+    background-color: var(--color-vapor-3-2);
+}

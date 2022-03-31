@@ -3,9 +3,10 @@ import { useDropzone } from 'react-dropzone'
 import { useNavigate } from 'react-router-dom';
 import './PostForm.css';
 import { checkError } from '../../utils';
-import { TextInput, Checkbox, Button } from '@mantine/core';
+import { TextInput, Textarea, Checkbox, Button } from '@mantine/core';
 import { useForm } from '@mantine/hooks';
 import axios from 'axios';
+import { connect } from 'react-redux';
 
 export const PostForm = (props) => {
   let imgURL;
@@ -19,7 +20,8 @@ export const PostForm = (props) => {
   //1-Hooks
   const [postData, setpostData] = useState({
     title: "",
-    description: ""
+    description: "",
+    keywords: ""
   });
   const [postSaved, setPostSaved] = useState([]);
   const [msgLength, setMsgLength] = useState("");
@@ -87,14 +89,14 @@ export const PostForm = (props) => {
 
 
     //VALIDATE INPUT ERRORS
-    //File validation
-    if (fileData == "") {
-      seterrorMsg("Please upload an image")
-      fileError = true;
-    } else {
-      seterrorMsg("")
-      fileError = false;
-    }
+    // //File validation
+    // if (fileData == "") {
+    //   seterrorMsg("Please upload an image")
+    //   fileError = true;
+    // } else {
+    //   seterrorMsg("")
+    //   fileError = false;
+    // }
 
     //Inputs regex validation
     for (let element of fieldsArr) {
@@ -129,18 +131,19 @@ export const PostForm = (props) => {
       let imgbody = {
         image: fileData
       }
-      imgURL = await axios.post('https://api.imgur.com/3/image', imgbody, config)
+      // imgURL = await axios.post('https://api.imgur.com/3/image', imgbody, config)
 
+      let keywordsArr = postData.keywords.split(",");
 
-
-      console.log("despues", imgURL);
+      console.log(props.credentials)
       let body = {
-        ownerId: "623a1a762be74bc5a33f6df5",
-        ownerNickname: "JaviDaFacker",
+        ownerId: props.credentials.user[0]._id,
+        ownerNickname: props.credentials.user[0].nickname,
         title: postData.title,
-        img: imgURL.data.data.link,
+        img: "https://i.imgur.com/wl1HPGG.png",
+        // img: imgURL.data.data.link,
         text: postData.description,
-        keywords: ["prueba", "prueba2"]
+        keywords: keywordsArr
       }
       let result;
 
@@ -185,54 +188,75 @@ export const PostForm = (props) => {
         {<pre>{JSON.stringify(msgMis, null, 2)}</pre>}
         {<pre>{JSON.stringify(errorMsg, null, 2)}</pre>} */}
       </>
+      <div className='createPost_box_form'>
 
-      <TextInput
-        required
-        label="Title"
-        placeholder=""
-        onChange={(e) => { fillForm(e) }}
-        name="title"
-        value={postData.title}
-      />
+        <>
+          <div className='dropzoneContainer'>
+            <div {...getRootProps()}>
+              <input {...getInputProps()} />
 
-      <>
-        <div className='dropzoneContainer'>
-          <div {...getRootProps()}>
-            <input {...getInputProps()} />
-
-            <p>Drop your meme image or gif here ...</p>
+              <p>Drop your meme image or gif here ...</p>
+            </div>
           </div>
-        </div>
-      </>
+        </>
 
-      <TextInput
-        required
-        label="Description"
-        placeholder="Your description of the meme "
-        onChange={(e) => { fillForm(e) }}
-        name="description"
-        value={postData.description}
-      // onClick={uploadImage}
-      />
+        <TextInput
+          required
+          label="Title"
+          placeholder=""
+          onChange={(e) => { fillForm(e) }}
+          name="title"
+          value={postData.title}
+          classNames={{
+            input: 'titleField',
+          }}
+        />
 
 
-      <Checkbox
-        mt="md"
-        label="Confirm I accept the policies"
-        required
-        name="confirm"
-        checked={checked}
-        onChange={(event) => setChecked(event.currentTarget.checked)}
-      />
 
-      <Button className='submitBttn' type="submit" onClick={() => { createPost() }}>Submit</Button>
-      <br></br>
-      <span className='errorMsg'>{errorMsg}</span>
-      <br></br>
-      <span className='okMsg'>{msgLength}</span>
-      <br></br>
-      <span className='okMsg'>{msgMis}</span>
+        <Textarea
+          required
+          label="Description"
+          placeholder="Description of the meme "
+          onChange={(e) => { fillForm(e) }}
+          name="description"
+          value={postData.description}
+         
+        />
+
+        <TextInput
+          required
+          label="KeyWords"
+          placeholder="separated by comma"
+          onChange={(e) => { fillForm(e) }}
+          name="keywords"
+          value={postData.keywords}
+          classNames={{
+            input: 'field',
+          }}
+        />
+
+
+        <Checkbox
+          mt="md"
+          label="Confirm I accept the policies"
+          required
+          name="confirm"
+          checked={checked}
+          onChange={(event) => setChecked(event.currentTarget.checked)}
+        />
+
+        <Button className='submitBttn' type="submit" onClick={() => { createPost() }}>Submit</Button>
+        <br></br>
+        <span className='errorMsg'>{errorMsg}</span>
+        <br></br>
+        <span className='okMsg'>{msgLength}</span>
+        <br></br>
+        <span className='okMsg'>{msgMis}</span>
+      </div>
     </>
   )
 }
-export default PostForm;
+export default connect((state) => ({
+  credentials: state.credentials
+}))(PostForm);

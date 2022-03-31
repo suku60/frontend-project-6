@@ -110,7 +110,7 @@ const Search = () => {
 
     const memesRender = () => {
         if (memesSearch.length !== 0) {
-            console.log(memesSearch);
+            // console.log(memesSearch);
             return (
                 <ScrollArea className='scrollArea'>
                     <Accordion className='accordion' iconPosition="right" iconSize={0} offsetIcon={false}>

@@ -7,8 +7,13 @@ import LeftNavbar from './Components/LeftNavbar/LeftNavbar';
 import RightNavbar from './Components/RightNavbar/RightNavbar';
 import  Search from './Containers/Search/Search';
 
+import { NotificationsProvider } from '@mantine/notifications';
+import { MantineProvider } from '@mantine/core';
+
 function App() {
   return (
+    <MantineProvider>
+    <NotificationsProvider>
     <div className="App">
       <BrowserRouter>
       <LeftNavbar/>
@@ -28,6 +33,9 @@ function App() {
       </BrowserRouter>
       
     </div>
+    </NotificationsProvider>
+    </MantineProvider>
+
   );
 }
 

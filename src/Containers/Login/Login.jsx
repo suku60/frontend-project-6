@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import './Login.css';
 
@@ -10,8 +11,13 @@ import {ReactComponent as JoinSvg} from '../../assets/svg/join_text.svg'
 
 import RegisterForm from '../../Components/RegisterForm/RegisterForm'
 import LoginForm from '../../Components/LoginForm/LoginForm'
-import { ScrollArea } from '@mantine/core';
-const Login = () => {
+import { ScrollArea, useMantineDefaultProps } from '@mantine/core';
+
+import { connect } from 'react-redux';
+
+
+const Login = (props) => {
+    let navigate = useNavigate();
 
     // HOOKS
 
@@ -44,6 +50,13 @@ const Login = () => {
     const [loginFormsAnimation, setLoginFormsAnimation] = useState("");
     const [loginFormsClass, setLoginFormsClass] = useState("container_login_forms_off")
 
+
+    // useEffect  
+    useEffect(() => {
+        if(props.credentials.token){
+            navigate("/home");
+        }
+    },[]);
 
     // FUNCTIONS
 
@@ -173,4 +186,6 @@ const Login = () => {
         </div>
     )
 }
-export default Login;
+export default connect((state) => ({
+    credentials: state.credentials
+  }))(Login);
