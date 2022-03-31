@@ -20,7 +20,6 @@ const Profile = (props) => {
         if(props.credentials?.token === ""){
             navigate("/");
         }
-        },[]);
 
     },[]);
 
