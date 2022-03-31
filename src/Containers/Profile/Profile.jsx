@@ -18,7 +18,7 @@ return (
     <div className="container_box" id="profile_box">
          <div>
                 <Helmet>
-                    <title>tomeme | {props?.credentials?.user?.nickname}</title>
+                    <title>tomeme | Profile</title>
                 </Helmet>
             </div>
 
