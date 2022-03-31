@@ -84,6 +84,8 @@ const LeftNavbar = (props) => {
 
 
 
+    if (!props.credentials.token) {
+        
     return (
         <div className='nav_box'>
             <div className="nav_container">
@@ -97,8 +99,8 @@ const LeftNavbar = (props) => {
                         </div>
 
                     </div>
-                    <NavigationButton viewNameDisplay={"home"} pathUrl={"/home"} buttonIcon={<HomeSvg />} />
-                    <NavigationButton viewNameDisplay={"search"} pathUrl={"/search"} buttonIcon={<SearchSvg />} />
+                    {/* <NavigationButton viewNameDisplay={"home"} pathUrl={"/home"} buttonIcon={<HomeSvg />} /> */}
+                    {/* <NavigationButton viewNameDisplay={"search"} pathUrl={"/search"} buttonIcon={<SearchSvg />} /> */}
                     {/* <NavigationButton viewNameDisplay={"login"} pathUrl={"/"}/> */}
                     {renderAdminBttn()}
                     <div className="navbar_logo">logout here</div>
@@ -113,6 +115,38 @@ const LeftNavbar = (props) => {
             </div>
         </div>
     )
+    }else{
+        return (
+            <div className='nav_box'>
+                <div className="nav_container">
+                    <div className="nav_items">
+                        <div className="navbar_logo_container">
+                            <div className="navbar_logo">
+                                <LogoSvg />
+                            </div>
+                            <div className="navbar_logo_text">
+                                tomeme
+                            </div>
+    
+                        </div>
+                        <NavigationButton viewNameDisplay={"home"} pathUrl={"/home"} buttonIcon={<HomeSvg />} />
+                        <NavigationButton viewNameDisplay={"search"} pathUrl={"/search"} buttonIcon={<SearchSvg />} />
+                        {/* <NavigationButton viewNameDisplay={"login"} pathUrl={"/"}/> */}
+                        {renderAdminBttn()}
+                        <div className="navbar_logo">logout here</div>
+                    </div>
+    
+                    <div className="nav_item_newPost" >
+                        {renderNewPostBttn()}
+                    </div>
+                    <div className="nav_item_profile">
+                        {renderProfileBttn()}
+                    </div>
+                </div>
+            </div>
+        )
+
+    }
 };
 
 export default connect((state) => ({
