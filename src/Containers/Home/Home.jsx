@@ -3,7 +3,7 @@ import axios from 'axios';
 import { Navigate, useNavigate } from 'react-router-dom';
 
 import { ReactComponent as StarSvg } from '../../assets/svg/star.svg'
-import { Accordion, Group, Button  } from '@mantine/core';
+import { Accordion, Group, Button } from '@mantine/core';
 import { showNotification } from '@mantine/notifications';
 
 
@@ -122,28 +122,38 @@ const Home = (props) => {
     }
 
     const ratePost = async (postId, rating) => {
-        if(props.credentials.token){
+        if (props.credentials.token) {
             let body = {
                 postId: postId,
-                raterId: props.credentials.user[0].id,
+                raterId: props.credentials.user[0]._id,
                 raterNickname: props.credentials.user[0].nickname,
                 rate: rating
             }
-    
+
             let response = await axios.put(`https://socialmeme.herokuapp.com/posts/actions/addRating`, body);
-            showNotification({
-                title: `Post rated with ${rating} tomatoes!`,
-                // message: 'Hey there, your code is awesome! 🤥',
-              })
-    
+
+            console.log(response.data);
+            if (response.data !== "You have already rated this post") {
+                showNotification({
+                    title: `Post rated with ${rating} tomatoes!`,
+                    // message: 'Hey there, your code is awesome! 🤥',
+                })
+            } else {
+                showNotification({
+                    title: "You have already rated this post",
+                    // message: 'Hey there, your code is awesome! 🤥',
+                })
+            }
+
         } else {
             showNotification({
                 title: 'You must be logged in to rate',
                 // message: 'Hey there, your code is awesome! 🤥',
-              })
+                autoClose: 1000
+            })
         }
 
-       
+
     }
 
     return (
@@ -179,12 +189,12 @@ const Home = (props) => {
                                                 className="meme_rating_star"
                                                 style={{ backgroundColor: star1 }}
                                                 onMouseOver={() => OnBackgroundStar()}
-                                                onClick={() => {ratePost(images._id, 1)}}
+                                                onClick={() => { ratePost(images._id, 1) }}
                                             >
                                                 <StarSvg
                                                     style={{ backgroundColor: star1 }}
                                                     onMouseOver={() => OnBackgroundStar()}
-                                                    
+
                                                 />
                                                 {/* <div className="star_white"></div> */}
                                             </div>
@@ -192,7 +202,7 @@ const Home = (props) => {
                                                 className="meme_rating_star"
                                                 style={{ backgroundColor: star2 }}
                                                 onMouseOver={() => OnBackgroundStar2()}
-                                                onClick={() => {ratePost(images._id, 2)}}
+                                                onClick={() => { ratePost(images._id, 2) }}
                                             >
                                                 <StarSvg
                                                     style={{ backgroundColor: star2 }}
@@ -203,7 +213,7 @@ const Home = (props) => {
                                                 className="meme_rating_star"
                                                 style={{ backgroundColor: star3 }}
                                                 onMouseOver={() => OnBackgroundStar3()}
-                                                onClick={() => {ratePost(images._id, 3)}}
+                                                onClick={() => { ratePost(images._id, 3) }}
                                             >
                                                 <StarSvg
                                                     style={{ backgroundColor: star3 }}
@@ -214,7 +224,7 @@ const Home = (props) => {
                                                 className="meme_rating_star"
                                                 style={{ backgroundColor: star4 }}
                                                 onMouseOver={() => OnBackgroundStar4()}
-                                                onClick={() => {ratePost(images._id, 4)}}
+                                                onClick={() => { ratePost(images._id, 4) }}
                                             >
                                                 <StarSvg
                                                     style={{ backgroundColor: star4 }}
@@ -225,7 +235,7 @@ const Home = (props) => {
                                                 className="meme_rating_star"
                                                 style={{ backgroundColor: star5 }}
                                                 onMouseOver={() => OnBackgroundStar5()}
-                                                onClick={() => {ratePost(images._id, 5)}}
+                                                onClick={() => { ratePost(images._id, 5) }}
                                             >
                                                 <StarSvg
                                                     style={{ backgroundColor: star5 }}
