@@ -59,7 +59,7 @@ const LeftNavbar = (props) => {
                         onClick={() => setOpened(true)}
                     >
                         <NavigationButton
-                            viewNameDisplay={"New Post"}
+                            viewNameDisplay={"new post"}
                             buttonIcon={<NewPostSvg />}
                             type="newPost"
                         />
