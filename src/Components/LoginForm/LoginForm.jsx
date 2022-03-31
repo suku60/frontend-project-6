@@ -74,7 +74,7 @@ export const LoginForm = (props) => {
     let result;
     if (!regexError && !passMisError && !passLengthError && !ageError) {
       try {
-
+console.log(body);
         result = await axios.post("https://socialmeme.herokuapp.com/users/login", body)
 
         if (result.data.token) {
