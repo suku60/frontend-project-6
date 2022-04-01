@@ -115,16 +115,7 @@ const Home = (props) => {
 
             let results = await axios.get(`https://socialmeme.herokuapp.com/posts/get10?page=${page}`);
 
-
-            // console.log("less?", lessMemes)
-
-            console.log("soy yo", results.data)
             setMemes(results.data)
-
-            // console.log("memes¿", memes)
-
-            // setMemes(memeResponse.data.results)
-
 
         } catch (error) {
             console.log(error)
@@ -188,19 +179,19 @@ const Home = (props) => {
     }
 
     //Add comment
-    const addComment = async (postId) => {
+    const addComment = async (id) => {
+
         let body = {
-            postId: postId,
             ownerId: props.credentials.user[0]._id,
             ownerNickname: props.credentials.user[0].nickname,
-            comment: comment
+            comment: comment,
+            postId: id,
         }
-        console.log(body);
-        let response = await axios.put(`https://socialmeme.herokuapp.com/posts/actions/addComment`, body);
+
+        axios.put(`https://socialmeme.herokuapp.com/posts/actions/addComment`, body);
 
         bringMemes(1);
         clearHooks();
-
     }
 
 
@@ -326,7 +317,7 @@ const Home = (props) => {
                                                     </div>
                                                     {images.comments.map(elmnt => {
                                                         return (
-                                                            <div className='meme_comment_box' key='elmnt.commentId'>
+                                                            <div className='meme_comment_box' key={elmnt.commentId}>
                                                                 <div className="meme_comment_owner">{elmnt.ownerNickname}</div>
                                                                 <div className="meme_comment_created">{elmnt.created}</div>
                                                                 <div className="meme_comment_content">{elmnt.comment}</div>

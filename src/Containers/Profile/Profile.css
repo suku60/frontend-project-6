@@ -73,3 +73,11 @@
 
 
 }
+
+.comment_goToPost_bttn {
+    cursor: pointer;
+
+}
+.comment_goToPost_bttn:hover {
+    background-color: whitesmoke;
+}

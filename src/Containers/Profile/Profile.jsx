@@ -7,8 +7,11 @@ import { connect } from 'react-redux';
 import { ScrollArea, Accordion } from '@mantine/core';
 
 import './Profile.css';
+import { useLogger } from '@mantine/hooks';
 
 const Profile = (props) => {
+    // let commentedPost = [];
+
 
     let navigate = useNavigate();
 
@@ -21,6 +24,7 @@ const Profile = (props) => {
     const [commentsArr, setCommentsArr] = useState([]);
     const [answersArr, setAnswersArr] = useState([]);
 
+    const [commentedPost, setCommentedPost] = useState([]);
 
     //Style Hooks
     // post data
@@ -36,6 +40,7 @@ const Profile = (props) => {
         }
 
         getUserPostsAndComments();
+        setCommentedPost([])
 
     }, []);
 
@@ -45,6 +50,7 @@ const Profile = (props) => {
         console.log("scrolling")
     }
 
+    // Custom accordion display style function
     const HideShowPostData = () => {
 
         if (postDataDisplay === "flex") {
@@ -59,15 +65,13 @@ const Profile = (props) => {
 
     }
 
+    // Get user posts and comments for displaying into accordions
     const getUserPostsAndComments = async () => {
         let results = await axios.get(`https://socialmeme.herokuapp.com/posts/actions/findByUser?userId=${props.credentials.user[0]._id}`);
-
-
 
         setPosts(results.data.posts);
         setPostsCommented(results.data.comments);
         setPostsAnswered(results.data.answers);
-
 
         if (results.data.comments.length > 0) {
             let commentsResults = await axios.get(`https://socialmeme.herokuapp.com/posts/actions/findCommentsByUser?userId=${props.credentials.user[0]._id}`)
@@ -86,9 +90,81 @@ const Profile = (props) => {
         // console.log("answered Posts = ", results.data.answers.data);
     }
 
-    const renderPostCommented = (postId) => {
-        console.log(postId);
-        console.log("hey");
+    //Get individual post data and saves into commentedPost hook
+    const getPost = async (postId) => {
+
+        let result = await axios.get(`https://socialmeme.herokuapp.com/posts/get?postId=${postId}`);
+
+        setCommentedPost(result.data);
+
+    }
+
+    // Renders commented post if user clicked GO TO POST at a comment
+    const renderPostCommented = () => {
+        return (
+            <>
+                {commentedPost?.map(images => {
+                    return (
+
+                        <div className='meme_card' key={images._id}>
+                            <img className='meme_photo' src={images.img} alt={images.title} />
+                            <div className="meme_card_data">
+
+                                <div className="meme_name" style={{ display: postDataDisplay }}>{images.title}
+                                </div>
+                                <div className="meme_name" style={{ display: postDataDisplay }}>{images.text}
+                                </div>
+                                <div className="meme_rating" style={{ display: postDataDisplay }}>rating: {images.ratingAverage}
+                                </div>
+                                <Accordion className='meme_comments_accordion' iconPosition="right" iconSize={0} offsetIcon={false} onClick={() => HideShowPostData()}>
+                                    <Accordion.Item label={`Comments`}>
+                                        <div className='accordionContent'>
+                                            {images.comments.map(elmnt => {
+                                                return (
+                                                    <div className='meme_comment_box' key='elmnt.commentId'>
+                                                        <div className="meme_comment_owner">{elmnt.ownerNickname}</div>
+                                                        <div className="meme_comment_created">{elmnt.created}</div>
+                                                        <div className="meme_comment_content">{elmnt.comment}</div>
+                                                        <div className="meme_comments_rating">rating: {elmnt.ratingAverage}
+                                                        </div>
+                                                    </div>
+
+                                                )
+                                            })}
+                                        </div>
+                                    </Accordion.Item>
+                                </Accordion>
+                                <div className="meme_card_footer"></div>
+                            </div>
+                        </div>
+                    )
+                })}
+            </>
+        )
+    }
+
+    // Resets commentedPost hook
+    const hideElements = () => {
+        setCommentedPost([])
+    }
+
+    //If user has bringed a post through its comment, button GoToPost changes
+    const renderGoToPostBttn = (elmnt) => {
+        if (commentedPost.length <= 0) {
+            return (
+                <div
+                    className='comment_goToPost_bttn'
+                    onClick={() => getPost(elmnt.postId)}>GO TO POST
+                </div>
+            )
+        } else {
+            return (
+                <div
+                    className='comment_goToPost_bttn'
+                    onClick={() => hideElements(elmnt.postId)}>HIDE POST
+                </div>
+            )
+        }
     }
 
     return (
@@ -156,11 +232,13 @@ const Profile = (props) => {
                     <Accordion className='accordion' iconPosition="right" iconSize={0} offsetIcon={false}>
                         <Accordion.Item label={`Your Comments`}>
                             <div className='accordionContent'>
+                                <>
+                                    {renderPostCommented()}
+                                </>
                                 {commentsArr?.map(elmnt => {
                                     return (
                                         <div className='meme_comment_box' key='elmnt.commentId'>
-                                            <div onClick={()=>renderPostCommented(elmnt.postId)}>GO TO POST</div>
-                                            {/* {renderPostCommented(elmnt.postId)} */}
+                                            <>{renderGoToPostBttn(elmnt)}</>
                                             <div className="meme_comment_owner">{elmnt.ownerNickname}</div>
                                             <div className="meme_comment_created">{elmnt.created}</div>
                                             <div className="meme_comment_content">{elmnt.comment}</div>
