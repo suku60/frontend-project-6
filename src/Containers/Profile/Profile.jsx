@@ -62,9 +62,7 @@ const Profile = (props) => {
     const getUserPostsAndComments = async () => {
         let results = await axios.get(`https://socialmeme.herokuapp.com/posts/actions/findByUser?userId=${props.credentials.user[0]._id}`);
 
-        // console.log(results.data.posts);
-        // console.log(results.data.comments);
-        // console.log(results.data.answers);
+
 
         setPosts(results.data.posts);
         setPostsCommented(results.data.comments);
@@ -74,12 +72,18 @@ const Profile = (props) => {
         if (results.data.comments.length > 0) {
             let commentsResults = await axios.get(`https://socialmeme.herokuapp.com/posts/actions/findCommentsByUser?userId=${props.credentials.user[0]._id}`)
             setCommentsArr(commentsResults.data);
+            // console.log("comments arr = ", commentsResults);
         }
 
         if (results.data.answers.length > 0) {
             let answersResults = await axios.get(`https://socialmeme.herokuapp.com/posts/actions/findAnswersByUser?userId=${props.credentials.user[0]._id}`)
             setAnswersArr(answersResults.data);
+            // console.log("answers arr = ", answersResults);
         }
+
+        // console.log("posts = " ,results.data.posts);
+        // console.log("commented Posts = ", results.data.comments.data);
+        // console.log("answered Posts = ", results.data.answers.data);
     }
 
     const renderPostByComment = () => {
@@ -155,6 +159,7 @@ const Profile = (props) => {
                                     return (
                                         <div className='meme_comment_box' key='elmnt.commentId'>
                                             <div>GO TO POST</div>
+                                            {/* {renderPostsCommented()} */}
                                             <div className="meme_comment_owner">{elmnt.ownerNickname}</div>
                                             <div className="meme_comment_created">{elmnt.created}</div>
                                             <div className="meme_comment_content">{elmnt.comment}</div>

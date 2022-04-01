@@ -335,6 +335,53 @@ height: 1em;
     overflow-x: hidden;
 }
 
+.meme_comment_textarea_box{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-end;
+}
+.meme_comment_textarea {
+    width: 25em;
+}
+
+.meme_comment_textarea_bttn {
+    border-width: .5em !important;
+    /* background-color: red; */
+    padding: 0.5%;
+    margin-left: 0.5%;
+
+    height: 4vh;
+    width: 5vw;
+
+    font-size: .8em;
+
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    letter-spacing: .3em;
+
+    background-color: var(--color-dark-3);
+
+    
+    background-color: var(--color-vapor-2-1);
+    color: var(--color-dark-3);
+
+    border-radius: var(--border-radius-2);
+    border-width: .05em;
+
+    border-color: var(--color-vapor-2-1);
+
+    cursor:pointer;
+
+    transition: var(--transition-2);
+
+    margin-bottom: 5%;
+}
+
 .meme_comment_box {
     border: solid;
     border-radius: var(--border-radius-3) var(--border-radius-3) var(--border-radius-3) var(--border-radius-3);

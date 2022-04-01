@@ -3,8 +3,9 @@ import axios from 'axios';
 import { Navigate, useNavigate } from 'react-router-dom';
 
 import { ReactComponent as StarSvg } from '../../assets/svg/star.svg'
-import { Accordion, Group, Button } from '@mantine/core';
+import { Accordion, Group, Button, Textarea } from '@mantine/core';
 import { showNotification } from '@mantine/notifications';
+import { Send } from 'tabler-icons-react';
 
 
 import { connect } from 'react-redux';
@@ -32,6 +33,11 @@ const Home = (props) => {
 
     // post data
     const [postDataDisplay, setPostDataDisplay] = useState("flex");
+
+    // add comment
+    const [comment, setComment] = useState("");
+
+
 
 
     // USEEFFECTS
@@ -126,6 +132,7 @@ const Home = (props) => {
 
     }
 
+    // Rating action
     const ratePost = async (postId, rating) => {
         if (props.credentials.token) {
             let body = {
@@ -174,6 +181,27 @@ const Home = (props) => {
 
 
     }
+
+    const clearHooks = () => {
+
+        setComment("");
+    }
+
+    //Add comment
+    const addComment = async (postId) => {
+        let body = {
+            postId: postId,
+            ownerId: props.credentials.user[0]._id,
+            ownerNickname: props.credentials.user[0].nickname,
+            comment: comment
+        }
+        let response = await axios.put(`https://socialmeme.herokuapp.com/posts/actions/addComment`, body);
+
+        bringMemes(1);
+        clearHooks();
+
+    }
+
 
     return (
         <div className="container_box" id="home_box">
@@ -274,6 +302,27 @@ const Home = (props) => {
                                         <Accordion className='meme_comments_accordion' iconPosition="right" iconSize={0} offsetIcon={false} onClick={() => HideShowPostData()}>
                                             <Accordion.Item label={`Comments`}>
                                                 <div className='accordionContent'>
+                                                    <div className='meme_comment_textarea_box'>
+                                                        <Textarea
+                                                            className="meme_comment_textarea"
+                                                            label="New comment"
+                                                            autosize
+                                                            minRows={2}
+                                                            maxRows={4}
+                                                            onChange={(e) => setComment(e.target.value)}
+                                                            value={comment}
+                                                        />
+                                                        <div
+                                                            className="meme_comment_textarea_bttn"
+                                                            onClick={() => addComment(images._id)}
+
+                                                        ><Send
+                                                                size={48}
+                                                                strokeWidth={1.5}
+                                                                color={'black'}
+                                                            />
+                                                        </div>
+                                                    </div>
                                                     {images.comments.map(elmnt => {
                                                         return (
                                                             <div className='meme_comment_box' key='elmnt.commentId'>
