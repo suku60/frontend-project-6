@@ -4,10 +4,11 @@ import NavigationButton from '../../Components/NavigationButton/NavigationButton
 import { Helmet } from 'react-helmet';
 import axios from 'axios';
 import { connect } from 'react-redux';
-import { ScrollArea, Accordion } from '@mantine/core';
+import { ScrollArea, Accordion, Modal, Group } from '@mantine/core';
+import { SquarePlus } from 'tabler-icons-react';
 
 import './Profile.css';
-import { useLogger } from '@mantine/hooks';
+import ProfileForm from '../../Components/ProfileForm/ProfileForm';
 
 const Profile = (props) => {
     // let commentedPost = [];
@@ -29,6 +30,10 @@ const Profile = (props) => {
     //Style Hooks
     // post data
     const [postDataDisplay, setPostDataDisplay] = useState("flex");
+
+    //Mantine hooks
+    const [opened, setOpened] = useState(false);
+    const title = opened ? 'Close navigation' : 'Open navigation';
 
     // useEffect  
     useEffect(() => {
@@ -178,7 +183,29 @@ const Profile = (props) => {
             {/* PROFILE PIC AND DATA */}
             <div className="container_profile_data" id="animationContainerFromTop" onScroll={() => easeProfileDataOut()}>
                 hello I'll have profile pic and data.
-                <div className="container_profile_photo"></div>
+                <div className="container_profile_photo">
+                    <div>ADD PROFILE PIC</div>
+
+                    <Modal
+                        opened={opened}
+                        onClose={() => {
+                            setOpened(false);
+                        }}
+                    >
+                        <ProfileForm></ProfileForm>
+                    </Modal>
+                    <Group position="center"
+                        onClick={() => setOpened(true)}
+                    >
+                        <SquarePlus
+                            size={48}
+                            strokeWidth={1}
+                            color={'black'}
+                            className="addPicture_logo"
+
+                        />
+                    </Group>
+                </div>
             </div>
 
             {/* THIS WILL BE A CAROUSEL OF IMAGES */}
