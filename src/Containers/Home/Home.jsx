@@ -195,6 +195,7 @@ const Home = (props) => {
             ownerNickname: props.credentials.user[0].nickname,
             comment: comment
         }
+        console.log(body);
         let response = await axios.put(`https://socialmeme.herokuapp.com/posts/actions/addComment`, body);
 
         bringMemes(1);

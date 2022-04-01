@@ -86,8 +86,9 @@ const Profile = (props) => {
         // console.log("answered Posts = ", results.data.answers.data);
     }
 
-    const renderPostByComment = () => {
-
+    const renderPostCommented = (postId) => {
+        console.log(postId);
+        console.log("hey");
     }
 
     return (
@@ -158,8 +159,8 @@ const Profile = (props) => {
                                 {commentsArr?.map(elmnt => {
                                     return (
                                         <div className='meme_comment_box' key='elmnt.commentId'>
-                                            <div>GO TO POST</div>
-                                            {/* {renderPostsCommented()} */}
+                                            <div onClick={()=>renderPostCommented(elmnt.postId)}>GO TO POST</div>
+                                            {/* {renderPostCommented(elmnt.postId)} */}
                                             <div className="meme_comment_owner">{elmnt.ownerNickname}</div>
                                             <div className="meme_comment_created">{elmnt.created}</div>
                                             <div className="meme_comment_content">{elmnt.comment}</div>
