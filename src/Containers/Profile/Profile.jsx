@@ -4,6 +4,7 @@ import NavigationButton from '../../Components/NavigationButton/NavigationButton
 import { Helmet } from 'react-helmet';
 import axios from 'axios';
 import { connect } from 'react-redux';
+
 import { ScrollArea, Accordion, Modal, Group } from '@mantine/core';
 import { SquarePlus } from 'tabler-icons-react';
 
@@ -40,7 +41,6 @@ const Profile = (props) => {
     // useEffect  
     useEffect(() => {
 
-        console.log(props.credentials)
 
         if (props.credentials?.token === "") {
             navigate("/");
@@ -57,7 +57,10 @@ const Profile = (props) => {
         console.log("scrolling")
     }
 
+
+
     const renderAvatar = () => {
+
         if (props.credentials.user[0].avatar == "") {
             return (
                 <div className="container_profile_photo">
@@ -242,7 +245,7 @@ const Profile = (props) => {
             <div className="container_profile_data" id="animationContainerFromTop" onScroll={() => easeProfileDataOut()}>
                 hello I'll have profile pic and data.
                 <>
-                {renderAvatar()}
+                    {renderAvatar()}
                 </>
             </div>
 

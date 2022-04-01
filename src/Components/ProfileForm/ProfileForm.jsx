@@ -7,7 +7,9 @@ import { TextInput, Textarea, Checkbox, Button } from '@mantine/core';
 import { useForm } from '@mantine/hooks';
 import axios from 'axios';
 import { connect } from 'react-redux';
+import { UPDATE_CREDENTIALS } from '../../redux/types';
 import { showNotification } from '@mantine/notifications';
+import { logDOM } from '@testing-library/react';
 
 export const ProfileForm = (props) => {
   let imgURL;
@@ -112,29 +114,35 @@ export const ProfileForm = (props) => {
       imgURL = await axios.post('https://api.imgur.com/3/image', imgbody, config)
 
 
-      console.log(props.credentials)
+
       let body = {
-        "id": props.credentials.user[0]._id,
+        id: props.credentials.user[0]._id,
         // avatar: "https://i.imgur.com/wl1HPGG.png",
+        // avatar: "https://i.imgur.com/lCPYCHO.png",
         avatar: imgURL.data.data.link,
 
       }
       let result;
 
-
+      console.log("hey");
       result = await axios.put("https://socialmeme.herokuapp.com/users/updateAvatar", body)
-        .then(() => {
-          setTimeout(() => {
-            showNotification({
-              title: `${props.credentials.user[0].nickname}, your avatar has been updated`,
-              // message: 'Hey there, your code is awesome! 🤥',
-              autoClose: 3000
-            })
-            setTimeout(() => {
-              clearHooks();
-            }, 5000)
-          }, 1500)
-        });
+
+      let user = await axios.get(`https://socialmeme.herokuapp.com/users/get?id=${props.credentials.user[0]._id}`);
+
+      props.dispatch({ type: UPDATE_CREDENTIALS, payload: user.data });
+
+
+      setTimeout(() => {
+        showNotification({
+          title: `${props.credentials.user[0].nickname}, your avatar has been updated`,
+          // message: 'Hey there, your code is awesome! 🤥',
+          autoClose: 3000
+        })
+        setTimeout(() => {
+          clearHooks();
+        }, 5000)
+      }, 1500)
+
 
     }
   }
