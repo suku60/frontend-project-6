@@ -61,9 +61,23 @@
     justify-content: center;
     align-items: center;
 
+
+}
+
+.addPicture_text {
+    font-family: 'Roboto Condensed', sans-serif;
+
+    font-weight: 900;
 }
 
 .addPicture_logo:hover {
+    cursor: pointer;
+}
+
+.avatarImg{
+    height: 20vh;
+}
+.avatarImg:hover{
     cursor: pointer;
 }
 

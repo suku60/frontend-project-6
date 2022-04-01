@@ -27,6 +27,8 @@ const Profile = (props) => {
 
     const [commentedPost, setCommentedPost] = useState([]);
 
+    const [avatarChanged, setAvatarChanged] = useState(false);
+
     //Style Hooks
     // post data
     const [postDataDisplay, setPostDataDisplay] = useState("flex");
@@ -53,6 +55,62 @@ const Profile = (props) => {
     const easeProfileDataOut = () => {
         // document.getElementById("")
         console.log("scrolling")
+    }
+
+    const renderAvatar = () => {
+        if (props.credentials.user[0].avatar == "") {
+            return (
+                <div className="container_profile_photo">
+                    <div className="addPicture_text">UPDATE AVATAR</div>
+
+                    <Modal
+                        opened={opened}
+                        onClose={() => {
+                            setOpened(false);
+                        }}
+                    >
+                        <ProfileForm></ProfileForm>
+                    </Modal>
+                    <Group position="center"
+                        onClick={() => setOpened(true)}
+
+                    >
+                        <SquarePlus
+                            size={48}
+                            strokeWidth={1}
+                            color={'black'}
+                            className="addPicture_logo"
+
+                        />
+                    </Group>
+                </div>
+            )
+        } else {
+            return (
+                <div className="container_profile_photo">
+
+                    <Modal
+                        opened={opened}
+                        onClose={() => {
+                            setOpened(false);
+                        }}
+                    >
+                        <ProfileForm></ProfileForm>
+                    </Modal>
+                    <Group position="center"
+                        onClick={() => setOpened(true)}
+                    >
+                        <div>
+                            <img
+                                className='avatarImg'
+                                src={props.credentials.user[0].avatar}
+                                alt=""
+                            />
+                        </div>
+                    </Group>
+                </div>
+            )
+        }
     }
 
     // Custom accordion display style function
@@ -183,29 +241,9 @@ const Profile = (props) => {
             {/* PROFILE PIC AND DATA */}
             <div className="container_profile_data" id="animationContainerFromTop" onScroll={() => easeProfileDataOut()}>
                 hello I'll have profile pic and data.
-                <div className="container_profile_photo">
-                    <div>ADD PROFILE PIC</div>
-
-                    <Modal
-                        opened={opened}
-                        onClose={() => {
-                            setOpened(false);
-                        }}
-                    >
-                        <ProfileForm></ProfileForm>
-                    </Modal>
-                    <Group position="center"
-                        onClick={() => setOpened(true)}
-                    >
-                        <SquarePlus
-                            size={48}
-                            strokeWidth={1}
-                            color={'black'}
-                            className="addPicture_logo"
-
-                        />
-                    </Group>
-                </div>
+                <>
+                {renderAvatar()}
+                </>
             </div>
 
             {/* THIS WILL BE A CAROUSEL OF IMAGES */}
