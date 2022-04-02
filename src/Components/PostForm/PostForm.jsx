@@ -179,7 +179,11 @@ export const PostForm = (props) => {
 
     setChecked(false);
   }
-
+  const enterPress = (e) => {
+    if (e.key === "Enter") {
+      createPost();
+    }
+  }
   return (
     <>
       <>
@@ -211,6 +215,7 @@ export const PostForm = (props) => {
           classNames={{
             input: 'titleField',
           }}
+          onKeyDown={(e) => { enterPress(e) }}
         />
 
 
@@ -222,7 +227,7 @@ export const PostForm = (props) => {
           onChange={(e) => { fillForm(e) }}
           name="description"
           value={postData.description}
-
+          onKeyDown={(e) => { enterPress(e) }}
         />
 
         <TextInput
@@ -235,6 +240,7 @@ export const PostForm = (props) => {
           classNames={{
             input: 'field',
           }}
+          onKeyDown={(e) => { enterPress(e) }}
         />
 
 
@@ -245,6 +251,7 @@ export const PostForm = (props) => {
           name="confirm"
           checked={checked}
           onChange={(event) => setChecked(event.currentTarget.checked)}
+
         />
 
         <Button className='submitBttn' type="submit" onClick={() => { createPost() }}>Submit</Button>

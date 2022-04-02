@@ -148,7 +148,11 @@ export const UpdatePostForm = (props) => {
 
     setChecked(false);
   }
-
+  const enterPress = (e) => {
+    if (e.key === "Enter") {
+      updatePost();
+    }
+  }
   return (
     <>
       <>
@@ -170,6 +174,7 @@ export const UpdatePostForm = (props) => {
           classNames={{
             input: 'titleField',
           }}
+          onKeyDown={(e) => { enterPress(e) }}
         />
 
 
@@ -181,7 +186,7 @@ export const UpdatePostForm = (props) => {
           onChange={(e) => { fillForm(e) }}
           name="description"
           value={postData.description}
-
+          onKeyDown={(e) => { enterPress(e) }}
         />
 
         <TextInput
@@ -194,6 +199,7 @@ export const UpdatePostForm = (props) => {
           classNames={{
             input: 'field',
           }}
+          onKeyDown={(e) => { enterPress(e) }}
         />
 
         <div className='bttns_box'>

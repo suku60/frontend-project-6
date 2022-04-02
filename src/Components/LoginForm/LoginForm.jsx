@@ -117,36 +117,44 @@ export const LoginForm = (props) => {
     seterrorMsg("");
   }
 
-  return (
-    <>
-      <TextInput
-        required
-        label="Nickname"
-        placeholder=""
-        onChange={(e) => { fillForm(e) }}
-        name="nickname"
-        value={userData.nickname}
-        className="register_form_inputs"
-      />
-      <TextInput
-        required
-        label="Password"
-        type="password"
-        placeholder="4 characters min"
-        onChange={(e) => { fillForm(e) }}
-        name="password"
-        value={userData.password}
-        className="register_form_inputs"
-      />
+  const enterPress = (e) => {
+    if (e.key === "Enter") {
+      login();
+    }
+  }
 
-      <Button className='submitBttn' id="login_form_button" type="submit" onClick={() => login()}>Submit</Button>
-      <br></br>
-      <span className='errorMsg'>{errorMsg}</span>
-      <br></br>
-      <span className='okMsg'>{msgLength}</span>
-      <br></br>
-      <span className='okMsg'>{msgMis}</span>
-    </>
-  )
-}
-export default connect()(LoginForm);
+    return (
+      <>
+        <TextInput
+          required
+          label="Nickname"
+          placeholder=""
+          onChange={(e) => { fillForm(e) }}
+          name="nickname"
+          value={userData.nickname}
+          className="register_form_inputs"
+          onKeyDown={(e) => { enterPress(e) }}
+        />
+        <TextInput
+          required
+          label="Password"
+          type="password"
+          placeholder="4 characters min"
+          onChange={(e) => { fillForm(e) }}
+          name="password"
+          value={userData.password}
+          className="register_form_inputs"
+          onKeyDown={(e) => { enterPress(e) }}
+        />
+
+        <Button className='submitBttn' id="login_form_button" type="submit" onClick={() => login()}>Submit</Button>
+        <br></br>
+        <span className='errorMsg'>{errorMsg}</span>
+        <br></br>
+        <span className='okMsg'>{msgLength}</span>
+        <br></br>
+        <span className='okMsg'>{msgMis}</span>
+      </>
+    )
+  }
+  export default connect()(LoginForm);

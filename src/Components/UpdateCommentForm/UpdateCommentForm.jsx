@@ -138,7 +138,11 @@ export const UpdateCommentForm = (props) => {
     setMsgMis("");
     seterrorMsg("");
   }
-
+  const enterPress = (e) => {
+    if (e.key === "Enter") {
+      updateComment();
+    }
+  }
   return (
     <>
       <>
@@ -158,6 +162,7 @@ export const UpdateCommentForm = (props) => {
           onChange={(e) => { fillForm(e) }}
           name="comment"
           value={commentData.comment}
+          onKeyDown={(e) => { enterPress(e) }}
 
         />
 

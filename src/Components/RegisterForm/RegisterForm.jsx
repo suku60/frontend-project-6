@@ -238,7 +238,11 @@ export const RegisterForm = (props) => {
       }
     }
   }
-
+  const enterPress = (e) => {
+    if (e.key === "Enter") {
+      register();
+    }
+  }
   return (
     <>
       <>
@@ -257,6 +261,7 @@ export const RegisterForm = (props) => {
         name="nickname"
         value={userData.nickname}
         className="register_form_inputs"
+        onKeyDown={(e) => { enterPress(e) }}
       />
       <TextInput
         required
@@ -266,6 +271,7 @@ export const RegisterForm = (props) => {
         name="email"
         value={userData.email}
         className="register_form_inputs"
+        onKeyDown={(e) => { enterPress(e) }}
       />
       <TextInput
         required
@@ -276,6 +282,7 @@ export const RegisterForm = (props) => {
         name="password"
         value={userData.password}
         className="register_form_inputs"
+        onKeyDown={(e) => { enterPress(e) }}
       />
 
       <TextInput
@@ -287,6 +294,7 @@ export const RegisterForm = (props) => {
         name="password2"
         value={userData.password2}
         className="register_form_inputs"
+        onKeyDown={(e) => { enterPress(e) }}
       />
 
       <Checkbox
