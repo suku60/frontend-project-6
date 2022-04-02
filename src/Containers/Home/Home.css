@@ -151,7 +151,9 @@ height: 1em;
 }
 
 .meme_card_data {
-    background-color: var(--color-dark-2) !important;
+    background-color: var(--color-dark-1);
+    /* background-color: transparent; */
+    color: var(--color-light-2);
 
     
     
