@@ -5,7 +5,7 @@ import { Navigate, useNavigate } from 'react-router-dom';
 import { ReactComponent as StarSvg } from '../../assets/svg/star.svg'
 import { Accordion, Group, Button, Textarea } from '@mantine/core';
 import { showNotification } from '@mantine/notifications';
-import { Send } from 'tabler-icons-react';
+import { Send, ChevronDown } from 'tabler-icons-react';
 
 
 import { connect } from 'react-redux';
@@ -363,7 +363,12 @@ const Home = (props) => {
                                         </div>
                                         <div className="meme_creator" style={{ display: postDataDisplay }}>meme done by: {images.ownerNickname}
                                         </div>
-                                        <Accordion className='meme_comments_accordion' iconPosition="right" iconSize={0} offsetIcon={false}>
+                                        <Accordion 
+                                        className='meme_comments_accordion'
+                                        icon={<ChevronDown size={20} />} 
+                                        iconPosition="right" 
+                                        offsetIcon={false}
+                                        >
                                             {/* <Accordion className='meme_comments_accordion' iconPosition="right" iconSize={0} offsetIcon={false} onClick={() => HideShowPostData()}> */}
                                             <Accordion.Item label={`Comments`}>
                                                 <div className='accordionContent'>
@@ -455,7 +460,11 @@ const Home = (props) => {
                                                                 </div>
                                                                 <div className="meme_comments_rating">rating: {elmnt.ratingAverage}
                                                                 </div>
-                                                                <Accordion className='meme_answers_accordion' iconPosition="right" iconSize={0} offsetIcon={false}>
+                                                                <Accordion 
+                                                                className='meme_answers_accordion'
+                                                                icon={<ChevronDown size={20} />}  
+                                                                iconPosition="right" 
+                                                                offsetIcon={false}>
                                                                     <Accordion.Item label={`Answers`}>
                                                                         <div className='accordionContent'>
                                                                             <div className='meme_comment_textarea_box'>
