@@ -27,7 +27,7 @@ export const UpdatePostForm = (props) => {
   });
 
 
-  
+
 
 
   const [postSaved, setPostSaved] = useState([]);
@@ -119,6 +119,19 @@ export const UpdatePostForm = (props) => {
     }
   }
 
+  const deletePost = async () => {
+    console.log("soy el objetivo",props.profileData.post._id);
+    let result = await axios.delete(`https://socialmeme.herokuapp.com/posts/delete?postId=${props.profileData.post._id}`)
+    .then(() => {
+      setTimeout(() => {
+        setMsgLength("The post has been deleted")
+        setTimeout(() => {
+          clearHooks();
+        }, 5000)
+      }, 1500)
+    });
+  }
+
 
 
   const clearHooks = () => {
@@ -183,8 +196,11 @@ export const UpdatePostForm = (props) => {
           }}
         />
 
+        <div className='bttns_box'>
+          <Button className='submitBttn' type="submit" onClick={() => { updatePost() }}>Update</Button>
+          <Button className='deleteBttn' type="submit" onClick={() => { deletePost() }}>Delete</Button>
+        </div>
 
-        <Button className='submitBttn' type="submit" onClick={() => { updatePost() }}>Update</Button>
         <br></br>
         <span className='errorMsg'>{errorMsg}</span>
         <br></br>

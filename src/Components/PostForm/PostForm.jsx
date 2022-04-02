@@ -43,8 +43,9 @@ export const PostForm = (props) => {
   //useEffect
   //userData useEffect
   useEffect(() => {
-
-  })
+    clearHooks();
+    console.log(fileData);
+  }, [])
 
 
   //Handler function
@@ -221,7 +222,7 @@ export const PostForm = (props) => {
           onChange={(e) => { fillForm(e) }}
           name="description"
           value={postData.description}
-         
+
         />
 
         <TextInput
