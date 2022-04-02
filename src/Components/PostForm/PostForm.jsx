@@ -89,14 +89,14 @@ export const PostForm = (props) => {
 
 
     //VALIDATE INPUT ERRORS
-    // //File validation
-    // if (fileData == "") {
-    //   seterrorMsg("Please upload an image")
-    //   fileError = true;
-    // } else {
-    //   seterrorMsg("")
-    //   fileError = false;
-    // }
+    //File validation
+    if (fileData == "") {
+      seterrorMsg("Please upload an image")
+      fileError = true;
+    } else {
+      seterrorMsg("")
+      fileError = false;
+    }
 
     //Inputs regex validation
     for (let element of fieldsArr) {
@@ -131,7 +131,7 @@ export const PostForm = (props) => {
       let imgbody = {
         image: fileData
       }
-      // imgURL = await axios.post('https://api.imgur.com/3/image', imgbody, config)
+      imgURL = await axios.post('https://api.imgur.com/3/image', imgbody, config)
 
       let keywordsArr = postData.keywords.split(",");
 
@@ -140,8 +140,8 @@ export const PostForm = (props) => {
         ownerId: props.credentials.user[0]._id,
         ownerNickname: props.credentials.user[0].nickname,
         title: postData.title,
-        img: "https://i.imgur.com/wl1HPGG.png",
-        // img: imgURL.data.data.link,
+        // img: "https://i.imgur.com/wl1HPGG.png",
+        img: imgURL.data.data.link,
         text: postData.description,
         keywords: keywordsArr
       }
