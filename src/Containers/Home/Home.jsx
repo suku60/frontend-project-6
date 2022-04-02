@@ -36,6 +36,7 @@ const Home = (props) => {
 
     // add comment
     const [comment, setComment] = useState("");
+    const [answer, setAnswer] = useState("");
 
 
 
@@ -220,6 +221,7 @@ const Home = (props) => {
     const clearHooks = () => {
 
         setComment("");
+        setAnswer("");
     }
 
     //Add comment
@@ -241,6 +243,28 @@ const Home = (props) => {
         }, 1000);
 
     }
+
+        //Add answer
+        const addAnswer = async (postId, commentId) => {
+
+            let body = {
+
+                postId: postId,
+                commentId: commentId,
+                ownerId: props.credentials.user[0]._id,
+                ownerNickname: props.credentials.user[0].nickname,
+                answer: answer,
+            }
+    
+            axios.put(`https://socialmeme.herokuapp.com/posts/actions/addCommentAnswer`, body);
+    
+    
+            setTimeout(() => {
+                bringMemes(1);
+                clearHooks();
+            }, 1000);
+    
+        }
 
 
     return (
@@ -364,7 +388,8 @@ const Home = (props) => {
                                                             />
                                                         </div>
                                                     </div>
-                                                    {images.comments.map(elmnt => {
+                                                    {images?.comments?.map(elmnt => {
+                                                        {console.log(elmnt);}
                                                         return (
                                                             <div className='meme_comment_box' key={elmnt.commentId}>
                                                                 <div className="meme_comment_owner">{elmnt.ownerNickname}</div>
@@ -430,6 +455,43 @@ const Home = (props) => {
                                                                 </div>
                                                                 <div className="meme_comments_rating">rating: {elmnt.ratingAverage}
                                                                 </div>
+                                                                <Accordion className='meme_answers_accordion' iconPosition="right" iconSize={0} offsetIcon={false}>
+                                                                    <Accordion.Item label={`Answers`}>
+                                                                        <div className='accordionContent'>
+                                                                            <div className='meme_comment_textarea_box'>
+                                                                                <Textarea
+                                                                                    className="meme_comment_textarea"
+                                                                                    label="New answer"
+                                                                                    autosize
+                                                                                    minRows={2}
+                                                                                    maxRows={4}
+                                                                                    onChange={(e) => setAnswer(e.target.value)}
+                                                                                    value={answer}
+                                                                                />
+                                                                                <div
+                                                                                    className="meme_comment_textarea_bttn"
+                                                                                    onClick={() => addAnswer(images._id, elmnt.commentId)}
+
+                                                                                ><Send
+                                                                                        size={48}
+                                                                                        strokeWidth={1.5}
+                                                                                        color={'black'}
+                                                                                    />
+                                                                                </div>
+                                                                            </div>
+                                                                            {elmnt.answers?.map(elmnt2 => {
+                                                                                return (
+                                                                                    <div className='meme_answer_box' key={elmnt2.answerId}>
+                                                                                        <div className="meme_comment_owner">{elmnt2.ownerNickname}</div>
+                                                                                        <div className="meme_comment_created">{elmnt2.created}</div>
+                                                                                        <div className="meme_comment_content">{elmnt2.answer}</div>
+                                                                                    </div>
+
+                                                                                )
+                                                                            })}
+                                                                        </div>
+                                                                    </Accordion.Item>
+                                                                </Accordion>
                                                             </div>
 
                                                         )
