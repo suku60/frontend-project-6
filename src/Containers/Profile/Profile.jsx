@@ -4,7 +4,7 @@ import NavigationButton from '../../Components/NavigationButton/NavigationButton
 import { Helmet } from 'react-helmet';
 import axios from 'axios';
 import { connect } from 'react-redux';
-import { LOGOUT, SELECT_POST } from '../../redux/types';
+import { LOGOUT, SELECT_POST, SELECT_COMMENT } from '../../redux/types';
 
 import { ScrollArea, Accordion, Modal, Group } from '@mantine/core';
 import { SquarePlus, Logout, Edit } from 'tabler-icons-react';
@@ -12,6 +12,7 @@ import { SquarePlus, Logout, Edit } from 'tabler-icons-react';
 import './Profile.css';
 import ProfileForm from '../../Components/ProfileForm/ProfileForm';
 import UpdatePostForm from '../../Components/UpdatePostForm/UpdatePostForm';
+import UpdateCommentForm from '../../Components/UpdateCommentForm/UpdateCommentForm';
 
 const Profile = (props) => {
     // let commentedOrAnsweredPost = [];
@@ -40,6 +41,7 @@ const Profile = (props) => {
     //Mantine hooks
     const [opened, setOpened] = useState(false);
     const [opened2, setOpened2] = useState(false);
+    const [opened3, setOpened3] = useState(false);
     const title = opened ? 'Close navigation' : 'Open navigation';
 
     // useEffect  
@@ -137,22 +139,27 @@ const Profile = (props) => {
 
     // Get user posts and comments for displaying into accordions
     const getUserPostsAndComments = async () => {
+        // console.log("HERE I AM");
         let results = await axios.get(`https://socialmeme.herokuapp.com/posts/actions/findByUser?userId=${props.credentials.user[0]._id}`);
-
         setPosts(results.data.posts);
         setPostsCommented(results.data.comments);
         setPostsAnswered(results.data.answers);
-
+        
         if (results.data.comments.length > 0) {
             let commentsResults = await axios.get(`https://socialmeme.herokuapp.com/posts/actions/findCommentsByUser?userId=${props.credentials.user[0]._id}`)
             setCommentsArr(commentsResults.data);
             // console.log("comments arr = ", commentsResults);
+        } else {
+            setCommentsArr([])
         }
+
 
         if (results.data.answers.length > 0) {
             let answersResults = await axios.get(`https://socialmeme.herokuapp.com/posts/actions/findAnswersByUser?userId=${props.credentials.user[0]._id}`)
             setAnswersArr(answersResults.data);
             // console.log("answers arr = ", answersResults);
+        } else {
+            setAnswersArr([])
         }
 
         // console.log("posts = " ,results.data.posts);
@@ -161,24 +168,44 @@ const Profile = (props) => {
     }
 
     //Get individual post data and saves into commentedOrAnsweredPost hook
-    const getPost = async (postId, isEdit) => {
+    const getPost = async (postId, commentId, isEdit) => {
 
-        let result = await axios.get(`https://socialmeme.herokuapp.com/posts/get?postId=${postId}`);
 
         if (!isEdit) {
-            setCommentedOrAnsweredPost(result.data);
-        } else {
 
+            let result = await axios.get(`https://socialmeme.herokuapp.com/posts/get?postId=${postId}`);
+            setCommentedOrAnsweredPost(result.data);
+
+        } else if (isEdit && !commentId) {
+
+            let result = await axios.get(`https://socialmeme.herokuapp.com/posts/get?postId=${postId}`);
             props.dispatch({ type: SELECT_POST, payload: result.data[0] })
 
 
             setTimeout(() => {
 
                 setOpened2(true);
+
             }, 500)
+
+        } else if (isEdit && commentId) {
+
+            let result = await axios.get(`https://socialmeme.herokuapp.com/posts/actions/getComment?postId=${postId}&commentId=${commentId}`);
+            
+            // console.log("result = ", result.data);
+            props.dispatch({ type: SELECT_COMMENT, payload: result.data })
+
+            setTimeout(() => {
+
+                setOpened3(true);
+
+            }, 500)
+
         }
 
+
     }
+
 
     // Renders commented post if user clicked GO TO POST at a comment
     const renderPostCommented = () => {
@@ -190,7 +217,6 @@ const Profile = (props) => {
                         <div className='meme_card' key={images._id}>
                             <img className='meme_photo' src={images.img} alt={images.title} />
                             <div className="meme_card_data">
-
                                 <div className="meme_title" style={{ display: postDataDisplay }}>{images.title}
                                 </div>
                                 <div className="meme_title" style={{ display: postDataDisplay }}>{images.text}
@@ -278,7 +304,7 @@ const Profile = (props) => {
             return (
                 <div
                     className='comment_goToPost_bttn'
-                    onClick={() => getPost(elmnt.postId, false)}>GO TO POST
+                    onClick={() => getPost(elmnt.postId, elmnt.commentId, false)}>GO TO POST
                 </div>
             )
         } else {
@@ -378,7 +404,7 @@ const Profile = (props) => {
                                                             </UpdatePostForm>
                                                         </Modal>
                                                         <Group position="center"
-                                                            onClick={() => getPost(images._id, true)}
+                                                            onClick={() => getPost(images._id, images.commentId, true)}
                                                         >
                                                             <Edit
                                                                 size={32}
@@ -432,6 +458,32 @@ const Profile = (props) => {
                                 {commentsArr?.map(elmnt => {
                                     return (
                                         <div className='meme_comment_box' key={elmnt.commentId}>
+                                            <div className='edit_bttn_box'>
+                                                <>
+                                                    <Modal
+                                                        opened={opened3}
+                                                        onClose={() => {
+                                                            setOpened3(false);
+                                                            getUserPostsAndComments();
+                                                            setCommentedOrAnsweredPost([]);
+                                                        }}
+                                                    >
+                                                        <UpdateCommentForm>
+
+                                                        </UpdateCommentForm>
+                                                    </Modal>
+                                                    <Group position="center"
+                                                        onClick={() => getPost(elmnt.postId, elmnt.commentId, true)}
+                                                    >
+                                                        <Edit
+                                                            size={32}
+                                                            strokeWidth={1}
+                                                            color={'black'}
+                                                            className='edit_bttn'
+                                                        />
+                                                    </Group>
+                                                </>
+                                            </div>
                                             <>{renderGoToPostBttn(elmnt)}</>
                                             <div className="meme_comment_owner">{elmnt.ownerNickname}</div>
                                             <div className="meme_comment_created">{elmnt.created}</div>
