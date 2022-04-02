@@ -13,7 +13,7 @@ import './Profile.css';
 import ProfileForm from '../../Components/ProfileForm/ProfileForm';
 
 const Profile = (props) => {
-    // let commentedPost = [];
+    // let commentedOrAnsweredPost = [];
 
 
     let navigate = useNavigate();
@@ -27,7 +27,8 @@ const Profile = (props) => {
     const [commentsArr, setCommentsArr] = useState([]);
     const [answersArr, setAnswersArr] = useState([]);
 
-    const [commentedPost, setCommentedPost] = useState([]);
+    const [commentedOrAnsweredPost, setCommentedOrAnsweredPost] = useState([]);
+
 
     const [avatarChanged, setAvatarChanged] = useState(false);
 
@@ -48,7 +49,7 @@ const Profile = (props) => {
         }
 
         getUserPostsAndComments();
-        setCommentedPost([])
+        setCommentedOrAnsweredPost([])
 
     }, []);
 
@@ -157,12 +158,12 @@ const Profile = (props) => {
         // console.log("answered Posts = ", results.data.answers.data);
     }
 
-    //Get individual post data and saves into commentedPost hook
+    //Get individual post data and saves into commentedOrAnsweredPost hook
     const getPost = async (postId) => {
 
         let result = await axios.get(`https://socialmeme.herokuapp.com/posts/get?postId=${postId}`);
 
-        setCommentedPost(result.data);
+        setCommentedOrAnsweredPost(result.data);
 
     }
 
@@ -170,7 +171,50 @@ const Profile = (props) => {
     const renderPostCommented = () => {
         return (
             <>
-                {commentedPost?.map(images => {
+                {commentedOrAnsweredPost?.map(images => {
+                    return (
+
+                        <div className='meme_card' key={images._id}>
+                            <img className='meme_photo' src={images.img} alt={images.title} />
+                            <div className="meme_card_data">
+
+                                <div className="meme_name" style={{ display: postDataDisplay }}>{images.title}
+                                </div>
+                                <div className="meme_name" style={{ display: postDataDisplay }}>{images.text}
+                                </div>
+                                <div className="meme_rating" style={{ display: postDataDisplay }}>rating: {images.ratingAverage}
+                                </div>
+                                <Accordion className='meme_comments_accordion' iconPosition="right" iconSize={0} offsetIcon={false} onClick={() => HideShowPostData()}>
+                                    <Accordion.Item label={`Comments`}>
+                                        <div className='accordionContent'>
+                                            {images.comments.map(elmnt => {
+                                                return (
+                                                    <div className='meme_comment_box' key='elmnt.commentId'>
+                                                        <div className="meme_comment_owner">{elmnt.ownerNickname}</div>
+                                                        <div className="meme_comment_created">{elmnt.created}</div>
+                                                        <div className="meme_comment_content">{elmnt.comment}</div>
+                                                        <div className="meme_comments_rating">rating: {elmnt.ratingAverage}
+                                                        </div>
+                                                    </div>
+
+                                                )
+                                            })}
+                                        </div>
+                                    </Accordion.Item>
+                                </Accordion>
+                                <div className="meme_card_footer"></div>
+                            </div>
+                        </div>
+                    )
+                })}
+            </>
+        )
+    }
+    // Renders commented post if user clicked GO TO POST at a comment
+    const renderPostAnswered = () => {
+        return (
+            <>
+                {commentedOrAnsweredPost?.map(images => {
                     return (
 
                         <div className='meme_card' key={images._id}>
@@ -210,14 +254,14 @@ const Profile = (props) => {
         )
     }
 
-    // Resets commentedPost hook
+    // Resets commentedOrAnsweredPost hook
     const hideElements = () => {
-        setCommentedPost([])
+        setCommentedOrAnsweredPost([])
     }
 
-    //If user has bringed a post through its comment, button GoToPost changes
+    //If user has bringed a post through its comment or answer, button GoToPost changes
     const renderGoToPostBttn = (elmnt) => {
-        if (commentedPost.length <= 0) {
+        if (commentedOrAnsweredPost.length <= 0) {
             return (
                 <div
                     className='comment_goToPost_bttn'
@@ -234,16 +278,18 @@ const Profile = (props) => {
         }
     }
 
-    const logout= ()=>{
+
+
+    const logout = () => {
         navigate('/')
-        
-        setTimeout(()=>{
+
+        setTimeout(() => {
             props.dispatch({ type: LOGOUT });
 
-            setTimeout(()=>{
+            setTimeout(() => {
                 navigate('/')
-            },500)
-        },500)
+            }, 500)
+        }, 500)
     }
 
     return (
@@ -366,10 +412,13 @@ const Profile = (props) => {
                     <Accordion className='accordion' iconPosition="right" iconSize={0} offsetIcon={false}>
                         <Accordion.Item label={`Your Answers`}>
                             <div className='accordionContent'>
+                                <>
+                                    {renderPostAnswered()}
+                                </>
                                 {answersArr?.map(elmnt => {
                                     return (
                                         <div className='meme_comment_box' key='elmnt.commentId'>
-                                            <div>GO TO POST</div>
+                                            <>{renderGoToPostBttn(elmnt)}</>
                                             <div className="meme_comment_owner">{elmnt.ownerNickname}</div>
                                             <div className="meme_comment_created">{elmnt.created}</div>
                                             <div className="meme_comment_content">{elmnt.answer}</div>
@@ -380,7 +429,7 @@ const Profile = (props) => {
                             </div>
                         </Accordion.Item>
                     </Accordion>
-                    <div className='logout_box' onClick={()=>{logout()}}>
+                    <div className='logout_box' onClick={() => { logout() }}>
                         <Logout
                             size={48}
                             strokeWidth={1}
