@@ -9,6 +9,7 @@ import { Send, ChevronDown } from 'tabler-icons-react';
 
 
 import { connect } from 'react-redux';
+import { UPDATE_CREDENTIALS } from '../../redux/types'
 
 import './Home.css';
 import { Helmet } from 'react-helmet';
@@ -37,6 +38,9 @@ const Home = (props) => {
     // add comment
     const [comment, setComment] = useState("");
     const [answer, setAnswer] = useState("");
+
+    //followed
+    const [followed, setFollowed] = useState({});
 
 
 
@@ -266,6 +270,65 @@ const Home = (props) => {
 
     }
 
+    //Follow user
+    const followUser = async (followedId, followedNickname) => {
+
+        let body = {
+            followedId: followedId,
+            followedNickname: followedNickname,
+            userId: props.credentials.user[0]._id,
+        }
+
+        // console.log("BODY", body);
+        let result = await axios.put(`https://socialmeme.herokuapp.com/users/actions/follow`, body);
+
+        // console.log("RESULTADO",result.data);
+
+        setFollowed(result.data);
+        props.dispatch({ type: UPDATE_CREDENTIALS, payload: result.data });
+    }
+    //Follow user
+    const unfollowUser = async (unfollowedId) => {
+        let body = {
+            unfollowedId: unfollowedId,
+            userId: props.credentials.user[0]._id,
+        }
+
+        let result = await axios.put(`https://socialmeme.herokuapp.com/users/actions/unfollow`, body);
+
+        setFollowed(result.data);
+        props.dispatch({ type: UPDATE_CREDENTIALS, payload: result.data });
+    }
+
+    //Render follow/unfollow Button
+    const renderFollowButton = (followedId, followedNickname) => {
+        // console.log("entro");
+        let arr = props.credentials.user[0].followed;
+        // console.log("arr", arr);
+
+
+        let results = arr.filter((elmnt) => elmnt.followedId == followedId);
+        // console.log("results", results)
+
+        if (results.length > 0) {
+            return (
+                <div
+                    className='unfollow'
+                    onClick={() => { unfollowUser(followedId) }}
+                >UNFOLLOW
+                </div>
+            )
+        } else {
+            return (
+                <div
+                    className='follow'
+                    onClick={() => { followUser(followedId, followedNickname) }}
+                >FOLLOW
+                </div>
+            )
+        }
+
+    }
 
     return (
         <div className="container_box" id="home_box">
@@ -361,7 +424,21 @@ const Home = (props) => {
                                         </div>
                                         <div className="meme_rating" style={{ display: postDataDisplay }}>rating: {images.ratingAverage}
                                         </div>
-                                        <div className="meme_creator" style={{ display: postDataDisplay }}>meme done by: {images.ownerNickname}
+                                        <div
+                                            className="meme_creator"
+                                            style={{ display: postDataDisplay }}>
+                                            meme done by: {images.ownerNickname}
+                                            {/* <div
+                                                className='follow'
+                                                onClick={() => { followUser(images.ownerId, images.ownerNickname) }}
+                                            >FOLLOW
+                                            </div> */}
+                                            {renderFollowButton(images.ownerId, images.ownerNickname)}
+                                            {/* <div
+                                                className='unfollow'
+                                                onClick={() => { unfollowUser(images.ownerId) }}
+                                            >UNFOLLOW
+                                            </div> */}
                                         </div>
                                         <Accordion
                                             className='meme_comments_accordion'
@@ -394,7 +471,7 @@ const Home = (props) => {
                                                         </div>
                                                     </div>
                                                     {images?.comments?.map(elmnt => {
-                                                        { console.log(elmnt); }
+
                                                         return (
                                                             <div className='meme_comment_box' key={elmnt.commentId}>
                                                                 <div className="meme_comment_owner">{elmnt.ownerNickname}</div>

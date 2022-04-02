@@ -56,7 +56,6 @@ export const LoginForm = (props) => {
     //Inputs regex validation
     for (let element of fieldsArr) {
       error = checkError(element[0], element[1]);
-      console.log(error)
       if (error !== "ok") {
         seterrorMsg(error)
         regexError = true;
@@ -74,7 +73,6 @@ export const LoginForm = (props) => {
     let result;
     if (!regexError && !passMisError && !passLengthError && !ageError) {
       try {
-console.log(body);
         result = await axios.post("https://socialmeme.herokuapp.com/users/login", body)
 
         if (result.data.token) {

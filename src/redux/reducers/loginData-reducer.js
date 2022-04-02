@@ -21,7 +21,9 @@ const reducerLoginData = (state = initialState, action) => {
 
         //ACTUALIZAMOS DATOS DE USUARIO CON LO QUE NOS LLEGA DE USERMODFORM
         case UPDATE_CREDENTIALS:
-            return {...state, user: action.payload}
+            // console.log("STATE", state);
+            // console.log("ACTION", action.payload);
+            return {...state, user: [action.payload]}
 
         default:
             return state

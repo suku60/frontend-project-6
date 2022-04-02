@@ -324,12 +324,24 @@ height: 1em;
     color: var(--color-light-2);
 
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
     transition: var(--transition-5);
     
     margin-bottom: .1em;
 
+}
+.follow{
+    cursor: pointer;
+}
+.follow:hover{
+    color:greenyellow;
+}
+.unfollow{
+    cursor: pointer;
+}
+.unfollow:hover{
+    color:rgb(255, 54, 47);
 }
 
 .meme_creator:hover {
