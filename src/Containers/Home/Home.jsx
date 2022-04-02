@@ -42,6 +42,9 @@ const Home = (props) => {
 
     // USEEFFECTS
     useEffect(() => {
+        if(!props.credentials.token){
+            desiredView("/login");
+        }
         bringMemes(1);
 
     }, [])

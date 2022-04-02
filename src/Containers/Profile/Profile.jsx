@@ -4,9 +4,10 @@ import NavigationButton from '../../Components/NavigationButton/NavigationButton
 import { Helmet } from 'react-helmet';
 import axios from 'axios';
 import { connect } from 'react-redux';
+import { LOGOUT } from '../../redux/types';
 
 import { ScrollArea, Accordion, Modal, Group } from '@mantine/core';
-import { SquarePlus } from 'tabler-icons-react';
+import { SquarePlus, Logout } from 'tabler-icons-react';
 
 import './Profile.css';
 import ProfileForm from '../../Components/ProfileForm/ProfileForm';
@@ -233,6 +234,18 @@ const Profile = (props) => {
         }
     }
 
+    const logout= ()=>{
+        navigate('/')
+        
+        setTimeout(()=>{
+            props.dispatch({ type: LOGOUT });
+
+            setTimeout(()=>{
+                navigate('/')
+            },500)
+        },500)
+    }
+
     return (
         <div className="container_box" id="profile_box">
             <div>
@@ -367,6 +380,14 @@ const Profile = (props) => {
                             </div>
                         </Accordion.Item>
                     </Accordion>
+                    <div className='logout_box' onClick={()=>{logout()}}>
+                        <Logout
+                            size={48}
+                            strokeWidth={1}
+                            color={'black'}
+                        />
+                        <span className='logout_text'>LOGOUT</span>
+                    </div>
                 </div>
             </div>
         </div>
