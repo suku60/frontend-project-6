@@ -244,27 +244,27 @@ const Home = (props) => {
 
     }
 
-        //Add answer
-        const addAnswer = async (postId, commentId) => {
+    //Add answer
+    const addAnswer = async (postId, commentId) => {
 
-            let body = {
+        let body = {
 
-                postId: postId,
-                commentId: commentId,
-                ownerId: props.credentials.user[0]._id,
-                ownerNickname: props.credentials.user[0].nickname,
-                answer: answer,
-            }
-    
-            axios.put(`https://socialmeme.herokuapp.com/posts/actions/addCommentAnswer`, body);
-    
-    
-            setTimeout(() => {
-                bringMemes(1);
-                clearHooks();
-            }, 1000);
-    
+            postId: postId,
+            commentId: commentId,
+            ownerId: props.credentials.user[0]._id,
+            ownerNickname: props.credentials.user[0].nickname,
+            answer: answer,
         }
+
+        axios.put(`https://socialmeme.herokuapp.com/posts/actions/addCommentAnswer`, body);
+
+
+        setTimeout(() => {
+            bringMemes(1);
+            clearHooks();
+        }, 1000);
+
+    }
 
 
     return (
@@ -363,11 +363,11 @@ const Home = (props) => {
                                         </div>
                                         <div className="meme_creator" style={{ display: postDataDisplay }}>meme done by: {images.ownerNickname}
                                         </div>
-                                        <Accordion 
-                                        className='meme_comments_accordion'
-                                        icon={<ChevronDown size={20} />} 
-                                        iconPosition="right" 
-                                        offsetIcon={false}
+                                        <Accordion
+                                            className='meme_comments_accordion'
+                                            icon={<ChevronDown size={20} />}
+                                            iconPosition="right"
+                                            offsetIcon={false}
                                         >
                                             {/* <Accordion className='meme_comments_accordion' iconPosition="right" iconSize={0} offsetIcon={false} onClick={() => HideShowPostData()}> */}
                                             <Accordion.Item label={`Comments`}>
@@ -394,7 +394,7 @@ const Home = (props) => {
                                                         </div>
                                                     </div>
                                                     {images?.comments?.map(elmnt => {
-                                                        {console.log(elmnt);}
+                                                        { console.log(elmnt); }
                                                         return (
                                                             <div className='meme_comment_box' key={elmnt.commentId}>
                                                                 <div className="meme_comment_owner">{elmnt.ownerNickname}</div>
@@ -460,11 +460,11 @@ const Home = (props) => {
                                                                 </div>
                                                                 <div className="meme_comments_rating">rating: {elmnt.ratingAverage}
                                                                 </div>
-                                                                <Accordion 
-                                                                className='meme_answers_accordion'
-                                                                icon={<ChevronDown size={20} />}  
-                                                                iconPosition="right" 
-                                                                offsetIcon={false}>
+                                                                <Accordion
+                                                                    className='meme_answers_accordion'
+                                                                    icon={<ChevronDown size={20} />}
+                                                                    iconPosition="right"
+                                                                    offsetIcon={false}>
                                                                     <Accordion.Item label={`Answers`}>
                                                                         <div className='accordionContent'>
                                                                             <div className='meme_comment_textarea_box'>
