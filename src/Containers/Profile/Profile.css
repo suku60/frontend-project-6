@@ -193,9 +193,26 @@
     font-size: 1em;
 }
 
-/* button[id]{
-    background-color: brown;
-} */
+.edit_bttn_box{
+    height: 10%;
+    width: 100%;
+
+    margin-right: 5%;
+    
+    color: var(--color-dark-1);
+
+    /* background-color: transparent; */
+
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    
+    /* cursor: pointer; */
+}
+
+.edit_bttn{
+    cursor:pointer;
+}
 
 .comment_goToPost_bttn {
     cursor: pointer;

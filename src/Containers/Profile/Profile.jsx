@@ -4,13 +4,14 @@ import NavigationButton from '../../Components/NavigationButton/NavigationButton
 import { Helmet } from 'react-helmet';
 import axios from 'axios';
 import { connect } from 'react-redux';
-import { LOGOUT } from '../../redux/types';
+import { LOGOUT, SELECT_POST } from '../../redux/types';
 
 import { ScrollArea, Accordion, Modal, Group } from '@mantine/core';
-import { SquarePlus, Logout } from 'tabler-icons-react';
+import { SquarePlus, Logout, Edit } from 'tabler-icons-react';
 
 import './Profile.css';
 import ProfileForm from '../../Components/ProfileForm/ProfileForm';
+import UpdatePostForm from '../../Components/UpdatePostForm/UpdatePostForm';
 
 const Profile = (props) => {
     // let commentedOrAnsweredPost = [];
@@ -38,6 +39,7 @@ const Profile = (props) => {
 
     //Mantine hooks
     const [opened, setOpened] = useState(false);
+    const [opened2, setOpened2] = useState(false);
     const title = opened ? 'Close navigation' : 'Open navigation';
 
     // useEffect  
@@ -159,11 +161,22 @@ const Profile = (props) => {
     }
 
     //Get individual post data and saves into commentedOrAnsweredPost hook
-    const getPost = async (postId) => {
+    const getPost = async (postId, isEdit) => {
 
         let result = await axios.get(`https://socialmeme.herokuapp.com/posts/get?postId=${postId}`);
 
-        setCommentedOrAnsweredPost(result.data);
+        if (!isEdit) {
+            setCommentedOrAnsweredPost(result.data);
+        } else {
+
+            props.dispatch({ type: SELECT_POST, payload: result.data[0] })
+
+
+            setTimeout(() => {
+
+                setOpened2(true);
+            }, 500)
+        }
 
     }
 
@@ -189,7 +202,7 @@ const Profile = (props) => {
                                         <div className='accordionContent'>
                                             {images.comments.map(elmnt => {
                                                 return (
-                                                    <div className='meme_comment_box' key='elmnt.commentId'>
+                                                    <div className='meme_comment_box' key={elmnt.commentId}>
                                                         <div className="meme_comment_owner">{elmnt.ownerNickname}</div>
                                                         <div className="meme_comment_created">{elmnt.created}</div>
                                                         <div className="meme_comment_content">{elmnt.comment}</div>
@@ -232,7 +245,7 @@ const Profile = (props) => {
                                         <div className='accordionContent'>
                                             {images.comments.map(elmnt => {
                                                 return (
-                                                    <div className='meme_comment_box' key='elmnt.commentId'>
+                                                    <div className='meme_comment_box' key={elmnt.commentId}>
                                                         <div className="meme_comment_owner">{elmnt.ownerNickname}</div>
                                                         <div className="meme_comment_created">{elmnt.created}</div>
                                                         <div className="meme_comment_content">{elmnt.comment}</div>
@@ -265,7 +278,7 @@ const Profile = (props) => {
             return (
                 <div
                     className='comment_goToPost_bttn'
-                    onClick={() => getPost(elmnt.postId)}>GO TO POST
+                    onClick={() => getPost(elmnt.postId, false)}>GO TO POST
                 </div>
             )
         } else {
@@ -350,7 +363,32 @@ const Profile = (props) => {
                                         <div className='meme_card' key={images._id}>
                                             <img className='meme_photo' src={images.img} alt={images.title} />
                                             <div className="meme_card_data">
+                                                <div className='edit_bttn_box'>
+                                                    <>
+                                                        <Modal
+                                                            opened={opened2}
+                                                            onClose={() => {
+                                                                setOpened2(false);
+                                                                getUserPostsAndComments();
+                                                                setCommentedOrAnsweredPost([]);
+                                                            }}
+                                                        >
+                                                            <UpdatePostForm>
 
+                                                            </UpdatePostForm>
+                                                        </Modal>
+                                                        <Group position="center"
+                                                            onClick={() => getPost(images._id, true)}
+                                                        >
+                                                            <Edit
+                                                                size={32}
+                                                                strokeWidth={1}
+                                                                color={'white'}
+                                                                className='edit_bttn'
+                                                            />
+                                                        </Group>
+                                                    </>
+                                                </div>
                                                 <div className="meme_title" style={{ display: postDataDisplay }}>{images.title}
                                                 </div>
                                                 <div className="meme_description" style={{ display: postDataDisplay }}>{images.text}
@@ -362,7 +400,7 @@ const Profile = (props) => {
                                                         <div className='accordionContent'>
                                                             {images.comments.map(elmnt => {
                                                                 return (
-                                                                    <div className='meme_comment_box' key='elmnt.commentId'>
+                                                                    <div className='meme_comment_box' key={elmnt.commentId}>
                                                                         <div className="meme_comment_owner">{elmnt.ownerNickname}</div>
                                                                         <div className="meme_comment_created">{elmnt.created}</div>
                                                                         <div className="meme_comment_content">{elmnt.comment}</div>
@@ -393,7 +431,7 @@ const Profile = (props) => {
                                 </>
                                 {commentsArr?.map(elmnt => {
                                     return (
-                                        <div className='meme_comment_box' key='elmnt.commentId'>
+                                        <div className='meme_comment_box' key={elmnt.commentId}>
                                             <>{renderGoToPostBttn(elmnt)}</>
                                             <div className="meme_comment_owner">{elmnt.ownerNickname}</div>
                                             <div className="meme_comment_created">{elmnt.created}</div>
@@ -417,7 +455,7 @@ const Profile = (props) => {
                                 </>
                                 {answersArr?.map(elmnt => {
                                     return (
-                                        <div className='meme_comment_box' key='elmnt.commentId'>
+                                        <div className='meme_comment_box' key={elmnt.commentId}>
                                             <>{renderGoToPostBttn(elmnt)}</>
                                             <div className="meme_comment_owner">{elmnt.ownerNickname}</div>
                                             <div className="meme_comment_created">{elmnt.created}</div>

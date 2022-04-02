@@ -242,8 +242,8 @@ export const RegisterForm = (props) => {
   return (
     <>
       <>
-        {/* {<pre>{JSON.stringify(userData, null, 2)}</pre>}
-        {<pre>{JSON.stringify(checked, null, 2)}</pre>}
+        {/* {<pre>{JSON.stringify(userData, null, 2)}</pre>} */}
+        {/* {<pre>{JSON.stringify(checked, null, 2)}</pre>}
         {<pre>{JSON.stringify(msgLength, null, 2)}</pre>}s
         {<pre>{JSON.stringify(msgMis, null, 2)}</pre>}
         {<pre>{JSON.stringify(errorMsg, null, 2)}</pre>} */}
