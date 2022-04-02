@@ -42,7 +42,7 @@ const Home = (props) => {
 
     // USEEFFECTS
     useEffect(() => {
-        if(!props.credentials.token){
+        if (!props.credentials.token) {
             desiredView("/login");
         }
         bringMemes(1);
@@ -126,7 +126,7 @@ const Home = (props) => {
 
     }
 
-    // Rating action
+    // Rating post action
     const ratePost = async (postId, rating) => {
         if (props.credentials.token) {
             let body = {
@@ -143,11 +143,52 @@ const Home = (props) => {
                 showNotification({
                     title: `Post rated with ${rating} tomatoes!`,
                     // message: 'Hey there, your code is awesome! 🤥',
+                    autoClose: 1000
                 })
             } else {
                 showNotification({
                     title: "You have already rated this post",
                     // message: 'Hey there, your code is awesome! 🤥',
+                    autoClose: 1000
+                })
+            }
+
+        } else {
+            showNotification({
+                title: 'You must be logged in to rate',
+                // message: 'Hey there, your code is awesome! 🤥',
+                autoClose: 1000
+            })
+        }
+
+
+    }
+
+    // Rating comment action
+    const rateComment = async (postId, commentId, rating) => {
+        if (props.credentials.token) {
+            let body = {
+                postId: postId,
+                commentId: commentId,
+                raterId: props.credentials.user[0]._id,
+                raterNickname: props.credentials.user[0].nickname,
+                rate: rating
+            }
+            console.log(body);
+            let response = await axios.put(`https://socialmeme.herokuapp.com/posts/actions/addCommentRating`, body);
+
+            console.log(response.data);
+            if (response.data !== "You have already rated this comment") {
+                showNotification({
+                    title: `Comment rated with ${rating} tomatoes!`,
+                    // message: 'Hey there, your code is awesome! 🤥',
+                    autoClose: 1000
+                })
+            } else {
+                showNotification({
+                    title: "You have already rated this comment",
+                    // message: 'Hey there, your code is awesome! 🤥',
+                    autoClose: 1000
                 })
             }
 
@@ -299,7 +340,7 @@ const Home = (props) => {
                                         <div className="meme_creator" style={{ display: postDataDisplay }}>meme done by: {images.ownerNickname}
                                         </div>
                                         <Accordion className='meme_comments_accordion' iconPosition="right" iconSize={0} offsetIcon={false}>
-                                        {/* <Accordion className='meme_comments_accordion' iconPosition="right" iconSize={0} offsetIcon={false} onClick={() => HideShowPostData()}> */}
+                                            {/* <Accordion className='meme_comments_accordion' iconPosition="right" iconSize={0} offsetIcon={false} onClick={() => HideShowPostData()}> */}
                                             <Accordion.Item label={`Comments`}>
                                                 <div className='accordionContent'>
                                                     <div className='meme_comment_textarea_box'>
@@ -330,21 +371,61 @@ const Home = (props) => {
                                                                 <div className="meme_comment_created">{elmnt.created}</div>
                                                                 <div className="meme_comment_content">{elmnt.comment}</div>
                                                                 <div className="meme_comment_rating_action" onMouseOver={() => OffBackgroundStar()}>
-                                                                    <div className="meme_comment_rating_star" style={{ backgroundColor: star1 }} onMouseOver={() => OnBackgroundStar()}>
-                                                                        <StarSvg style={{ backgroundColor: star1 }} onMouseOver={() => OnBackgroundStar()} />
+                                                                    <div
+                                                                        className="meme_comment_rating_star"
+                                                                        style={{ backgroundColor: star1 }}
+                                                                        onMouseOver={() => OnBackgroundStar()}
+                                                                        onClick={() => { rateComment(images._id, elmnt.commentId, 1) }}
+                                                                    >
+                                                                        <StarSvg
+                                                                            style={{ backgroundColor: star1 }}
+                                                                            onMouseOver={() => OnBackgroundStar()}
+                                                                        />
                                                                         {/* <div className="star_white"></div> */}
                                                                     </div>
-                                                                    <div className="meme_comment_rating_star" style={{ backgroundColor: star2 }} onMouseOver={() => OnBackgroundStar2()}>
-                                                                        <StarSvg style={{ backgroundColor: star2 }} onMouseOver={() => OnBackgroundStar2()} />
+                                                                    <div
+                                                                        className="meme_comment_rating_star"
+                                                                        style={{ backgroundColor: star2 }}
+                                                                        onMouseOver={() => OnBackgroundStar2()}
+                                                                        onClick={() => { rateComment(images._id, elmnt.commentId, 2) }}
+                                                                    >
+                                                                        <StarSvg
+                                                                            style={{ backgroundColor: star2 }}
+                                                                            onMouseOver={() => OnBackgroundStar2()}
+                                                                        />
                                                                     </div>
-                                                                    <div className="meme_comment_rating_star" style={{ backgroundColor: star3 }} onMouseOver={() => OnBackgroundStar3()}>
-                                                                        <StarSvg style={{ backgroundColor: star3 }} onMouseOver={() => OnBackgroundStar3()} />
+                                                                    <div
+                                                                        className="meme_comment_rating_star"
+                                                                        style={{ backgroundColor: star3 }}
+                                                                        onMouseOver={() => OnBackgroundStar3()}
+                                                                        onClick={() => { rateComment(images._id, elmnt.commentId, 3) }}
+                                                                    >
+                                                                        <StarSvg
+                                                                            style={{ backgroundColor: star3 }}
+                                                                            onMouseOver={() => OnBackgroundStar3()}
+                                                                        />
                                                                     </div>
-                                                                    <div className="meme_comment_rating_star" style={{ backgroundColor: star4 }} onMouseOver={() => OnBackgroundStar4()}>
-                                                                        <StarSvg style={{ backgroundColor: star4 }} onMouseOver={() => OnBackgroundStar4()} />
+                                                                    <div
+                                                                        className="meme_comment_rating_star"
+                                                                        style={{ backgroundColor: star4 }}
+                                                                        onMouseOver={() => OnBackgroundStar4()}
+                                                                        onClick={() => { rateComment(images._id, elmnt.commentId, 4) }}
+                                                                    >
+                                                                        <StarSvg
+                                                                            style={{ backgroundColor: star4 }}
+                                                                            onMouseOver={() => OnBackgroundStar4()}
+                                                                        />
                                                                     </div>
-                                                                    <div className="meme_comment_rating_star" style={{ backgroundColor: star5 }} onMouseOver={() => OnBackgroundStar5()}>
-                                                                        <StarSvg style={{ backgroundColor: star5 }} onMouseOver={() => OnBackgroundStar5()} />
+                                                                    <div
+                                                                        className="meme_comment_rating_star"
+                                                                        style={{ backgroundColor: star5 }}
+                                                                        onMouseOver={() => OnBackgroundStar5()}
+                                                                        onClick={() => { rateComment(images._id, elmnt.commentId, 5) }}
+                                                                    >
+                                                                        <StarSvg
+                                                                            style={{ backgroundColor: star5 }}
+                                                                            onMouseOver={() => OnBackgroundStar5()}
+                                                                        />
                                                                     </div>
                                                                 </div>
                                                                 <div className="meme_comments_rating">rating: {elmnt.ratingAverage}
