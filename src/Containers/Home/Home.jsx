@@ -302,31 +302,39 @@ const Home = (props) => {
 
     //Render follow/unfollow Button
     const renderFollowButton = (followedId, followedNickname) => {
-        // console.log("entro");
-        let arr = props.credentials.user[0].followed;
-        // console.log("arr", arr);
 
+        if (props.credentials.token) {
+            let arr = props.credentials.user[0].followed;
 
-        let results = arr.filter((elmnt) => elmnt.followedId == followedId);
-        // console.log("results", results)
+            let results = arr.filter((elmnt) => elmnt.followedId == followedId);
 
-        if (results.length > 0) {
-            return (
-                <div
-                    className='unfollow'
-                    onClick={() => { unfollowUser(followedId) }}
-                >UNFOLLOW
-                </div>
-            )
+            if (results.length > 0) {
+                return (
+                    <div
+                        className='unfollow'
+                        onClick={() => { unfollowUser(followedId) }}
+                    >UNFOLLOW
+                    </div>
+                )
+            } else {
+                return (
+                    <div
+                        className='follow'
+                        onClick={() => { followUser(followedId, followedNickname) }}
+                    >FOLLOW
+                    </div>
+                )
+            }
         } else {
             return (
                 <div
-                    className='follow'
-                    onClick={() => { followUser(followedId, followedNickname) }}
-                >FOLLOW
+                    className='unfollow'
+                >LOGIN TO FOLLOW
                 </div>
             )
         }
+
+
 
     }
 
