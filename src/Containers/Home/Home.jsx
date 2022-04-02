@@ -162,19 +162,19 @@ const Home = (props) => {
 
     }
 
-    const HideShowPostData = () => {
+    // const HideShowPostData = () => {
 
-        if (postDataDisplay === "flex") {
+    //     if (postDataDisplay === "flex") {
 
-            setPostDataDisplay("none")
-        } else if (postDataDisplay === "none") {
+    //         setPostDataDisplay("none")
+    //     } else if (postDataDisplay === "none") {
 
-            setPostDataDisplay("flex")
+    //         setPostDataDisplay("flex")
 
-        }
+    //     }
 
 
-    }
+    // }
 
     const clearHooks = () => {
 
@@ -231,9 +231,9 @@ const Home = (props) => {
                                     <img className='meme_photo' src={images.img} alt={images.title} />
                                     <div className="meme_card_data">
 
-                                        <div className="meme_name" style={{ display: postDataDisplay }}>{images.title}
+                                        <div className="meme_title" style={{ display: postDataDisplay }}>{images.title}
                                         </div>
-                                        <div className="meme_name" style={{ display: postDataDisplay }}>{images.text}
+                                        <div className="meme_description" style={{ display: postDataDisplay }}>{images.text}
                                         </div>
                                         <div className="meme_rating_action" style={{ display: postDataDisplay }} onMouseOver={() => OffBackgroundStar()}>
                                             <div
@@ -298,7 +298,8 @@ const Home = (props) => {
                                         </div>
                                         <div className="meme_creator" style={{ display: postDataDisplay }}>meme done by: {images.ownerNickname}
                                         </div>
-                                        <Accordion className='meme_comments_accordion' iconPosition="right" iconSize={0} offsetIcon={false} onClick={() => HideShowPostData()}>
+                                        <Accordion className='meme_comments_accordion' iconPosition="right" iconSize={0} offsetIcon={false}>
+                                        {/* <Accordion className='meme_comments_accordion' iconPosition="right" iconSize={0} offsetIcon={false} onClick={() => HideShowPostData()}> */}
                                             <Accordion.Item label={`Comments`}>
                                                 <div className='accordionContent'>
                                                     <div className='meme_comment_textarea_box'>

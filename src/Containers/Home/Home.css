@@ -104,7 +104,8 @@
     justify-content: flex-start;
     align-items: center;
     
-    height: 99vh !important;
+    height: fit-content !important;
+    /* height: 99vh !important; */
     width: 39.8vw;
     
     border-radius: var(--border-radius-3);
@@ -133,6 +134,7 @@ height: 1em;
     
     width: 38.8vw;
     height: fit-content; 
+    /* height: fit-content;  */
 
     background-color: black;
 
@@ -158,7 +160,8 @@ height: 1em;
     justify-content: center;
     align-items: center;
 
-    height: 18.4em;
+    height: fit-content;
+    /* height: 18.4em; */
     width: 39vw;
 
     
@@ -176,10 +179,32 @@ height: 1em;
 
 }
 
-.meme_name {
+.meme_title {
     
     width: 38.6vw;
-    height: 8em;
+    height: fit-content;
+    min-height: 3em;
+
+    font-size: 1.2em;
+    font-weight: 1000;
+
+    /* margin-bottom: 5%; */
+
+    background-color: var(--color-dark-1);
+    /* background-color: transparent; */
+    color: var(--color-light-2);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: var(--transition-5);
+
+}
+
+.meme_description {
+    
+    width: 38.6vw;
+    height: fit-content;
 
     background-color: var(--color-dark-1);
     /* background-color: transparent; */
@@ -196,7 +221,7 @@ height: 1em;
     background-color: var(--color-vapor-1-4);
     transition: var(--transition-9);
 
-    height: 10em;
+    /* height: 10em; */
     
     color: var(--color-light-1);
 }
