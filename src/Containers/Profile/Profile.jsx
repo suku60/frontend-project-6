@@ -70,7 +70,6 @@ const Profile = (props) => {
         if (props.credentials.user[0].avatar == "") {
             return (
                 <div className="container_profile_photo">
-                    <div className="addPicture_text">UPDATE AVATAR</div>
 
                     <Modal
                         opened={opened}
@@ -87,11 +86,12 @@ const Profile = (props) => {
                         <SquarePlus
                             size={48}
                             strokeWidth={1}
-                            color={'black'}
+                            color={'white'}
                             className="addPicture_logo"
 
                         />
                     </Group>
+                    <div className="addPicture_text">UPDATE AVATAR</div>
                 </div>
             )
         } else {

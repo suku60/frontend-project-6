@@ -74,6 +74,12 @@
     cursor: pointer;
 }
 
+.addPicture_logo,
+.addPicture_text{
+    z-index:300;
+    color: white;
+}
+
 .avatarImg {
     height: 20vh;
     border-radius: 50%;
@@ -117,6 +123,7 @@
     height: 10%;
     width: 60%;
     /* background-color: blue; */
+    border-radius: var(--border-radius-4) var(--border-radius-4) var(--border-radius-4) var(--border-radius-4);
 }
 
 .profile_nickname {
@@ -143,6 +150,7 @@
     flex-direction: row;
     justify-content: center;
     align-items: center;
+
 }
 
 .profile_box_data_div {
