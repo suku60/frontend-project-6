@@ -190,8 +190,12 @@ const Home = (props) => {
 
         axios.put(`https://socialmeme.herokuapp.com/posts/actions/addComment`, body);
 
-        bringMemes(1);
-        clearHooks();
+
+        setTimeout(() => {
+            bringMemes(1);
+            clearHooks();
+        }, 1000);
+
     }
 
 

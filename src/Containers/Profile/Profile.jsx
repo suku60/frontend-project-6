@@ -252,6 +252,35 @@ const Profile = (props) => {
             {/* THIS WILL BE A CAROUSEL OF IMAGES */}
             <div className="component_profile">
                 <div className='component_profile' id="animationContainerFromTop">
+                    <div className='profile_header'>
+                        <div className='profile_nickname'>
+                            {props.credentials.user[0].nickname}
+                        </div>
+                        <div className='profile_box_data'>
+                            <div className='profile_box_data_div'>
+                                <div className='profile_box_data_key'>
+                                    EMAIL
+                                </div>
+                                <div className='profile_box_data_key'>
+                                    FOLLOWED
+                                </div>
+                                {/* <div className='profile_box_data_key'>
+                                    FOLLOWERS
+                                </div> */}
+                            </div>
+                            <div className='profile_box_data_div'>
+                                <div className='profile_box_data_value'>
+                                    {props.credentials.user[0].email}
+                                </div>
+                                <div className='profile_box_data_value'>
+                                    {props.credentials.user[0].followed.length}
+                                </div>
+                                {/* <div className='profile_box_data_value'>
+                                {props.credentials.user[0].followed.length}
+                                </div> */}
+                            </div>
+                        </div>
+                    </div>
                     {/* POSTS */}
                     <Accordion className='accordion' iconPosition="right" iconSize={0} offsetIcon={false}>
                         <Accordion.Item label={`Your Posts`}>
