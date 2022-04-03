@@ -306,6 +306,7 @@ const Home = (props) => {
     const renderFollowButton = (followedId, followedNickname) => {
 
         if (props.credentials.token) {
+            
             let arr = props.credentials.user.followed;
 
             let results = arr.filter((elmnt) => elmnt.followedId == followedId);

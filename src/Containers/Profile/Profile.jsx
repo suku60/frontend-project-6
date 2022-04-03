@@ -360,7 +360,7 @@ const Profile = (props) => {
                                     EMAIL
                                 </div>
                                 <div className='profile_box_data_key'>
-                                    FOLLOWED
+                                    FOLLOWING
                                 </div>
                                 {/* <div className='profile_box_data_key'>
                                     FOLLOWERS
