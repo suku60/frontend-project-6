@@ -172,14 +172,6 @@ height: 1em;
     
 }
 
-.meme_card_data:hover {
-    background-color: var(--color-dark-2);
-    
-    transition: var(--transition-2);
-    
-    border-radius: 0em 0em var(--border-radius-3) var(--border-radius-3);
-
-}
 
 .meme_title {
     
@@ -217,15 +209,8 @@ height: 1em;
     align-items: center;
     transition: var(--transition-5);
 
-}
+    margin-bottom: 1em;
 
-.meme_name:hover {
-    background-color: var(--color-vapor-1-4);
-    transition: var(--transition-9);
-
-    /* height: 10em; */
-    
-    color: var(--color-light-1);
 }
 
 .meme_rating_action {
@@ -243,14 +228,14 @@ height: 1em;
     flex-direction: row;
     justify-content: space-evenly;
     align-items: center;
-    transition: var(--transition-5);
+    transition: var(--transition-9);
 
     
 }
 
 .meme_rating_action:hover {
     background-color: var(--color-vapor-2-2);
-    transition: var(--transition-9);
+    transition: var(--transition-5);
 
     height: 13em;
 
@@ -369,22 +354,11 @@ height: 1em;
     background-color: var(--color-vapor-1-3);
 }
 
-.meme_creator:hover {
-    background-color: var(--color-vapor-4-4);
-    transition: var(--transition-9);
-
-    height: 10em;
-    margin-bottom: .1em;
-    
-    border-radius: 0em 0em var(--border-radius-3) var(--border-radius-3);
-    color: var(--color-light-1);
-}
-
 
 .meme_comments_accordion {
     /* THIS IS THE RESULTS CONTAINER LEVEL 1*/
-    /* background: linear-gradient(to left top, var(--color-vapor-2-1), var(--color-vapor-1-1)); */
-    background-color: var(--color-vapor-1-1);
+    background: linear-gradient(to bottom, var(--color-vapor-3-1), var(--color-vapor-3-2));
+    background-color: var(--color-vapor-3-2);
     transition: var(--transition-0);
     color: var(--color-light-2) !important;
 
@@ -398,7 +372,10 @@ height: 1em;
 
     
     overflow-x: scroll;
+
+    transition: var(--transition-1);
 }
+
 
 .meme_comment_textarea_box{
     display: flex;

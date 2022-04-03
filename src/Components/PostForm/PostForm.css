@@ -21,7 +21,8 @@
     padding-right: .9em;
     
     
-    background: linear-gradient(to left, var(--color-vapor-2-1), var(--color-vapor-3-1));
+    background: linear-gradient(to bottom, var(--color-vapor-3-2), var(--color-vapor-3-1));
+    /* background-color: var(--color-vapor-3-2); */
 
     box-shadow: .9em .9em .9em rgba(0, 0, 0, 0.267);
     
@@ -38,7 +39,9 @@
     border:dotted;
     height: 5em;
     width: 100%;
-    background: linear-gradient(to left top, var(--color-vapor-2-1), var(--color-vapor-1-1));
+    /* background: linear-gradient(to left top, var(--color-vapor-2-1), var(--color-vapor-1-1)); */
+    background-color: var(--color-vapor-3-1);
+
 
     text-align: center;
     display: flex;
@@ -46,9 +49,15 @@
     justify-content: center;
     align-items: center;
 
+    transition: var(--transition-2);
+
 }
 .dropzoneContainer:hover{
-    background: linear-gradient(to left top, var(--color-vapor-1-1), var(--color-vapor-2-1));
+    /* background: linear-gradient(to left top, var(--color-vapor-1-1), var(--color-vapor-2-1)); */
+    background-color: var(--color-vapor-3-3);
+
+    transition: var(--transition-2);
+
     cursor: pointer;
 }
 
