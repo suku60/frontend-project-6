@@ -358,7 +358,8 @@ height: 1em;
 
 .meme_comments_accordion {
     /* THIS IS THE RESULTS CONTAINER LEVEL 1*/
-    background: linear-gradient(to left top, var(--color-vapor-2-1), var(--color-vapor-1-1));
+    /* background: linear-gradient(to left top, var(--color-vapor-2-1), var(--color-vapor-1-1)); */
+    background-color: var(--color-vapor-1-1);
     transition: var(--transition-0);
     color: var(--color-light-2) !important;
 
@@ -376,9 +377,11 @@ height: 1em;
 
 .meme_comment_textarea_box{
     display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    align-items: flex-end;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+    margin: .5em;
 }
 .meme_comment_textarea {
     width: 25em;
@@ -388,10 +391,12 @@ height: 1em;
     border-width: .5em !important;
     /* background-color: red; */
     padding: 0.5%;
-    margin-left: 0.5%;
+    margin-left: 1em;
 
-    height: 4vh;
-    width: 5vw;
+    margin-top: 3.5em;
+
+    height: 3vh;
+    width: 3vw;
 
     font-size: .8em;
 
@@ -403,10 +408,8 @@ height: 1em;
 
     letter-spacing: .3em;
 
-    background-color: var(--color-dark-3);
-
     
-    background-color: var(--color-vapor-2-1);
+    background-color: var(--color-vapor-2-2);
     color: var(--color-dark-3);
 
     border-radius: var(--border-radius-2);
@@ -419,6 +422,10 @@ height: 1em;
     transition: var(--transition-2);
 
     margin-bottom: 5%;
+}
+
+.meme_comment_textarea_bttn:hover {
+    background-color: var(--color-vapor-2-3);
 }
 
 .meme_comment_box {
