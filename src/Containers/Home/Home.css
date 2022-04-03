@@ -332,7 +332,7 @@ height: 1em;
     margin-bottom: .5em;
 
     
-    overflow-x: hidden;
+    overflow-x: scroll;
 }
 
 .meme_comment_box {
