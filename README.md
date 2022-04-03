@@ -1,6 +1,6 @@
 ## tomeme
 
-### Descripción del proyecto // _Proyect description_
+### Descripción del proyecto // _Project description_
 
 Este es el sexto proyecto que realizamos en el bootcamp de Geekshubs Academy. Esta vez, el reto era realizar tanto un backend como un frontend utilizando mongoDB/mongoose y React.js.
 //
