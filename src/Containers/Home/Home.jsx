@@ -435,7 +435,7 @@ const Home = (props) => {
                                         <div
                                             className="meme_creator"
                                             style={{ display: postDataDisplay }}>
-                                            meme done by: {images.ownerNickname}
+                                            author: {images.ownerNickname}
                                             {/* <div
                                                 className='follow'
                                                 onClick={() => { followUser(images.ownerId, images.ownerNickname) }}
@@ -460,7 +460,7 @@ const Home = (props) => {
                                                     <div className='meme_comment_textarea_box'>
                                                         <Textarea
                                                             className="meme_comment_textarea"
-                                                            label="New comment"
+                                                            label="add comment "
                                                             autosize
                                                             minRows={2}
                                                             maxRows={4}
