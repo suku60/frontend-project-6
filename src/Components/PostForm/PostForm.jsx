@@ -17,6 +17,9 @@ export const PostForm = (props) => {
   let passMisError;
   let ageError;
   let fileError;
+  let config = {
+    headers: { Authorization: `Bearer ${props.credentials.token}` }
+  }
 
   //1-Hooks
   const [postData, setpostData] = useState({
@@ -127,13 +130,13 @@ export const PostForm = (props) => {
 
     if (!fileError && !regexError && !passMisError && !passLengthError && !ageError) {
 
-      let config = {
+      let configImg = {
         headers: { Authorization: `Bearer 272bb9d6b58b6ee89263edb23a760ce0dbf6a856` }
       }
       let imgbody = {
         image: fileData
       }
-      imgURL = await axios.post('https://api.imgur.com/3/image', imgbody, config)
+      imgURL = await axios.post('https://api.imgur.com/3/image', imgbody, configImg)
 
       let keywordsArr = postData.keywords.split(",");
 
@@ -150,7 +153,7 @@ export const PostForm = (props) => {
       let result;
 
 
-      result = await axios.post("https://socialmeme.herokuapp.com/posts/create", body)
+      result = await axios.post("https://socialmeme.herokuapp.com/posts/create", body, config)
         .then(() => {
           setTimeout(() => {
             showNotification({

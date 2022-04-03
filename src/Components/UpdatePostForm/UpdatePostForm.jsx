@@ -17,6 +17,9 @@ export const UpdatePostForm = (props) => {
   let passMisError;
   let ageError;
   let fileError;
+  let config = {
+    headers: { Authorization: `Bearer ${props.credentials.token}` }
+  }
 
 
   //1-Hooks
@@ -103,10 +106,12 @@ export const UpdatePostForm = (props) => {
         text: postData.description,
         keywords: keywordsArr
       }
+
+     
       let result;
 
 
-      result = await axios.put("https://socialmeme.herokuapp.com/posts/update", body)
+      result = await axios.put("https://socialmeme.herokuapp.com/posts/update", body, config)
         .then(() => {
           setTimeout(() => {
             showNotification({
@@ -125,8 +130,9 @@ export const UpdatePostForm = (props) => {
   }
 
   const deletePost = async () => {
+  
     console.log("soy el objetivo",props.profileData.post._id);
-    let result = await axios.delete(`https://socialmeme.herokuapp.com/posts/delete?postId=${props.profileData.post._id}`)
+    let result = await axios.delete(`https://socialmeme.herokuapp.com/posts/delete?postId=${props.profileData.post._id}`, config)
     .then(() => {
       setTimeout(() => {
         showNotification({

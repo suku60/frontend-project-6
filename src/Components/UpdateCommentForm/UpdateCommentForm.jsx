@@ -17,6 +17,9 @@ export const UpdateCommentForm = (props) => {
   let passMisError;
   let ageError;
   let fileError;
+  let config = {
+    headers: { Authorization: `Bearer ${props.credentials.token}` }
+  }
 
 
   //1-Hooks
@@ -95,7 +98,7 @@ export const UpdateCommentForm = (props) => {
       let result;
 
 
-      result = await axios.put("https://socialmeme.herokuapp.com/posts/actions/updateComment", body)
+      result = await axios.put("https://socialmeme.herokuapp.com/posts/actions/updateComment", body, config)
         .then(() => {
           setTimeout(() => {
             showNotification({
@@ -118,7 +121,7 @@ export const UpdateCommentForm = (props) => {
       commentId: props.profileData.comment.commentId
     }
 
-    let result = await axios.put(`https://socialmeme.herokuapp.com/posts/actions/deleteComment`, body)
+    let result = await axios.put(`https://socialmeme.herokuapp.com/posts/actions/deleteComment`, body, config)
 
     .then(() => {
       setTimeout(() => {

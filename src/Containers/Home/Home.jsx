@@ -16,6 +16,9 @@ import { Helmet } from 'react-helmet';
 
 const Home = (props) => {
     let desiredView = useNavigate();
+    let config = {
+        headers: { Authorization: `Bearer ${props.credentials.token}` }
+      }
 
     // HOOKS
     // memes
@@ -140,8 +143,8 @@ const Home = (props) => {
                 raterNickname: props.credentials.user[0].nickname,
                 rate: rating
             }
-            console.log(body);
-            let response = await axios.put(`https://socialmeme.herokuapp.com/posts/actions/addRating`, body);
+
+            let response = await axios.put(`https://socialmeme.herokuapp.com/posts/actions/addRating`, body, config);
 
             console.log(response.data);
             if (response.data !== "You have already rated this post") {
@@ -179,8 +182,8 @@ const Home = (props) => {
                 raterNickname: props.credentials.user[0].nickname,
                 rate: rating
             }
-            console.log(body);
-            let response = await axios.put(`https://socialmeme.herokuapp.com/posts/actions/addCommentRating`, body);
+
+            let response = await axios.put(`https://socialmeme.herokuapp.com/posts/actions/addCommentRating`, body, config);
 
             console.log(response.data);
             if (response.data !== "You have already rated this comment") {
@@ -238,7 +241,7 @@ const Home = (props) => {
             postId: id,
         }
 
-        axios.put(`https://socialmeme.herokuapp.com/posts/actions/addComment`, body);
+        axios.put(`https://socialmeme.herokuapp.com/posts/actions/addComment`, body, config);
 
 
         setTimeout(() => {
@@ -260,7 +263,7 @@ const Home = (props) => {
             answer: answer,
         }
 
-        axios.put(`https://socialmeme.herokuapp.com/posts/actions/addCommentAnswer`, body);
+        axios.put(`https://socialmeme.herokuapp.com/posts/actions/addCommentAnswer`, body, config);
 
 
         setTimeout(() => {
@@ -280,7 +283,7 @@ const Home = (props) => {
         }
 
         // console.log("BODY", body);
-        let result = await axios.put(`https://socialmeme.herokuapp.com/users/actions/follow`, body);
+        let result = await axios.put(`https://socialmeme.herokuapp.com/users/actions/follow`, body, config);
 
         // console.log("RESULTADO",result.data);
 
@@ -294,7 +297,7 @@ const Home = (props) => {
             userId: props.credentials.user[0]._id,
         }
 
-        let result = await axios.put(`https://socialmeme.herokuapp.com/users/actions/unfollow`, body);
+        let result = await axios.put(`https://socialmeme.herokuapp.com/users/actions/unfollow`, body, config);
 
         setFollowed(result.data);
         props.dispatch({ type: UPDATE_CREDENTIALS, payload: result.data });

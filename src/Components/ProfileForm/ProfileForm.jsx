@@ -19,6 +19,9 @@ export const ProfileForm = (props) => {
   let passMisError;
   let ageError;
   let fileError;
+  let config = {
+    headers: { Authorization: `Bearer ${props.credentials.token}` }
+  }
 
   //1-Hooks
   const [postData, setpostData] = useState({
@@ -105,9 +108,6 @@ export const ProfileForm = (props) => {
 
     if (!fileError && !ageError) {
 
-      let config = {
-        headers: { Authorization: `Bearer 272bb9d6b58b6ee89263edb23a760ce0dbf6a856` }
-      }
       let imgbody = {
         image: fileData
       }
@@ -124,8 +124,8 @@ export const ProfileForm = (props) => {
       }
       let result;
 
-      console.log("hey");
-      result = await axios.put("https://socialmeme.herokuapp.com/users/updateAvatar", body)
+
+      result = await axios.put("https://socialmeme.herokuapp.com/users/updateAvatar", body, config)
 
       let user = await axios.get(`https://socialmeme.herokuapp.com/users/get?id=${props.credentials.user[0]._id}`);
 

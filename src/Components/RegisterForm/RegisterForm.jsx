@@ -206,7 +206,6 @@ export const RegisterForm = (props) => {
 
         result = await axios.post("https://socialmeme.herokuapp.com/users/register", body)
 
-        console.log(result, "juanma aqui")
 
         if (result.data != "This user already exists in the database") {
           showNotification({

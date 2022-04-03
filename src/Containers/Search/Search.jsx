@@ -16,6 +16,10 @@ import { showNotification } from '@mantine/notifications';
 import { connect } from 'react-redux';
 
 const Search = (props) => {
+    let config = {
+        headers: { Authorization: `Bearer ${props.credentials.token}` }
+      }
+
     // HOOKS
     // memes
     const [memesSearch, setMemesSearch] = useState([]);
@@ -131,8 +135,8 @@ const Search = (props) => {
                 raterNickname: props.credentials.user[0].nickname,
                 rate: rating
             }
-            console.log(body);
-            let response = await axios.put(`https://socialmeme.herokuapp.com/posts/actions/addRating`, body);
+
+            let response = await axios.put(`https://socialmeme.herokuapp.com/posts/actions/addRating`, body, config);
 
             console.log(response.data);
             if (response.data !== "You have already rated this post") {
@@ -170,8 +174,8 @@ const Search = (props) => {
                 raterNickname: props.credentials.user[0].nickname,
                 rate: rating
             }
-            console.log(body);
-            let response = await axios.put(`https://socialmeme.herokuapp.com/posts/actions/addCommentRating`, body);
+
+            let response = await axios.put(`https://socialmeme.herokuapp.com/posts/actions/addCommentRating`, body, config);
 
             console.log(response.data);
             if (response.data !== "You have already rated this comment") {
@@ -215,7 +219,7 @@ const Search = (props) => {
             postId: id,
         }
 
-        axios.put(`https://socialmeme.herokuapp.com/posts/actions/addComment`, body);
+        axios.put(`https://socialmeme.herokuapp.com/posts/actions/addComment`, body, config);
 
 
         setTimeout(() => {
@@ -236,7 +240,7 @@ const Search = (props) => {
             answer: answer,
         }
 
-        axios.put(`https://socialmeme.herokuapp.com/posts/actions/addCommentAnswer`, body);
+        axios.put(`https://socialmeme.herokuapp.com/posts/actions/addCommentAnswer`, body, config);
 
 
         setTimeout(() => {
