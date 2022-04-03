@@ -18,7 +18,7 @@ import { connect } from 'react-redux';
 const Search = (props) => {
     let config = {
         headers: { Authorization: `Bearer ${props.credentials.token}` }
-      }
+    }
 
     // HOOKS
     // memes
@@ -131,8 +131,8 @@ const Search = (props) => {
         if (props.credentials.token) {
             let body = {
                 postId: postId,
-                raterId: props.credentials.user[0]._id,
-                raterNickname: props.credentials.user[0].nickname,
+                raterId: props.credentials.user._id,
+                raterNickname: props.credentials.user.nickname,
                 rate: rating
             }
 
@@ -170,8 +170,8 @@ const Search = (props) => {
             let body = {
                 postId: postId,
                 commentId: commentId,
-                raterId: props.credentials.user[0]._id,
-                raterNickname: props.credentials.user[0].nickname,
+                raterId: props.credentials.user._id,
+                raterNickname: props.credentials.user.nickname,
                 rate: rating
             }
 
@@ -213,8 +213,8 @@ const Search = (props) => {
     const addComment = async (id) => {
 
         let body = {
-            ownerId: props.credentials.user[0]._id,
-            ownerNickname: props.credentials.user[0].nickname,
+            ownerId: props.credentials.user._id,
+            ownerNickname: props.credentials.user.nickname,
             comment: comment,
             postId: id,
         }
@@ -235,8 +235,8 @@ const Search = (props) => {
 
             postId: postId,
             commentId: commentId,
-            ownerId: props.credentials.user[0]._id,
-            ownerNickname: props.credentials.user[0].nickname,
+            ownerId: props.credentials.user._id,
+            ownerNickname: props.credentials.user.nickname,
             answer: answer,
         }
 

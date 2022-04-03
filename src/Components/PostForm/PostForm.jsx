@@ -142,8 +142,8 @@ export const PostForm = (props) => {
 
       console.log(props.credentials)
       let body = {
-        ownerId: props.credentials.user[0]._id,
-        ownerNickname: props.credentials.user[0].nickname,
+        ownerId: props.credentials.user._id,
+        ownerNickname: props.credentials.user.nickname,
         title: postData.title,
         // img: "https://i.imgur.com/wl1HPGG.png",
         img: imgURL.data.data.link,

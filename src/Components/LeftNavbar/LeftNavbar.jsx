@@ -77,7 +77,7 @@ const LeftNavbar = (props) => {
 
         } else {
             return (
-                <NavigationButton viewNameDisplay={props.credentials.user[0].nickname} pathUrl={"/profile"} buttonIcon={<ProfileSvg />} />
+                <NavigationButton viewNameDisplay={props.credentials.user.nickname} pathUrl={"/profile"} buttonIcon={<ProfileSvg />} />
             )
         }
     }

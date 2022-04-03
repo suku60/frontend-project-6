@@ -119,7 +119,7 @@ export const ProfileForm = (props) => {
 
 
       let body = {
-        id: props.credentials.user[0]._id,
+        id: props.credentials.user._id,
         // avatar: "https://i.imgur.com/wl1HPGG.png",
         // avatar: "https://i.imgur.com/lCPYCHO.png",
         avatar: imgURL.data.data.link,
@@ -130,14 +130,14 @@ export const ProfileForm = (props) => {
 
       result = await axios.put("https://socialmeme.herokuapp.com/users/updateAvatar", body, config)
 
-      let user = await axios.get(`https://socialmeme.herokuapp.com/users/get?id=${props.credentials.user[0]._id}`);
+      let user = await axios.get(`https://socialmeme.herokuapp.com/users/get?id=${props.credentials.user._id}`);
 
       props.dispatch({ type: UPDATE_CREDENTIALS, payload: user.data });
 
 
       setTimeout(() => {
         showNotification({
-          title: `${props.credentials.user[0].nickname}, your avatar has been updated`,
+          title: `${props.credentials.user.nickname}, your avatar has been updated`,
           // message: 'Hey there, your code is awesome! 🤥',
           autoClose: 3000
         })

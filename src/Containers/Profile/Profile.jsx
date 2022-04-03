@@ -21,7 +21,7 @@ const Profile = (props) => {
     let navigate = useNavigate();
 
     // HOOKS
-    const [userData, setUserData] = useState(props.credentials.user[0]);
+    const [userData, setUserData] = useState(props.credentials.user);
     const [posts, setPosts] = useState([]);
     const [postsCommented, setPostsCommented] = useState([]);
     const [postsAnswered, setPostsAnswered] = useState([]);
@@ -67,7 +67,7 @@ const Profile = (props) => {
 
     const renderAvatar = () => {
 
-        if (props.credentials.user[0].avatar == "") {
+        if (props.credentials.user.avatar == "") {
             return (
                 <div className="container_profile_photo">
 
@@ -112,7 +112,7 @@ const Profile = (props) => {
                         <div>
                             <img
                                 className='avatarImg'
-                                src={props.credentials.user[0].avatar}
+                                src={props.credentials.user.avatar}
                                 alt=""
                             />
                         </div>
@@ -140,13 +140,13 @@ const Profile = (props) => {
     // Get user posts and comments for displaying into accordions
     const getUserPostsAndComments = async () => {
         // console.log("HERE I AM");
-        let results = await axios.get(`https://socialmeme.herokuapp.com/posts/actions/findByUser?userId=${props.credentials.user[0]._id}`);
+        let results = await axios.get(`https://socialmeme.herokuapp.com/posts/actions/findByUser?userId=${props.credentials.user._id}`);
         setPosts(results.data.posts);
         setPostsCommented(results.data.comments);
         setPostsAnswered(results.data.answers);
-        
+
         if (results.data.comments.length > 0) {
-            let commentsResults = await axios.get(`https://socialmeme.herokuapp.com/posts/actions/findCommentsByUser?userId=${props.credentials.user[0]._id}`)
+            let commentsResults = await axios.get(`https://socialmeme.herokuapp.com/posts/actions/findCommentsByUser?userId=${props.credentials.user._id}`)
             setCommentsArr(commentsResults.data);
             // console.log("comments arr = ", commentsResults);
         } else {
@@ -155,7 +155,7 @@ const Profile = (props) => {
 
 
         if (results.data.answers.length > 0) {
-            let answersResults = await axios.get(`https://socialmeme.herokuapp.com/posts/actions/findAnswersByUser?userId=${props.credentials.user[0]._id}`)
+            let answersResults = await axios.get(`https://socialmeme.herokuapp.com/posts/actions/findAnswersByUser?userId=${props.credentials.user._id}`)
             setAnswersArr(answersResults.data);
             // console.log("answers arr = ", answersResults);
         } else {
@@ -191,7 +191,7 @@ const Profile = (props) => {
         } else if (isEdit && commentId) {
 
             let result = await axios.get(`https://socialmeme.herokuapp.com/posts/actions/getComment?postId=${postId}&commentId=${commentId}`);
-            
+
             // console.log("result = ", result.data);
             props.dispatch({ type: SELECT_COMMENT, payload: result.data })
 
@@ -352,7 +352,7 @@ const Profile = (props) => {
                 <div className='component_profile' id="animationContainerFromTop">
                     <div className='profile_header'>
                         <div className='profile_nickname'>
-                            {props.credentials.user[0].nickname}
+                            {props.credentials.user.nickname}
                         </div>
                         <div className='profile_box_data'>
                             <div className='profile_box_data_div'>
@@ -368,13 +368,13 @@ const Profile = (props) => {
                             </div>
                             <div className='profile_box_data_div'>
                                 <div className='profile_box_data_value'>
-                                    {props.credentials.user[0].email}
+                                    {props.credentials.user.email}
                                 </div>
                                 <div className='profile_box_data_value'>
-                                    {props.credentials.user[0].followed.length}
+                                    {props.credentials.user.followed.length}
                                 </div>
                                 {/* <div className='profile_box_data_value'>
-                                {props.credentials.user[0].followed.length}
+                                {props.credentials.user.followed.length}
                                 </div> */}
                             </div>
                         </div>

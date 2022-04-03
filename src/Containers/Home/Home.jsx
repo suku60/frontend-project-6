@@ -18,7 +18,7 @@ const Home = (props) => {
     let desiredView = useNavigate();
     let config = {
         headers: { Authorization: `Bearer ${props.credentials.token}` }
-      }
+    }
 
     // HOOKS
     // memes
@@ -139,8 +139,8 @@ const Home = (props) => {
         if (props.credentials.token) {
             let body = {
                 postId: postId,
-                raterId: props.credentials.user[0]._id,
-                raterNickname: props.credentials.user[0].nickname,
+                raterId: props.credentials.user._id,
+                raterNickname: props.credentials.user.nickname,
                 rate: rating
             }
             let response = await axios.put(`https://socialmeme.herokuapp.com/posts/actions/addRating`, body, config);
@@ -177,8 +177,8 @@ const Home = (props) => {
             let body = {
                 postId: postId,
                 commentId: commentId,
-                raterId: props.credentials.user[0]._id,
-                raterNickname: props.credentials.user[0].nickname,
+                raterId: props.credentials.user._id,
+                raterNickname: props.credentials.user.nickname,
                 rate: rating
             }
 
@@ -234,8 +234,8 @@ const Home = (props) => {
     const addComment = async (id) => {
 
         let body = {
-            ownerId: props.credentials.user[0]._id,
-            ownerNickname: props.credentials.user[0].nickname,
+            ownerId: props.credentials.user._id,
+            ownerNickname: props.credentials.user.nickname,
             comment: comment,
             postId: id,
         }
@@ -257,8 +257,8 @@ const Home = (props) => {
 
             postId: postId,
             commentId: commentId,
-            ownerId: props.credentials.user[0]._id,
-            ownerNickname: props.credentials.user[0].nickname,
+            ownerId: props.credentials.user._id,
+            ownerNickname: props.credentials.user.nickname,
             answer: answer,
         }
 
@@ -278,7 +278,7 @@ const Home = (props) => {
         let body = {
             followedId: followedId,
             followedNickname: followedNickname,
-            userId: props.credentials.user[0]._id,
+            userId: props.credentials.user._id,
         }
 
         // console.log("BODY", body);
@@ -293,7 +293,7 @@ const Home = (props) => {
     const unfollowUser = async (unfollowedId) => {
         let body = {
             unfollowedId: unfollowedId,
-            userId: props.credentials.user[0]._id,
+            userId: props.credentials.user._id,
         }
 
         let result = await axios.put(`https://socialmeme.herokuapp.com/users/actions/unfollow`, body, config);
@@ -306,7 +306,7 @@ const Home = (props) => {
     const renderFollowButton = (followedId, followedNickname) => {
 
         if (props.credentials.token) {
-            let arr = props.credentials.user[0].followed;
+            let arr = props.credentials.user.followed;
 
             let results = arr.filter((elmnt) => elmnt.followedId == followedId);
 

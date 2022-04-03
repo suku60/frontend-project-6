@@ -77,10 +77,10 @@ export const LoginForm = (props) => {
 
         if (result.data.token) {
           setTimeout(() => {
-            // setMsgLength(`Welcome again ${result.data.user[0].nickname}`);
+            // setMsgLength(`Welcome again ${result.data.user.nickname}`);
 
             showNotification({
-              title: `Welcome again ${result.data.user[0].nickname}`,
+              title: `Welcome again ${result.data.user.nickname}`,
               // message: 'Hey there, your code is awesome! 🤥',
               autoClose: 3000
             })
