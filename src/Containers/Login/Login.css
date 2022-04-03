@@ -76,7 +76,7 @@
 
 @keyframes positioningEnd {
     from{height: 67vh;}
-    to{height: 47vh;}
+    to{height: 27vh;}
 }
 
 
@@ -95,7 +95,7 @@
     animation: positioningSplashEnd 3s  normal;
 }
 @keyframes positioningSplashEnd {
-    from{width: 90em;
+    from{width: 70em;
         
     transform: rotate(0deg); 
     left: 1vw;}
@@ -133,7 +133,7 @@
 }
 @keyframes positionMemeworkTextEnd {
     from{top: 59vh}
-    to{top: 39vh}
+    to{top: 25vh}
 }
 
 #animationJoinTextEnd {
@@ -145,7 +145,7 @@
 }
 @keyframes positionJoinTextEnd {
     from{top: 63vh}
-    to{top: 43vh}
+    to{top: 28vh}
 }
 
 /* Enter button disappearing */
@@ -204,7 +204,7 @@ display: none;}
     height: 30vh;
     width: 40vw;
 
-    background-color: aquamarine;
+    background-color: var(--color-dark-3);
 
     transition: var(--transition-2);
 
@@ -231,7 +231,7 @@ display: none;}
     justify-content: space-between;
     align-items: center;
 
-    height: 70vh;
+    height: 60vh;
     width: 40vw;
 
     background-color: transparent;
@@ -399,7 +399,7 @@ display: none;}
 .register_box_form{
     margin-inline: 1em;
     
-    height: 40vh;
+    height: 60vh;
     width: 25vw;
 
     padding-right: .9em;
@@ -425,7 +425,8 @@ display: none;}
 .login_box_form {
     background-color: transparent;
 
-    height: 30vh;
+    height: fit-content;
+    padding-top: 1em;
 
 }
 
@@ -454,10 +455,9 @@ display: none;}
 .main_logo_end {
 
     height: 67vh;
-/* height:47vh when we click enter / default 67vh*/
 
     left: 35vw;
-    top: 8vh;
+    top: 5vh;
 
 
     position: absolute;
@@ -466,7 +466,7 @@ display: none;}
 }
 .main_logo_end {
 
-    height: 47vh;
+    height: 27vh;
     
 
 }
@@ -474,11 +474,10 @@ display: none;}
 .splash_logo_end {
     
     height: 50em;
-    width: 90em;
+    width: 70em;
 
     position: relative;
 
-    /* width 40em & left: 0vw when we click enter  / default width: 90em & left:1vw;*/
 
     left: 1vw;
     top: 5vh;
@@ -524,7 +523,6 @@ display: none;}
 
     left: 47.5vw;
     top: 59vh;
-    /* top: 39vh when we click Enter / default: 59vh */
 
     letter-spacing: -1px;
 
@@ -534,7 +532,7 @@ display: none;}
 }
 
 .memework_text_end {
-    top: 39vh !important;
+    top: 25vh !important;
 }
 
 .join_text,
@@ -544,7 +542,7 @@ display: none;}
     left: 57vw;
 
     top: 63vh;
-    /* top: 43vh when we click Enter / default: 63vh */
+    /* top: 28vh when we click Enter / default: 63vh */
 
     letter-spacing: -.5px;
 }
@@ -552,7 +550,7 @@ display: none;}
 
 .join_text_end {
 
-    top: 43vh;
+    top: 28vh;
 }
 
 .container_enter_button,
