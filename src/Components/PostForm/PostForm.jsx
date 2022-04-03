@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import './PostForm.css';
 import { checkError } from '../../utils';
 import { TextInput, Textarea, Checkbox, Button } from '@mantine/core';
+import { showNotification } from '@mantine/notifications';
 import { useForm } from '@mantine/hooks';
 import axios from 'axios';
 import { connect } from 'react-redux';
@@ -152,8 +153,11 @@ export const PostForm = (props) => {
       result = await axios.post("https://socialmeme.herokuapp.com/posts/create", body)
         .then(() => {
           setTimeout(() => {
-            setMsgLength("The post has been created")
-            setPostSaved(result.data);
+            showNotification({
+              title: `Your post has been created succesfully}`,
+              // message: 'Hey there, your code is awesome! 🤥',
+              autoClose: 1000
+            })
             setTimeout(() => {
               clearHooks();
             }, 5000)

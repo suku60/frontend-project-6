@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import './UpdateCommentForm.css';
 import { checkError } from '../../utils';
 import { TextInput, Textarea, Checkbox, Button } from '@mantine/core';
+import { showNotification } from '@mantine/notifications';
 import { useForm } from '@mantine/hooks';
 import axios from 'axios';
 import { connect } from 'react-redux';
@@ -97,8 +98,11 @@ export const UpdateCommentForm = (props) => {
       result = await axios.put("https://socialmeme.herokuapp.com/posts/actions/updateComment", body)
         .then(() => {
           setTimeout(() => {
-            setMsgLength("The comment has been updated")
-            // setPostSaved(result.data);
+            showNotification({
+              title: `The comment has been updated}`,
+              // message: 'Hey there, your code is awesome! 🤥',
+              autoClose: 3000
+            })
             setTimeout(() => {
               clearHooks();
             }, 5000)
@@ -118,7 +122,11 @@ export const UpdateCommentForm = (props) => {
 
     .then(() => {
       setTimeout(() => {
-        setMsgLength("The comment has been deleted")
+        showNotification({
+          title: `The comment has been deleted}`,
+          // message: 'Hey there, your code is awesome! 🤥',
+          autoClose: 3000
+        })
         setTimeout(() => {
           clearHooks();
         }, 5000)

@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import './UpdatePostForm.css';
 import { checkError } from '../../utils';
 import { TextInput, Textarea, Checkbox, Button } from '@mantine/core';
+import { showNotification } from '@mantine/notifications';
 import { useForm } from '@mantine/hooks';
 import axios from 'axios';
 import { connect } from 'react-redux';
@@ -108,7 +109,11 @@ export const UpdatePostForm = (props) => {
       result = await axios.put("https://socialmeme.herokuapp.com/posts/update", body)
         .then(() => {
           setTimeout(() => {
-            setMsgLength("The post has been updated")
+            showNotification({
+              title: `The post has been updated}`,
+              // message: 'Hey there, your code is awesome! 🤥',
+              autoClose: 1000
+            })
             setPostSaved(result.data);
             setTimeout(() => {
               clearHooks();
@@ -124,7 +129,11 @@ export const UpdatePostForm = (props) => {
     let result = await axios.delete(`https://socialmeme.herokuapp.com/posts/delete?postId=${props.profileData.post._id}`)
     .then(() => {
       setTimeout(() => {
-        setMsgLength("The post has been deleted")
+        showNotification({
+          title: `The post has been deleted}`,
+          // message: 'Hey there, your code is awesome! 🤥',
+          autoClose: 1000
+        })
         setTimeout(() => {
           clearHooks();
         }, 5000)
