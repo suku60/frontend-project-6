@@ -9,7 +9,7 @@
     height: 100vh;
     overflow-y: scroll !important;
 
-    background-color: transparent !important;
+    background-color: var(--color-vapor-3-2);
 
 
 }
@@ -106,8 +106,7 @@
     height: 80em;
     width: 39vw !important;
 
-    background: rgb(14,8,106);
-    background: linear-gradient(0deg, rgba(14,8,106,1) 0%, rgba(33,33,162,1) 35%, rgba(0,212,255,1) 100%);
+    background-color: var(--color-vapor-3-2);
     /* background-color: whitesmoke; */
 
     /* overflow-y: scroll; */
@@ -225,10 +224,21 @@
 .comment_goToPost_bttn {
     cursor: pointer;
 
+    background-color: var(--color-vapor-3-3);
+
+    height: 3vh;
+    width: 6vw;
+
+    border-radius: 0 var(--border-radius-1) var(--border-radius-1) 0;
+
+    transition: var(--transition-1);
+
 }
 
 .comment_goToPost_bttn:hover {
     background-color: whitesmoke;
+
+    transition: var(--transition-1);
 }
 
 .logout_box{

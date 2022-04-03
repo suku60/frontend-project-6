@@ -304,14 +304,14 @@ const Profile = (props) => {
             return (
                 <div
                     className='comment_goToPost_bttn'
-                    onClick={() => getPost(elmnt.postId, elmnt.commentId, false)}>GO TO POST
+                    onClick={() => getPost(elmnt.postId, elmnt.commentId, false)}>show post
                 </div>
             )
         } else {
             return (
                 <div
                     className='comment_goToPost_bttn'
-                    onClick={() => hideElements(elmnt.postId)}>HIDE POST
+                    onClick={() => hideElements(elmnt.postId)}>hide
                 </div>
             )
         }

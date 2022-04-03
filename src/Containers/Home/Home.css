@@ -357,7 +357,7 @@ height: 1em;
 
 .meme_comments_accordion {
     /* THIS IS THE RESULTS CONTAINER LEVEL 1*/
-    background: linear-gradient(to bottom, var(--color-vapor-3-1), var(--color-vapor-3-2));
+    /* background: linear-gradient(to bottom, var(--color-vapor-3-1), var(--color-vapor-3-2)); */
     background-color: var(--color-vapor-3-2);
     transition: var(--transition-0);
     color: var(--color-light-2) !important;
