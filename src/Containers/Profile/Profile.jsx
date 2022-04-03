@@ -179,7 +179,7 @@ const Profile = (props) => {
         } else if (isEdit && !commentId) {
 
             let result = await axios.get(`https://socialmeme.herokuapp.com/posts/get?postId=${postId}`);
-            props.dispatch({ type: SELECT_POST, payload: result.data[0] })
+            props.dispatch({ type: SELECT_POST, payload: result.data })
 
 
             setTimeout(() => {
