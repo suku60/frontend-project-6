@@ -1,14 +1,14 @@
 import React, { useState, useEffect, useCallback, } from 'react';
 import { useDropzone } from 'react-dropzone'
 import { useNavigate } from 'react-router-dom';
-import './PostForm.css';
+import './UpdatePostForm.css';
 import { checkError } from '../../utils';
 import { TextInput, Textarea, Checkbox, Button } from '@mantine/core';
 import { useForm } from '@mantine/hooks';
 import axios from 'axios';
 import { connect } from 'react-redux';
 
-export const PostForm = (props) => {
+export const UpdatePostForm = (props) => {
   let imgURL;
   let navigate = useNavigate();
   let regexError;
@@ -17,12 +17,19 @@ export const PostForm = (props) => {
   let ageError;
   let fileError;
 
+
   //1-Hooks
   const [postData, setpostData] = useState({
-    title: "",
-    description: "",
-    keywords: ""
+    title: props.profileData.post.title,
+    description: props.profileData.post.text,
+    keywords: props.profileData.post.keywords.toString()
+
   });
+
+
+
+
+
   const [postSaved, setPostSaved] = useState([]);
   const [msgLength, setMsgLength] = useState("");
   const [msgMis, setMsgMis] = useState("");
@@ -43,8 +50,7 @@ export const PostForm = (props) => {
   //useEffect
   //userData useEffect
   useEffect(() => {
-    clearHooks();
-    console.log(fileData);
+
   }, [])
 
 
@@ -57,47 +63,15 @@ export const PostForm = (props) => {
   }
 
 
-  //Dropzone functions
-  const onDrop = useCallback(acceptedFiles => {
 
-    acceptedFiles.forEach((file) => {
-      const reader = new FileReader()
-      reader.onabort = () => seterrorMsg('file reading was aborted')
-      reader.onerror = () => seterrorMsg('file reading has failed')
-      reader.onload = () => {
-
-        setFileData(reader.result.split(',')[1])
-      }
-
-      reader.readAsDataURL(file);
-
-    })
-
-  }, [])
-
-  const { getRootProps, getInputProps } = useDropzone({ onDrop })
-
-
-
-
-
-  //UPLOAD IMAGE TO IMGUR AND CREATES NEW POST IN DB
-  const createPost = async () => {
+  //UPDATE POST IN DB
+  const updatePost = async () => {
     let fieldsArr = Object.entries(postData);
     let error = "";
     seterrorMsg("");
 
 
 
-    //VALIDATE INPUT ERRORS
-    //File validation
-    if (fileData == "") {
-      seterrorMsg("Please upload an image")
-      fileError = true;
-    } else {
-      seterrorMsg("")
-      fileError = false;
-    }
 
     //Inputs regex validation
     for (let element of fieldsArr) {
@@ -114,45 +88,27 @@ export const PostForm = (props) => {
       }
     }
 
-    //Policy checkbox validation
-    if (!checked) {
-      seterrorMsg("Please confirm you are 18 or older to submit")
-      ageError = true;
-    } else {
-      seterrorMsg("")
-      ageError = false;
-    }
 
 
-    if (!fileError && !regexError && !passMisError && !passLengthError && !ageError) {
+    if (!regexError && !passMisError && !passLengthError && !ageError) {
 
-      let config = {
-        headers: { Authorization: `Bearer 272bb9d6b58b6ee89263edb23a760ce0dbf6a856` }
-      }
-      let imgbody = {
-        image: fileData
-      }
-      imgURL = await axios.post('https://api.imgur.com/3/image', imgbody, config)
 
       let keywordsArr = postData.keywords.split(",");
 
-      console.log(props.credentials)
+
       let body = {
-        ownerId: props.credentials.user[0]._id,
-        ownerNickname: props.credentials.user[0].nickname,
+        postId: props.profileData.post._id,
         title: postData.title,
-        // img: "https://i.imgur.com/wl1HPGG.png",
-        img: imgURL.data.data.link,
         text: postData.description,
         keywords: keywordsArr
       }
       let result;
 
 
-      result = await axios.post("https://socialmeme.herokuapp.com/posts/create", body)
+      result = await axios.put("https://socialmeme.herokuapp.com/posts/update", body)
         .then(() => {
           setTimeout(() => {
-            setMsgLength("The post has been created")
+            setMsgLength("The post has been updated")
             setPostSaved(result.data);
             setTimeout(() => {
               clearHooks();
@@ -163,15 +119,28 @@ export const PostForm = (props) => {
     }
   }
 
+  const deletePost = async () => {
+    console.log("soy el objetivo",props.profileData.post._id);
+    let result = await axios.delete(`https://socialmeme.herokuapp.com/posts/delete?postId=${props.profileData.post._id}`)
+    .then(() => {
+      setTimeout(() => {
+        setMsgLength("The post has been deleted")
+        setTimeout(() => {
+          clearHooks();
+        }, 5000)
+      }, 1500)
+    });
+  }
+
 
 
   const clearHooks = () => {
     setpostData({
       title: "",
-      description: ""
+      description: "",
+      keywords: ""
     })
 
-    setFileData("");
 
     setMsgLength("");
     setMsgMis("");
@@ -181,7 +150,7 @@ export const PostForm = (props) => {
   }
   const enterPress = (e) => {
     if (e.key === "Enter") {
-      createPost();
+      updatePost();
     }
   }
   return (
@@ -195,20 +164,10 @@ export const PostForm = (props) => {
       </>
       <div className='createPost_box_form'>
 
-        <>
-          <div className='dropzoneContainer'>
-            <div {...getRootProps()}>
-              <input {...getInputProps()} />
-
-              <p>Drop your meme image or gif here ...</p>
-            </div>
-          </div>
-        </>
-
         <TextInput
           required
           label="Title"
-          placeholder=""
+          placeholder={postData.title}
           onChange={(e) => { fillForm(e) }}
           name="title"
           value={postData.title}
@@ -223,7 +182,7 @@ export const PostForm = (props) => {
         <Textarea
           required
           label="Description"
-          placeholder="Description of the meme "
+          placeholder={postData.description}
           onChange={(e) => { fillForm(e) }}
           name="description"
           value={postData.description}
@@ -233,7 +192,7 @@ export const PostForm = (props) => {
         <TextInput
           required
           label="KeyWords"
-          placeholder="separated by comma"
+          placeholder={postData.keywords}
           onChange={(e) => { fillForm(e) }}
           name="keywords"
           value={postData.keywords}
@@ -243,18 +202,11 @@ export const PostForm = (props) => {
           onKeyDown={(e) => { enterPress(e) }}
         />
 
+        <div className='bttns_box'>
+          <Button className='submitBttn' type="submit" onClick={() => { updatePost() }}>Update</Button>
+          <Button className='deleteBttn' type="submit" onClick={() => { deletePost() }}>Delete</Button>
+        </div>
 
-        <Checkbox
-          mt="md"
-          label="Confirm I accept the policies"
-          required
-          name="confirm"
-          checked={checked}
-          onChange={(event) => setChecked(event.currentTarget.checked)}
-
-        />
-
-        <Button className='submitBttn' type="submit" onClick={() => { createPost() }}>Submit</Button>
         <br></br>
         <span className='errorMsg'>{errorMsg}</span>
         <br></br>
@@ -266,5 +218,6 @@ export const PostForm = (props) => {
   )
 }
 export default connect((state) => ({
-  credentials: state.credentials
-}))(PostForm);
+  credentials: state.credentials,
+  profileData: state.profileData,
+}))(UpdatePostForm);

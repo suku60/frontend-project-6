@@ -1,14 +1,17 @@
 import React, { useState, useEffect, useCallback, } from 'react';
 import { useDropzone } from 'react-dropzone'
 import { useNavigate } from 'react-router-dom';
-import './PostForm.css';
+import '../PostForm/PostForm.css';
 import { checkError } from '../../utils';
 import { TextInput, Textarea, Checkbox, Button } from '@mantine/core';
 import { useForm } from '@mantine/hooks';
 import axios from 'axios';
 import { connect } from 'react-redux';
+import { UPDATE_CREDENTIALS } from '../../redux/types';
+import { showNotification } from '@mantine/notifications';
+import { logDOM } from '@testing-library/react';
 
-export const PostForm = (props) => {
+export const ProfileForm = (props) => {
   let imgURL;
   let navigate = useNavigate();
   let regexError;
@@ -43,18 +46,8 @@ export const PostForm = (props) => {
   //useEffect
   //userData useEffect
   useEffect(() => {
-    clearHooks();
-    console.log(fileData);
-  }, [])
 
-
-  //Handler function
-  //Shows msgs while writting
-  const fillForm = (e) => {
-    //Set data
-    setpostData({ ...postData, [e.target.name]: e.target.value })
-
-  }
+  })
 
 
   //Dropzone functions
@@ -80,16 +73,15 @@ export const PostForm = (props) => {
 
 
 
-
-  //UPLOAD IMAGE TO IMGUR AND CREATES NEW POST IN DB
-  const createPost = async () => {
+  //UPLOAD IMAGE TO IMGUR AND UPDATES USER AVATAR
+  const updateAvatar = async () => {
     let fieldsArr = Object.entries(postData);
     let error = "";
     seterrorMsg("");
 
 
 
-    //VALIDATE INPUT ERRORS
+    // VALIDATE INPUT ERRORS
     //File validation
     if (fileData == "") {
       seterrorMsg("Please upload an image")
@@ -99,20 +91,7 @@ export const PostForm = (props) => {
       fileError = false;
     }
 
-    //Inputs regex validation
-    for (let element of fieldsArr) {
 
-      error = checkError(element[0], element[1]);
-      console.log(error)
-      if (error !== "ok") {
-        seterrorMsg(error)
-        regexError = true;
-        return
-      } else if (error == "ok") {
-        seterrorMsg("")
-        regexError = false;
-      }
-    }
 
     //Policy checkbox validation
     if (!checked) {
@@ -124,7 +103,7 @@ export const PostForm = (props) => {
     }
 
 
-    if (!fileError && !regexError && !passMisError && !passLengthError && !ageError) {
+    if (!fileError && !ageError) {
 
       let config = {
         headers: { Authorization: `Bearer 272bb9d6b58b6ee89263edb23a760ce0dbf6a856` }
@@ -134,31 +113,36 @@ export const PostForm = (props) => {
       }
       imgURL = await axios.post('https://api.imgur.com/3/image', imgbody, config)
 
-      let keywordsArr = postData.keywords.split(",");
 
-      console.log(props.credentials)
+
       let body = {
-        ownerId: props.credentials.user[0]._id,
-        ownerNickname: props.credentials.user[0].nickname,
-        title: postData.title,
-        // img: "https://i.imgur.com/wl1HPGG.png",
-        img: imgURL.data.data.link,
-        text: postData.description,
-        keywords: keywordsArr
+        id: props.credentials.user[0]._id,
+        // avatar: "https://i.imgur.com/wl1HPGG.png",
+        // avatar: "https://i.imgur.com/lCPYCHO.png",
+        avatar: imgURL.data.data.link,
+
       }
       let result;
 
+      console.log("hey");
+      result = await axios.put("https://socialmeme.herokuapp.com/users/updateAvatar", body)
 
-      result = await axios.post("https://socialmeme.herokuapp.com/posts/create", body)
-        .then(() => {
-          setTimeout(() => {
-            setMsgLength("The post has been created")
-            setPostSaved(result.data);
-            setTimeout(() => {
-              clearHooks();
-            }, 5000)
-          }, 1500)
-        });
+      let user = await axios.get(`https://socialmeme.herokuapp.com/users/get?id=${props.credentials.user[0]._id}`);
+
+      props.dispatch({ type: UPDATE_CREDENTIALS, payload: user.data });
+
+
+      setTimeout(() => {
+        showNotification({
+          title: `${props.credentials.user[0].nickname}, your avatar has been updated`,
+          // message: 'Hey there, your code is awesome! 🤥',
+          autoClose: 3000
+        })
+        setTimeout(() => {
+          clearHooks();
+        }, 5000)
+      }, 1500)
+
 
     }
   }
@@ -166,33 +150,14 @@ export const PostForm = (props) => {
 
 
   const clearHooks = () => {
-    setpostData({
-      title: "",
-      description: ""
-    })
 
     setFileData("");
 
-    setMsgLength("");
-    setMsgMis("");
-    seterrorMsg("");
-
     setChecked(false);
   }
-  const enterPress = (e) => {
-    if (e.key === "Enter") {
-      createPost();
-    }
-  }
+
   return (
     <>
-      <>
-        {/* {<pre>{JSON.stringify(postData.keywords, null, 2)}</pre>} */}
-        {/* {<pre>{JSON.stringify(checked, null, 2)}</pre>}
-        {<pre>{JSON.stringify(msgLength, null, 2)}</pre>}
-        {<pre>{JSON.stringify(msgMis, null, 2)}</pre>}
-        {<pre>{JSON.stringify(errorMsg, null, 2)}</pre>} */}
-      </>
       <div className='createPost_box_form'>
 
         <>
@@ -205,45 +170,6 @@ export const PostForm = (props) => {
           </div>
         </>
 
-        <TextInput
-          required
-          label="Title"
-          placeholder=""
-          onChange={(e) => { fillForm(e) }}
-          name="title"
-          value={postData.title}
-          classNames={{
-            input: 'titleField',
-          }}
-          onKeyDown={(e) => { enterPress(e) }}
-        />
-
-
-
-        <Textarea
-          required
-          label="Description"
-          placeholder="Description of the meme "
-          onChange={(e) => { fillForm(e) }}
-          name="description"
-          value={postData.description}
-          onKeyDown={(e) => { enterPress(e) }}
-        />
-
-        <TextInput
-          required
-          label="KeyWords"
-          placeholder="separated by comma"
-          onChange={(e) => { fillForm(e) }}
-          name="keywords"
-          value={postData.keywords}
-          classNames={{
-            input: 'field',
-          }}
-          onKeyDown={(e) => { enterPress(e) }}
-        />
-
-
         <Checkbox
           mt="md"
           label="Confirm I accept the policies"
@@ -251,10 +177,9 @@ export const PostForm = (props) => {
           name="confirm"
           checked={checked}
           onChange={(event) => setChecked(event.currentTarget.checked)}
-
         />
 
-        <Button className='submitBttn' type="submit" onClick={() => { createPost() }}>Submit</Button>
+        <Button className='submitBttn' type="submit" onClick={() => { updateAvatar() }}>Submit</Button>
         <br></br>
         <span className='errorMsg'>{errorMsg}</span>
         <br></br>
@@ -267,4 +192,4 @@ export const PostForm = (props) => {
 }
 export default connect((state) => ({
   credentials: state.credentials
-}))(PostForm);
+}))(ProfileForm);

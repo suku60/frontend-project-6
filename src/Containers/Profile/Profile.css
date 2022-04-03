@@ -1,17 +1,17 @@
 @import url('../../assets/CSS/main.css');
 
 #profile_box {
-    
+
     /* flex-direction: row;
     justify-content: center !important; */
-    
+
 
     height: 100vh;
     overflow-y: scroll !important;
 
     background-color: transparent !important;
-    
-    
+
+
 }
 
 /* CONTAINERS (VIEWS / TOTAL SCREEN / SECTIONS) */
@@ -29,47 +29,224 @@
 
     transition: var(--transition-1) !important;
 
-    overflow:visible;
+    overflow: visible;
 }
 
 .container_profile_data:hover {
-    
+
     height: 40vh !important;
-    
+
     transition: var(--transition-1) !important;
-    
+
     /* background-color: var(--color-dark-2); */
 
 }
 
 .container_profile_photo {
-    
+
     position: absolute;
     z-index: 20;
 
     height: 9em;
     width: 9em;
 
-    background-color: red;
+    /* background-color: red; */
 
     margin: .8em;
 
-    border-radius: 44%;
+    border-radius: 50%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
 
 }
+
+.addPicture_text {
+    font-family: 'Roboto Condensed', sans-serif;
+
+    font-weight: 900;
+}
+
+.addPicture_logo:hover {
+    cursor: pointer;
+}
+
+.addPicture_logo,
+.addPicture_text{
+    z-index:300;
+    color: white;
+}
+
+.avatarImg {
+    height: 20vh;
+    border-radius: 50%;
+
+    object-fit: cover;
+
+}
+
+.avatarImg:hover {
+    cursor: pointer;
+}
+
 /* COMPONENTS */
 
 .component_profile {
-    padding-top: 15vh;
+    padding-top: 8vh;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: flex-end; */
     justify-content: flex-start;
-    align-items: flex-start;
+    align-items: flex-end;
+    /* align-items: flex-start; */
 
     height: 80em;
     width: 39vw !important;
 
-    background-color: whitesmoke;
+    background: rgb(14,8,106);
+    background: linear-gradient(0deg, rgba(14,8,106,1) 0%, rgba(33,33,162,1) 35%, rgba(0,212,255,1) 100%);
+    /* background-color: whitesmoke; */
 
     /* overflow-y: scroll; */
 
 
+}
+
+.profile_header {
+    border: solid;
+    margin-right: 2%;
+    margin-bottom: 2%;
+
+    height: 10%;
+    width: 60%;
+    /* background-color: blue; */
+    border-radius: var(--border-radius-4) var(--border-radius-4) var(--border-radius-4) var(--border-radius-4);
+}
+
+.profile_nickname {
+    height: 30%;
+    width: 100%;
+
+    font-family: 'Roboto Condensed', sans-serif;
+
+    font-weight: 900;
+
+    font-size: 1.5em;
+
+    margin-top: 1%;
+    margin-bottom: 1%;
+
+
+}
+
+.profile_box_data {
+    height: 70%;
+    width: 100%;
+    /* background-color: brown; */
+    display:flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.profile_box_data_div {
+    height: 90%;
+    width: 50%;
+    /* background-color: red; */
+
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.profile_box_data_key {
+    height: 30%;
+    width: 100%;
+    /* background-color: rgb(0, 255, 81); */
+
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+
+    margin-left: 60%;
+
+    font-family: 'Roboto Condensed', sans-serif;
+
+    font-weight: 600;
+
+    font-size:1em;
+}
+.profile_box_data_value {
+    height: 30%;
+    width: 100%;
+    /* background-color: rgb(0, 4, 255); */
+
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
+
+    margin-right: 50%;
+
+    font-family: 'Roboto Condensed', sans-serif;
+
+    font-weight: 600;
+
+    font-size: 1em;
+}
+
+.edit_bttn_box{
+    height: 10%;
+    width: 100%;
+
+    margin-right: 5%;
+    
+    color: var(--color-dark-1);
+
+    /* background-color: transparent; */
+
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    
+    /* cursor: pointer; */
+}
+
+.edit_bttn{
+    cursor:pointer;
+}
+
+.comment_goToPost_bttn {
+    cursor: pointer;
+
+}
+
+.comment_goToPost_bttn:hover {
+    background-color: whitesmoke;
+}
+
+.logout_box{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-right: 2%;
+}
+.logout_box:hover{
+    cursor: pointer;
+}
+
+.logout_text{
+    font-family: 'Roboto Condensed', sans-serif;
+
+    font-weight: 600;
+
+    font-size: 1em;
+    margin-right: 10%;
 }

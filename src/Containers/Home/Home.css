@@ -104,7 +104,8 @@
     justify-content: flex-start;
     align-items: center;
     
-    height: 99vh !important;
+    height: fit-content !important;
+    /* height: 99vh !important; */
     width: 39.8vw;
     
     border-radius: var(--border-radius-3);
@@ -133,6 +134,7 @@ height: 1em;
     
     width: 38.8vw;
     height: fit-content; 
+    /* height: fit-content;  */
 
     background-color: black;
 
@@ -149,7 +151,9 @@ height: 1em;
 }
 
 .meme_card_data {
-    background-color: var(--color-dark-2) !important;
+    background-color: var(--color-dark-1);
+    /* background-color: transparent; */
+    color: var(--color-light-2);
 
     
     
@@ -158,7 +162,8 @@ height: 1em;
     justify-content: center;
     align-items: center;
 
-    height: 18.4em;
+    height: fit-content;
+    /* height: 18.4em; */
     width: 39vw;
 
     
@@ -176,10 +181,32 @@ height: 1em;
 
 }
 
-.meme_name {
+.meme_title {
     
     width: 38.6vw;
-    height: 8em;
+    height: fit-content;
+    min-height: 3em;
+
+    font-size: 1.2em;
+    font-weight: 1000;
+
+    /* margin-bottom: 5%; */
+
+    background-color: var(--color-dark-1);
+    /* background-color: transparent; */
+    color: var(--color-light-2);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: var(--transition-5);
+
+}
+
+.meme_description {
+    
+    width: 38.6vw;
+    height: fit-content;
 
     background-color: var(--color-dark-1);
     /* background-color: transparent; */
@@ -196,7 +223,7 @@ height: 1em;
     background-color: var(--color-vapor-1-4);
     transition: var(--transition-9);
 
-    height: 10em;
+    /* height: 10em; */
     
     color: var(--color-light-1);
 }
@@ -297,12 +324,24 @@ height: 1em;
     color: var(--color-light-2);
 
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
     transition: var(--transition-5);
     
     margin-bottom: .1em;
 
+}
+.follow{
+    cursor: pointer;
+}
+.follow:hover{
+    color:greenyellow;
+}
+.unfollow{
+    cursor: pointer;
+}
+.unfollow:hover{
+    color:rgb(255, 54, 47);
 }
 
 .meme_creator:hover {
@@ -333,6 +372,53 @@ height: 1em;
 
     
     overflow-x: scroll;
+}
+
+.meme_comment_textarea_box{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-end;
+}
+.meme_comment_textarea {
+    width: 25em;
+}
+
+.meme_comment_textarea_bttn {
+    border-width: .5em !important;
+    /* background-color: red; */
+    padding: 0.5%;
+    margin-left: 0.5%;
+
+    height: 4vh;
+    width: 5vw;
+
+    font-size: .8em;
+
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    letter-spacing: .3em;
+
+    background-color: var(--color-dark-3);
+
+    
+    background-color: var(--color-vapor-2-1);
+    color: var(--color-dark-3);
+
+    border-radius: var(--border-radius-2);
+    border-width: .05em;
+
+    border-color: var(--color-vapor-2-1);
+
+    cursor:pointer;
+
+    transition: var(--transition-2);
+
+    margin-bottom: 5%;
 }
 
 .meme_comment_box {
@@ -433,6 +519,16 @@ height: 1em;
     background-color: var(--color-vapor-1-1);
     transition: var(--transition-4);
 } */
+
+.meme_answer_box {
+    border: solid;
+    border-radius: var(--border-radius-3) var(--border-radius-3) var(--border-radius-3) var(--border-radius-3);
+    margin-bottom: 3%;
+
+    width: 30vw;
+
+    background-color: lightgray;
+}
 
 .memes_loadMore_bttn {
     width: 100%;
