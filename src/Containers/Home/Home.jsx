@@ -143,15 +143,14 @@ const Home = (props) => {
                 raterNickname: props.credentials.user[0].nickname,
                 rate: rating
             }
-
             let response = await axios.put(`https://socialmeme.herokuapp.com/posts/actions/addRating`, body, config);
 
-            console.log(response.data);
+
             if (response.data !== "You have already rated this post") {
                 showNotification({
                     title: `Post rated with ${rating} tomatoes!`,
                     // message: 'Hey there, your code is awesome! 🤥',
-                    autoClose: 1000
+                    // autoClose: 1000
                 })
             } else {
                 showNotification({

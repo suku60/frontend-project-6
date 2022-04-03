@@ -131,7 +131,6 @@ export const UpdatePostForm = (props) => {
 
   const deletePost = async () => {
   
-    console.log("soy el objetivo",props.profileData.post._id);
     let result = await axios.delete(`https://socialmeme.herokuapp.com/posts/delete?postId=${props.profileData.post._id}`, config)
     .then(() => {
       setTimeout(() => {

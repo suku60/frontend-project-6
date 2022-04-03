@@ -107,11 +107,14 @@ export const ProfileForm = (props) => {
 
 
     if (!fileError && !ageError) {
+      let configImg = {
+        headers: { Authorization: `Bearer 272bb9d6b58b6ee89263edb23a760ce0dbf6a856` }
+      }
 
       let imgbody = {
         image: fileData
       }
-      imgURL = await axios.post('https://api.imgur.com/3/image', imgbody, config)
+      imgURL = await axios.post('https://api.imgur.com/3/image', imgbody, configImg)
 
 
 
