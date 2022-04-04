@@ -174,7 +174,8 @@ const Profile = (props) => {
         if (!isEdit) {
 
             let result = await axios.get(`https://socialmeme.herokuapp.com/posts/get?postId=${postId}`);
-            setCommentedOrAnsweredPost(result.data);
+            // console.log("SOY YOOO",result);
+            setCommentedOrAnsweredPost([result.data]);
 
         } else if (isEdit && !commentId) {
 
@@ -209,6 +210,7 @@ const Profile = (props) => {
 
     // Renders commented post if user clicked GO TO POST at a comment
     const renderPostCommented = () => {
+        console.log("SOYYOOOOOO",commentedOrAnsweredPost);
         return (
             <>
                 {commentedOrAnsweredPost?.map(images => {
