@@ -307,8 +307,8 @@ const Home = (props) => {
 
         if (props.credentials.token) {
             
+            console.log(props.credentials.user);
             let arr = props.credentials.user.followed;
-
             let results = arr.filter((elmnt) => elmnt.followedId == followedId);
 
             if (results.length > 0) {

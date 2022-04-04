@@ -23,7 +23,7 @@ const reducerLoginData = (state = initialState, action) => {
         case UPDATE_CREDENTIALS:
             // console.log("STATE", state);
             // console.log("ACTION", action.payload);
-            return {...state, user: [action.payload]}
+            return {...state, user: action.payload}
 
         default:
             return state
