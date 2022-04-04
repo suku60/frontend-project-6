@@ -119,7 +119,7 @@ export const UpdatePostForm = (props) => {
               // message: 'Hey there, your code is awesome! 🤥',
               autoClose: 1000
             })
-            setPostSaved(result.data);
+            // setPostSaved(result.data);
             setTimeout(() => {
               clearHooks();
             }, 5000)
