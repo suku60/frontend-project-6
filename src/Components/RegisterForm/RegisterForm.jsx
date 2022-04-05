@@ -122,7 +122,10 @@ export const RegisterForm = (props) => {
       error = checkError(element[0], element[1]);
       console.log(error)
       if (error !== "ok") {
-        seterrorMsg(error)
+        showNotification({
+          title: "Fields cannot be empty",
+          autoClose: 3000
+        })
         regexError = true;
         return
       } else if (error == "ok") {
@@ -136,7 +139,6 @@ export const RegisterForm = (props) => {
       // seterrorMsg("nickname must be between 3 and 12 characters")
       showNotification({
         title: "Nickname must be between 4 and 10 characters",
-        // message: 'Hey there, your code is awesome! 🤥',
         autoClose: 3000
       })
       nickLengthError = true;

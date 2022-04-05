@@ -110,8 +110,7 @@ export const LoginForm = (props) => {
           autoClose: 3000
         })
           clearHooks();
-          
-          setLoaderDisplay("none")
+          setLoaderDisplay("none");
         }
 
 
