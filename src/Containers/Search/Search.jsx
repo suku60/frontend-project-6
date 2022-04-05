@@ -14,8 +14,12 @@ import { Send, ChevronDown } from 'tabler-icons-react';
 import { showNotification } from '@mantine/notifications';
 
 import { connect } from 'react-redux';
+import { Navigate, useNavigate } from 'react-router-dom';
 
 const Search = (props) => {
+
+    let desiredView = useNavigate("");
+
     let config = {
         headers: { Authorization: `Bearer ${props.credentials.token}` }
     }
@@ -47,11 +51,17 @@ const Search = (props) => {
 
     // USEEFFECTS
     useEffect(() => {
+
+        console.log("...cred", props.credentials)
+
+        if(props.credentials?.token === ""){
+
+            desiredView("/");
         // bringMemes();
         // memesRender();
 
         // console.log("meme?", memes)
-    }, [])
+    }}, [])
 
     // FUNCTIONS
     // Handlers

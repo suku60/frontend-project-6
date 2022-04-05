@@ -33,6 +33,9 @@ export const RegisterForm = (props) => {
   // Mantine hooks
   const [checked, setChecked] = useState(false);
 
+  // loader
+  const [loaderDisplay, setLoaderDisplay] = useState("none")
+
 
   // Refs
 
@@ -202,6 +205,10 @@ export const RegisterForm = (props) => {
     }
     let result;
     if (!regexError && !nickLengthError && !passMisError && !passLengthError && !ageError) {
+      // set loader here 
+
+      setLoaderDisplay("flex")
+
       try {
 
         result = await axios.post("https://socialmeme.herokuapp.com/users/register", body)
@@ -215,8 +222,9 @@ export const RegisterForm = (props) => {
           })
 
           setTimeout(() => {
+            setLoaderDisplay("none")
             clearHooks();
-            navigate("/")
+            navigate("/search")
 
           }, 3000);
         } else {
@@ -225,8 +233,11 @@ export const RegisterForm = (props) => {
             title: result.data,
             // message: 'Hey there, your code is awesome! 🤥',
             autoClose: 3000
+            
           })
-
+          clearHooks();
+          
+          setLoaderDisplay("none")
         }
 
 
@@ -307,6 +318,7 @@ export const RegisterForm = (props) => {
 
       <Button className='submitBttn' type="submit" onClick={() => register()}>Submit</Button>
       <br></br>
+      <div className="loader" id="spin_animation" style={{display: loaderDisplay}}></div>
       <span className='errorMsg'>{errorMsg}</span>
       <br></br>
       <span className='okMsg'>{msgLength}</span>
