@@ -47,6 +47,10 @@ export const LoginForm = (props) => {
 
   }
 
+  
+  // loader
+  const [loaderDisplay, setLoaderDisplay] = useState("none")
+
   const login = async () => {
 
     let fieldsArr = Object.entries(userData);
@@ -57,7 +61,11 @@ export const LoginForm = (props) => {
     for (let element of fieldsArr) {
       error = checkError(element[0], element[1]);
       if (error !== "ok") {
-        seterrorMsg(error)
+        showNotification({
+        title: 'Fields cannot be empty',
+        // message: 'Hey there, your code is awesome! 🤥',
+        autoClose: 3000})
+
         regexError = true;
         return
       } else if (error == "ok") {
@@ -72,6 +80,9 @@ export const LoginForm = (props) => {
     }
     let result;
     if (!regexError && !passMisError && !passLengthError && !ageError) {
+      
+      setLoaderDisplay("flex")
+
       try {
         result = await axios.post("https://socialmeme.herokuapp.com/users/login", body)
 
@@ -93,8 +104,14 @@ export const LoginForm = (props) => {
             }, 4000)
           }, 1500)
         } else {
-
-          seterrorMsg(result.data)
+          showNotification({
+          title: 'Wrong nickname or password',
+          // message: 'Hey there, your code is awesome! 🤥',
+          autoClose: 3000
+        })
+          clearHooks();
+          
+          setLoaderDisplay("none")
         }
 
 
@@ -149,6 +166,7 @@ export const LoginForm = (props) => {
 
         <Button className='submitBttn' id="login_form_button" type="submit" onClick={() => login()}>Submit</Button>
         <br></br>
+        <div className="loader" id="spin_animation" style={{display: loaderDisplay}}></div>
         <span className='errorMsg'>{errorMsg}</span>
         <br></br>
         <span className='okMsg'>{msgLength}</span>
