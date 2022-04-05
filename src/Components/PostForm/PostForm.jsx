@@ -38,6 +38,9 @@ export const PostForm = (props) => {
 
   //Mantine hooks
   const [checked, setChecked] = useState(false);
+  
+  // loader
+  const [loaderDisplay, setLoaderDisplay] = useState("none")
 
 
   //Refs
@@ -87,6 +90,8 @@ export const PostForm = (props) => {
 
   //UPLOAD IMAGE TO IMGUR AND CREATES NEW POST IN DB
   const createPost = async () => {
+    
+    setLoaderDisplay("flex")
     let fieldsArr = Object.entries(postData);
     let error = "";
     seterrorMsg("");
@@ -96,7 +101,10 @@ export const PostForm = (props) => {
     //VALIDATE INPUT ERRORS
     //File validation
     if (fileData == "") {
-      seterrorMsg("Please upload an image")
+      showNotification({
+        title: "please upload an image",
+        autoClose: 3000
+      })
       fileError = true;
     } else {
       seterrorMsg("")
@@ -109,7 +117,10 @@ export const PostForm = (props) => {
       error = checkError(element[0], element[1]);
       console.log(error)
       if (error !== "ok") {
-        seterrorMsg(error)
+        showNotification({
+          title: "fields cannot be empty",
+          autoClose: 3000
+        })
         regexError = true;
         return
       } else if (error == "ok") {
@@ -120,7 +131,10 @@ export const PostForm = (props) => {
 
     //Policy checkbox validation
     if (!checked) {
-      seterrorMsg("Please confirm you are 18 or older to submit")
+      showNotification({
+        title: "you must accept our terms & policies to post",
+        autoClose: 3000
+      })
       ageError = true;
     } else {
       seterrorMsg("")
@@ -138,6 +152,8 @@ export const PostForm = (props) => {
       }
       imgURL = await axios.post('https://api.imgur.com/3/image', imgbody, configImg)
 
+      
+      // let keywordsArr = postData.keywords.split("<space empty here>"); // we have to try this 
       let keywordsArr = postData.keywords.split(",");
 
       console.log(props.credentials)
@@ -207,14 +223,14 @@ export const PostForm = (props) => {
             <div {...getRootProps()}>
               <input {...getInputProps()} />
 
-              <p>Drop your meme image or gif here ...</p>
+              <p>drop image here or click to add</p>
             </div>
           </div>
         </>
 
         <TextInput
           required
-          label="Title"
+          label="title"
           placeholder=""
           onChange={(e) => { fillForm(e) }}
           name="title"
@@ -229,8 +245,8 @@ export const PostForm = (props) => {
 
         <Textarea
           required
-          label="Description"
-          placeholder="Description of the meme "
+          label="description"
+          placeholder="what's going on?"
           onChange={(e) => { fillForm(e) }}
           name="description"
           value={postData.description}
@@ -239,7 +255,7 @@ export const PostForm = (props) => {
 
         <TextInput
           required
-          label="KeyWords"
+          label="keywords"
           placeholder="separated by comma"
           onChange={(e) => { fillForm(e) }}
           name="keywords"
@@ -253,7 +269,7 @@ export const PostForm = (props) => {
 
         <Checkbox
           mt="md"
-          label="Confirm I accept the policies"
+          label="I accept the terms & policies"
           required
           name="confirm"
           checked={checked}
@@ -261,7 +277,11 @@ export const PostForm = (props) => {
 
         />
 
-        <Button className='submitBttn' type="submit" onClick={() => { createPost() }}>Submit</Button>
+        <Button className='submitBttn' type="submit" onClick={() => {createPost()}}>Submit</Button>
+        <br/>
+        <br/>
+        
+      <div className="loader" id="spin_animation" style={{display: loaderDisplay}}></div>
         <br></br>
         <span className='errorMsg'>{errorMsg}</span>
         <br></br>

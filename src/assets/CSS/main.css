@@ -111,6 +111,7 @@ img {
 
 #spin_animation {
     animation: spin 4s infinite;
+    background-color: #f53d5c;
 }
 
 @keyframes spin {
